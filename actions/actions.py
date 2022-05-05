@@ -342,7 +342,7 @@ class ActionCheckProtocol(Action):
         if intent == 'age':
             sub = '年龄'
         print('* sub is :', sub)
-        print('iter_number:', item_number)
+        print('item_number:', item_number)
 
         if (sub == None) and (item_number == None):
 
@@ -377,8 +377,6 @@ class ActionCheckProtocol(Action):
                 print('ready to check Neo4j again------------------------------------------')
 
 #----------------------------check index_list ---------------------------------------------------------#
-
-
 
                 if index_list and sub_list[0] in index_list:              # check index_list, also sub[0] in index_list
 
@@ -436,12 +434,17 @@ class ActionCheckProtocol(Action):
             node_item_number = main + '第' + item_number + '条'
             node_item_list = [node_item_number]
             print('node_item_number:', [node_item_number])
+        else:
+            node_item_list = []
              
         try:
+  
             if sub == None:
                 sub_list = []
 
             params = {'node_sub': sub_list, 'node_item': node_item_list}
+
+            print('params:', params)
  
             query = """
             match (index_node) <-[to_index*0..1] - (question_node) <-[to_questions*0..1] - (answer_node) <- [has_answer*0..1] -(csp_node) -[r*] ->(entity_node) -[*0..3] ->(entity_value)
@@ -552,7 +555,7 @@ class ActionCheckProtocol(Action):
                             button_list.append(dict2)
                             dict1 = {}
                             dict2 = {}
-                            msg2 = '<b>此项下还有以下问题，请参照选择。您也可以输入其他问题。谢谢</b>'
+                            msg2 = '<b>此项下还有以下问题提示，请参照选择。您也可以输入其他问题。谢谢</b>'
 
                 if final_message == '':
                         final_message =  msg_csp + msg_entity_value 

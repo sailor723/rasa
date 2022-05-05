@@ -59,9 +59,9 @@ print(result[0]['count'])
 
 # ----------------- MAIN CODE --------------------------------------------------
 
-question_file_name  = os.path.abspath('updated.xlsx')
+question_file_name  = os.path.abspath('DL04_QA_ner.xlsx')
 
-df = pd.read_excel(question_file_name, sheet_name='QA_log_new',header=0)
+df = pd.read_excel(question_file_name, sheet_name='QA_NER',header=0)
 
 # df = df_all[['主题词.1', '问题拆解', '拆解后问题回答']].dropna()
 #------------------------Data Preparation ----------------------------------------------------#
