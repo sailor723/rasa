@@ -1,0 +1,12 @@
+message_id,index,text,greet,other_exclusion_history,target_group,mood_great,goodbye,nlu_fallback,thanks,affirm,mood_unhappy,out_of_scpe,question_list,version,sender_id,site_id,token,sub,sender_name,sub_entity,sub_confidence_entity,sub_value,sub_extractor,sub_processors,action,inform_protocol,tell_name,write,clean_text
+a2125561ffb2406592b393ca28cde0df,confidence,你好,0.9995488524436951,8.900172542780638e-05,7.665728480787948e-05,7.379493763437495e-05,4.968164284946397e-05,4.4950404117116705e-05,4.1706192860146984e-05,3.2730542443459854e-05,2.4155124265234917e-05,1.8433191144140437e-05,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,,,,,,,,,,你好
+491d8ee572e54d8c821679aaa87c05d4,confidence,"/inform_protocol{""sub"": ""抗生素""}",,,,,,,,,,,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,sub,0,抗生素,0,0,0,1.0,,,抗生素
+d65cf4076c1641e1ada8f6e3d0625e90,confidence,"/inform_protocol{""sub"": ""妊娠试验""}",,,,,,,,,,,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,sub,0,妊娠试验,0,0,0,1.0,,,妊娠试验
+902bb5d7d2a5435d8a6e4a73ad63792c,confidence,你好,0.9995488524436951,8.900172542780638e-05,7.665728480787948e-05,7.379493763437495e-05,4.968164284946397e-05,4.4950404117116705e-05,4.1706192860146984e-05,3.2730542443459854e-05,2.4155124265234917e-05,1.8433191144140437e-05,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,,,,,,,,,,你好
+b95cd35307af4a25b3d224b4295ea6e7,confidence,"/inform_protocol{""sub"": ""EGFR""}",,,,,,,,,,,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,sub,0,EGFR,0,0,0,1.0,,,EGFR
+7e404732e9de46719ef6f4c12a04264a,confidence,"/inform_protocol{""sub"": ""请确认以下医疗状况是否符合条件？\n1. 已知B-RAF（V600）突变\n""}",,,,,,,,,,,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,sub,0,"请确认以下医疗状况是否符合条件？
+1. 已知B-RAF（V600）突变
+",0,0,0,1.0,,,请确认以下医疗状况是否符合条件？\n1. 已知B-RAF（V600）突变\n
+8aec5ad4e0ff451097fbb9a3fae460ce,confidence,脑转移,1.065808244445868e-20,,,,5.8248176576973224e-21,1.0170362538130637e-20,1.4655995786737348e-20,1.0983829239297617e-20,7.874080884908589e-21,1.0202225955378834e-20,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,sub,0.9998056292533875,脑放疗,DIETClassifier,['EntitySynonymMapper'],0,1.0,1.3604309954884332e-20,6.349488061261408e-21,脑转移
+19dfda2fc95544e59834ce48fdb92fd0,confidence,"/inform_protocol{""sub"": ""如何处理那些出现新诊断（尚未有症状）的有中枢神经系统转移的患者。在筛查过程中，可能会发现确实无任何症状的新病灶，这些患者是否仍被允许参与研究？\n""}",,,,,,,,,,,,2.0,123465,北京肿瘤医院,,,zhaoyisheng,sub,0,"如何处理那些出现新诊断（尚未有症状）的有中枢神经系统转移的患者。在筛查过程中，可能会发现确实无任何症状的新病灶，这些患者是否仍被允许参与研究？
+",0,0,0,1.0,,,如何处理那些出现新诊断（尚未有症状）的有中枢神经系统转移的患者。在筛查过程中，可能会发现确实无任何症状的新病灶，这些患者是否仍被允许参与研究？\n

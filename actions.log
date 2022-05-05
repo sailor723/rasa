@@ -1,0 +1,8 @@
+2022-04-28 18:24:17 INFO     rasa_sdk.endpoint  - Starting action endpoint server...
+2022-04-28 18:24:20 INFO     rasa_sdk.executor  - Registered function for 'action_initial_protocol'.
+2022-04-28 18:24:20 INFO     rasa_sdk.executor  - Registered function for 'action_Login'.
+2022-04-28 18:24:20 INFO     rasa_sdk.executor  - Registered function for 'action_check_protocol'.
+2022-04-28 18:24:20 INFO     rasa_sdk.executor  - Registered function for 'action_default_fallback'.
+2022-04-28 18:24:20 INFO     rasa_sdk.executor  - Registered function for 'action_write_text'.
+2022-04-28 18:24:20 INFO     rasa_sdk.endpoint  - Action endpoint is up and running on http://0.0.0.0:5055
+2022-04-28 18:24:20 DEBUG    rasa_sdk.utils  - Using the default number of Sanic workers (1).

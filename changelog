@@ -1,0 +1,8 @@
+rebuld KG with page number
+update domain with csp_descrition and page_num
+update actions.py for csp_description and page_num
+add Redis_log.sh
+add redis_persist.py 
+add chats_log_generator.py
+add neo4j_group.py to add KG DL04 node to have version information, now we have version_1, version_2
+update neo4j_all.sh, to include neo4j_group.py
