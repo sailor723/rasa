@@ -168,7 +168,7 @@ class ActionInitialProtocol(Action):
         #     return []
 #--------------------------- GENERATE RANDOM 13 entities ----------------------------------------#
 
-        initial_entities = ['RESTART'] + [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
+        initial_entities = [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
 
 # -------------------------- dispatch 14 entities for selction -----------------------------------#
  
@@ -228,7 +228,7 @@ class ActionLogin(Action):
 
 #--------------------------- GENERATE RANDOM 13 entities ----------------------------------------#
 
-        initial_entities = ['RESTART'] +  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
+        initial_entities =  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
 
 # -------------------------- Generate button list for 14 entities -------------------------------------------------------#
  
@@ -312,7 +312,7 @@ class ActionCheckProtocol(Action):
 
 #--------------------------- GENERATE RANDOM 13 entities ----------------------------------------#
 
-        initial_entities = ['RESTART'] +  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
+        initial_entities =  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
 
 # -------------------------- Generate button list for 14 entities -------------------------------------------------------#
  
@@ -359,7 +359,6 @@ class ActionCheckProtocol(Action):
 
 #-------------------construct sub into sub_list, as there maybe 2+ sub entities---#
       
-
         if sub:
             if sub[0] == 'RESTART':
                 return [Restarted()]
@@ -392,7 +391,7 @@ class ActionCheckProtocol(Action):
                         msg = ''
                         for item in result:
                             if ('入选标准' not in item.data()['answer_node']['name'][:4]) and ('排除标准' not in item.data()['answer_node']['name'][:4]):
-                                msg_QA =  '<b>DL04问题</b>'+ item.data()['question_node']['name']  + '\n<b>DL04回答</b>' + item.data()['answer_node']['name'] +'\n'
+                                msg_QA =  '<b>DL04问题: </b>'+ item.data()['question_node']['name']  + '\n<b>DL04回答: </b>' + item.data()['answer_node']['name'] +'\n'
                                 msg = msg_QA + msg
 
                         # for item in sub_list:
@@ -428,20 +427,23 @@ class ActionCheckProtocol(Action):
                         # return [SlotSet("sub",None)]                             # keep question_list
                     except:
                         print('error for check neo4j for index_list')
-
+                print('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
+                node_item_list = []
 # -------------------------- then, system will perform query --------------------------------#
-        if item_number:
-            node_item_number = main + '第' + item_number + '条'
-            node_item_list = [node_item_number]
-            print('node_item_number:', [node_item_number])
         else:
-            node_item_list = []
+            print('Xxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+            sub_list = []
+            if item_number:
+                node_item_number = main + '第' + item_number + '条'
+                node_item_list = [node_item_number]
+                print('node_item_number:', [node_item_number])
+            else:
+                node_item_list = []
              
         try:
-  
-            if sub == None:
-                sub_list = []
-
+ 
+            print('sub_list:', sub_list)
+            print('node_item_list:', node_item_list)
             params = {'node_sub': sub_list, 'node_item': node_item_list}
 
             print('params:', params)
@@ -534,12 +536,7 @@ class ActionCheckProtocol(Action):
                             
                     if index_list:          
 
-                        try:
-                            if button_list[0]['title'] == 'RESTART':
-                                button_list = []
-
-                        except:
-                                button_list
+                        button_list = []
 
                         dict1 = {}
                         dict2 = {}
@@ -556,6 +553,8 @@ class ActionCheckProtocol(Action):
                             dict1 = {}
                             dict2 = {}
                             msg2 = '<b>此项下还有以下问题提示，请参照选择。您也可以输入其他问题。谢谢</b>'
+
+                        print('xxyyyyyyyyyyyy button_listL', button_list)
 
                 if final_message == '':
                         final_message =  msg_csp + msg_entity_value 

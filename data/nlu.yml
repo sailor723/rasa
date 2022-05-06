@@ -81,7 +81,7 @@ nlu:
     - [疾病类型](sub)主要是什么
     - 受试者需要具备哪种[疾病特征](sub)
     - [非鳞状局晚期](sub)患者，可以[入组](main)吗？
-    - [非鳞状](sub)3期患者,可以[入组](main)吗？
+    - [非鳞状](sub)[3期](sub)患者,可以[入组](main)吗？
     - 受试者患有[非鳞状局晚期](sub),可以[接受](main)吗？
     - [入组](main)要求的[临床分期](sub)
     - 对患者[临床分期](sub)的[入组](main)要求
@@ -143,7 +143,7 @@ nlu:
     - [入组标准]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}对[组织学类型](sub)的要求
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}的[临床分期](sub)的要求
     - [肺磷脂局部晚期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
-    - [非鳞状]{"entity": "sub", "value": "\u80ba\u9cde\u764c"}3期患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [非鳞状]{"entity": "sub", "value": "\u80ba\u9cde\u764c"}[3期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [II期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [III期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}对[临床分期](sub)的要求
@@ -550,6 +550,9 @@ nlu:
     - [入组标准](main)第[12](item_number)条
     - [入组](main)第[8](item_number)条
     - [排除标准](main)第[12](item_number)条
+    - [3期](sub)
+    - [非鳞状](sub)[3期 ](sub)
+    - 非[鳞癌](sub)[3期](sub)肺癌
 - intent: thanks
   examples: |
     - 谢谢你
@@ -771,7 +774,7 @@ nlu:
 - synonym: nsclc
   examples: |
     - nscle
-- synonym: 3期局部晚期
+- synonym: 局部晚期
   examples: |
     - 3期局晚期
     - 晚期
@@ -872,10 +875,11 @@ nlu:
   examples: |
     - 基因亚型检测
     - 基因
+- synonym: 心肌梗死
+  examples: |
+    - 心梗
 - synonym: 心脏衰竭
   examples: |
-    - 心衰心梗
-    - 心梗
     - 心衰
 - synonym: 结核病
   examples: |
