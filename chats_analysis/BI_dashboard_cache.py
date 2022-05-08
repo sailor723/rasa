@@ -37,6 +37,13 @@ log_display = st.container()
 
 background_color = '#F5F5F5'
 
+hide_manu_style = """
+    <style>
+    #mainManu {invisibility: hidden;}
+    footer {invisibility: hidden;}
+    </style>
+"""
+st.markdown(hide_manu_style, unsafe_allow_html=True)
 
 #----------------------------------------------read sql to df----------------------------------------------------------------------------#
 @st.cache

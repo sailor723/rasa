@@ -553,6 +553,14 @@ nlu:
     - [3期](sub)
     - [非鳞状](sub)[3期 ](sub)
     - 非[鳞癌](sub)[3期](sub)肺癌
+    - 我有关于[排除](main)[5](item_number)的问题
+    - [排除](main)[12](item_number)的内容
+    - [排除](main)[8](item_number)的具体要求
+    - [入组](main)[18](item_number)的内容
+    - [排除](main)[6](item_number)有什么内容
+    - 我想了解[排除](main)[6](item_number)
+    - [入组](main)[5](item_number)的问题
+    - [排除](main)[6](item_number)的问题
 - intent: thanks
   examples: |
     - 谢谢你
@@ -632,6 +640,9 @@ nlu:
     - 今天是星期几？
     - 哪天是国庆节？
     - SOA的要求
+    - [30](item_number)[30](item_number)
+    - [1](item_number)[1](item_number)
+    - restart
 - intent: tell_name
   examples: |
     - 我是[卫平](PERSON)
@@ -660,6 +671,7 @@ nlu:
     - [药物滥用](sub)的排除
     - 请问入排的要求
     - 请问入组的要求
+    - [排除]{"entity": "main", "value": "\u6392\u9664\u6807\u51c6"}[12](item_number)[12](item_number)的内容
 - intent: target_group
   examples: |
     - 这个方案的基本情况

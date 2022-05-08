@@ -178,9 +178,9 @@ responses:
   utter_please_rephrase:
   - text: 您也可以请换个方式再说一下。谢谢
   utter_default:
-  - text: 对不起，我不太明白，能请你再说一下吗？谢谢
+  - text: 对不起，我不太明白，能请您再说一下吗？谢谢
   utter_out_of_scope:
-  - text: 对不起，我还不能回答这个问题。谢谢
+  - text: 对不起，我不明白您的问题。谢谢
   utter_more_question:
   - text: 请问您还有其他问题吗？
   utter_age:

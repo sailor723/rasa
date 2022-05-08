@@ -300,7 +300,7 @@ class ActionCheckProtocol(Action):
       
         text_CRA = '我不太理解，我会转给给负责咱们中心的CRA'
 
-        text_CRA_no_found = '我在方案中没有找到，我会吧问题转给负责咱们中心的CRA'
+        text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA'
 
         sub = None
     
