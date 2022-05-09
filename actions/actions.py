@@ -621,8 +621,8 @@ class ActionDefaultFallback(Action):
         sender_name = tracker.get_slot('sender_name')
         site_id = tracker.get_slot('site_id')
         version = tracker.get_slot('version')
-        # token = tracker.get_slot('token')
-        token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
+        token = tracker.get_slot('token')
+        # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
         text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
 
@@ -640,9 +640,9 @@ class ActionDefaultFallback(Action):
         print('payload:', payload)
         print('header:', header)
 
-        # url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
-        # res = requests.post(url,json=payload,headers=header)
-        # print(res.text)
+        url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+        res = requests.post(url,json=payload,headers=header)
+        print(res.text)
 
         dispatcher.utter_message(text=('您的问题"' + message +'""' + text_CRA))
 
