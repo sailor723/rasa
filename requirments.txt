@@ -1,0 +1,11 @@
+rasa==2.8.20
+rasa-sdk==2.8.4
+SQLAlchemy==1.3.22
+sanic-jwt==1.6.0
+neo4j==4.4.1
+pandas==1.3.2
+arrow
+dateparser
+pymysql
+pdfplumber
+pypdf2
