@@ -561,6 +561,19 @@ nlu:
     - 我想了解[排除](main)[6](item_number)
     - [入组](main)[5](item_number)的问题
     - [排除](main)[6](item_number)的问题
+    - [NYHA](sub)的要求
+    - [药物滥用](sub)的排除
+    - [AE](sub)
+    - [NYHA](sub)[NYHA](sub)[NYHA](sub)
+    - [nyha](sub)[nyha](sub)[nyha](sub)
+    - [egfr](sub)[egfr](sub)[egfr](sub)
+    - [hiv](sub)[hiv](sub)
+    - [alk](sub)[alk](sub)[alk](sub)
+    - [QTcF](sub)
+    - [alt](sub)
+    - [ast](sub)
+    - [乙肝患者](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [乙肝患者](sub)，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
 - intent: thanks
   examples: |
     - 谢谢你
@@ -589,7 +602,6 @@ nlu:
     - Michael
     - 关于[egfr](sub)
     - 请问[项目编号](sub)
-    - [NYHA](sub)的要求
 - intent: mood_great
   examples: |
     - perfect
@@ -668,7 +680,6 @@ nlu:
     - 了解试验方案
     - 查询方案内容
     - 查询方案
-    - [药物滥用](sub)的排除
     - 请问入排的要求
     - 请问入组的要求
     - [排除]{"entity": "main", "value": "\u6392\u9664\u6807\u51c6"}[12](item_number)[12](item_number)的内容
@@ -901,10 +912,12 @@ nlu:
     - 乙肝
     - 乙肝阳性
     - 乙肝抗体阳性
+    - 乙肝患者
 - synonym: 丙型肝炎
   examples: |
     - 丙肝
     - 丙肝阳性
+    - 丙肝患者
 - synonym: 叶酸
   examples: |
     - 叶酸治疗
