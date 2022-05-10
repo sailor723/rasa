@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # this is a new test 
+=======
+#test3
+>>>>>>> master
 from socket import MSG_EOR
 from typing import Text, List, Any, Dict
 from matplotlib.pyplot import subplot
