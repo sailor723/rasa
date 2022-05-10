@@ -1,0 +1,5 @@
+# log files
+*.log
+
+# build models
+models/*
