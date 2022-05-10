@@ -2,7 +2,9 @@ version: "2.0"
 rules:
 - rule: say iam bot when greet
   steps:
-  - intent: greet
+  - or:
+    - intent: greet
+    - intent: login
   - action: action_Login
 - rule: Say goodbye anytime the user says goodbye
   steps:

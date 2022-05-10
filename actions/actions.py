@@ -642,7 +642,11 @@ class ActionDefaultFallback(Action):
 
         url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
         res = requests.post(url,json=payload,headers=header)
+<<<<<<< HEAD
+        print('res.text:',res.text)
+=======
         print(res.text)
+>>>>>>> df7e6914bbc16db944d6d67a6ee1f0413b6f0e2e
 
         dispatcher.utter_message(text=('您的问题"' + message +'""' + text_CRA))
 
