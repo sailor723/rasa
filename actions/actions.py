@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# this is a new test 
-=======
-#test3
->>>>>>> master
 from socket import MSG_EOR
 from typing import Text, List, Any, Dict
 from matplotlib.pyplot import subplot
@@ -305,7 +300,7 @@ class ActionCheckProtocol(Action):
       
         text_CRA = '我不太理解，我会转给给负责咱们中心的CRA'
 
-        text_CRA_no_found = '我在方案中没有找到，我会吧问题转给负责咱们中心的CRA'
+        text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA'
 
         sub = None
     
@@ -647,7 +642,7 @@ class ActionDefaultFallback(Action):
 
         url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
         res = requests.post(url,json=payload,headers=header)
-        print('res.text:',res.text)
+        print(res.text)
 
         dispatcher.utter_message(text=('您的问题"' + message +'""' + text_CRA))
 
