@@ -43,7 +43,7 @@ tracker_store:
    url: 127.0.0.1
    port: 6379
    db: 0
-   password: 
+   password: ecc#123456
    use_ssl: false
 
 #tracker_store:
