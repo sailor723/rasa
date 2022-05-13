@@ -1,0 +1,17 @@
+# vscode
+.vscode
+
+# log files
+*.log
+
+# build models
+models/*
+
+# tmp files
+~*
+
+# compiled files
+*.pyc
+
+## pycache
+__pycache__
