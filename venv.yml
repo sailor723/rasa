@@ -170,7 +170,7 @@ dependencies:
     - questionary==1.5.2
     - rasa==2.8.20
     - rasa-sdk==2.8.4
-    - rasa-x==0.40.1
+    - rasa-x -i https://pypi.rasa.com/simple
     - redis==3.5.3
     - regex==2021.7.6
     - requests==2.25.1
