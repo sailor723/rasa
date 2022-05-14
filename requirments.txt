@@ -165,7 +165,7 @@ pyzmq==22.3.0
 questionary==1.5.2
 rasa==2.8.20
 rasa-sdk==2.8.4
-rasa-x==0.40.1
+https://pypi.rasa.com/api/package/rasa-x/rasa_x-0.40.1-py3-none-any.whl
 redis==3.5.3
 regex==2021.7.6
 requests==2.25.1
