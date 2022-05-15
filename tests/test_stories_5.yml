@@ -1,0 +1,12 @@
+version: "2.0"
+stories:
+- story: Story from Conversation ID 631a61d2063a4a1d86d17a35a6725db0
+  steps:
+  - intent: greet
+    user: |-
+      你好
+  - action: utter_iamabot
+  - intent: affirm
+    user: |-
+      再见
+  - action: utter_check_protocol

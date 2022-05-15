@@ -1,0 +1,106 @@
+version: "2.0"
+stories:
+- story: Story from Conversation ID f9b7f9311ed64295803a2f130306cc16
+  steps:
+  - intent: inform_protocol
+    entities:
+    - main: 入选标准
+  - slot_was_set:
+    - main: 入选标准
+  - action: utter_detail
+  - action: action_initial_protocol
+  - intent: age
+    entities:
+    - sub: 年龄
+  - slot_was_set:
+    - sub:
+      - 年龄
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - question_list: []
+- story: Story from Conversation ID 24c9674ef3974131aa9d9688c6ad57af
+  steps:
+  - intent: greet
+  - action: action_Login
+  - slot_was_set:
+    - sender_id: Andy
+  - slot_was_set:
+    - site_id: 北京肿瘤医院
+  - intent: inform_protocol
+    entities:
+    - sub: 痴呆
+  - slot_was_set:
+    - sub:
+      - 痴呆
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - question_list: []
+  - intent: inform_protocol
+    entities:
+    - sub: 目标人群
+  - slot_was_set:
+    - sub:
+      - 目标人群
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - question_list: []
+  - intent: inform_protocol
+    entities:
+    - sub: 男性
+  - slot_was_set:
+    - sub:
+      - 男性
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - question_list: []
+  - intent: thanks
+  - action: utter_more_question
+  - intent: deny
+  - action: utter_goodbye
+- story: Story from Conversation ID f9768cd1a90a4bc1b412b96e126baf08
+  steps:
+  - intent: greet
+  - action: action_Login
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_id: 北京肿瘤医院
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - item_number: '6'
+    - main: 入选标准
+    - item_number: '6'
+    - item_number: '6'
+  - slot_was_set:
+    - item_number: '6'
+  - slot_was_set:
+    - main: 入选标准
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_id: 北京肿瘤医院
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - token: null

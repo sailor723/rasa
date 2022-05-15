@@ -1,0 +1,210 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- affirm:
+    use_entities: true
+- age:
+    use_entities: []
+- bot_challenge:
+    use_entities: true
+- deny:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- greet:
+    use_entities: true
+- inform_protocol:
+    ignore_entities:
+    - PERSON
+- inquiry_protocol:
+    use_entities: []
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
+- other_exclusion_history:
+    use_entities: []
+- out_of_scope:
+    use_entities: true
+- restart:
+    use_entities: true
+- stop:
+    use_entities: true
+- target_group:
+    use_entities: []
+- tell_name:
+    use_entities: true
+- thanks:
+    use_entities: true
+- treatment_exclusion_history:
+    use_entities: []
+- treatment_history:
+    use_entities: []
+- write:
+    use_entities: []
+entities:
+- AGE
+- PERSON
+- main
+- sub
+- question_list
+- index_list
+- item_number
+slots:
+  PERSON:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  item_number:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  sender_id:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  sender_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  site_id:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  site_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  token:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  main:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  sub:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  page_num:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  version:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  csp_description:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  question_list:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  index_list:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: 你好。 我是阿斯利康的临床数字助手小易。很高兴为您服务
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: 谢谢老师。很高兴认识您。再见
+  utter_iamabot:
+  - text: 老师您好，我是阿斯利康的临床试验智能助手小易，很高兴为您服务.
+  - text: 你好，我是您的临床试验助理小易。很高兴能为您服务 我现在还在学习阶段，只能为DL04项目服务
+  - text: 你好，我是阿斯利康的临床试验智能助手小易。我现在可以回答DL04项目的问题
+  utter_ask_name:
+  - text: 请问如何称呼您？
+  - text: 请问怎么称呼您？
+  - text: 能告诉我您的名字吗?
+  - text: 为方便沟通，能让小易知道您的名字吗？
+  - text: 请问您怎么称呼？
+  utter_receive_name:
+  - text: 好的，{PERSON}老师。请问我有什么可以帮到您呢？
+  - text: 很高兴认识您，{PERSON}老师。请问我有什么可以帮到您呢？
+  utter_receive_name_no:
+  - text: 好的，老师。请问我有什么可以帮到您呢？
+  - text: 老师，没问题。请问我有什么可以帮到您呢？
+  utter_ask_main:
+  - buttons:
+    - payload: /inform_protocol{{"main":"入选标准"}}
+      title: 入组
+    - payload: /inform_protocol{{"main":"排除标准"}}
+      title: 排除
+    text: 您想查询入组还是排除?
+  utter_protocol_submit:
+  - text: 好的，{main}中的{sub}, 小易马上查询，请稍等片刻
+  - text: 好的，小易马上为您查询方案{main}有关{sub}的内容
+  - text: 小易明白了，您想查询方案的{main}中的{sub}的内容
+  - text: 没问题，小易马上查询方案的{main}有关{sub}的内容
+  - text: 清楚了，小易马上查询的{main}有关{sub}的信息
+  utter_protocol_slots:
+  - text: 我会查询方案的{main}中的{sub}.
+  utter_please_rephrase:
+  - text: 您也可以请换个方式再说一下。谢谢
+  utter_default:
+  - text: 对不起，我不太明白，能请您再说一下吗？谢谢
+  utter_out_of_scope:
+  - text: 对不起，我不明白您的问题。谢谢
+  utter_more_question:
+  - text: 请问您还有其他问题吗？
+  utter_age:
+  - text: this is for test age
+  utter_protocol:
+  - text: this is for test inform_protocol
+  utter_detail:
+  - text: 入组下有知情同意，年龄，受试者类型和疾病特征和生殖方面等17条内容，排除包括26条内容。小易无法一一列出。您可以更加需要查询特定的条目。另外，我们也抽取了一些条目供您参考。
+  utter_ask_questions:
+  - text: 好的。请提问。
+actions:
+- action_check_protocol
+- action_initial_protocol
+- action_default_fallback
+- action_write_text
+- utter_ask_name
+- utter_goodbye
+- utter_iamabot
+- utter_more_question
+- utter_please_rephrase
+- utter_protocol_slots
+- utter_protocol_submit
+- utter_receive_name
+- action_Login
+- utter_detail
+forms: {}
+e2e_actions: []

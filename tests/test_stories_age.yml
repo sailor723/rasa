@@ -1,0 +1,134 @@
+version: "2.0"
+stories:
+- story: Story from Conversation ID d4a79cc928fc4c359eec3c7e62ab69fc
+  steps:
+  - intent: greet
+    user: |-
+      你好
+  - action: utter_iamabot
+  - intent: age
+    user: |-
+      20岁可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
+  - slot_was_set:
+    - main: 入选标准
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: age
+    user: |-
+      30岁可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
+  - slot_was_set:
+    - main: 入选标准
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      多[大](sub)[年龄](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      多[大](sub)[年龄](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      对[年龄](sub)有特别要求吗？
+  - slot_was_set:
+    - sub: 年龄
+  - intent: inform_protocol
+    user: |-
+      对[年龄](sub)有特别要求吗？
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      对[年龄](sub)有特别要求吗？
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      受试者[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}的[年龄](sub)要求
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      [男性](sub)受试者的[年龄](sub)要求
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      [男性](sub)受试者的[年龄](sub)要求
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      [男性](sub)受试者的[年龄](sub)要求
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      女性受试者的[年龄](sub)要求
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      对[年龄](sub)有特别要求吗？
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: age
+    user: |-
+      90岁还可以吗？
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      多[大](sub)[年龄](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: age
+    user: |-
+      30岁可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
+  - slot_was_set:
+    - main: 入选标准
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      多[大](sub)[年龄](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - action: action_check_protocol
+  - action: action_initial_protocol
+

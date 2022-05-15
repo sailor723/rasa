@@ -1,0 +1,18 @@
+[
+  {
+    "text": "受试者有哪些类型符合入排标准",
+    "intent": "inform_protocol",
+    "intent_prediction": {
+      "name": "target_group",
+      "confidence": 0.7009118795394897
+    }
+  },
+  {
+    "text": "今天天气如何",
+    "intent": "nlu_fallback",
+    "intent_prediction": {
+      "name": "other_exclusion_history",
+      "confidence": 0.016115862876176834
+    }
+  }
+]

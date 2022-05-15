@@ -1,0 +1,72 @@
+stories:
+- story: A test where a custom action returns events
+  steps:
+  - user: |
+      你好
+    intent: greet
+  - action: utter_iamabot
+  - action: utter_ask_name
+  - user: |
+      卫平
+  - slot_was_set:
+    - PERSON: "卫平"
+  - action: utter_receive_name
+  - user: |
+      患者接种疫苗，可以入吗
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      左心室射血
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      知情同意
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      疫苗
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      肺鳞癌
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      生殖方面
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      胃肠道疾病
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      血小板指标
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      II期
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      自身免疫
+    intent: inform_protocol
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - user: |
+      谢谢
+    intent: thanks
+  - action: utter_more_question
+  - user: |
+      没有了
+    intent: deny
+  - action: utter_goodbye
+

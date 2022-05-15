@@ -1,0 +1,42 @@
+language: zh
+pipeline:
+  - name: JiebaTokenizer
+  - name: RegexEntityExtractor
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  # - name: LanguageModelFeaturizer
+  #   model_name: bert
+  #   model_weithts: bert-base-chinese
+  - name: DIETClassifier
+    epochs: 100
+    constrain_similarities: true
+  - name: RegexEntityExtractor
+    use_lookup_tables: True
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    epochs: 100
+    constrain_similarities: true
+  - name: FallbackClassifier
+    threshold: 0.7
+    ambiguity_threshold: 0.1
+
+policies:
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 7
+    epochs: 100
+    constrain_similarities: true
+  - name: RulePolicy
+    # Confidence threshold for the `core_fallback_action_name` to apply.
+    # The action will apply if no other action was predicted with
+    # a confidence >= core_fallback_threshold
+    core_fallback_threshold: 0.4
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: True
+  - name: UnexpecTEDIntentPolicy
+    max_history: 5
+    epochs: 100

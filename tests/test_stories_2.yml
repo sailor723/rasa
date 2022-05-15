@@ -1,0 +1,97 @@
+version: "2.0"
+stories:
+- story: Story from Conversation ID cc3c46cd6ba24863a124e922bb2b8a68
+  steps:
+  - intent: inform_protocol
+    user: |-
+      [靶病灶]{"entity": "sub", "value": "\u75c5\u7076"}的要求
+  - slot_was_set:
+    - sub: 病灶
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      /inform_protocol{"sub": "根治性治疗"}
+  - slot_was_set:
+    - sub: 根治性治疗
+  - intent: inform_protocol
+    user: |-
+      [靶病灶]{"entity": "sub", "value": "\u75c5\u7076"}的要求
+  - slot_was_set:
+    - sub: 病灶
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      /inform_protocol{"sub": "CNS转移"}
+  - slot_was_set:
+    - sub: CNS转移
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      /inform_protocol{"sub": "观察性"}
+  - slot_was_set:
+    - sub: 观察性
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      [观察性](sub)的要求
+  - slot_was_set:
+    - sub: 病灶
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+  - slot_was_set:
+    - sub: 根治性治疗
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+  - slot_was_set:
+    - sub: 病灶
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+  - slot_was_set:
+    - sub: CNS转移
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+  - slot_was_set:
+    - sub: 观察性
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+  - slot_was_set:
+    - sub: 观察性
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      /inform_protocol{"sub": "肺肉瘤样癌"}
+  - slot_was_set:
+    - sub: 肺肉瘤样癌
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      /inform_protocol{"sub": "肺肉瘤样癌"}
+  - slot_was_set:
+    - sub: 肺肉瘤样癌
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      /inform_protocol{"sub": "肺切除"}
+  - slot_was_set:
+    - sub: 肺切除
+  - action: action_check_protocol
+  - action: action_initial_protocol
+  - intent: inform_protocol
+    user: |-
+      /inform_protocol{"sub": "基因检测"}
+  - slot_was_set:
+    - sub: 基因检测
+  - action: action_check_protocol
+  - action: action_initial_protocol

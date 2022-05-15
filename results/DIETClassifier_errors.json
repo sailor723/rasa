@@ -1,0 +1,217 @@
+[
+  {
+    "text": "受试者有哪些类型符合入排标准",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "sub",
+        "start": 6,
+        "end": 8,
+        "confidence_entity": 0.6952568888664246,
+        "value": "类型",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "90岁可以入组吗?",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "AGE",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.5239524841308594,
+        "value": "90",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "20岁可以入组吗？",
+    "entities": [
+      {
+        "start": 5,
+        "end": 7,
+        "value": "入选标准",
+        "entity": "main"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "her2的检测",
+    "entities": [
+      {
+        "start": 0,
+        "end": 4,
+        "value": "her2",
+        "entity": "sub"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "sub",
+        "start": 0,
+        "end": 4,
+        "confidence_entity": 0.9964677095413208,
+        "value": "HER2突变检测",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "main",
+        "start": 5,
+        "end": 7,
+        "confidence_entity": 0.5301870703697205,
+        "value": "检测",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "有活动性或既往有记录的自体免疫性或炎症性疾病的患者可以入组吗？",
+    "entities": [
+      {
+        "start": 11,
+        "end": 15,
+        "value": "自体免疫",
+        "entity": "sub"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "value": "入选标准",
+        "entity": "main"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "main",
+        "start": 27,
+        "end": 29,
+        "confidence_entity": 0.9998351335525513,
+        "value": "入选标准",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "患者既往使用过卡铂可以入组吗？",
+    "entities": [
+      {
+        "start": 7,
+        "end": 9,
+        "value": "卡铂",
+        "entity": "sub"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "value": "入选标准",
+        "entity": "main"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "main",
+        "start": 11,
+        "end": 13,
+        "confidence_entity": 0.9996825456619263,
+        "value": "入选标准",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "对帕博利珠单抗过敏的患者可以吗？",
+    "entities": [
+      {
+        "start": 1,
+        "end": 5,
+        "value": "帕博利珠",
+        "entity": "sub"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "患者既往使用过卡铂可以入组吗",
+    "entities": [
+      {
+        "start": 7,
+        "end": 9,
+        "value": "卡铂",
+        "entity": "sub"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "value": "入选标准",
+        "entity": "main"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "main",
+        "start": 11,
+        "end": 13,
+        "confidence_entity": 0.9998599290847778,
+        "value": "入选标准",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "卡铂可以入组吗",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "卡铂",
+        "entity": "main"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "value": "入组",
+        "entity": "sub"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "sub",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.9998698234558105,
+        "value": "铂类",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "main",
+        "start": 4,
+        "end": 6,
+        "confidence_entity": 0.9994049072265625,
+        "value": "入选标准",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]
