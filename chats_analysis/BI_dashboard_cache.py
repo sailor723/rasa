@@ -6,13 +6,23 @@ import os, json, csv
 import plotly.figure_factory as ff
 import plotly.express as px
 import plotly.graph_objects as go
-from sqlalchemy import create_engine
+# from sqlalchemy import create_engine
 
 SUB_COL= ['sub_entity', 'sub_confidence_entity', 'sub_value', 'sub_extractor', 'sub_processors']
 
 entities_file_name  = os.path.join(os.getcwd(),'sub.txt')
 f = open(entities_file_name, "r",encoding='utf-8-sig')
 ENTITIES_LIST = list(set(f.read().split('\n')))
+
+# DCTA_MYSQL_USER = os.getenv('DCTA_MYSQL_USER')
+# DCTA_MYSQL_PWD = os.getenv('DCTA_MYSQL_PWD')
+# DCTA_MYSQL_HOST = os.getenv('DCTA_MYSQL_HOST')
+# DCTA_MYSQL_PORT  = os.getenv('DCTA_MYSQL_PORT')
+# DCTA_MYSQL_DB  = os.getenv('DCTA_MYSQL_DB')
+# DCTA_MYSQL_TABLE  = os.getenv('DCTA_MYSQL_TABLE')
+
+# mysql_string = 'mysql+pymysql://'+ DCTA_MYSQL_USER + ':'+ DCTA_MYSQL_PWD + '@' + DCTA_MYSQL_HOST \
+#             + ":" + str(DCTA_MYSQL_PORT) + '/' + DCTA_MYSQL_DB
 
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
@@ -50,7 +60,7 @@ st.markdown(hide_manu_style, unsafe_allow_html=True)
 def read_csv_to_df():
 
 #----------------------- read data and prepare data -----------------------------------#
-    engine = create_engine('mysql+pymysql://weiping:@localhost:3306/test_db')
+    # engine = create_engine(mysql_string)
     df = pd.read_csv(chat_full_name)
 
     return (df)
@@ -157,9 +167,9 @@ with dataset:
     col3, col4 = st.columns(2)
     with col3:
         st.subheader('Intent Confidence Average')
-        intent_distribution = pd.DataFrame(df_final[[ 'inform_protocol', 'affirm',
-        'out_of_scpe', 'deny', 'thanks', 
-        'bot_challenge', 'goodbye', 'nlu_fallback']].mean().sort_values(ascending=False))
+        target_list = [ 'inform_protocol', 'affirm', 'out_of_scpe', 'deny', 'thanks', 'bot_challenge', 'goodbye', 'nlu_fallback']
+        final_list = [col for col in target_list if col in df_final.columns]
+        intent_distribution = pd.DataFrame(df_final[final_list].mean().sort_values(ascending=False))
         fig = px.bar(intent_distribution,  height=800, width=800)
         st.plotly_chart(fig, use_container_width=True)
 
@@ -211,4 +221,5 @@ with dataset:
     data_lines = list(csvreader)
 
     for line in data_lines[:100]:
-        st.write(line[0])
+        if line != []:
+            st.write(line[0])
