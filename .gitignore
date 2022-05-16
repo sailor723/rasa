@@ -1,2 +1,8 @@
 rasa.db
 events.db
+chats_analysis/dump.rdb
+chats_analysis/chats_log.csv
+chats_analsysi/chats_log.pdf
+chats_analysis/new_all.csv
+chats_analysis/entity_csp.csv
+chats_analysis/entity_csp.pdf
