@@ -22,6 +22,8 @@ intents:
     - PERSON
 - inquiry_protocol:
     use_entities: []
+- login:
+    use_entities: []
 - mood_great:
     use_entities: true
 - mood_unhappy:
@@ -145,9 +147,7 @@ responses:
   utter_goodbye:
   - text: 谢谢老师。很高兴认识您。再见
   utter_iamabot:
-  - text: 老师您好，我是阿斯利康的临床试验智能助手小易，很高兴为您服务.
-  - text: 你好，我是您的临床试验助理小易。很高兴能为您服务 我现在还在学习阶段，只能为DL04项目服务
-  - text: 你好，我是阿斯利康的临床试验智能助手小易。我现在可以回答DL04项目的问题
+  - text: 很高兴为您服务，这里有研究方案相关的入选标准，希望可以帮助到您，让我们来一起对话吧
   utter_ask_name:
   - text: 请问如何称呼您？
   - text: 请问怎么称呼您？
@@ -168,11 +168,8 @@ responses:
       title: 排除
     text: 您想查询入组还是排除?
   utter_protocol_submit:
-  - text: 好的，{main}中的{sub}, 小易马上查询，请稍等片刻
-  - text: 好的，小易马上为您查询方案{main}有关{sub}的内容
-  - text: 小易明白了，您想查询方案的{main}中的{sub}的内容
-  - text: 没问题，小易马上查询方案的{main}有关{sub}的内容
-  - text: 清楚了，小易马上查询的{main}有关{sub}的信息
+  - text: 好的，请稍等~
+  - text: 小易努力查询中，请稍等~
   utter_protocol_slots:
   - text: 我会查询方案的{main}中的{sub}.
   utter_please_rephrase:
