@@ -14,22 +14,15 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-# - rule: check protocol after inform_protocol intent
-#   steps:
-#   - intent: inform_protocol
-#   - action: action_check_protocol
-  
 - rule: write text
   steps:
   - intent: write
   - action: action_write_text
-  
 - rule: check protocol after age protocol
   steps:
   - intent: age
+  - action: utter_protocol_submit
   - action: action_check_protocol
-  # - action: utter_protocol_submit
-  # - action: action_initial_protocol
 - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
   steps:
   - intent: nlu_fallback

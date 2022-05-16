@@ -575,6 +575,7 @@ nlu:
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}对[实验室指标](sub)的要求是什么
     - 对[心功能](sub)的要求
     - 对[医学禁忌](sub)的要求
+    - [cns](sub)[洗脱期](sub)
 - intent: thanks
   examples: |
     - 谢谢你
