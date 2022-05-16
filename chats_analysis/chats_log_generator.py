@@ -6,8 +6,17 @@ import numpy as np
 import os, json
 from sqlalchemy  import create_engine, Column, Integer, String
 
+DCTA_MYSQL_USER = os.getenv('DCTA_MYSQL_USER')
+DCTA_MYSQL_PWD = os.getenv('DCTA_MYSQL_PWD')
+DCTA_MYSQL_HOST = os.getenv('DCTA_MYSQL_HOST')
+DCTA_MYSQL_PORT  = os.getenv('DCTA_MYSQL_PORT')
+DCTA_MYSQL_DB  = os.getenv('DCTA_MYSQL_DB')
+DCTA_MYSQL_TABLE  = os.getenv('DCTA_MYSQL_TABLE')
 
-engine = create_engine('mysql+pymysql://root:Ecc!123456@localhost:3306/test_db')
+mysql_string = 'mysql+pymysql://'+ DCTA_MYSQL_USER + ':'+ DCTA_MYSQL_PWD + '@' + DCTA_MYSQL_HOST \
+            + ":" + str(DCTA_MYSQL_PORT) + '/' + DCTA_MYSQL_DB
+# engine = create_engine('mysql+pymysql://root:Ecc!123456@localhost:3306/test_db')
+engine = create_engine(mysql_string)
 df = pd.read_sql('tracker',engine)
 # df = pd.read_csv('new_all.csv')
 #-----------------------------read csv file from redis-------------------------------------------------------------------#
