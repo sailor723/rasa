@@ -1,6 +1,10 @@
 from neo4j import GraphDatabase
 import pandas as pd
-import json, os, re, argparse
+import os, re
+
+NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
+NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
+NEO4J_URL = "bolt://" + os.getenv('DCTA_NEO4J_URL')
 
 class Neo4jconnection:
 
@@ -37,19 +41,8 @@ class Neo4jconnection:
                 session.close()
         return response
  
-parser = argparse.ArgumentParser(description='Neo4j information')
-parser.add_argument('--url', dest='url', type=str, help='url of neo4j')
-parser.add_argument('--user', dest='user', type=str, help='username of Neo4j')
-parser.add_argument('--password', dest='password', type=str, help='password of Neo4j')
-args = parser.parse_args()
-url = "bolt:" + args.url
-user = args.user
-password = args.password
-print(url)
-print(user)
-print(password)
  
-conn = Neo4jconnection(uri=url, user=user, password=password)
+conn = Neo4jconnection(uri=NEO4J_URL, user=NEO4J_USER, password=NEO4J_PWD)
 # conn = Neo4jconnection(uri="bolt://localhost", user='neo4j', password="test")
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
 
