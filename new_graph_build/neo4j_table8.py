@@ -6,9 +6,9 @@ from PyPDF2 import PdfFileReader, PdfFileWriter
 import pdfplumber
 
 
-NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
-NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
-NEO4J_URL = "bolt://" + os.getenv('DCTA_NEO4J_URL')
+DCTA_NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
+DCTA_NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
+DCTA_NEO4J_HOST = "bolt://" + os.getenv('DCTA_NEO4J_HOST')
 
 
 class Neo4jconnection:
@@ -48,7 +48,7 @@ class Neo4jconnection:
                 session.close()
         return response
  
-conn = Neo4jconnection(uri=NEO4J_URL, user=NEO4J_USER, password=NEO4J_PWD)
+conn = Neo4jconnection(uri=DCTA_NEO4J_HOST, user=DCTA_NEO4J_USER, password=DCTA_NEO4J_PWD)
 # conn = Neo4jconnection(uri="bolt://localhost", user='neo4j', password="test")
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
 

@@ -2,9 +2,9 @@ from neo4j import GraphDatabase
 import pandas as pd
 import os
 
-NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
-NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
-NEO4J_URL = "bolt://" + os.getenv('DCTA_NEO4J_URL')
+DCTA_NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
+DCTA_NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
+DCTA_NEO4J_HOST = "bolt://" + os.getenv('DCTA_NEO4J_HOST')
 
 class Neo4jconnection:
 
@@ -41,7 +41,7 @@ class Neo4jconnection:
                 session.close()
         return response
  
-conn = Neo4jconnection(uri=NEO4J_URL, user=NEO4J_USER, password=NEO4J_PWD)
+conn = Neo4jconnection(uri=DCTA_NEO4J_HOST, user=DCTA_NEO4J_USER, password=DCTA_NEO4J_PWD)
 # conn = Neo4jconnection(uri="bolt://127.0.0.1", user='neo4j', password="test")
 
 result = conn.query("MATCH(n) RETURN COUNT(n) AS count")
