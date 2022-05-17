@@ -437,6 +437,28 @@ class ActionCheckProtocol(Action):
 
             if len(result) == 0:
                 # msg = '对不起，小易没有找到。我还需要学习'
+
+                text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
+
+                payload = {
+                    "userId": sender_id,
+                    "question": message
+                }
+                print('payload:', payload)
+
+                #请求头
+                header = {
+                    "content-type": "application/json",
+                    "token": token
+                }
+                print('payload:', payload)
+                print('header:', header)
+
+                url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+                res = requests.post(url,json=payload,headers=header)
+
+                print('res.text:',res.text)
+
                 final_message = sender_id + '老师，您的问题"' + message +'"' + text_CRA_no_found
                 dispatcher.utter_message(text=final_message)
                 return [SlotSet("sub",None), 
