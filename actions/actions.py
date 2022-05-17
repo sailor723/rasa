@@ -28,11 +28,11 @@ city_db = {
 }
 
 
-NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
-NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
-NEO4J_URL = "bolt://" + os.getenv('DCTA_NEO4J_URL')
+DCTA_NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
+DCTA_NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
+DCTA_NEO4J_HOST = "bolt://" + os.getenv('DCTA_NEO4J_HOST')
 
-print('NEO4J_URL:', NEO4J_URL)
+print('DCTA_NEO4J_HOST:', DCTA_NEO4J_HOST)
 
 ALLOWED_MAIN_TYPES = ["入选标准", "排除标准","全部"]
 
@@ -129,7 +129,7 @@ class Neo4jconnection:
         return response
 
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
-conn = Neo4jconnection(uri=NEO4J_URL, user=NEO4J_USER, password=NEO4J_PWD)
+conn = Neo4jconnection(uri=DCTA_NEO4J_HOST, user=DCTA_NEO4J_USER, password=DCTA_NEO4J_PWD)
 
 #---------------------------  action_initial——protocol  -----------------------------------------------#
 # this is to generate selection box -------------------------------------------------------------------#
