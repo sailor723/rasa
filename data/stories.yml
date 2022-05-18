@@ -15,7 +15,7 @@ stories:
   - slot_was_set:
     - sub:
       - 年龄
-  - action: utter_protocol_submit
+  # - action: utter_protocol_submit
   - action: action_check_protocol
   - slot_was_set:
     - sub: null
@@ -35,7 +35,7 @@ stories:
   - slot_was_set:
     - sub:
       - 痴呆
-  - action: utter_protocol_submit
+  # - action: utter_protocol_submit
   - action: action_check_protocol
   - slot_was_set:
     - sub: null
@@ -47,7 +47,7 @@ stories:
   - slot_was_set:
     - sub:
       - 目标人群
-  - action: utter_protocol_submit
+  # - action: utter_protocol_submit
   - action: action_check_protocol
   - slot_was_set:
     - sub: null
@@ -59,7 +59,7 @@ stories:
   - slot_was_set:
     - sub:
       - 男性
-  - action: utter_protocol_submit
+  # - action: utter_protocol_submit
   - action: action_check_protocol
   - slot_was_set:
     - sub: null
@@ -93,7 +93,7 @@ stories:
     - item_number: '6'
   - slot_was_set:
     - main: 入选标准
-  - action: utter_protocol_submit
+  # - action: utter_protocol_submit
   - action: action_check_protocol
   - slot_was_set:
     - sub: null
