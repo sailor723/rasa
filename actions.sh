@@ -1,0 +1,1 @@
+rasa run actions -vv > actions.log 2>&1 &
