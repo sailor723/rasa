@@ -30,7 +30,7 @@ city_db = {
 
 DCTA_NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
 DCTA_NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
-DCTA_NEO4J_HOST = "bolt://" + os.getenv('DCTA_NEO4J_HOST')
+DCTA_NEO4J_HOST = "bolt://" + str(os.getenv('DCTA_NEO4J_HOST'))
 
 print('DCTA_NEO4J_HOST:', DCTA_NEO4J_HOST)
 
