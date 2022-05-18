@@ -229,7 +229,7 @@ class ActionLogin(Action):
         if sender_id == '':
             text = msg + '\n' + msg2
         else:
-            text = '你好' + sender_name + ',' + site_id +  msg + '\n' + msg2
+            text = '您好' + sender_name + ',' + site_id +  msg + '\n' + msg2
 
         dispatcher.utter_message(text= text, buttons= button_list )
 
@@ -615,7 +615,7 @@ class ActionDefaultFallback(Action):
         dispatcher.utter_message(text=('您的问题"' + message +'""' + text_CRA))
 
         # Revert user message which led to fallback.
-        return [ SlotSet("sender_id", sender_id),
+        return [ SlotSet("sender_id", sender_id)g,
             SlotSet("sender_name", sender_name), 
             SlotSet("site_id", site_id), 
             SlotSet("version", version),
