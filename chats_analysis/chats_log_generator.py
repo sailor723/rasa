@@ -20,10 +20,10 @@ engine = create_engine(mysql_string)
 df = pd.read_sql('tracker',engine)
 # df = pd.read_csv('new_all.csv')
 #-----------------------------read csv file from redis-------------------------------------------------------------------#
-# redis_output_name = os.path.abspath('redis_output.xlsx')
+redis_output_name = os.path.abspath('redis_output.csv')
 redis_log_name = os.path.abspath('chats_log.csv')
 entity_csp_name = os.path.abspath('entity_csp.csv')
-# df.to_csv(full_chats_csv_name,encoding='utf-8-sig')
+df.to_csv(redis_output_name,encoding='utf-8-sig')
 #---------------------------------
 
 value_list = df.value

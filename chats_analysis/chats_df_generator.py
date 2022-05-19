@@ -59,8 +59,8 @@ initial = True
 df2 = pd.DataFrame(columns = SUB_COL)
 
 for a in v_list:
-    if v_list.index(a) == 1000:
-        break
+    # if v_list.index(a) == 1000:
+    #     break
     
     print(f"Total records are {len(v_list)},now procedding {v_list.index(a) + 1}")
     if a['event'] == 'user':
