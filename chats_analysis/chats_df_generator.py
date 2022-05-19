@@ -128,6 +128,7 @@ for a in v_list:
             print('error a_name with a_value')
             print('df_final_loc:', df_final.loc[message_id_in_memory, a['name']])
             print('a_value:', a['value'])
+            continue
        
         
 #----------------------------no answer question----------------------------------------------------------------#
