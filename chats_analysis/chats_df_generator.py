@@ -122,8 +122,12 @@ for a in v_list:
                 a['value'] = a['value'][0]
         else:
             a['value'] = ""
-
-        df_final.loc[message_id_in_memory, a['name']] = a['value']
+        try:
+            df_final.loc[message_id_in_memory, a['name']] = a['value']
+        except:
+            print('error a_name with a_value')
+            print('df_final_loc:', df_final.loc[message_id_in_memory, a['name']])
+            print('a_value:', a['value'])
        
         
 #----------------------------no answer question----------------------------------------------------------------#
