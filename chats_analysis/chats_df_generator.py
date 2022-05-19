@@ -118,7 +118,7 @@ for a in v_list:
     if a['event'] == 'slot' and a['name'] != 'index_list':
   
         if a['value'] != None and a['value'] != []:
-            if len(a['value']) == 2 and a['value'] == a['value']:
+            if type(a['value']) == list and a['value'] == a['value']:
                 a['value'] = a['value'][0]
         else:
             a['value'] = ""
