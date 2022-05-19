@@ -12,12 +12,12 @@ DCTA_MYSQL_HOST = os.getenv('DCTA_MYSQL_HOST')
 DCTA_MYSQL_PORT  = int(os.getenv('DCTA_MYSQL_PORT'))
 DCTA_MYSQL_DB  = os.getenv('DCTA_MYSQL_DB')
 DCTA_MYSQL_TABLE  = os.getenv('DCTA_MYSQL_TABLE')
-print('DCTA_MYSQL_USER:', DCTA_MYSQL_USER)
-print('DCTA_MYSQL_PWD:', DCTA_MYSQL_PWD)
-print('DCTA_MYSQL_HOST:', DCTA_MYSQL_HOST)
-print('DCTA_MYSQL_DB:', DCTA_MYSQL_DB)
-print('DCTA_MYSQL_PORT:', DCTA_MYSQL_PORT)
-print('DCTA_MYSQL_TABLE:', DCTA_MYSQL_TABLE)
+# print('DCTA_MYSQL_USER:', DCTA_MYSQL_USER)
+# print('DCTA_MYSQL_PWD:', DCTA_MYSQL_PWD)
+# print('DCTA_MYSQL_HOST:', DCTA_MYSQL_HOST)
+# print('DCTA_MYSQL_DB:', DCTA_MYSQL_DB)
+# print('DCTA_MYSQL_PORT:', DCTA_MYSQL_PORT)
+# print('DCTA_MYSQL_TABLE:', DCTA_MYSQL_TABLE)
 
 
 DCTA_REDIS_HOST = os.getenv('DCTA_REDIS_HOST')
@@ -49,19 +49,24 @@ redis_client = redis.Redis(host=DCTA_REDIS_HOST, password=DCTA_REDIS_PWD, port=D
 
 # 取前缀为tracker的Key
 for redis_key in redis_client.scan_iter("tracker*"):
+      
+      try:
 
-  data = json.loads(redis_client.get(redis_key))
+        data = json.loads(redis_client.get(redis_key))
 
-  data_json = json.dumps(data)
+        data_json = json.dumps(data)
 
-  # 执行sql语句
-  sql = 'insert into tracker(tracker_id, value) values(%s, %s)'
+        # 执行sql语句
+        sql = 'insert into tracker(tracker_id, value) values(%s, %s)'
 
-  values = (redis_key, data_json)
-  cursor.execute(sql, values)
+        values = (redis_key, data_json)
+        cursor.execute(sql, values)
 
-  # 删除key
-  redis_client.delete(redis_key)
+        # 删除key
+        redis_client.delete(redis_key)
+      except:
+        print('Waring Json load, redis_key is', redis_key)
+        continue
 
 # 提交之前的操作，如果之前已经执行多次的execute，那么就都进行提交
 conn.commit()
