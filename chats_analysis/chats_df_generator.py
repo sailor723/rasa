@@ -43,7 +43,7 @@ for row, col in df.iterrows():
 
     tracker = df.loc[row]['value']
     v_list.extend(json.loads(tracker)['events'])
-print(len(v_list))
+# print(len(v_list))
 
 list1 = [v_list.index(item) for item in v_list if item['event'] == 'slot']
 SLOT_COL =list(set([v_list[index]['name'] for index in list1]))
@@ -57,7 +57,7 @@ for a in v_list:
     if v_list.index(a) == 1000:
         break
     
-#     print(f"Total records are {len(v_list)},now procedding {v_list.index(a)}")
+    print(f"Total records are {len(v_list)},now procedding {v_list.index(a) + 1}")
     if a['event'] == 'user':
 
         text_in_memory = a['text']
@@ -76,7 +76,7 @@ for a in v_list:
             text_ori =  a['text']
             df1.insert(0,'message_id', a['message_id'])
             df1.reset_index(inplace=True)
-            print('df1_columns:', df1.columns)
+            # print('df1_columns:', df1.columns)
             df1 = df1.loc[:,~df1.columns.duplicated()]
             df1[SLOT_COL] = ""
 
@@ -110,11 +110,9 @@ for a in v_list:
 #                     print('df_working:', df_working)
                 df_final = df_final.append(df_working)
 #----------------------------extract slot     ----------------------------------------------------------------#
-    if a['event'] == 'slot' and a['name'] != 'question_list':
-        print('message_id:', message_id_in_memory)
-        print('a_name:', a['name'])
-        print('a_value:', a['value'])
-        if a['value'] != None:
+    if a['event'] == 'slot' and a['name'] != 'index_list':
+  
+        if a['value'] != None and a['value'] != []:
             if len(a['value']) == 2 and a['value'] == a['value']:
                 a['value'] = a['value'][0]
         else:
@@ -124,10 +122,14 @@ for a in v_list:
        
         
 #----------------------------no answer question----------------------------------------------------------------#
+    if a['event'] == 'bot' and '我在方案中没有找到，我会把问题转给负责咱们中心的CRA' in a['text']:
+
+        df_final.loc[message_id_in_memory,'action'] = 'no answer question'
+        # print('a_location:', v_list.index(a))
     if a['event'] == 'action' and a['name'] == 'action_default_fallback':
-        print('a_location:', v_list.index(a))
+        # print('a_location:', v_list.index(a))
         
-        df_final.loc[message_id_in_memory]['action'] = 'new action_default_fallback'
+        df_final.loc[message_id_in_memory, 'action'] = 'new action_default_fallback'
  
 #         df_final['action'] =  a['name']
 #         print('message_id by action : ', message_id_in_memory)

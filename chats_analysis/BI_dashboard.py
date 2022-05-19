@@ -67,6 +67,7 @@ def read_csv_to_df():
 #------------------------------Streamlit -----------------------------------------------#
 
 df_final = read_csv_to_df()
+df_final_single_message_id = df_final.drop_duplicates(subset='message_id')
 with header:
     st.title("DL04 DCTA Analsysis")
 
@@ -92,7 +93,7 @@ with dataset:
 #---------------------------Question distribution -----------------------------------
     with col1:
         st.subheader('All Question Distribution')
-        Question_distribution = pd.DataFrame(df_final['text'].value_counts()).head(30)
+        Question_distribution = pd.DataFrame(df_final_single_message_id['text'].value_counts()).head(30)
         Question_distribution.reset_index(inplace=True)
         Question_distribution.columns = ['Question', 'Number']
         
@@ -157,7 +158,7 @@ with dataset:
 
 #--------------------------------------plotting -----------------------------------------------------------------------#
 
-    entity_chat_df = pd.DataFrame(df_final[df_final['text'].isin(entity_chat_list)])
+    entity_chat_df = pd.DataFrame(df_final_single_message_id[df_final_single_message_id['text'].isin(entity_chat_list)])
     
     fig = px.histogram(entity_chat_df, x="text").update_xaxes(categoryorder='total descending')
 
@@ -183,12 +184,13 @@ with dataset:
 
     with col4:
         st.subheader('No Answer Question')
-        no_answer_question = pd.DataFrame(df_final[df_final['action'] == 'new action_default_fallback']['text'])
+        no_answer_question = pd.DataFrame(df_final[df_final['action'] == 'no answer question']['text'])
+        
         no_answer_question.reset_index(inplace=True)
         no_answer_question.columns = ['Message_id', 'Question']
             
         fig = go.Figure(data=go.Table(
-            columnwidth = [4,1],
+            columnwidth = [1,2],
             header = dict(values=no_answer_question.columns.to_list(), 
                     line_color='darkslategray',
                     fill_color='lightskyblue',

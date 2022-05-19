@@ -447,17 +447,17 @@ class ActionCheckProtocol(Action):
                 print('payload:', payload)
 
                 #请求头
-                header = {
-                    "content-type": "application/json",
-                    "token": token
-                }
-                print('payload:', payload)
-                print('header:', header)
+                # header = {
+                #     "content-type": "application/json",
+                #     "token": token
+                # }
+                # print('payload:', payload)
+                # print('header:', header)
 
-                url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
-                res = requests.post(url,json=payload,headers=header)
+                # url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+                # res = requests.post(url,json=payload,headers=header)
 
-                print('res.text:',res.text)
+                # print('res.text:',res.text)
 
                 final_message = sender_id + '老师，您的问题"' + message +'"' + text_CRA_no_found
                 dispatcher.utter_message(text=final_message)
