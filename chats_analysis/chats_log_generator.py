@@ -32,7 +32,13 @@ v_list = []
 for row, col in df.iterrows():
 
     tracker = df.loc[row]['value']
-    v_list.extend(json.loads(tracker)['events'])
+    try:
+        v_list.extend(json.loads(tracker)['events'])
+    except:
+        print('warming, error for json load, tracker is:', tracker)
+        continue
+
+print(len(v_list))
 
 #-----------------------------dict to json-------------------------------------------------------------------#
 # new_col = [eval(item) if item != None else item for item  in df.parse_data]
