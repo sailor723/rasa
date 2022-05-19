@@ -42,7 +42,12 @@ v_list = []
 for row, col in df.iterrows():
 
     tracker = df.loc[row]['value']
-    v_list.extend(json.loads(tracker)['events'])
+    try:
+        v_list.extend(json.loads(tracker)['events'])
+    except:
+        print('warming, error for json load, tracker is:', tracker)
+        continue
+
 # print(len(v_list))
 
 list1 = [v_list.index(item) for item in v_list if item['event'] == 'slot']
