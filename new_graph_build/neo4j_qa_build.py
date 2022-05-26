@@ -69,6 +69,7 @@ df['回答'] = list_item
 
 
 #------------------------Data Preparation for Q&A Log----------------------------------------#
+df['主题词.1'] = [ item.replace('入组', '入选').replace('\t', '') for item in df['主题词.1'] ]
 node_all = []
 node_working = []
 
@@ -77,7 +78,7 @@ for row, index in df.iterrows():
     split_list = re.split('(\d+)', index['主题词.1'])
     print(split_list)
     if len(split_list) == 3:
-        node_working.append(split_list[0] + '第' + split_list[1] + '条')
+        node_working.append(split_list[0] + '第' + split_list[1] + '条')       
         node_working.append(index['标题'].upper().strip())
         node_working.append(index['问题'].upper().strip())
         node_working.append(index['回答'].strip())    
@@ -107,10 +108,10 @@ for node in node_all:
         set w.type = 'to_index'
         RETURN o,r,p,t,w
         """
-    elif '入组标准' in node[0]:
+    elif '入选标准' in node[0]:
         query = """
         MERGE(q: Inclusion {name:$head_node})
-        MERGE(t: Inclusion {name:$ndex})
+        MERGE(t: Inclusion {name:$index})
         MERGE(o:Inclusion {name:$answer_node}) 
         MERGE(p:Inclusion {name:$question_node})  
         SET o.label = 'answer'
@@ -130,7 +131,7 @@ for node in node_all:
 #------------------------Hoursekeeping KG----------------------------------------#
 query = """
 MERGE(o:DL04 {name:'DL04'})
-MERGE(p:Inclusion {name:'入组标准'})
+MERGE(p:Inclusion {name:'入选标准'})
 MERGE (o) -[r:Include {name: 'has'} ] ->(p) 
 RETURN o,p,r
 """

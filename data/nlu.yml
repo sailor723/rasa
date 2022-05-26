@@ -576,6 +576,7 @@ nlu:
     - 对[心功能](sub)的要求
     - 对[医学禁忌](sub)的要求
     - [cns](sub)[洗脱期](sub)
+    - 使用[过氯喹](sub)可以[入组](main)嘛
 - intent: thanks
   examples: |
     - 谢谢你
@@ -1006,6 +1007,10 @@ nlu:
 - synonym: 并发症
   examples: |
     - 伴随疾病
+- synonym: 氯喹/羟氯喹
+  examples: |
+    - 氯喹
+    - 过氯喹
 - regex: item_number
   examples: |
     - \d{1,2}
