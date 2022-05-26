@@ -525,7 +525,7 @@ class ActionCheckProtocol(Action):
                             button_list.append(dict2)
                             dict1 = {}
                             dict2 = {}
-                            msg2 = '<b>此项下还有以下问题提示，请参照选择。您也可以输入其他问题。谢谢</b>'
+                            msg2 = '<b>此项下还有以下Q＆A log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
                 final_message = final_message + msg2
 
