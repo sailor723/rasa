@@ -576,7 +576,36 @@ nlu:
     - 对[心功能](sub)的要求
     - 对[医学禁忌](sub)的要求
     - [cns](sub)[洗脱期](sub)
-    - 使用[过氯喹](sub)可以[入组](main)嘛
+    - [羟氯喹](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者服用[氯喹](sub)，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [TKI](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者服用[丝裂霉素](sub)C，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - 患者服用[亚硝基脲类](sub)，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [紫杉醇](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [亚叶酸](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [氟尿嘧啶](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [小分子](sub)药物的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者服用[靶向药物](sub)，请问可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [抗体](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [抗体治疗](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [抗体疗法](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [激素疗法](sub)的洗脱[期](sub)
+    - [类视黄醇疗法](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [非抗体疗法](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [免疫治疗](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者接受[抗癌化疗](sub)，请问如何入组
+    - [姑息性立体定向放射治疗](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [其他解剖区域的姑息性立体定向放射治疗](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [胸部姑息性立体定向放射治疗](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [放射治疗](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}时间
+    - [重大手术](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [脑转移](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [实验室要求](sub)
+    - 患者[线数](sub)要求
+    - 接受[姑息性治疗](sub)的患者是否可以筛选
+    - [小细胞肺癌](sub)的患者是否能签署[ICF]{"entity": "sub", "value": "\u4e3b\u77e5\u60c5"}？
+    - 入组前3个月内有[重度COPD](sub) 可以[入组](main)嘛
+    - [肺叶切除](sub)患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}嘛
 - intent: thanks
   examples: |
     - 谢谢你
@@ -773,6 +802,7 @@ nlu:
   examples: |
     - 肝功能
     - 肝指标
+    - 肝功
 - synonym: 自身免疫
   examples: |
     - 自体免疫
@@ -788,6 +818,12 @@ nlu:
     - PTT
     - INR
     - 凝血酶原时间
+- synonym: 治疗洗脱期
+  examples: |
+    - 洗脱期
+- synonym: 主知情
+  examples: |
+    - ICF
 - synonym: 鳞癌
   examples: |
     - 非鳞状
@@ -804,7 +840,7 @@ nlu:
     - HER2突变
 - synonym: nsclc
   examples: |
-    - nscle
+    - 小细胞肺癌
 - synonym: 局部晚期
   examples: |
     - 3期局晚期
@@ -940,9 +976,6 @@ nlu:
 - synonym: CrCL
   examples: |
     - 肌酐清除率
-- synonym: 治疗洗脱期
-  examples: |
-    - 洗脱期
 - synonym: 腺癌
   examples: |
     - 肺腺癌
@@ -1001,16 +1034,62 @@ nlu:
 - synonym: ffpe
   examples: |
     - 福尔马林固定石蜡包埋
-- synonym: 主知情
+- synonym: 重大手术（由研究者确定）
   examples: |
-    - ICF
+    - 重大手术
 - synonym: 并发症
   examples: |
     - 伴随疾病
+- synonym: 放射治疗，包括胸部姑息性立体定向放射治疗
+  examples: |
+    - 放射治疗
+    - 胸部姑息性立体定向放射治疗
+- synonym: 其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4）
+  examples: |
+    - 其他解剖区域的姑息性立体定向放射治疗
+    - 姑息性立体定向放射治疗
+- synonym: 抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法
+  examples: |
+    - 抗癌化疗
+    - 免疫治疗
+    - 非抗体疗法
+    - 类视黄醇疗法
+    - 激素疗法
+- synonym: 基于抗体的抗癌治疗
+  examples: |
+    - 抗体疗法
+    - 抗体治疗
+    - 抗体
+    - 抗癌治疗
+- synonym: 靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇）
+  examples: |
+    - 靶向药物
+    - 小分子
+    - 氟尿嘧啶
+    - 紫杉醇
+    - 亚叶酸
+- synonym: 亚硝基脲类或丝裂霉素C
+  examples: |
+    - 亚硝基脲类
+    - 丝裂霉素C
+    - 丝裂霉素
+- synonym: 批准用于NSCLC治疗的TKI
+  examples: |
+    - TKI
 - synonym: 氯喹/羟氯喹
   examples: |
     - 氯喹
-    - 过氯喹
+    - 羟氯喹
+- synonym: 一线治疗
+  examples: |
+    - 线数
+- synonym: 姑息性全身治疗
+  examples: |
+    - 姑息性治疗
+    - 姑息治疗
+- synonym: 肺切除
+  examples: |
+    - 肺叶切除
 - regex: item_number
   examples: |
     - \d{1,2}

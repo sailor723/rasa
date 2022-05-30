@@ -73,7 +73,7 @@ def node_generate_for_KG (df_to_generate):
 
     for row, index in df_to_generate.iterrows():
         
-        sub_node_list = [item.split('、')[1] for item in df_to_generate.loc[row]['Entity'].splitlines()]
+        sub_node_list = [item.split('、')[1].strip() for item in df_to_generate.loc[row]['Entity'].splitlines()]
 
         node_working = []
         
