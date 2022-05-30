@@ -84,6 +84,8 @@ df = pd.DataFrame(table[1:], columns=table[0])
 df['治疗'] = [''.join(item.split('\n')) for item in df['治疗']]
 df['最短清洗期'] = [''.join(item.split('\n')) for item in df['最短清洗期']]
 
+df.to_excel("table9.xlsx")
+
 node_all = []
 node = []
 

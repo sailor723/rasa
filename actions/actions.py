@@ -1,4 +1,5 @@
 from socket import MSG_EOR
+from token import ISTERMINAL
 from typing import Text, List, Any, Dict
 from matplotlib.pyplot import subplot
 
@@ -131,7 +132,29 @@ class Neo4jconnection:
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
 conn = Neo4jconnection(uri=DCTA_NEO4J_HOST, user=DCTA_NEO4J_USER, password=DCTA_NEO4J_PWD)
 
+
+#--------------------------- check for table 9 -----------------------------------------------------------
+def list_for_table9(entity_list):
+
+    if len(entity_list) > 1:
+    
+        query = """
+        match(n{name:'治疗洗脱期'}) -[] -> (m) return m.name
+        """
+        result = conn.query(query)
+        table9_list = [item.data()['m.name'] for item in result]
+        if '治疗洗脱期' in entity_list:
+
+            l1 = [ item for item in entity_list if item in table9_list]
+ 
+            if l1 != []:
+                entity_list.pop(entity_list.index('治疗洗脱期'))
+
+
+    return(entity_list)
+
 #---------------------------  action_initial——protocol  -----------------------------------------------#
+
 # this is to generate selection box -------------------------------------------------------------------#
 class ActionInitialProtocol(Action):
 
@@ -348,7 +371,9 @@ class ActionCheckProtocol(Action):
 
                 sub_list = [item.upper() for item in sub_list]               # upper sub 
         
-                print('after check sub:', sub_list)
+                sub_list = list_for_table9(sub_list)
+
+                print('after check and with table9, sub:', sub_list)
 
                 print('ready to check Neo4j ----------------')
 
