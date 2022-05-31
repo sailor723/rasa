@@ -225,7 +225,7 @@ class ActionLogin(Action):
             version = '2.0'
             token = None
 
-        msg = '\n' + '我是阿斯利康的临床试验智能助手小易，很高兴为您服务.'
+        msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
 
 #--------------------------- GENERATE RANDOM 15 entities ----------------------------------------#
 
@@ -252,7 +252,7 @@ class ActionLogin(Action):
         if sender_id == '':
             text = msg + '\n' + msg2
         else:
-            text = '您好' + sender_name + ',' + site_id +  msg + '\n' + msg2
+            text = '您好' + sender_name + '，' + site_id + '的方案版本是' + version + '。' +  msg  + '\n' + msg2
 
         dispatcher.utter_message(text= text, buttons= button_list )
 
@@ -484,7 +484,7 @@ class ActionCheckProtocol(Action):
 
                 # print('res.text:',res.text)
 
-                final_message = sender_id + '老师，您的问题"' + message +'"' + text_CRA_no_found
+                final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
                 dispatcher.utter_message(text=final_message)
                 return [SlotSet("sub",None), 
                     SlotSet("index_list", index_list)]
@@ -637,7 +637,7 @@ class ActionDefaultFallback(Action):
 
         print(res.text)
 
-        dispatcher.utter_message(text=('您的问题"' + message +'""' + text_CRA))
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + text_CRA))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),
