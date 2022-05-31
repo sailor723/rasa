@@ -1,3 +1,4 @@
+from ast import Continue
 from socket import MSG_EOR
 from token import ISTERMINAL
 from typing import Text, List, Any, Dict
@@ -435,7 +436,8 @@ class ActionCheckProtocol(Action):
         else:
 
             sub_list = []
-            if item_number:
+            if item_number and main:
+                print('---------------main:', main)
                 node_item_number = main + '第' + item_number + '条'
                 node_item_list = [node_item_number]
                 print('node_item_number:', [node_item_number])
@@ -569,6 +571,19 @@ class ActionCheckProtocol(Action):
         
         except:
             print('error for check neo4j entities')
+            
+            text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
+
+            payload = {
+                "userId": sender_id,
+                "question": message
+            }
+            print('payload:', payload)
+
+
+            final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
+            dispatcher.utter_message(text=final_message)
+            return [SlotSet("sub",None)]
             # return [SlotSet("sub",None)]
             # return [AllSlotsReset()]
             # return []
@@ -630,12 +645,69 @@ class ActionDefaultFallback(Action):
         print('payload:', payload)
         print('header:', header)
 
-        url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
-        res = requests.post(url,json=payload,headers=header)
+        try:
+            url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+            res = requests.post(url,json=payload,headers=header)
 
-        print('res.text:',res.text)
+            print('res.text:',res.text)
+        except:
+            Continue
 
-        print(res.text)
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + text_CRA))
+
+        # Revert user message which led to fallback.
+        return [ SlotSet("sender_id", sender_id),
+            SlotSet("sender_name", sender_name), 
+            SlotSet("site_id", site_id), 
+            SlotSet("version", version),
+            SlotSet("token", token)
+            
+                ]
+class ActionDefaultFallback(Action):
+    """Executes the fallback action and goes back to the previous state
+    of the dialogue"""
+
+    def name(self) -> Text:
+        return 'action_new_scope'
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        message = tracker.latest_message['text']
+        sender_id = tracker.get_slot('sender_id')
+        sender_name = tracker.get_slot('sender_name')
+        site_id = tracker.get_slot('site_id')
+        version = tracker.get_slot('version')
+        token = tracker.get_slot('token')
+        # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
+        print('message:', message)
+        text_CRA = '现在小易还不能回答，我会转给负责咱们中心的CRA'
+
+        payload = {
+            "userId": sender_id,
+            "question": message
+        }
+        print('payload:', payload)
+
+        #请求头
+        header = {
+            "content-type": "application/json",
+            "token": token
+        }
+        print('payload:', payload)
+        print('header:', header)
+
+        try:
+            url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+            res = requests.post(url,json=payload,headers=header)
+
+            print('res.text:',res.text)
+        except:
+            Continue
+
 
         dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + text_CRA))
 

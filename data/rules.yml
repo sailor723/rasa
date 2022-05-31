@@ -32,3 +32,7 @@ rules:
   steps:
   - intent: out_of_scope
   - action: utter_out_of_scope
+- rule: new_scope
+  steps:
+  - intent: new_scope
+  - action: action_new_scope

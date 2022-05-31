@@ -683,9 +683,6 @@ nlu:
     - 现在几点了？
     - 今天是星期几？
     - 哪天是国庆节？
-    - SOA的要求
-    - [11](item_number)
-    - restart
 - intent: tell_name
   examples: |
     - 我是[卫平](PERSON)
@@ -759,6 +756,15 @@ nlu:
 - intent: nlu_fallback
   examples: |
     - 今天天气如何
+- intent: new_scope
+  examples: |
+    - SOA的要求
+    - C1D1都要做哪些检查
+    - Hi Siri，如果受试者有第一周期第一天研究干预给药前3天内正常的12导联ECG检查结果的话，那么第一周期第一天研究
+    - Hi Siri，SOA 脚注j中描述“将在筛选期进行三次ECG检查，如果后续ECG检测到异常也进行三次检查”，请问这句话中提到的“三次ECG检查”每次检查时间间隔约多少分钟？
+    - Hi Siri，什么是纵向血液[样本]{"entity": "sub", "value": "\u80bf\u7624\u6837\u672c"}
+    - 患者吸烟6年可以入组嘛
+    - 患有慢性支气管疾病需要间歇使用支气管扩张剂沙丁胺醇的患者可以入组嘛
 - synonym: 入选标准
   examples: |
     - 入组
