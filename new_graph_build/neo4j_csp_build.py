@@ -63,8 +63,8 @@ df_exclusion = df_exclusion.astype(str)
 df_inclusion_V2 = df_inclusion_V2.astype(str)
 df_exclusion_V2 = df_exclusion_V2.astype(str)
 df_dl04 = df_dl04.astype(str)
-df_inclusion['CSP_V2'] = df_inclusion_V2['CSP']
-df_exclusion['CSP_V2'] = df_exclusion_V2['CSP']
+df_inclusion['CSP_V2'] = "V2 " + df_inclusion_V2['CSP']
+df_exclusion['CSP_V2'] = "V2 " + df_exclusion_V2['CSP']
 
 
 #-------------------------function to prepare for Graph Build ------------------------------------------------------#
