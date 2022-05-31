@@ -28,6 +28,8 @@ intents:
     use_entities: true
 - mood_unhappy:
     use_entities: true
+- new_scope:
+    use_entities: true
 - nlu_fallback:
     use_entities: true
 - other_exclusion_history:
@@ -193,6 +195,7 @@ actions:
 - action_initial_protocol
 - action_default_fallback
 - action_write_text
+- action_new_scope
 - utter_ask_name
 - utter_goodbye
 - utter_iamabot
