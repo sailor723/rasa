@@ -606,6 +606,8 @@ nlu:
     - [小细胞肺癌](sub)的患者是否能签署[ICF]{"entity": "sub", "value": "\u4e3b\u77e5\u60c5"}？
     - 入组前3个月内有[重度COPD](sub) 可以[入组](main)嘛
     - [肺叶切除](sub)患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}嘛
+    - [入排标准](main)
+    - 我们的[入排标准](sub)/入排标准/入排
 - intent: thanks
   examples: |
     - 谢谢你
@@ -775,6 +777,7 @@ nlu:
     - 入排
     - 筛选
     - 加入
+    - 入排标准
 - synonym: 排除标准
   examples: |
     - 排除
