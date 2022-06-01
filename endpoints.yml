@@ -40,10 +40,10 @@ action_endpoint:
 
 tracker_store:
    type: redis
-   url: 127.0.0.1
-   port: 6379
+   url: ${DCTA_REDIS_HOST}
+   port: ${DCTA_REDIS_PORT}
    db: 0
-   password: ecc#123456
+   password: ${DCTA_REDIS_PWD}
    use_ssl: false
 
 #tracker_store:

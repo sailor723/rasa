@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # vscode
 .vscode
 
@@ -15,3 +16,11 @@ models/*
 
 ## pycache
 __pycache__
+=======
+models
+chats_analysis/chats_log.csv
+chats_analsysi/chats_log.pdf
+chats_analysis/new_all.csv
+chats_analysis/entity_csp.csv
+chats_analysis/entity_csp.pdf
+>>>>>>> dev-ecc

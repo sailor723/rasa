@@ -6,15 +6,24 @@ import numpy as np
 import os, json
 from sqlalchemy  import create_engine, Column, Integer, String
 
+DCTA_MYSQL_USER = os.getenv('DCTA_MYSQL_USER')
+DCTA_MYSQL_PWD = os.getenv('DCTA_MYSQL_PWD')
+DCTA_MYSQL_HOST = os.getenv('DCTA_MYSQL_HOST')
+DCTA_MYSQL_PORT  = os.getenv('DCTA_MYSQL_PORT')
+DCTA_MYSQL_DB  = os.getenv('DCTA_MYSQL_DB')
+DCTA_MYSQL_TABLE  = os.getenv('DCTA_MYSQL_TABLE')
 
-engine = create_engine('mysql+pymysql://root:Ecc!123456@localhost:3306/test_db')
+mysql_string = 'mysql+pymysql://'+ DCTA_MYSQL_USER + ':'+ DCTA_MYSQL_PWD + '@' + DCTA_MYSQL_HOST \
+            + ":" + str(DCTA_MYSQL_PORT) + '/' + DCTA_MYSQL_DB
+# engine = create_engine('mysql+pymysql://root:Ecc!123456@localhost:3306/test_db')
+engine = create_engine(mysql_string)
 df = pd.read_sql('tracker',engine)
 # df = pd.read_csv('new_all.csv')
 #-----------------------------read csv file from redis-------------------------------------------------------------------#
-# redis_output_name = os.path.abspath('redis_output.xlsx')
+# redis_output_name = os.path.abspath('redis_output.csv')
 redis_log_name = os.path.abspath('chats_log.csv')
 entity_csp_name = os.path.abspath('entity_csp.csv')
-# df.to_csv(full_chats_csv_name,encoding='utf-8-sig')
+# df.to_csv(redis_output_name,encoding='utf-8-sig')
 #---------------------------------
 
 value_list = df.value
@@ -23,7 +32,13 @@ v_list = []
 for row, col in df.iterrows():
 
     tracker = df.loc[row]['value']
-    v_list.extend(json.loads(tracker)['events'])
+    try:
+        v_list.extend(json.loads(tracker)['events'])
+    except:
+        print('warming, error for json load, tracker is:', tracker)
+        continue
+
+print(len(v_list))
 
 #-----------------------------dict to json-------------------------------------------------------------------#
 # new_col = [eval(item) if item != None else item for item  in df.parse_data]

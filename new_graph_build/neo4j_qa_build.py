@@ -1,6 +1,11 @@
 from neo4j import GraphDatabase
 import pandas as pd
-import json, os, re, argparse
+import os, re
+
+
+DCTA_NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
+DCTA_NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
+DCTA_NEO4J_HOST = "bolt://" + os.getenv('DCTA_NEO4J_HOST')
 
 class Neo4jconnection:
 
@@ -37,20 +42,8 @@ class Neo4jconnection:
                 session.close()
         return response
  
-parser = argparse.ArgumentParser(description='Neo4j information')
-parser.add_argument('--url', dest='url', type=str, help='url of neo4j')
-parser.add_argument('--user', dest='user', type=str, help='username of Neo4j')
-parser.add_argument('--password', dest='password', type=str, help='password of Neo4j')
-args = parser.parse_args()
-url = "bolt:" + args.url
-user = args.user
-password = args.password
-print(url)
-print(user)
-print(password)
-
  
-conn = Neo4jconnection(uri=url, user=user, password=password)
+conn = Neo4jconnection(uri=DCTA_NEO4J_HOST, user=DCTA_NEO4J_USER, password=DCTA_NEO4J_PWD)
 # conn = Neo4jconnection(uri="bolt://localhost", user='neo4j', password="test")
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
 
@@ -60,9 +53,9 @@ print(result[0]['count'])
 
 # ----------------- MAIN CODE --------------------------------------------------
 
-question_file_name  = os.path.abspath('DL04_annotation_20220321 cyr combined.xlsx')
+question_file_name  = os.path.abspath('DL04_QA_ner.xlsx')
 
-df = pd.read_excel(question_file_name, sheet_name='QA_log',header=0)
+df = pd.read_excel(question_file_name, sheet_name='QA_NER',header=0)
 
 # df = df_all[['主题词.1', '问题拆解', '拆解后问题回答']].dropna()
 #------------------------Data Preparation ----------------------------------------------------#
@@ -75,20 +68,20 @@ for item in list_item:
 df['回答'] = list_item
 
 
-
 #------------------------Data Preparation for Q&A Log----------------------------------------#
+df['主题词.1'] = [ item.replace('入组', '入选').replace('\t', '') for item in df['主题词.1'] ]
 node_all = []
 node_working = []
 
 for row, index in df.iterrows():
 
-    print(type(index['主题词.1']))
     split_list = re.split('(\d+)', index['主题词.1'])
     print(split_list)
     if len(split_list) == 3:
-        node_working.append(split_list[0] + '第' + split_list[1] + '条')
-        node_working.append(index['问题'].upper())
-        node_working.append(index['回答'])    
+        node_working.append(split_list[0] + '第' + split_list[1] + '条')       
+        node_working.append(index['标题'].upper().strip())
+        node_working.append(index['问题'].upper().strip())
+        node_working.append(index['回答'].strip())    
 
         node_all.append(node_working)
         node_working = []
@@ -96,34 +89,41 @@ for row, index in df.iterrows():
 #------------------------Create KG ----------------------------------------#
 for node in node_all:
     query = ''
-
-    params = {'head_node': node[0].strip(), 'question_node': node[1], 'answer_node': node[2] }
+    params = {'head_node': node[0].strip(), 'index': node[1], 'question_node': node[2], 'answer_node': node[3] }
 
     if '排除标准' in node[0]:
         query = """
         MERGE(q: Exclusion {name:$head_node})
+        MERGE(t: Exclusion {name:$index})
         MERGE(o:Exclusion {name:$answer_node}) 
         MERGE(p:Exclusion {name:$question_node}) 
         SET o.label = 'answer'
         SET p.label = 'question'
-        MERGE (q) - [s:has_answer] - (o) 
+        SET t.label = 'question_index'
+        MERGE (q) - [s:has_answer] -> (o) 
         MERGE (o) -[r:to_question ] ->(p) 
+        MERGE (p) -[w:to_index ] ->(t) 
         set s.type = 'has_anwser'
         set r.type = 'to_question'
-        RETURN o,r,p
+        set w.type = 'to_index'
+        RETURN o,r,p,t,w
         """
-    elif '入组标准' in node[0]:
+    elif '入选标准' in node[0]:
         query = """
         MERGE(q: Inclusion {name:$head_node})
+        MERGE(t: Inclusion {name:$index})
         MERGE(o:Inclusion {name:$answer_node}) 
-        MERGE(p:Inclusion {name:$question_node}) 
+        MERGE(p:Inclusion {name:$question_node})  
         SET o.label = 'answer'
         SET p.label = 'question'
-        MERGE (q) - [s:has_answer] - (o) 
+        SET t.label = 'question_index'
+        MERGE (q) - [s:has_answer] -> (o) 
         MERGE (o) -[r:to_question ] ->(p) 
+        MERGE (p) -[w:to_index ] ->(t) 
         set s.type = 'has_anwser'
         set r.type = 'to_question'
-        RETURN o,r,p
+        set w.type = 'to_index'
+        RETURN o,r,p,w
         """
     result = conn.query(query, parameters=params)
     print(node)
@@ -131,7 +131,7 @@ for node in node_all:
 #------------------------Hoursekeeping KG----------------------------------------#
 query = """
 MERGE(o:DL04 {name:'DL04'})
-MERGE(p:Inclusion {name:'入组标准'})
+MERGE(p:Inclusion {name:'入选标准'})
 MERGE (o) -[r:Include {name: 'has'} ] ->(p) 
 RETURN o,p,r
 """

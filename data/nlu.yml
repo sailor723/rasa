@@ -143,7 +143,7 @@ nlu:
     - [入组标准]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}对[组织学类型](sub)的要求
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}的[临床分期](sub)的要求
     - [肺磷脂局部晚期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
-    - [非鳞状]{"entity": "sub", "value": "\u80ba\u9cde\u764c"}[3期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [非鳞状](sub)[3期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [II期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [III期](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}对[临床分期](sub)的要求
@@ -155,19 +155,10 @@ nlu:
     - 受试者是[肺鳞癌](sub)，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [her2突变](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
     - [HER2突变](sub)检测
-    - [HER2突变](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}的[HER2突变](sub)的要求
     - [HER2检测](sub)
-    - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求的[her2检测](sub)
     - [HER2突变](sub)检测的流程
-    - [HER2突变](sub)检测，入组的检测过程
     - 患者[HER2突变](sub)，如何[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
-    - [HER2突变](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
-    - [her2](sub)的检测
-    - [her2](sub)的检测要求
-    - [her2突变]{"entity": "sub", "value": "HER2\u7a81\u53d8\u68c0\u6d4b"}的检测要求
-    - [HER2](sub)的[入组检测](main)
-    - [her2]{"entity": "sub", "value": "HER2\u7a81\u53d8\u68c0\u6d4b"}的突变检测
     - [HER2](sub) 突变检测
     - [组织样本](sub)的检测
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}如何获取[组织样本](sub)
@@ -406,7 +397,6 @@ nlu:
     - 有[药物滥用](sub)的情况，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [痴呆](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - 携带靶向[EGFR](sub)改变的肿瘤的患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
-    - 有活动性或既往有记录的[自体免疫](sub)性或炎症性疾病的患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
     - 患者有[心肌梗死](sub)病史可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
     - 患者有[心梗](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
     - [ECG](sub)有什么要求？
@@ -418,10 +408,10 @@ nlu:
     - 患者需要使用[抗生素](sub)，可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
     - 患者有[结合病](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
     - 既往[抗癌治疗](sub)后毒性未缓解可以随机吗？
-    - 患者既往使用过[卡铂](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
+    - 患者既往使用[过卡铂](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
     - 同时[参与](main)另一项治疗性[临床研究](sub)可以吗？
     - 对帕[博利](sub)珠单抗过敏的患者可以吗？
-    - 既往基于铂类的新辅助治疗，辅助治疗或放化疗的[洗脱期](sub)要求
+    - 既往基于[铂类](sub)的新辅助治疗，辅助治疗或放化疗的[洗脱期](sub)要求
     - [入组](main)对[自体免疫](sub)的要求
     - [自体免疫](sub)的[排除](main)
     - 对于活动性[乙肝](sub)的定义
@@ -439,7 +429,6 @@ nlu:
     - [入组](main)要求的[肺部状况](sub)
     - 患者有[心脏衰竭](sub)2级，可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - 患者有[心脏衰竭](sub)2级，可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
-    - 患者既往使用过[卡铂](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [卡铂]{"entity": "sub", "value": "\u94c2\u7c7b"}可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [卡铂](main)可以[入组](sub)吗
     - 对于[骨髓功能](sub)是怎么要求的
@@ -466,11 +455,11 @@ nlu:
     - [皮肤病](sub)的[排除]{"entity": "main", "value": "\u6392\u9664\u6807\u51c6"}
     - [怀孕](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [腹水](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
-    - 已经[随机](sub)加入本组试验的受试者，还在再加[入](main)吗？
+    - 已经[随机](sub)加入本组试验的受试者，还在再[加入](main)吗？
     - 随机化至既往[T-DXd ](sub)研究，还可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
-    - 已知会对研究干预药物或任何研究药物辅料或其他 mAb 产生[过敏](sub)反应或[超敏](sub)反应，可以加[入](main)吗？
-    - 对干预药物[过敏](sub)的，可以入组吗？
-    - [过敏](sub)反应可以[入](main)吗
+    - 已知会对研究干预药物或任何研究药物辅料或其他 mAb 产生[过敏反应](sub)或[超敏反应](sub)，可以[加入](main)吗？
+    - 对干预药物[过敏](sub)的，可以[入组](main)吗？
+    - [过敏反应](sub)可以[入](main)吗
     - [依从性](sub)不好的受试者，可以[入组](main)吗
     - [怀孕](sub)患者，可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - 患者[怀孕]{"entity": "sub", "value": "\u8ba1\u5212\u6000\u5b55"}，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
@@ -496,7 +485,7 @@ nlu:
     - [肌钙蛋白](sub)[肌钙蛋白](sub)
     - 请问方案[编号](sub)
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[8201](sub)的患者，还可以入吗？
-    - [ffpe](sub)[ffpe](sub)
+    - [ffpe](sub)
     - [ffpe](sub)要求
     - [腺癌](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [鳞癌](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
@@ -537,16 +526,14 @@ nlu:
     - [排除](main)[5](item_number)
     - [方案名称](sub)
     - [什么样的患者](sub)可以参加这个试验
-    - 有活动性或既往有记录的[自体免疫](sub)性或[炎症](sub)性疾病的患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？x
-    - 患者既往使用过[卡铂](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？ x
     - [肿瘤标本](sub)[活检](sub)的时间限制
     - 请告知[器官和骨髓](sub)功能参数是多少
     - [足够的肝功能](sub)涉及哪些因素要求
     - [器官和骨髓](sub)功能参数有时间要求吗
-    - 有活动性或既往有记录的 [自体免疫](sub)性或[炎症](sub)性疾病的患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
+    - 有活动性或既往有记录的 [自体免疫性](sub)或[炎症性](sub)疾病的患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗？
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[6](item_number)条
     - [排除]{"entity": "main", "value": "\u6392\u9664\u6807\u51c6"}[9](item_number)条
-    - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[6](item_number)[6](item_number)[6](item_number)
+    - [入组](main)[6](item_number)
     - [入组标准](main)第[12](item_number)条
     - [入组](main)第[8](item_number)条
     - [排除标准](main)第[12](item_number)条
@@ -564,16 +551,61 @@ nlu:
     - [NYHA](sub)的要求
     - [药物滥用](sub)的排除
     - [AE](sub)
-    - [NYHA](sub)[NYHA](sub)[NYHA](sub)
-    - [nyha](sub)[nyha](sub)[nyha](sub)
-    - [egfr](sub)[egfr](sub)[egfr](sub)
-    - [hiv](sub)[hiv](sub)
-    - [alk](sub)[alk](sub)[alk](sub)
+    - [NYHA](sub)
+    - [nyha](sub)
+    - [egfr](sub)
+    - [hiv](sub)
     - [QTcF](sub)
     - [alt](sub)
     - [ast](sub)
     - [乙肝患者](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [乙肝患者](sub)，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - 请问[主知情](sub)的要求
+    - 没有[福尔马林固定石蜡包埋](sub)怎么办
+    - 既往参与过[8201](sub)临床试验是否可以[入组](main)
+    - 既往患有[系统性红斑狼疮](sub)的患者能否[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
+    - 什么样的[并发症](sub)不能入组
+    - [对脑转移](sub)的要求
+    - [绝经](sub)的定义
+    - [绝育手术](sub)患者是否可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
+    - 对女性受试者[妊娠](sub)的要求
+    - 对女性受试者[妊娠](sub)的[入组和](main)[排除]{"entity": "main", "value": "\u6392\u9664\u6807\u51c6"}要求
+    - [腹水](sub)[洗脱期](sub)
+    - 什么情况下需要签署[ICF](sub)
+    - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}对[实验室指标](sub)的要求是什么
+    - 对[心功能](sub)的要求
+    - 对[医学禁忌](sub)的要求
+    - [cns](sub)[洗脱期](sub)
+    - [羟氯喹](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者服用[氯喹](sub)，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [TKI](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者服用[丝裂霉素](sub)C，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - 患者服用[亚硝基脲类](sub)，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [紫杉醇](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [亚叶酸](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [氟尿嘧啶](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [小分子](sub)药物的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者服用[靶向药物](sub)，请问可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [抗体](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [抗体治疗](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [抗体疗法](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [激素疗法](sub)的洗脱[期](sub)
+    - [类视黄醇疗法](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [非抗体疗法](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [免疫治疗](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - 患者接受[抗癌化疗](sub)，请问如何入组
+    - [姑息性立体定向放射治疗](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
+    - [其他解剖区域的姑息性立体定向放射治疗](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [胸部姑息性立体定向放射治疗](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [放射治疗](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}时间
+    - [重大手术](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
+    - [脑转移](sub)患者，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [实验室要求](sub)
+    - 患者[线数](sub)要求
+    - 接受[姑息性治疗](sub)的患者是否可以筛选
+    - [小细胞肺癌](sub)的患者是否能签署[ICF]{"entity": "sub", "value": "\u4e3b\u77e5\u60c5"}？
+    - 入组前3个月内有[重度COPD](sub) 可以[入组](main)嘛
+    - [肺叶切除](sub)患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}嘛
 - intent: thanks
   examples: |
     - 谢谢你
@@ -651,10 +683,6 @@ nlu:
     - 现在几点了？
     - 今天是星期几？
     - 哪天是国庆节？
-    - SOA的要求
-    - [30](item_number)[30](item_number)
-    - [1](item_number)[1](item_number)
-    - restart
 - intent: tell_name
   examples: |
     - 我是[卫平](PERSON)
@@ -682,7 +710,6 @@ nlu:
     - 查询方案
     - 请问入排的要求
     - 请问入组的要求
-    - [排除]{"entity": "main", "value": "\u6392\u9664\u6807\u51c6"}[12](item_number)[12](item_number)的内容
 - intent: target_group
   examples: |
     - 这个方案的基本情况
@@ -729,6 +756,15 @@ nlu:
 - intent: nlu_fallback
   examples: |
     - 今天天气如何
+- intent: new_scope
+  examples: |
+    - SOA的要求
+    - C1D1都要做哪些检查
+    - Hi Siri，如果受试者有第一周期第一天研究干预给药前3天内正常的12导联ECG检查结果的话，那么第一周期第一天研究
+    - Hi Siri，SOA 脚注j中描述“将在筛选期进行三次ECG检查，如果后续ECG检测到异常也进行三次检查”，请问这句话中提到的“三次ECG检查”每次检查时间间隔约多少分钟？
+    - Hi Siri，什么是纵向血液[样本]{"entity": "sub", "value": "\u80bf\u7624\u6837\u672c"}
+    - 患者吸烟6年可以入组嘛
+    - 患有慢性支气管疾病需要间歇使用支气管扩张剂沙丁胺醇的患者可以入组嘛
 - synonym: 入选标准
   examples: |
     - 入组
@@ -738,19 +774,10 @@ nlu:
     - 入筛
     - 入排
     - 筛选
+    - 加入
 - synonym: 排除标准
   examples: |
     - 排除
-- synonym: 鳞癌
-  examples: |
-    - 非鳞状
-    - 肺鳞癌
-    - 非鳞状局晚期
-- synonym: HER2突变检测
-  examples: |
-    - her2突变
-    - her2
-    - her2检测
 - synonym: 肿瘤样本
   examples: |
     - 肿瘤标本
@@ -770,6 +797,7 @@ nlu:
 - synonym: 铂类
   examples: |
     - 卡铂
+    - 过卡铂
 - synonym: 血小板计数
   examples: |
     - 血小板
@@ -780,10 +808,12 @@ nlu:
   examples: |
     - 肝功能
     - 肝指标
+    - 肝功
 - synonym: 自身免疫
   examples: |
     - 自体免疫
     - 免疫
+    - 自身免疫病
 - synonym: 足够的凝血功能
   examples: |
     - 凝血功能
@@ -794,9 +824,29 @@ nlu:
     - PTT
     - INR
     - 凝血酶原时间
+- synonym: 治疗洗脱期
+  examples: |
+    - 洗脱期
+- synonym: 主知情
+  examples: |
+    - ICF
+- synonym: 鳞癌
+  examples: |
+    - 非鳞状
+    - 肺鳞癌
+    - 非鳞状局晚期
+    - 鳞状
+- synonym: HER2
+  examples: |
+    - her2突变
+    - her2突变检测
+    - her2检测
+    - HER2检测
+    - HER2突变检测
+    - HER2突变
 - synonym: nsclc
   examples: |
-    - nscle
+    - 小细胞肺癌
 - synonym: 局部晚期
   examples: |
     - 3期局晚期
@@ -932,9 +982,6 @@ nlu:
 - synonym: CrCL
   examples: |
     - 肌酐清除率
-- synonym: 治疗洗脱期
-  examples: |
-    - 洗脱期
 - synonym: 腺癌
   examples: |
     - 肺腺癌
@@ -949,9 +996,10 @@ nlu:
   examples: |
     - 实验室检查
     - 实验室检测
+    - 器官功能
+    - 实验室指标
 - synonym: 脑放疗
   examples: |
-    - 脑转移
     - 脑手术
 - synonym: 既往治疗
   examples: |
@@ -971,6 +1019,83 @@ nlu:
 - synonym: 帕博利珠
   examples: |
     - 博利
+- synonym: 高血压
+  examples: |
+    - 血压高
+- synonym: 绝育
+  examples: |
+    - 绝育手术
+- synonym: 脑转移
+  examples: |
+    - 对脑转移
+- synonym: 过敏
+  examples: |
+    - 过敏反应
+- synonym: 超敏
+  examples: |
+    - 超敏反应
+- synonym: 炎症
+  examples: |
+    - 炎症性
+- synonym: ffpe
+  examples: |
+    - 福尔马林固定石蜡包埋
+- synonym: 重大手术（由研究者确定）
+  examples: |
+    - 重大手术
+- synonym: 并发症
+  examples: |
+    - 伴随疾病
+- synonym: 放射治疗，包括胸部姑息性立体定向放射治疗
+  examples: |
+    - 放射治疗
+    - 胸部姑息性立体定向放射治疗
+- synonym: 其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4）
+  examples: |
+    - 其他解剖区域的姑息性立体定向放射治疗
+    - 姑息性立体定向放射治疗
+- synonym: 抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法
+  examples: |
+    - 抗癌化疗
+    - 免疫治疗
+    - 非抗体疗法
+    - 类视黄醇疗法
+    - 激素疗法
+- synonym: 基于抗体的抗癌治疗
+  examples: |
+    - 抗体疗法
+    - 抗体治疗
+    - 抗体
+    - 抗癌治疗
+- synonym: 靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇）
+  examples: |
+    - 靶向药物
+    - 小分子
+    - 氟尿嘧啶
+    - 紫杉醇
+    - 亚叶酸
+- synonym: 亚硝基脲类或丝裂霉素C
+  examples: |
+    - 亚硝基脲类
+    - 丝裂霉素C
+    - 丝裂霉素
+- synonym: 批准用于NSCLC治疗的TKI
+  examples: |
+    - TKI
+- synonym: 氯喹/羟氯喹
+  examples: |
+    - 氯喹
+    - 羟氯喹
+- synonym: 一线治疗
+  examples: |
+    - 线数
+- synonym: 姑息性全身治疗
+  examples: |
+    - 姑息性治疗
+    - 姑息治疗
+- synonym: 肺切除
+  examples: |
+    - 肺叶切除
 - regex: item_number
   examples: |
     - \d{1,2}

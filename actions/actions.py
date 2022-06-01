@@ -1,4 +1,6 @@
+from ast import Continue
 from socket import MSG_EOR
+from token import ISTERMINAL
 from typing import Text, List, Any, Dict
 from matplotlib.pyplot import subplot
 
@@ -26,6 +28,13 @@ city_db = {
     "seattle": "US/Pacific",
     "Beijing": "China/Beijing"
 }
+
+
+DCTA_NEO4J_USER = os.getenv('DCTA_NEO4J_USER')
+DCTA_NEO4J_PWD = os.getenv('DCTA_NEO4J_PWD')
+DCTA_NEO4J_HOST = "bolt://" + str(os.getenv('DCTA_NEO4J_HOST'))
+
+print('DCTA_NEO4J_HOST:', DCTA_NEO4J_HOST)
 
 ALLOWED_MAIN_TYPES = ["入选标准", "排除标准","全部"]
 
@@ -122,9 +131,31 @@ class Neo4jconnection:
         return response
 
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
-conn = Neo4jconnection(uri="bolt://127.0.0.1", user='neo4j', password="test")
+conn = Neo4jconnection(uri=DCTA_NEO4J_HOST, user=DCTA_NEO4J_USER, password=DCTA_NEO4J_PWD)
+
+
+#--------------------------- check for table 9 -----------------------------------------------------------
+def list_for_table9(entity_list):
+
+    if len(entity_list) > 1:
+    
+        query = """
+        match(n{name:'治疗洗脱期'}) -[] -> (m) return m.name
+        """
+        result = conn.query(query)
+        table9_list = [item.data()['m.name'] for item in result]
+        if '治疗洗脱期' in entity_list:
+
+            l1 = [ item for item in entity_list if item in table9_list]
+ 
+            if l1 != []:
+                entity_list.pop(entity_list.index('治疗洗脱期'))
+
+
+    return(entity_list)
 
 #---------------------------  action_initial——protocol  -----------------------------------------------#
+
 # this is to generate selection box -------------------------------------------------------------------#
 class ActionInitialProtocol(Action):
 
@@ -143,34 +174,11 @@ class ActionInitialProtocol(Action):
         print('index_list::', index_list)
 
 
-#----------------------------process index_list-----------------------------------------------#
+#--------------------------- GENERATE RANDOM 15 entities ----------------------------------------#
 
-        # if question_list:
-                
-        #     dict1 = {}
-        #     dict2 = {}
-        #     button_list = []
+        initial_entities = [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],15)]
 
-        #     for item in question_list:
-                            
-        #         dict1["sub"] = item
-        #         dict1 = json.dumps(dict1,ensure_ascii=False)
-        #         dict2["payload"] = "/inform_protocol"  + str(dict1) 
-        #         dict2["title"] = item
-        #         button_list.append(dict2)
-        #         dict1 = {}
-        #         dict2 = {}
-
-        #     print(button_list)
-
-        #     dispatcher.utter_message(text='<b>此项下还有以下问题提示，请参照选择。您也可以输入其他问题。谢谢</b>', buttons= button_list)
-
-        #     return []
-#--------------------------- GENERATE RANDOM 13 entities ----------------------------------------#
-
-        initial_entities = [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
-
-# -------------------------- dispatch 14 entities for selction -----------------------------------#
+# -------------------------- dispatch 15 entities for selction -----------------------------------#
  
         dict1 = {}
         dict2 = {}
@@ -186,13 +194,8 @@ class ActionInitialProtocol(Action):
             dict1 = {}
             dict2 = {}
 
-     
         dispatcher.utter_message(text='小易推荐如下选项，请参照选择。谢谢', buttons= button_list)         # return to rasa with button_list
         return [SlotSet("sender_id", None)]
-       
-
-#         # return {"sub": sub}
-
 
 class ActionLogin(Action):
     
@@ -208,7 +211,6 @@ class ActionLogin(Action):
         trackcer_sender_id = tracker.current_state()['sender_id']
 
         try:
-
             sender_id = [_ for _ in trackcer_sender_id.split('+')][0]
             sender_name = [_ for _ in trackcer_sender_id.split('+')][1]
             site_id = [_ for _ in trackcer_sender_id.split('+')][4]
@@ -224,13 +226,13 @@ class ActionLogin(Action):
             version = '2.0'
             token = None
 
-        msg = '\n' + '我是阿斯利康的临床试验智能助手小易，很高兴为您服务.'
+        msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
 
-#--------------------------- GENERATE RANDOM 13 entities ----------------------------------------#
+#--------------------------- GENERATE RANDOM 15 entities ----------------------------------------#
 
-        initial_entities =  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
+        initial_entities =  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],15)]
 
-# -------------------------- Generate button list for 14 entities -------------------------------------------------------#
+# -------------------------- Generate button list for 15 entities -------------------------------------------------------#
  
         dict1 = {}
         dict2 = {}
@@ -251,7 +253,7 @@ class ActionLogin(Action):
         if sender_id == '':
             text = msg + '\n' + msg2
         else:
-            text = '你好' + sender_name + ',' + site_id +  msg + '\n' + msg2
+            text = '您好' + sender_name + '，' + site_id + '的方案版本是' + version + '。' +  msg  + '\n' + msg2
 
         dispatcher.utter_message(text= text, buttons= button_list )
 
@@ -271,7 +273,7 @@ class ActionCheckProtocol(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        print('I am in check_protocol------------------------------------')
+        print('I am in check_protocol------------------')
 
 #--------------------------- extract slot ----------------------------------------#
 
@@ -300,7 +302,7 @@ class ActionCheckProtocol(Action):
       
         text_CRA = '我不太理解，我会转给给负责咱们中心的CRA'
 
-        text_CRA_no_found = '我在方案中没有找到，我会吧问题转给负责咱们中心的CRA'
+        text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA'
 
         sub = None
     
@@ -310,11 +312,11 @@ class ActionCheckProtocol(Action):
         index_list = tracker.get_slot('index_list')       #get index_list
         print('index_list:', index_list)
 
-#--------------------------- GENERATE RANDOM 13 entities ----------------------------------------#
+#--------------------------- GENERATE RANDOM 15 entities ---------------------------------------------------------------#
 
-        initial_entities =  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],13)]
+        initial_entities =  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],15)]
 
-# -------------------------- Generate button list for 14 entities -------------------------------------------------------#
+# -------------------------- Generate button list for 5 entities -------------------------------------------------------#
  
         dict1 = {}
         dict2 = {}
@@ -331,7 +333,6 @@ class ActionCheckProtocol(Action):
             dict2 = {}
 
         msg2 = '<b>小易推荐如下选项，请参照选择。谢谢</b>'
-        # dispatcher.utter_message(text='小易推荐如下选项，请参照选择。谢谢', buttons= button_list)  
 
 # -------------------------- age intent process  --------------------------------#
 
@@ -371,9 +372,11 @@ class ActionCheckProtocol(Action):
 
                 sub_list = [item.upper() for item in sub_list]               # upper sub 
         
-                print('after check sub:', sub_list)
+                sub_list = list_for_table9(sub_list)
 
-                print('ready to check Neo4j again------------------------------------------')
+                print('after check and with table9, sub:', sub_list)
+
+                print('ready to check Neo4j ----------------')
 
 #----------------------------check index_list ---------------------------------------------------------#
 
@@ -384,7 +387,7 @@ class ActionCheckProtocol(Action):
                         params = {'node_sub': sub_list}
                         query = """
                         match  (index_node) <-[to_index] - (question_node) <-[to_questions] - (answer_node) 
-                        where index_node.name in $node_sub
+                        where ToUpper(index_node.name) in $node_sub
                         return question_node, answer_node 
                         """
                         result = conn.query(query, parameters=params)
@@ -402,7 +405,7 @@ class ActionCheckProtocol(Action):
                             dict2 = {}
                             button_list = []
 
-                            msg2 = '<b>此项下还有以下问题提示，请参照选择。您也可以输入其他问题。谢谢</b>'
+                            msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
                             print('index_list in action:', index_list)
 
@@ -427,13 +430,14 @@ class ActionCheckProtocol(Action):
                         # return [SlotSet("sub",None)]                             # keep question_list
                     except:
                         print('error for check neo4j for index_list')
-                print('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
+  
                 node_item_list = []
 # -------------------------- then, system will perform query --------------------------------#
         else:
-            print('Xxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+
             sub_list = []
-            if item_number:
+            if item_number and main:
+                print('---------------main:', main)
                 node_item_number = main + '第' + item_number + '条'
                 node_item_list = [node_item_number]
                 print('node_item_number:', [node_item_number])
@@ -450,17 +454,39 @@ class ActionCheckProtocol(Action):
  
             query = """
             match (index_node) <-[to_index*0..1] - (question_node) <-[to_questions*0..1] - (answer_node) <- [has_answer*0..1] -(csp_node) -[r*] ->(entity_node) -[*0..3] ->(entity_value)
-            where csp_node.label in ["入选标准", "排除标准","DL04"]  and  (( entity_node.name in $node_sub )or (csp_node.name_item in $node_item))
-            return collect(distinct index_node) as index_nodes, collect(distinct csp_node) as csp_nodes, collect( distinct question_node) as q_nodes, collect( distinct  entity_value) as entity_values
-            ORDER BY csp_nodes
+            where csp_node.label in ["入选标准", "排除标准","DL04"]  and  (( ToUpper(entity_node.name) in $node_sub )or (csp_node.name_item in $node_item))
+            return collect(distinct index_node) as index_nodes, csp_node, collect( distinct  entity_value) as entity_values
+            ORDER BY csp_node
             """
             result = conn.query(query, parameters=params)
             print('result:', result)
     # -------------------------- then, form dispatchd massage ---------------------------------#
 
-            if len(result[0].data()['csp_nodes']) == 0:
+            if len(result) == 0:
                 # msg = '对不起，小易没有找到。我还需要学习'
-                final_message = sender_id + '老师，您的问题"' + message +'"' + text_CRA_no_found
+
+                text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
+
+                payload = {
+                    "userId": sender_id,
+                    "question": message
+                }
+                print('payload:', payload)
+
+                #请求头
+                # header = {
+                #     "content-type": "application/json",
+                #     "token": token
+                # }
+                # print('payload:', payload)
+                # print('header:', header)
+
+                # url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+                # res = requests.post(url,json=payload,headers=header)
+
+                # print('res.text:',res.text)
+
+                final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
                 dispatcher.utter_message(text=final_message)
                 return [SlotSet("sub",None), 
                     SlotSet("index_list", index_list)]
@@ -472,52 +498,26 @@ class ActionCheckProtocol(Action):
                 s_node = []
                 p_node = []
 
-                for item in result:
+                for item in result:     
 
-                    sorted_csp_nodes =  item.data()['csp_nodes']                    
-                    sorted_csp_nodes.sort(key = lambda x:x['name_item'])    
-                    
-                    print('before process sorted_csp:', sorted_csp_nodes)        # sorting csp node
-
-                    if len(sub_list) > 1:
-
-                        [s_node1, p_node1] =  check_for_all(sub_list, sorted_csp_nodes)
-                        s_node.extend(s_node1)
-                        p_node.extend(p_node1)
-
-                        if len(s_node) != 0:
-                            sorted_csp_nodes = s_node
+                    if item.data()['csp_node']['label'] != 'DL04':
+                        if version == "1.0":
+                            csp_description = item.data()['csp_node']['description']
                         else:
-                            sorted_csp_nodes = p_node
+                            csp_description = item.data()['csp_node']['description_v2']
+                        page_num = '试验方案第' + item.data()['csp_node']['page'] + '页'
+                        name_item = item.data()['csp_node']['name_item']
+    
+                    else:
+                        csp_description = item.data()['csp_node']['description']
+                        name_item = item.data()['csp_node']['name_item']
+                        page_num = '试验方案第' +item.data()['csp_node']['page'] + '页'
 
-                    print('sorted_csp_nodes:', sorted_csp_nodes)
-                    for csp_node in sorted_csp_nodes:                               # process csp node
-                        print(csp_node['name_item'])
-                        print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-                        print('name_itemL', csp_node['name_item'])
-                        if csp_node['label'] != 'DL04':
-                            if version == "1.0":
-                                csp_description = csp_node['description']
-                            else:
-                                csp_description = csp_node['description_v2']
-                            page_num = '试验方案第' + csp_node['page'] + '页'
-                            name_item = csp_node['name_item']
-        
-                        else:
-                            csp_description = csp_node['description']
-                            name_item = csp_node['name_item']
-                            page_num = '试验方案第' + csp_node['page'] + '页'
-                        print('csp_des:', csp_description)
-                        print('name_item', name_item)
-                        print('page_num:', page_num)
-                        print('msg_csp', msg_csp)
+                    msg_csp = page_num + ' \n' + name_item + ' \n' + csp_description 
 
-                        msg_csp = msg_csp + ' \n' + page_num + ' \n' + name_item + ' \n' + csp_description    
-                    
-                    msg_entity_value_list.extend([ str(item['name']) + ' : ' + str(item['description']) for item in item.data()['entity_values'] if 'description' in item.keys()])
+                    msg_entity_value = '\n'.join([(item['name'] + ' : \n' + item['description']) for item in item.data()['entity_values'] if 'description' in item.keys()])
 
-                    msg_entity_value = '\n' + '\n'.join(msg_entity_value_list)
-                    print('msg_value:', msg_entity_value)
+                    final_message = final_message + msg_csp + msg_entity_value + '\n'
                         # for entity_value in item.data()['entity_values']:               # process entity value
 
                         #     try:
@@ -552,19 +552,11 @@ class ActionCheckProtocol(Action):
                             button_list.append(dict2)
                             dict1 = {}
                             dict2 = {}
-                            msg2 = '<b>此项下还有以下问题提示，请参照选择。您也可以输入其他问题。谢谢</b>'
-
-                        print('xxyyyyyyyyyyyy button_listL', button_list)
-
-                if final_message == '':
-                        final_message =  msg_csp + msg_entity_value 
-                else:
-                    final_message =  final_message + '\n'  +  msg_csp + msg_entity_value
-    
-
-                print('final_message_inside:', final_message)
+                            msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
                 final_message = final_message + msg2
+
+                print('final_message:', final_message)
     
                 dispatcher.utter_message(text=final_message, buttons= button_list)
                 # dispatcher.utter_message(text=( page_num + msg_csp + msg_entity_value + ' \n' +  msg2))
@@ -579,6 +571,19 @@ class ActionCheckProtocol(Action):
         
         except:
             print('error for check neo4j entities')
+            
+            text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
+
+            payload = {
+                "userId": sender_id,
+                "question": message
+            }
+            print('payload:', payload)
+
+
+            final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
+            dispatcher.utter_message(text=final_message)
+            return [SlotSet("sub",None)]
             # return [SlotSet("sub",None)]
             # return [AllSlotsReset()]
             # return []
@@ -640,11 +645,71 @@ class ActionDefaultFallback(Action):
         print('payload:', payload)
         print('header:', header)
 
-        url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
-        res = requests.post(url,json=payload,headers=header)
-        print('res.text:',res.text)
+        try:
+            url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+            res = requests.post(url,json=payload,headers=header)
 
-        dispatcher.utter_message(text=('您的问题"' + message +'""' + text_CRA))
+            print('res.text:',res.text)
+        except:
+            Continue
+
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + text_CRA))
+
+        # Revert user message which led to fallback.
+        return [ SlotSet("sender_id", sender_id),
+            SlotSet("sender_name", sender_name), 
+            SlotSet("site_id", site_id), 
+            SlotSet("version", version),
+            SlotSet("token", token)
+            
+                ]
+class ActionDefaultFallback(Action):
+    """Executes the fallback action and goes back to the previous state
+    of the dialogue"""
+
+    def name(self) -> Text:
+        return 'action_new_scope'
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        message = tracker.latest_message['text']
+        sender_id = tracker.get_slot('sender_id')
+        sender_name = tracker.get_slot('sender_name')
+        site_id = tracker.get_slot('site_id')
+        version = tracker.get_slot('version')
+        token = tracker.get_slot('token')
+        # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
+        print('message:', message)
+        text_CRA = '现在小易还不能回答，我会转给负责咱们中心的CRA'
+
+        payload = {
+            "userId": sender_id,
+            "question": message
+        }
+        print('payload:', payload)
+
+        #请求头
+        header = {
+            "content-type": "application/json",
+            "token": token
+        }
+        print('payload:', payload)
+        print('header:', header)
+
+        try:
+            url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
+            res = requests.post(url,json=payload,headers=header)
+
+            print('res.text:',res.text)
+        except:
+            Continue
+
+
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + text_CRA))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),
