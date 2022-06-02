@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-# vscode
-.vscode
-
-# log files
-*.log
-
-# build models
-models/*
-
-# tmp files
-~*
-
-# compiled files
-*.pyc
-
-## pycache
-__pycache__
-=======
 models
 rasa.db
 events.db
@@ -26,4 +7,3 @@ chats_analsysi/chats_log.pdf
 chats_analysis/new_all.csv
 chats_analysis/entity_csp.csv
 chats_analysis/entity_csp.pdf
->>>>>>> dev-ecc
