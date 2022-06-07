@@ -24,6 +24,7 @@ pipeline:
     threshold: 0.7
     ambiguity_threshold: 0.1
 
+
 policies:
   - name: MemoizationPolicy
   - name: TEDPolicy
@@ -34,9 +35,9 @@ policies:
     # Confidence threshold for the `core_fallback_action_name` to apply.
     # The action will apply if no other action was predicted with
     # a confidence >= core_fallback_threshold
-    core_fallback_threshold: 0.4
-    core_fallback_action_name: "action_default_fallback"
-    enable_fallback_prediction: True
+    # core_fallback_threshold: 0.2
+    # core_fallback_action_name: "action_default_fallback"
+    # enable_fallback_prediction: True
   - name: UnexpecTEDIntentPolicy
     max_history: 5
     epochs: 100

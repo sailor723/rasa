@@ -1,111 +1,65 @@
 version: "2.0"
 stories:
-- story: Story from Conversation ID f9b7f9311ed64295803a2f130306cc16
-  steps:
-  - intent: inform_protocol
-    entities:
-    - main: 入选标准
-  - slot_was_set:
-    - main: 入选标准
-  - action: utter_detail
-  - action: action_initial_protocol
-  - intent: age
-    entities:
-    - sub: 年龄
-  - slot_was_set:
-    - sub:
-      - 年龄
-  # - action: utter_protocol_submit
-  - action: action_check_protocol
-  - slot_was_set:
-    - sub: null
-  - slot_was_set:
-    - question_list: []
-- story: Story from Conversation ID 24c9674ef3974131aa9d9688c6ad57af
+- story: Story from Conversation ID bca1b90f7ec94fc7835fce5ba1adbbca
   steps:
   - intent: greet
   - action: action_Login
   - slot_was_set:
-    - sender_id: Andy
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
   - slot_was_set:
     - site_id: 北京肿瘤医院
-  - intent: inform_protocol
-    entities:
-    - sub: 痴呆
   - slot_was_set:
-    - sub:
-      - 痴呆
-  # - action: utter_protocol_submit
-  - action: action_check_protocol
+    - version: '2.0'
   - slot_was_set:
-    - sub: null
+    - token: null
+  - intent: inquiry_protocol
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
   - slot_was_set:
-    - question_list: []
-  - intent: inform_protocol
-    entities:
-    - sub: 目标人群
+    - requested_slot: main
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: simple_protocol_form
   - slot_was_set:
-    - sub:
-      - 目标人群
-  # - action: utter_protocol_submit
-  - action: action_check_protocol
+    - requested_slot: main
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - main: 入选标准
   - slot_was_set:
     - sub: null
   - slot_was_set:
-    - question_list: []
-  - intent: inform_protocol
-    entities:
-    - sub: 男性
+    - requested_slot: sub
+  - intent: stop
+  - action: utter_ask_continue
+  - or:
+    - intent: affirm
+    - intent: stop
+  - action: action_deactivate_loop
+  - active_loop: null
   - slot_was_set:
-    - sub:
-      - 男性
-  # - action: utter_protocol_submit
-  - action: action_check_protocol
-  - slot_was_set:
-    - sub: null
-  - slot_was_set:
-    - question_list: []
-  - intent: thanks
-  - action: utter_more_question
-  - intent: deny
+    - requested_slot: null
+  - intent: goodbye
   - action: utter_goodbye
-- story: Story from Conversation ID f9768cd1a90a4bc1b412b96e126baf08
+- story: Story from Conversation ID def2214d9b654781a8cd7b12f76cc68c
   steps:
-  - intent: greet
-  - action: action_Login
   - slot_was_set:
-    - sender_id: '123465'
+    - sub: 疫苗
   - slot_was_set:
-    - sender_name: zhaoyisheng
+    - sub: ffpe
   - slot_was_set:
-    - site_id: 北京肿瘤医院
-  - slot_was_set:
-    - version: '2.0'
-  - slot_was_set:
-    - token: null
-  - intent: inform_protocol
-    entities:
-    - item_number: '6'
-    - main: 入选标准
-    - item_number: '6'
-    - item_number: '6'
+    - sub: 肿瘤组织
   - slot_was_set:
     - item_number: '6'
   - slot_was_set:
     - main: 入选标准
-  # - action: utter_protocol_submit
-  - action: action_check_protocol
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
   - slot_was_set:
-    - sub: null
-  - slot_was_set:
-    - index_list: []
-  - slot_was_set:
-    - sender_id: '123465'
-  - slot_was_set:
-    - sender_name: zhaoyisheng
-  - slot_was_set:
-    - site_id: 北京肿瘤医院
-  - slot_was_set:
-    - version: '2.0'
-  - slot_was_set:
-    - token: null
+    - requested_slot: null
+  - intent: goodbye
+  - action: utter_goodbye

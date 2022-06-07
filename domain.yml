@@ -55,11 +55,12 @@ intents:
 entities:
 - AGE
 - PERSON
-- main
-- sub
-- question_list
 - index_list
 - item_number
+- main
+- question_list
+- sub
+- sub_list
 slots:
   PERSON:
     type: rasa.shared.core.slots.TextSlot
@@ -102,6 +103,11 @@ slots:
     auto_fill: true
     influence_conversation: true
   sub:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  sub_list:
     type: rasa.shared.core.slots.ListSlot
     initial_value: null
     auto_fill: true
@@ -147,28 +153,29 @@ responses:
   utter_happy:
   - text: Great, carry on!
   utter_goodbye:
-  - text: 谢谢老师。很高兴认识您。再见
+  - text: 谢谢{sender_name}老师。很高兴认识您，再见
   utter_iamabot:
-  - text: 很高兴为您服务，这里有研究方案相关的入选标准，希望可以帮助到您，让我们来一起对话吧
-  utter_ask_name:
-  - text: 请问如何称呼您？
-  - text: 请问怎么称呼您？
-  - text: 能告诉我您的名字吗?
-  - text: 为方便沟通，能让小易知道您的名字吗？
-  - text: 请问您怎么称呼？
-  utter_receive_name:
-  - text: 好的，{PERSON}老师。请问我有什么可以帮到您呢？
-  - text: 很高兴认识您，{PERSON}老师。请问我有什么可以帮到您呢？
-  utter_receive_name_no:
-  - text: 好的，老师。请问我有什么可以帮到您呢？
-  - text: 老师，没问题。请问我有什么可以帮到您呢？
+  - text: 您好{sender_name}老师，我是阿斯利康的临床数字助手小易,很高兴为您服务。这里有研究方案相关的入选标准，希望可以帮助到您，让我们来一起对话吧
   utter_ask_main:
   - buttons:
     - payload: /inform_protocol{{"main":"入选标准"}}
       title: 入组
     - payload: /inform_protocol{{"main":"排除标准"}}
       title: 排除
-    text: 您想查询入组还是排除?
+    text: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。 您想查询入组还是排除?
+  utter_ask_sub:
+  - condition:
+    - name: main
+      type: slot
+      value: 入选标准
+    text: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以直接问相关的具体问题，或入选条目，例如入组8等提问。
+  - condition:
+    - name: main
+      type: slot
+      value: 排除标准
+    text: 谢谢。排除标准下有医学疾病、既往治疗/合并治疗、既往/合并用药临床研究经验，其他排除标准等26项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以直接问相关的具体问题，或排除条目，例如排除8等提问。
+  utter_ask_continue:
+  - text: 请问您是没有其他问题了吗？
   utter_protocol_submit:
   - text: 好的，请稍等~
   - text: 小易努力查询中，请稍等~
@@ -191,20 +198,27 @@ responses:
   utter_ask_questions:
   - text: 好的。请提问。
 actions:
+- action_Login
 - action_check_protocol
-- action_initial_protocol
 - action_default_fallback
-- action_write_text
+- action_initial_protocol
 - action_new_scope
-- utter_ask_name
+- action_write_text
+- utter_detail
 - utter_goodbye
 - utter_iamabot
 - utter_more_question
 - utter_please_rephrase
 - utter_protocol_slots
 - utter_protocol_submit
-- utter_receive_name
-- action_Login
-- utter_detail
-forms: {}
+- validate_simple_protocol_form
+forms:
+  simple_protocol_form:
+    required_slots:
+      main:
+      - entity: main
+        type: from_entity
+      sub:
+      - entity: sub
+        type: from_entity
 e2e_actions: []

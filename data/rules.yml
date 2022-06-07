@@ -36,3 +36,37 @@ rules:
   steps:
   - intent: new_scope
   - action: action_new_scope
+
+- rule: Activate Protocol Form
+  steps:
+  - intent: inquiry_protocol
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+
+- rule: Activate Protocol Form
+  steps:
+  - intent: inform_protocol
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+- rule: Submit Portocol Form
+  condition:
+  - active_loop: simple_protocol_form
+  steps:
+  - action: simple_protocol_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_protocol_submit
+  - action: action_check_protocol
+
+- rule: Interruption in Protocol Form
+  condition:
+  # Condition that form is active.
+  - active_loop: simple_protocol_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form

@@ -8,6 +8,7 @@ from rasa_sdk import Tracker, FormValidationAction, Action
 from rasa_sdk.events import EventType, SlotSet, AllSlotsReset, Restarted
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
+from regex import subn
 
 from sqlalchemy import create_engine
 
@@ -304,11 +305,13 @@ class ActionCheckProtocol(Action):
 
         text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA'
 
-        sub = None
-    
-        if tracker.get_slot('sub'):
-            sub = list(set(tracker.get_slot('sub')))                           # get sub entity, no need main
-            print('sub:', sub)
+        sub_list = tracker.get_slot('sub_list')
+
+        # sub = None
+        
+        # if tracker.get_slot('sub'):
+        #     sub = list(set(tracker.get_slot('sub')))                           # get sub entity, no need main
+        #     print('sub:', sub)
         index_list = tracker.get_slot('index_list')       #get index_list
         print('index_list:', index_list)
 
@@ -341,16 +344,16 @@ class ActionCheckProtocol(Action):
         print('intent:',intent)
 
         if intent == 'age':
-            sub = '年龄'
-        print('* sub is :', sub)
+            sub_list = ['年龄']
+        print('* sub_list is :', sub_list)
         print('item_number:', item_number)
 
-        if (sub == None) and (item_number == None):
+        if (not sub_list) and (item_number == None):
 
                 msg = '请提供您要查询的具体内容，谢谢'
                 dispatcher.utter_message(text=msg)
                 index_list = None
-                return [SlotSet("sub",None), SlotSet("index_list", index_list),
+                return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
                         SlotSet("site_id", site_id), 
@@ -360,21 +363,21 @@ class ActionCheckProtocol(Action):
 
 #-------------------construct sub into sub_list, as there maybe 2+ sub entities---#
       
-        if sub:
-            if sub[0] == 'RESTART':
+        if sub_list and len(sub_list) > 0:
+            if sub_list[0] == 'RESTART':
                 return [Restarted()]
             else:
-                if type(sub) == str:
-                    sub_list = []
-                    sub_list.append(sub)
-                else:
-                    sub_list = sub
+                # if type(sub) == str:
+                #     sub_list = []
+                #     sub_list.append(sub)
+                # else:
+                #     sub_list = sub
 
                 sub_list = [item.upper() for item in sub_list]               # upper sub 
         
                 sub_list = list_for_table9(sub_list)
 
-                print('after check and with table9, sub:', sub_list)
+                print('after check and with table9, sub_list:', sub_list)
 
                 print('ready to check Neo4j ----------------')
 
@@ -421,7 +424,7 @@ class ActionCheckProtocol(Action):
                     
                         dispatcher.utter_message(text= ( msg + '\n' + msg2 ), buttons= button_list)          
     
-                        return [SlotSet("sub",None), SlotSet("index_list", index_list),
+                        return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_id", site_id), 
@@ -488,7 +491,7 @@ class ActionCheckProtocol(Action):
 
                 final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
                 dispatcher.utter_message(text=final_message)
-                return [SlotSet("sub",None), 
+                return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
                     SlotSet("index_list", index_list)]
                 
             else:
@@ -561,7 +564,7 @@ class ActionCheckProtocol(Action):
                 dispatcher.utter_message(text=final_message, buttons= button_list)
                 # dispatcher.utter_message(text=( page_num + msg_csp + msg_entity_value + ' \n' +  msg2))
 
-                return [SlotSet("sub",None), 
+                return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
                         SlotSet("index_list", index_list),
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
@@ -583,7 +586,7 @@ class ActionCheckProtocol(Action):
 
             final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
             dispatcher.utter_message(text=final_message)
-            return [SlotSet("sub",None)]
+            return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None)]
             # return [SlotSet("sub",None)]
             # return [AllSlotsReset()]
             # return []
@@ -719,3 +722,82 @@ class ActionDefaultFallback(Action):
             SlotSet("token", token)
                 ]
 
+
+class ValidateSimplePizzaForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_simple_protocol_form"
+
+    def validate_main(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate main value."""
+        print("in validate main")
+
+        main = tracker.get_slot('main')
+
+        sub = tracker.get_slot('sub')
+
+        item_number = tracker.get_slot('item_number')
+
+        if item_number:
+            sub = ' '
+
+        if slot_value.lower() not in ALLOWED_MAIN_TYPES:
+            dispatcher.utter_message(text=f"We only accept" + ",".join(ALLOWED_MAIN_TYPES))
+            return {"main": None}
+        
+        # dispatcher.utter_message(text=f"OK! You want to check {slot_value} in CSP.")
+        return {"main": slot_value,"sub": sub}
+
+    def validate_sub(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate sub value."""
+        print("in validate sub")
+
+        main = tracker.get_slot('main')
+        
+        sub = tracker.get_slot('sub')
+
+        sub_list = []
+
+        entities = tracker.latest_message['entities']
+
+        for entities_value in tracker.latest_message['entities']:
+            if entities_value.get('entity') == 'sub':
+                print(entities_value.get('value'))
+                sub_list.append(entities_value.get('value'))
+
+        print('entities:', entities)
+
+        print("main---------：",main)
+        
+        print("sub_list ---------：",sub_list)
+
+        print("sub_ ---------：",sub)
+        
+        if main:
+
+            if sub:
+
+                # dispatcher.utter_message(text=f"OK! You want to check {sub_list} in CSP.")
+
+                return {"sub": sub, "sub_list": sub_list}
+                
+            else:
+                 
+                return {"sub": None, "sub_list": None}
+        else:
+            if sub:
+                return {"main": '入选标准', "sub_list": sub_list}
+            else:
+                return{"main": None}
+            

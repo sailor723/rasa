@@ -55,6 +55,7 @@ nlu:
     - 没错
     - 正确
     - 是
+    - 没有了
 - intent: inform_protocol
   examples: |
     - [kras](sub)
@@ -608,6 +609,8 @@ nlu:
     - [肺叶切除](sub)患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}嘛
     - [入排标准](main)
     - 我们的[入排标准](sub)/入排标准/入排
+    - [血小板]{"entity": "sub", "value": "\u8840\u5c0f\u677f\u8ba1\u6570"}
+    - [疫苗](sub)[疫苗](sub)[疫苗](sub)
 - intent: thanks
   examples: |
     - 谢谢你
@@ -632,7 +635,6 @@ nlu:
     - 不
     - 错了
     - 错误
-    - 没有了
     - Michael
     - 关于[egfr](sub)
     - 请问[项目编号](sub)
@@ -652,6 +654,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - stop
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -680,6 +683,7 @@ nlu:
     - 你是机器人吗
     - 你能做什么
     - 你有什么功能
+    - 你是谁
 - intent: out_of_scope
   examples: |
     - 现在几点了？
@@ -698,6 +702,11 @@ nlu:
     - 不太方便
     - 我想直接问问题
     - [Kenny](PERSON)
+- intent: stop
+  examples: |
+    - 我不想问了
+    - 谢谢，我有事，就到这吧
+    - 不想再问了
 - intent: inquiry_protocol
   examples: |
     - I would like to understand the protocol
@@ -705,6 +714,7 @@ nlu:
     - 我想知道试验方案
     - 我想查询方案
     - 我希望查询试验方案
+    - 这是什么样的试验
     - 查询试验方案
     - 方案内容
     - 了解试验方案
@@ -712,6 +722,10 @@ nlu:
     - 查询方案
     - 请问入排的要求
     - 请问入组的要求
+    - 了解实验方案
+    - 请问方案的内容
+    - 想了解方案
+    - 这是个什么方案
 - intent: target_group
   examples: |
     - 这个方案的基本情况
