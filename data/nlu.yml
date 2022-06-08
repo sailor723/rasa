@@ -590,7 +590,7 @@ nlu:
     - [抗体](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
     - [抗体治疗](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
     - [抗体疗法](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
-    - [激素疗法](sub)的洗脱[期](sub)
+    - [激素疗法](sub)的[洗脱期](sub)
     - [类视黄醇疗法](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
     - [非抗体疗法](sub)的[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}要求
     - [免疫治疗](sub)的[洗脱期]{"entity": "sub", "value": "\u6cbb\u7597\u6d17\u8131\u671f"}
@@ -611,6 +611,11 @@ nlu:
     - 我们的[入排标准](sub)/入排标准/入排
     - [血小板]{"entity": "sub", "value": "\u8840\u5c0f\u677f\u8ba1\u6570"}
     - [疫苗](sub)[疫苗](sub)[疫苗](sub)
+    - [男性](sub)受试者的[年龄](sub)要求
+    - 多大[年龄](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
+    - 有男女性别的限制吗
+    - 受试者[入组](main)的[年龄](sub)要求
+    - 入组的[年龄](sub)
 - intent: thanks
   examples: |
     - 谢谢你
@@ -750,11 +755,6 @@ nlu:
     - 90可以吗
     - 有男女性别限制吗
     - 34岁可以吗
-    - [男性](sub)受试者的[年龄](sub)要求
-    - 多大[年龄](sub)可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}
-    - 有男女性别的限制吗
-    - 受试者[入组](main)的[年龄](sub)要求
-    - 入组的[年龄](sub)
 - intent: treatment_history
   examples: |
     - 受试者的前期病史

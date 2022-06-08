@@ -37,7 +37,11 @@ DCTA_NEO4J_HOST = "bolt://" + str(os.getenv('DCTA_NEO4J_HOST'))
 
 print('DCTA_NEO4J_HOST:', DCTA_NEO4J_HOST)
 
-ALLOWED_MAIN_TYPES = ["入选标准", "排除标准","全部"]
+ALLOWED_MAIN_TYPES = ["入选标准", "排除标准"]
+INCLUSIONS = ["知情同意", "年龄", "受试者类型和疾病特征", "生殖方面"]
+EXCLUSIONS = ["医学疾病", "既往治疗/合并治疗", "既往/合并用药", "其他排除标准"]
+
+EXCLUSION_SEC_1 = [1,16]
 
 TARGET_NODE_LIST = ["入选标准", "排除标准","DL04"]
 #--------------------------- Initial Entities List -------------------------------------------#
@@ -132,6 +136,7 @@ class Neo4jconnection:
         return response
 
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
+# conn = Neo4jconnection(uri="bolt://localhost", user='neo4j', password="neo4j56")
 conn = Neo4jconnection(uri=DCTA_NEO4J_HOST, user=DCTA_NEO4J_USER, password=DCTA_NEO4J_PWD)
 
 
@@ -194,7 +199,7 @@ class ActionInitialProtocol(Action):
             button_list.append(dict2)                            # build button_list with dict2
             dict1 = {}
             dict2 = {}
-
+        print('================= button_list:', button_list)
         dispatcher.utter_message(text='小易推荐如下选项，请参照选择。谢谢', buttons= button_list)         # return to rasa with button_list
         return [SlotSet("sender_id", None)]
 
@@ -211,12 +216,15 @@ class ActionLogin(Action):
 
         trackcer_sender_id = tracker.current_state()['sender_id']
 
+        print('tracker_sender_id:', trackcer_sender_id)
+
         try:
             sender_id = [_ for _ in trackcer_sender_id.split('+')][0]
             sender_name = [_ for _ in trackcer_sender_id.split('+')][1]
             site_id = [_ for _ in trackcer_sender_id.split('+')][4]
             version = [_ for _ in trackcer_sender_id.split('+')][5].split('-')[0]
             token = [_ for _ in trackcer_sender_id.split('+')][6]
+            CRA_mobile = [_ for _ in trackcer_sender_id.split('+')][7]
         except:
             # sender_id = ''
             # site_id =''
@@ -226,6 +234,7 @@ class ActionLogin(Action):
             site_id ='北京肿瘤医院'
             version = '2.0'
             token = None
+            CRA_mobile = '13211833746'
 
         msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
 
@@ -263,6 +272,7 @@ class ActionLogin(Action):
                 SlotSet("site_id", site_id), 
                 SlotSet("version", version),
                 SlotSet("token", token),
+                SlotSet("CRA_mobile", CRA_mobile),
                 ]        
 
 class ActionCheckProtocol(Action):
@@ -299,11 +309,13 @@ class ActionCheckProtocol(Action):
 
         token = tracker.get_slot('token')
 
+        CRA_mobile = tracker.get_slot('CRA_mobile')
+
         message = tracker.latest_message['text']
       
-        text_CRA = '我不太理解，我会转给给负责咱们中心的CRA'
+        text_CRA = '我不太理解，我会转给给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
 
-        text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA'
+        text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
 
         sub_list = tracker.get_slot('sub_list')
 
@@ -468,7 +480,7 @@ class ActionCheckProtocol(Action):
             if len(result) == 0:
                 # msg = '对不起，小易没有找到。我还需要学习'
 
-                text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
+                text_CRA = '我不太理解，我会转给负责咱们中心的CRA。CRA的电话是' + CRA_mobile
 
                 payload = {
                     "userId": sender_id,
@@ -508,13 +520,13 @@ class ActionCheckProtocol(Action):
                             csp_description = item.data()['csp_node']['description']
                         else:
                             csp_description = item.data()['csp_node']['description_v2']
-                        page_num = '试验方案第' + item.data()['csp_node']['page'] + '页'
+                        page_num = '试验方案第' + str(int(float(item.data()['csp_node']['page']))) + '页'
                         name_item = item.data()['csp_node']['name_item']
     
                     else:
                         csp_description = item.data()['csp_node']['description']
                         name_item = item.data()['csp_node']['name_item']
-                        page_num = '试验方案第' +item.data()['csp_node']['page'] + '页'
+                        page_num = '试验方案第' + str(int(float(item.data()['csp_node']['page']))) + '页'
 
                     msg_csp = page_num + ' \n' + name_item + ' \n' + csp_description 
 
@@ -575,7 +587,7 @@ class ActionCheckProtocol(Action):
         except:
             print('error for check neo4j entities')
             
-            text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
+            text_CRA = '我不太理解，我会转给负责咱们中心的CRA。 CRA的电话是' + CRA_mobile
 
             payload = {
                 "userId": sender_id,
@@ -630,9 +642,10 @@ class ActionDefaultFallback(Action):
         site_id = tracker.get_slot('site_id')
         version = tracker.get_slot('version')
         token = tracker.get_slot('token')
+        CRA_mobile = tracker.get_slot('CRA_mobile')
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
-        text_CRA = '我不太理解，我会转给负责咱们中心的CRA'
+        text_CRA = '我不太理解，我会转给负责咱们中心的CRA。CRA的电话是' + CRA_mobile
 
         payload = {
             "userId": sender_id,
@@ -685,9 +698,11 @@ class ActionDefaultFallback(Action):
         site_id = tracker.get_slot('site_id')
         version = tracker.get_slot('version')
         token = tracker.get_slot('token')
+        CRA_mobile = tracker.get_slot('CRA_mobile')
+        print('CRA_mobile:', CRA_mobile)
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
-        text_CRA = '现在小易还不能回答，我会转给负责咱们中心的CRA'
+        text_CRA = '现在小易还不能回答，我会转给负责咱们中心的CRA。 CRA的电话是' +  CRA_mobile
 
         payload = {
             "userId": sender_id,
@@ -722,6 +737,56 @@ class ActionDefaultFallback(Action):
             SlotSet("token", token)
                 ]
 
+class AskForVegetarianAction(Action):
+    def name(self) -> Text:
+        return "action_ask_main"
+
+    def run(
+            self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        dispatcher.utter_message(text="请选择您想查询的类型",
+                                 buttons=[
+                                     {'title': '入选标准', 'payload': '/inform_protocol{"main": "入选标准"}'},
+                                     {'title': '排除标准', 'payload': '/inform_protocol{"main": "排除标准"}'}
+                                 ])
+
+
+class AskForPizzaTypeAction(Action):
+    def name(self) -> Text:
+        return "action_ask_sub"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+
+        main = tracker.get_slot('main')
+
+        if main == '入选标准':
+            dispatcher.utter_message(text=f"请选择以下的入选标准分类",
+                                     buttons=[{"title": p, "payload": '/inform_protocol{"sub": "'+ p +'"}'} for p in INCLUSIONS])
+        else:
+            dispatcher.utter_message(text=f"请选择以下的排除标准分类",
+                                     buttons=[{"title": p, "payload": '/inform_protocol{"sub": "'+ p +'"}'} for p in EXCLUSIONS])
+        return []
+
+
+class AskForPizzaTypeAction(Action):
+    def name(self) -> Text:
+        return "action_ask_csp_item"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+
+        main = tracker.get_slot('main')
+
+        if main == '入选标准':
+            dispatcher.utter_message(text=f"请选择以下的入选标准分类",
+                                     buttons=[{"title": p, "payload": str(p)} for p in INCLUSIONS])
+        else:
+            dispatcher.utter_message(text=f"请选择以下的排除标准分类",
+                                     buttons=[{"title": p, "payload": str(p)} for p in EXCLUSIONS])
+        return []
 
 class ValidateSimplePizzaForm(FormValidationAction):
     def name(self) -> Text:
@@ -739,6 +804,9 @@ class ValidateSimplePizzaForm(FormValidationAction):
 
         main = tracker.get_slot('main')
 
+        if type(main) == list:
+            main = list(set(main))[0]
+
         sub = tracker.get_slot('sub')
 
         item_number = tracker.get_slot('item_number')
@@ -746,12 +814,14 @@ class ValidateSimplePizzaForm(FormValidationAction):
         if item_number:
             sub = ' '
 
-        if slot_value.lower() not in ALLOWED_MAIN_TYPES:
-            dispatcher.utter_message(text=f"We only accept" + ",".join(ALLOWED_MAIN_TYPES))
+        print('main:', main)
+
+        if main not in ALLOWED_MAIN_TYPES:
+            dispatcher.utter_message(text=f"请选择" + ",".join(ALLOWED_MAIN_TYPES)+",或直接问具体方案的条目。谢谢")
             return {"main": None}
         
         # dispatcher.utter_message(text=f"OK! You want to check {slot_value} in CSP.")
-        return {"main": slot_value,"sub": sub}
+        return {"main": main,"sub": sub}
 
     def validate_sub(
         self,
@@ -800,4 +870,31 @@ class ValidateSimplePizzaForm(FormValidationAction):
                 return {"main": '入选标准', "sub_list": sub_list}
             else:
                 return{"main": None}
+
+    def validate_csp_item(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+        ) -> Dict[Text, Any]:
+            """Validate sub value."""
+            print("in validate sub")
+
+            main = tracker.get_slot('main')
             
+            sub = tracker.get_slot('sub')
+
+            sub_section = tracker.get_slot('sub_section')
+
+            if sub == '排除标准':
+                if sub_section == '医学疾病':
+
+                    section_button = [('排除' + str(item)) for item in list(range(EXCLUSION_SEC_1[0], EXCLUSION_SEC_1[1]))]
+
+                    dispatcher.utter_message(text=f"请选择以下的排除标准",
+                                     buttons=[{"title": p, "payload": str(p)} for p in section_button])
+        
+
+                    return[]
+                

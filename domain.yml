@@ -61,6 +61,8 @@ entities:
 - question_list
 - sub
 - sub_list
+- sub_section
+- csp_item
 slots:
   PERSON:
     type: rasa.shared.core.slots.TextSlot
@@ -97,6 +99,11 @@ slots:
     initial_value: null
     auto_fill: false
     influence_conversation: false
+  CRA_mobile:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
   main:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
@@ -112,6 +119,11 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
+  sub_section:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
   page_num:
     type: rasa.shared.core.slots.ListSlot
     initial_value: null
@@ -124,6 +136,11 @@ slots:
     influence_conversation: false
   csp_description:
     type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  csp_item:
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: false
     influence_conversation: false
@@ -162,18 +179,20 @@ responses:
       title: 入组
     - payload: /inform_protocol{{"main":"排除标准"}}
       title: 排除
-    text: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。 您想查询入组还是排除?
+    text: 您想查询入组还是排除?
+  utter_protocol:
+  - text: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
   utter_ask_sub:
   - condition:
     - name: main
       type: slot
       value: 入选标准
-    text: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以直接问相关的具体问题，或入选条目，例如入组8等提问。
+    text: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, 样本活检的要求; 或FFPE。也可以直接问：入组8。
   - condition:
     - name: main
       type: slot
       value: 排除标准
-    text: 谢谢。排除标准下有医学疾病、既往治疗/合并治疗、既往/合并用药临床研究经验，其他排除标准等26项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以直接问相关的具体问题，或排除条目，例如排除8等提问。
+    text: 谢谢。排除标准下有医学疾病、既往治疗/合并治疗、既往/合并用药临床研究经验，其他排除标准等26项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, CNS脑转移的排除要求。也可以直接问：排除6。
   utter_ask_continue:
   - text: 请问您是没有其他问题了吗？
   utter_protocol_submit:
@@ -191,8 +210,6 @@ responses:
   - text: 请问您还有其他问题吗？
   utter_age:
   - text: this is for test age
-  utter_protocol:
-  - text: this is for test inform_protocol
   utter_detail:
   - text: 入组下有知情同意，年龄，受试者类型和疾病特征和生殖方面等17条内容，排除包括26条内容。小易无法一一列出。您可以更加需要查询特定的条目。另外，我们也抽取了一些条目供您参考。
   utter_ask_questions:
@@ -204,6 +221,8 @@ actions:
 - action_initial_protocol
 - action_new_scope
 - action_write_text
+- utter_ask_main
+- utter_ask_sub
 - utter_detail
 - utter_goodbye
 - utter_iamabot

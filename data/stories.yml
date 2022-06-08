@@ -3,6 +3,7 @@ stories:
 - story: Story from Conversation ID bca1b90f7ec94fc7835fce5ba1adbbca
   steps:
   - intent: greet
+  - action: utter_protocol
   - action: action_Login
   - slot_was_set:
     - sender_id: '123465'
@@ -15,6 +16,7 @@ stories:
   - slot_was_set:
     - token: null
   - intent: inquiry_protocol
+  - action: utter_protocol
   - action: simple_protocol_form
   - active_loop: simple_protocol_form
   - slot_was_set:

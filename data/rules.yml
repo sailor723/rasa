@@ -5,7 +5,9 @@ rules:
   - or:
     - intent: greet
     - intent: login
+  - action: utter_protocol
   - action: action_Login
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -40,6 +42,7 @@ rules:
 - rule: Activate Protocol Form
   steps:
   - intent: inquiry_protocol
+  - action: utter_protocol
   - action: simple_protocol_form
   - active_loop: simple_protocol_form
 
