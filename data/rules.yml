@@ -73,3 +73,5 @@ rules:
   # Return to form after handling the `bot_challenge` intent
   - action: simple_protocol_form
   - active_loop: simple_protocol_form
+
+  # This is to confirm push success
