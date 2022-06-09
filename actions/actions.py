@@ -313,7 +313,7 @@ class ActionCheckProtocol(Action):
 
         message = tracker.latest_message['text']
       
-        text_CRA = '我不太理解，我会转给给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
+        text_CRA = '我不太理解，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
 
         text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
 

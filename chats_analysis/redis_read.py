@@ -65,7 +65,7 @@ for redis_key in redis_client.scan_iter("tracker*"):
         # 删除key
         redis_client.delete(redis_key)
       except:
-        print('Waring Json load, redis_key is', redis_key)
+        print('unable to write into trackerstore, redis_key is', redis_key)
         continue
 
 # 提交之前的操作，如果之前已经执行多次的execute，那么就都进行提交

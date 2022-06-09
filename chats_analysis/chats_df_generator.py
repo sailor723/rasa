@@ -132,7 +132,7 @@ for a in v_list:
        
         
 #----------------------------no answer question----------------------------------------------------------------#
-    if a['event'] == 'bot' and '我在方案中没有找到，我会把问题转给负责咱们中心的CRA' in a['text']:
+    if a['event'] == 'bot' and 'CRA的电话是' in a['text']:
 
         df_final.loc[message_id_in_memory,'action'] = 'no answer question'
         # print('a_location:', v_list.index(a))
