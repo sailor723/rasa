@@ -50,11 +50,11 @@ print(user)
 print(password)
 
  
-conn = Neo4jconnection(uri=url, user=user, password=password)
+# conn = Neo4jconnection(uri=url, user=user, password=password)
 # conn = Neo4jconnection(uri="bolt://81.70.254.56", user='neo4j', password="neo4j56")
 # conn = Neo4jconnection(uri="bolt://127.0.0.1", user='neo4j', password="test")
 
-result = conn.query("MATCH(n) RETURN COUNT(n) AS count")
+# result = conn.query("MATCH(n) RETURN COUNT(n) AS count")
 
 print(result[0]['count'])
 

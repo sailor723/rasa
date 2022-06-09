@@ -63,8 +63,8 @@ df_exclusion = df_exclusion.astype(str)
 df_inclusion_V2 = df_inclusion_V2.astype(str)
 df_exclusion_V2 = df_exclusion_V2.astype(str)
 df_dl04 = df_dl04.astype(str)
-df_inclusion['CSP_V2'] = "V2 " + df_inclusion_V2['CSP']
-df_exclusion['CSP_V2'] = "V2 " + df_exclusion_V2['CSP']
+df_inclusion['CSP_V2'] = df_inclusion_V2['CSP'] + "\t/DL04 V2"
+df_exclusion['CSP_V2'] = df_exclusion_V2['CSP'] + "\t/DL04 V2"
 
 
 #-------------------------function to prepare for Graph Build ------------------------------------------------------#
@@ -85,11 +85,11 @@ def node_generate_for_KG (df_to_generate):
             node_working.append(df_to_generate.loc[row]['Detail'])
             node_working.append(df_to_generate.loc[row]['page'])
             node_working.append(item.strip('，').strip(','))
-            try:
+            if '入选标准' in list(df_to_generate.columns) or '排除标准' in list(df_to_generate.columns):
                 df_to_generate.loc[row]['CSP_V2']
                 node_working.append(df_to_generate.loc[row]['CSP_V2'])
-            except:
-                print('there')
+            else:
+                print(df_to_generate['DL04'])
             node_all.append(node_working)
             node_working = []
         

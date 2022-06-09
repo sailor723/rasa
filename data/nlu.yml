@@ -616,6 +616,8 @@ nlu:
     - 有男女性别的限制吗
     - 受试者[入组](main)的[年龄](sub)要求
     - 入组的[年龄](sub)
+    - [COPD](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [COPD](sub)
 - intent: thanks
   examples: |
     - 谢谢你
@@ -1113,6 +1115,9 @@ nlu:
 - synonym: 肺切除
   examples: |
     - 肺叶切除
+- synonym: 重度COPD
+  examples: |
+    - COPD
 - regex: item_number
   examples: |
     - \d{1,2}
