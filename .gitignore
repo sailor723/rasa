@@ -1,3 +1,14 @@
+# vscode 
+.vscode
+.env
+
+# rasa model
+models/
+
+#temp files
+*/__pycache__
+~*
+
 dump.rdb
 chats_analysis/chats_log.csv
 chats_analsysi/chats_log.pdf
