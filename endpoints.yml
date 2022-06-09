@@ -44,7 +44,7 @@ tracker_store:
    port: ${DCTA_REDIS_PORT}
    db: 0
    password: ${DCTA_REDIS_PWD}
-   use_ssl: true
+   use_ssl: false
 
 #tracker_store:
 #    type: mongod

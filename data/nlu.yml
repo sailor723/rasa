@@ -618,6 +618,36 @@ nlu:
     - 入组的[年龄](sub)
     - [COPD](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [COPD](sub)
+    - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}的[线数]{"entity": "sub", "value": "\u4e00\u7ebf\u6cbb\u7597"}要求
+    - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[一线](sub)
+    - [一线](sub)能[入](main)吗
+    - [二线](sub)能[入](main)吗
+    - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[二线](sub)
+    - [一线](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [二线](sub)能不能[入](main)
+    - [分期](sub)
+    - [入组](main)[分期](sub)
+    - [其他突变](sub)
+    - [其他突变](sub)的要求
+    - [依从性](sub)
+    - [遵从性]{"entity": "sub", "value": "\u9075\u4ece"}的要求
+    - [遵从](sub)的要求
+    - 患者[依从](sub)的要求
+    - [本院](sub)人员可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [阿斯利康](sub)员工可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [本科室](sub)人员可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [IIT研究](sub)
+    - [临床研究](sub)
+    - [研究者发起的研究](sub)
+    - [8201 ](sub)
+    - [随机过](sub)
+    - [已随机](sub)[已随机](sub)[已随机](sub)
+    - [重复随机](sub)
+    - [接种](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [疫苗](sub)[疫苗](sub)[疫苗](sub)
+    - 灭活[疫苗](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [减毒](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [免疫缺陷](sub)
 - intent: thanks
   examples: |
     - 谢谢你
@@ -767,10 +797,6 @@ nlu:
     - 前期病史
     - 前期病史的入排要求
     - 病史的入排要求
-- intent: other_exclusion_history
-  examples: |
-    - 其他[排除](main)标准
-    - 其他[排除](main)
 - intent: nlu_fallback
   examples: |
     - 今天天气如何
@@ -794,6 +820,7 @@ nlu:
     - 筛选
     - 加入
     - 入排标准
+    - 可入
 - synonym: 排除标准
   examples: |
     - 排除
@@ -810,6 +837,8 @@ nlu:
 - synonym: 遵从
   examples: |
     - 遵从性
+    - 依从性
+    - 依从
 - synonym: 滥用
   examples: |
     - 药物滥用
@@ -902,6 +931,8 @@ nlu:
 - synonym: 已随机
   examples: |
     - 已经随机
+    - 随机过
+    - 重复随机
 - synonym: 小细胞肺癌
   examples: |
     - 肺小细胞癌
@@ -950,6 +981,8 @@ nlu:
 - synonym: 临床试验
   examples: |
     - 临床研究
+    - 研究者发起的研究
+    - IIT研究
 - synonym: 肺癌
   examples: |
     - 疾病类型
@@ -1035,6 +1068,7 @@ nlu:
 - synonym: 临床分期
   examples: |
     - 疾病分期
+    - 分期
 - synonym: 帕博利珠
   examples: |
     - 博利
@@ -1108,6 +1142,7 @@ nlu:
 - synonym: 一线治疗
   examples: |
     - 线数
+    - 一线
 - synonym: 姑息性全身治疗
   examples: |
     - 姑息性治疗
@@ -1118,6 +1153,23 @@ nlu:
 - synonym: 重度COPD
   examples: |
     - COPD
+- synonym: 二线治疗
+  examples: |
+    - 二线
+- synonym: 工作人员
+  examples: |
+    - 本院
+    - 本科室
+    - 阿斯利康
+    - 本公司
+- synonym: 疫苗
+  examples: |
+    - 减毒
+    - 接种
+    - 灭活
+- synonym: 原发性免疫缺陷
+  examples: |
+    - 免疫缺陷
 - regex: item_number
   examples: |
     - \d{1,2}
