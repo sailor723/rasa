@@ -620,7 +620,7 @@ nlu:
     - [COPD](sub)
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}的[线数]{"entity": "sub", "value": "\u4e00\u7ebf\u6cbb\u7597"}要求
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[一线](sub)
-    - [一线](sub)能[入](main)吗
+    - [一线](sub)[能入](sub)吗
     - [二线](sub)[能入](main)吗
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[二线](sub)
     - [一线](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
