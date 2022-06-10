@@ -621,12 +621,12 @@ nlu:
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}的[线数]{"entity": "sub", "value": "\u4e00\u7ebf\u6cbb\u7597"}要求
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[一线](sub)
     - [一线](sub)能[入](main)吗
-    - [二线](sub)能[入](main)吗
+    - [二线](sub)[能入](main)吗
     - [入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}[二线](sub)
     - [一线](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [二线](sub)能不能[入](main)
     - [分期](sub)
-    - [入组](main)[分期](sub)
+    - [入组分期](sub)
     - [其他突变](sub)
     - [其他突变](sub)的要求
     - [依从性](sub)
@@ -644,8 +644,7 @@ nlu:
     - [已随机](sub)[已随机](sub)[已随机](sub)
     - [重复随机](sub)
     - [接种](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
-    - [疫苗](sub)[疫苗](sub)[疫苗](sub)
-    - 灭活[疫苗](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [灭活疫苗](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [减毒](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [免疫缺陷](sub)
 - intent: thanks
@@ -821,6 +820,7 @@ nlu:
     - 加入
     - 入排标准
     - 可入
+    - 能入
 - synonym: 排除标准
   examples: |
     - 排除
@@ -878,6 +878,10 @@ nlu:
 - synonym: 主知情
   examples: |
     - ICF
+- synonym: 一线治疗
+  examples: |
+    - 线数
+    - 一线
 - synonym: 鳞癌
   examples: |
     - 非鳞状
@@ -1069,6 +1073,7 @@ nlu:
   examples: |
     - 疾病分期
     - 分期
+    - 入组分期
 - synonym: 帕博利珠
   examples: |
     - 博利
@@ -1139,10 +1144,6 @@ nlu:
   examples: |
     - 氯喹
     - 羟氯喹
-- synonym: 一线治疗
-  examples: |
-    - 线数
-    - 一线
 - synonym: 姑息性全身治疗
   examples: |
     - 姑息性治疗
@@ -1167,6 +1168,7 @@ nlu:
     - 减毒
     - 接种
     - 灭活
+    - 灭活疫苗
 - synonym: 原发性免疫缺陷
   examples: |
     - 免疫缺陷
