@@ -234,7 +234,7 @@ class ActionLogin(Action):
             site_id ='北京肿瘤医院'
             version = '2.0'
             token = None
-            CRA_mobile = '13211833746'
+            CRA_mobile = '13111111111'
 
         msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
 

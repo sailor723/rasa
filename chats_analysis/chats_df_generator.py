@@ -140,6 +140,9 @@ for a in v_list:
         # print('a_location:', v_list.index(a))
         
         df_final.loc[message_id_in_memory, 'action'] = 'new action_default_fallback'
+#----------------------------bot text----------------------------------------------------------------#
+    if a['event'] == 'bot':
+        df_final.loc[message_id_in_memory,'bot_text'] = a['text']
  
 #         df_final['action'] =  a['name']
 #         print('message_id by action : ', message_id_in_memory)
