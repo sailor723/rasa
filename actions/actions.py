@@ -214,17 +214,18 @@ class ActionLogin(Action):
 
         print('tracker_sende_id:', tracker.current_state()['sender_id'])
 
-        trackcer_sender_id = tracker.current_state()['sender_id']
+        tracker_sender_id = tracker.current_state()['sender_id']
 
-        print('tracker_sender_id:', trackcer_sender_id)
+        print('tracker_sender_id:', tracker_sender_id)
 
         try:
-            sender_id = [_ for _ in trackcer_sender_id.split('+')][0]
-            sender_name = [_ for _ in trackcer_sender_id.split('+')][1]
-            site_id = [_ for _ in trackcer_sender_id.split('+')][4]
-            version = [_ for _ in trackcer_sender_id.split('+')][5].split('-')[0]
-            token = [_ for _ in trackcer_sender_id.split('+')][6]
-            CRA_mobile = [_ for _ in trackcer_sender_id.split('+')][7]
+            sender_id = [_ for _ in tracker_sender_id.split('+')][0].strip()
+            sender_name = [_ for _ in tracker_sender_id.split('+')][1].strip()
+            site_id = [_ for _ in tracker_sender_id.split('+')][4].strip()
+            version = [_ for _ in tracker_sender_id.split('+')][5].split('-')[0].strip()
+            token = [_ for _ in tracker_sender_id.split('+')][6].strip()
+            CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7].strip()
+            print('sender_name:', sender_name)
         except:
             # sender_id = ''
             # site_id =''
@@ -235,6 +236,7 @@ class ActionLogin(Action):
             version = '2.0'
             token = None
             CRA_mobile = '13111111111'
+            print('sender_name:', sender_name)
 
         msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
 
