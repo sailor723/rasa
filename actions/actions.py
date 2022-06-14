@@ -219,12 +219,22 @@ class ActionLogin(Action):
         print('tracker_sender_id:', tracker_sender_id)
 
         try:
+<<<<<<< HEAD
             sender_id = [_ for _ in tracker_sender_id.split('+')][0]
             sender_name = [_ for _ in tracker_sender_id.split('+')][1]
             site_id = [_ for _ in tracker_sender_id.split('+')][4]
             version = [_ for _ in tracker_sender_id.split('+')][5].split('-')[0]
             token = [_ for _ in tracker_sender_id.split('+')][6]
             
+=======
+            sender_id = [_ for _ in tracker_sender_id.split('+')][0].strip()
+            sender_name = [_ for _ in tracker_sender_id.split('+')][1].strip()
+            site_id = [_ for _ in tracker_sender_id.split('+')][4].strip()
+            version = [_ for _ in tracker_sender_id.split('+')][5].split('-')[0].strip()
+            token = [_ for _ in tracker_sender_id.split('+')][6].strip()
+            CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7].strip()
+            print('sender_name:', sender_name)
+>>>>>>> feature-BI
         except:
 
             sender_id = '123465'
@@ -232,10 +242,15 @@ class ActionLogin(Action):
             site_id ='北京肿瘤医院'
             version = '2.0'
             token = None
+<<<<<<< HEAD
         try:
             CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7]
         except:
             CRA_mobile = '13111111111'
+=======
+            CRA_mobile = '13111111111'
+            print('sender_name:', sender_name)
+>>>>>>> feature-BI
 
         msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
 

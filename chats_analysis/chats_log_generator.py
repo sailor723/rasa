@@ -4,6 +4,7 @@
 import pandas as pd
 import numpy as np
 import os, json
+from datetime import datetime
 from sqlalchemy  import create_engine, Column, Integer, String
 
 DCTA_MYSQL_USER = os.getenv('DCTA_MYSQL_USER')
@@ -52,49 +53,91 @@ print(len(v_list))
 def chunkstring(string, length):
     return (string[0+i:length+i] for i in range(0, len(string), length))
 
+#-----------------------------function start_date_json-------- ----------------------------------------------------------------#
+
+def start_date_json (time_stamp):
+    time_key = ["year", "month", "day", "hour", "minute","second"]
+    time_value = [dt_object.strftime("%Y"), dt_object.strftime("%m"), dt_object.strftime("%d"),dt_object.strftime("%H"),dt_object.strftime("%M"),dt_object.strftime("%S")]
+    dict(zip(time_key, time_value))
+    dict1 = dict(zip(time_key, time_value))
+    return (dict1)
+
 #-----------------------------interprate data for log file, extract entities and csp---------------------------------------#
+# generate log file
+chats_data_combined = ''
 list1 = []
 chats_data = ''
+chats_data_json = ''
 msg = ''
 num = 0
 print('-'* 120)
-entity_list = []
-csp_list = []
+user_message = ''
+sender_site = ''
+sender_name = ''
+json_list = []
+
 for a in v_list:
 
     if msg != '' and a['event'] == 'user':
-        print('-'* 120)
-        chats_data += '\n'+ ('-'* 120)
         
+        user_message =  sender_site + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
+        json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
+
+        print('-'* 120)
+
+        chats_data_combined += chats_data
+        
+        chats_data =  ('-'* 120 )
+        chats_data_json = ''
+#         print('timestamp:', a['timestamp'])
+#         chats_data += '\n'+ 'timestamp:' + str(v_list[0]['timestamp'])
     if a['event'] == 'user':
+        
+        chats_data += '\n'+ 'timestamp:' + str(a['timestamp'])
+        
+        dt_object = datetime.fromtimestamp(a['timestamp'])
+        time_json = start_date_json(a['timestamp'])
+                                       
         print('user_intent:', a['parse_data']['intent']['name'], a['parse_data']['intent']['confidence'])
         chats_data += '\n'+ 'user_intent:' + str(a['parse_data']['intent']['name']) + str(a['parse_data']['intent']['confidence'])
         num = num + 1
         
     if a['event'] == 'bot':
-        print('BOT: ','\n'.join(list(chunkstring(a['text'],40))))
-    
-        chats_data +=  '\n'+'BOT: ' +'\n'.join(list(chunkstring(a['text'],40)))
-        if len(entity_list) == (len(csp_list) + 1):
-            csp_list.append(a['text'].strip())
+                                       
+        print('BOT: ', a['text'])
+        chats_data +=  '\n'+'BOT: ' + str(a['text'])
+
+#         chats_data_json +=  '<br>'+'BOT: ' + ''.join(['<p>' + item + '</p>' for item in cut_text(a['text'],40)])
+        chats_data_json +=  '<br><br>'+'BOT: ' + a['text']
         
-       
-#     if a['event'] == 'action':
-#         print(' '* 80, '|  action:', a['name'])
-#         chats_data += '\n'+ 'action:' + a['name']
+        
+    if a['event'] == 'action':
+                                                                             
+        print(' '* 80, '|  action:', a['name'])
+        chats_data += '\n'+ 'action:' + a['name']
+    
         
     if a['event'] == 'slot':
+                                              
         print(' ' * 80, '|  slot:',a['name'], a['value'])
-        if a['name'] == 'sub' and a['value'] != None:
+        chats_data +=  '\n'+'slot:' +  str(a['name']) + str(a['value'])
+        if a['name'] == 'site_id':
+            sender_site = a['value']
+        if a['name'] == 'sender_name':
+            sender_name = a['value']
 
-            entity_list.append(a['value'][0])
     try:
 #         print('message_id:',a['parse_data']['message_id'])
         chats_data +=  '\n'+'message_id:' + a['parse_data']['message_id']
             
-        print('USER:', '\n'.join(list(chunkstring(a['parse_data']['text'],40))))
-        chats_data +=  '\n'+'USER:'+ '\n'.join(list(chunkstring(a['parse_data']['text'],40)))
-        
+        print('USER:', a['parse_data']['text'])
+        user_message = a['parse_data']['text']
+        chats_data +=  '\n'+'USER:'+ a['parse_data']['text']
+#         chats_data_json +=  '<br>'+'USER:'+ a['parse_data']['text'] + '<br>'
+                                                                                                    
+#         chats_data_json += '<br>'+'USER: ' + ''.join(['<p>' + item + '</p>' for item in cut_text(a['parse_data']['text'],40)]) + '<br>'   
+        chats_data_json += '<br>'+'USER: ' + a['parse_data']['text']
+                                                                                                    
         if msg == '':
             msg = a['parse_data']['message_id']
         else:
@@ -103,12 +146,24 @@ for a in v_list:
     except:
         list1.append(a)
         pass
+user_message =  sender_site + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
+json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
+print('-'* 120)
 
-with open(redis_log_name,'w',encoding='utf-8-sig') as file:
-    file.write(chats_data)
-
-df_entity_csp = pd.DataFrame(zip(entity_list, csp_list), columns = ['entity', 'csp'])
-df_entity_csp.to_csv(entity_csp_name, encoding='utf-8-sig')
+chats_data_combined += chats_data
     
-print('total number',num)
+# write log file
+with open('chats_log.csv','w',encoding='utf-8-sig') as file:
+    file.write(chats_data_combined)
+
+# write json file
+json_file = {'text': {'headline': 'Welcome to DCTA Dialog',
+         'text': 'DCTA conversational log'}, 
+
+'events': json_list}
+# write to json
+with open('chats_result.json','w',encoding='utf-8') as fp:
+    json.dump(json_file, fp,ensure_ascii=False)
+
+# print('total number',num)
         

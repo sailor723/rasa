@@ -140,6 +140,9 @@ for a in v_list:
         # print('a_location:', v_list.index(a))
         
         df_final.loc[message_id_in_memory, 'action'] = 'new action_default_fallback'
+#----------------------------bot text----------------------------------------------------------------#
+    if a['event'] == 'bot':
+        df_final.loc[message_id_in_memory,'bot_text'] = a['text']
  
 #         df_final['action'] =  a['name']
 #         print('message_id by action : ', message_id_in_memory)
@@ -155,7 +158,38 @@ for row, col in df_final.iterrows():
         value_list.append(col['text'])
 df_final['clean_text'] = value_list
 
-df_final
+#---------------------------- bot catetory--------------------------------------------------------------#
+
+bot_category = []
+
+for item in df_final.bot_text.to_list():
+
+    if '试验方案第' in item.split('\n')[0] and (('入选标准第') in item.split('\n')[1] or '排除标准第' in item.split('\n')[1]):
+        bot_category.append(item.split('\n')[1])
+    elif 'DL04问题' in item:
+     
+        bot_category.append('Q&A Log')
+        
+    elif '我是阿斯利康的临床试验智能助手小易，很高兴为您服务' in item and '您好' in item:
+        bot_category.append('打招呼')
+        
+    elif '现在小易还不能回答' in item:
+        bot_category.append('由于范围不能回答')
+      
+    elif '我在方案中没有找到' in item:
+        bot_category.append('图谱查询失败')
+
+    elif '我不太理解' in item:
+        bot_category.append('问题不能理解')
+
+    else:
+        bot_category.append('其他')
+
+df_final['bot_category'] =  bot_category
+
+#------------------------------------------------------------------------------------------------------------------
+
+# df_final
 
 df_final.to_csv(chat_full_name)
 
