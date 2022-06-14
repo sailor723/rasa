@@ -1274,3 +1274,125 @@ slot:site_id北京肿瘤医院
 slot:version2.0
 slot:tokenNone
 action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655222571.946353
+user_intent:greet0.9954973459243774
+message_id:54287e2ee2284fad966f01993bf80867
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655222584.9521892
+user_intent:inform_protocol1.0
+message_id:2426688e0dec4398b3d9beeb9a330e2a
+USER:胆红素的要求
+slot:sub总胆红素
+action:simple_protocol_form
+slot:sub总胆红素
+slot:main入选标准
+slot:sub_list['总胆红素']
+slot:sub总胆红素
+slot:main入选标准
+slot:sub_list['总胆红素']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第11条 
+随机化/入组前14天内具有足够的器官和骨髓功能，如下所示	/DL04 V2总胆红素 : 
+总胆红素:如果无肝转移，≤1.5×ULN；或基线时存在经证实的Gilbert综合
+征（非结合型高胆红素血症）或肝转移记录时，<3×ULN
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655224286.5567467
+user_intent:inform_protocol1.0
+message_id:7a69e46312bf430bbb7dabb831b62785
+USER:ffpe
+slot:subffpe
+action:simple_protocol_form
+slot:subffpe
+slot:main入选标准
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:sub['ffpe', 'ffpe', 'ffpe']
+slot:main入选标准
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:requested_slotNone
+action:action_check_protocol
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655224328.5095863
+user_intent:inform_protocol1.0
+message_id:074ea77475e64c789d78b84ba1e07d41
+USER:FFPE
+slot:subFFPE
+action:simple_protocol_form
+slot:main入选标准
+slot:subFFPE
+slot:sub_list['FFPE', 'FFPE', 'FFPE']
+slot:sub['FFPE', 'FFPE', 'FFPE']
+slot:sub_list['FFPE', 'FFPE', 'FFPE']
+slot:requested_slotNone
+action:action_check_protocol
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655224344.255758
+user_intent:greet0.9954973459243774
+message_id:363655dd14e245bc85531e47cfe07204
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655224350.1490908
+user_intent:inform_protocol1.0
+message_id:97d9b4655c114e45ad56a409c46e2069
+USER:ffpe
+slot:subffpe
+action:simple_protocol_form
+slot:main入选标准
+slot:subffpe
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:sub['ffpe', 'ffpe', 'ffpe']
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第8条 
+必须获取FFPE肿瘤样本，送至中心实验室进行检测。如果未书面确认可提供存档肿瘤样本（首选）或选择最近获得的活检（作为其常规临床治疗途径的一部分进行，见第8.6.1.1节 ），则受试者没有资格参加研究。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen
