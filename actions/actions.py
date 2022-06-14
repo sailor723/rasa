@@ -224,16 +224,17 @@ class ActionLogin(Action):
             site_id = [_ for _ in tracker_sender_id.split('+')][4]
             version = [_ for _ in tracker_sender_id.split('+')][5].split('-')[0]
             token = [_ for _ in tracker_sender_id.split('+')][6]
-            CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7]
+            
         except:
-            # sender_id = ''
-            # site_id =''
-            # version = ''
+
             sender_id = '123465'
             sender_name = 'zhaoyisheng'
             site_id ='北京肿瘤医院'
             version = '2.0'
             token = None
+        try:
+            CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7]
+        except:
             CRA_mobile = '13111111111'
 
         msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
@@ -480,7 +481,11 @@ class ActionCheckProtocol(Action):
             if len(result) == 0:
                 # msg = '对不起，小易没有找到。我还需要学习'
 
-                text_CRA = '我不太理解，我会转给负责咱们中心的CRA。CRA的电话是' + CRA_mobile
+                if CRA_mobile == '13111111111':
+                    text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA。'
+                else:
+                
+                    text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
 
                 payload = {
                     "userId": sender_id,
@@ -587,7 +592,11 @@ class ActionCheckProtocol(Action):
         except:
             print('error for check neo4j entities')
             
-            text_CRA = '我不太理解，我会转给负责咱们中心的CRA。 CRA的电话是' + CRA_mobile
+            if CRA_mobile == '13111111111':
+                text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA。'
+            else:
+            
+                text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
 
             payload = {
                 "userId": sender_id,
@@ -645,7 +654,12 @@ class ActionDefaultFallback(Action):
         CRA_mobile = tracker.get_slot('CRA_mobile')
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
-        text_CRA = '我不太理解，我会转给负责咱们中心的CRA。CRA的电话是' + CRA_mobile
+        
+        if CRA_mobile == '13111111111':
+            text_CRA =  '我不太理解，我会转给负责咱们中心的CRA。'
+        else:
+        
+            text_CRA = '我不太理解，我会转给负责咱们中心的CRA。CRA的电话是' + CRA_mobile
 
         payload = {
             "userId": sender_id,
@@ -702,7 +716,11 @@ class ActionDefaultFallback(Action):
         print('CRA_mobile:', CRA_mobile)
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
-        text_CRA = '现在小易还不能回答，我会转给负责咱们中心的CRA。 CRA的电话是' +  CRA_mobile
+        
+        if CRA_mobile == '13111111111':
+            text_CRA =  '现在小易还不能回答，我会转给负责咱们中心的CRA。'
+        else:
+            text_CRA = '现在小易还不能回答，我会转给负责咱们中心的CRA。 CRA的电话是' +  CRA_mobile
 
         payload = {
             "userId": sender_id,
