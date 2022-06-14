@@ -538,3 +538,739 @@ slot:site_id北京肿瘤医院
 slot:version2.0
 slot:tokenNone
 action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655107213.3115914
+user_intent:greet0.9954973459243774
+message_id:3d715e9dafcb460087eed24ddbea72a3
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655107220.4310226
+user_intent:inform_protocol1.0
+message_id:5213a5d871e54e199011c5b5aaa2a009
+USER:/inform_protocol{"sub": "胸腔积液"}
+slot:sub胸腔积液
+action:simple_protocol_form
+slot:sub胸腔积液
+slot:main入选标准
+slot:sub_list['胸腔积液']
+slot:sub胸腔积液
+slot:main入选标准
+slot:sub_list['胸腔积液']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+试验方案第69页 
+排除标准第12条 
+肺部标准：
+− 具有临床意义的肺特异性并发疾病，包括但不限于任何基础肺部疾病（例如，研究入组前3个月内肺栓塞、重度哮喘、重度COPD、限制性肺部疾病、胸腔积液等）
+− 任何有记录的自身免疫性、结缔组织或炎症性疾病（即类风湿性关节炎、舍格林病、肉状瘤病等），或筛选时怀疑肺部受累。对于入选研究的受试者，疾病的全部详细内容均应记录在 eCRF 中。
+− 既往全肺切除术 注：允许既往肺叶或肺段切除	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肺炎,类固醇']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655107226.6841946
+user_intent:new_scope0.8563716411590576
+message_id:907e39e12cb24345b831ee49ba62ef30
+USER:SOA
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"SOA""现在小易还不能回答，我会转给负责咱们中心的CRA。
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655107738.0313888
+user_intent:greet0.9954973459243774
+message_id:12b9cba4b6f64859ba03c405bd699204
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655107744.0429907
+user_intent:inform_protocol1.0
+message_id:81a90dbdf050465db55d08f742a629dc
+USER:/inform_protocol{"sub": "精神疾病"}
+slot:sub精神疾病
+action:simple_protocol_form
+slot:main入选标准
+slot:sub精神疾病
+slot:sub_list['精神疾病']
+slot:sub精神疾病
+slot:sub_list['精神疾病']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第3条 
+存在未得到控制的并发疾病，包括但不限于持续感染或活动性感染、未受控制的高血压、与腹泻相关的严重慢性胃肠道疾病或限制研究要求依从性的精神疾病/社会状况、发生 AE 的风险显著增加或损害受试者提供书面知情同意的能力	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['T-DXD,感染,MSUD,代谢失']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655107755.02133
+user_intent:new_scope0.8563716411590576
+message_id:edc550b63ede47a8b840d94c67795729
+USER:SOA
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"SOA""现在小易还不能回答，我会转给负责咱们中心的CRA。
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655046213.0767875
+user_intent:greet0.9954973459243774
+message_id:d3385c0d0716459dbef4d2991ebe698e
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13211833746
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655046431.225334
+user_intent:inform_protocol1.0
+message_id:83dca36eb6ff4c63a44dac8957e3ee7d
+USER:腹水
+slot:sub腹水
+action:simple_protocol_form
+slot:sub腹水
+slot:main入选标准
+slot:sub_list['腹水', '腹水', '腹水']
+slot:sub['腹水', '腹水', '腹水']
+slot:main入选标准
+slot:sub_list['腹水', '腹水', '腹水']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655046439.1639662
+user_intent:inform_protocol1.0
+message_id:c3c26f98b0e24b11b460dfcbcb10f4da
+USER:/inform_protocol{"sub": "心包积液,胸腔积液,腹水"}
+slot:sub心包积液,胸腔积液,腹水
+action:simple_protocol_form
+slot:main入选标准
+slot:sub心包积液,胸腔积液,腹水
+slot:sub_list['心包积液,胸腔积液,腹水']
+slot:sub心包积液,胸腔积液,腹水
+slot:sub_list['心包积液,胸腔积液,腹水']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>DL04问题: </b>排除标准6；有需要引流的胸腔积液、腹水或心包积液病史的患者是否可以接受？如果是，截止时间是什么时候？
+<b>DL04回答: </b>我们不打算在CSP中加入截止时间。我们不想排除那些有“病史”的患者。只排除在筛选期间需要引流的患者。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655046588.4774647
+user_intent:inform_protocol1.0
+message_id:7053aea9b84e45a994ff10267c51f2e6
+USER:/inform_protocol{"sub": "穿刺"}
+slot:sub穿刺
+action:simple_protocol_form
+slot:main入选标准
+slot:sub穿刺
+slot:sub_list['穿刺']
+slot:sub穿刺
+slot:sub_list['穿刺']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>DL04问题: </b>对于排除标准#6：请确认无需引流的胸腔穿刺患者是否具备研究资格？
+<b>DL04回答: </b>是的，患者将被接受。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047771.5155382
+user_intent:inform_protocol1.0
+message_id:108e90c296a44328aec57c06d5e95a22
+USER:/inform_protocol{"sub": "穿刺"}
+slot:sub穿刺
+action:simple_protocol_form
+slot:main入选标准
+slot:sub穿刺
+slot:sub_list['穿刺']
+slot:sub穿刺
+slot:sub_list['穿刺']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>DL04问题: </b>对于排除标准#6：请确认无需引流的胸腔穿刺患者是否具备研究资格？
+<b>DL04回答: </b>是的，患者将被接受。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047780.4682672
+user_intent:inform_protocol1.0
+message_id:eede8dcbe50c49b89fd4a6d3ffccf88b
+USER:/inform_protocol{"sub": "洗脱期,胸腔积液,穿刺"}
+slot:sub洗脱期,胸腔积液,穿刺
+action:simple_protocol_form
+slot:main入选标准
+slot:sub洗脱期,胸腔积液,穿刺
+slot:sub_list['洗脱期,胸腔积液,穿刺']
+slot:sub洗脱期,胸腔积液,穿刺
+slot:sub_list['洗脱期,胸腔积液,穿刺']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>DL04问题: </b>反复穿刺后的洗脱期需要多久？
+<b>DL04回答: </b>根据表9，胸腔积液引流至少需要2周的洗脱期。
+<b>DL04问题: </b>是否排除留置引流管（PLEURX型）的患者？反复胸腔穿刺的患者也被排除在外吗？ 
+如果是，穿刺后的洗脱期需要多久？因为这代表了很大一部分患者
+<b>DL04回答: </b>根据排除标准6，有胸腔积液需要引流的患者会使得该患者不具备研究资格。因此，使用pleurx导管的患者符合需要持续引流的积液标准。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047839.7871654
+user_intent:inform_protocol1.0
+message_id:49fe3ab58dae4930936ad81b4f6ea1f4
+USER:/inform_protocol{"sub": "穿刺"}
+slot:sub穿刺
+action:simple_protocol_form
+slot:main入选标准
+slot:sub穿刺
+slot:sub_list['穿刺']
+slot:sub穿刺
+slot:sub_list['穿刺']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第6条问题:/b><b>DL04问题: </b>对于排除标准#6：请确认无需引流的胸腔穿刺患者是否具备研究资格？
+<b>DL04回答: </b>是的，患者将被接受。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047849.6421192
+user_intent:inform_protocol1.0
+message_id:69fb1886d5da4975a612cb196d342cfd
+USER:/inform_protocol{"sub": "胸腔积液,洗脱期,穿刺"}
+slot:sub胸腔积液,洗脱期,穿刺
+action:simple_protocol_form
+slot:main入选标准
+slot:sub胸腔积液,洗脱期,穿刺
+slot:sub_list['胸腔积液,洗脱期,穿刺']
+slot:sub胸腔积液,洗脱期,穿刺
+slot:sub_list['胸腔积液,洗脱期,穿刺']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047860.3706172
+user_intent:inform_protocol1.0
+message_id:0e68cdd934274060a951b4c979541d28
+USER:/inform_protocol{"sub": "洗脱期,胸腔积液,穿刺"}
+slot:sub洗脱期,胸腔积液,穿刺
+action:simple_protocol_form
+slot:main入选标准
+slot:sub洗脱期,胸腔积液,穿刺
+slot:sub_list['洗脱期,胸腔积液,穿刺']
+slot:sub洗脱期,胸腔积液,穿刺
+slot:sub_list['洗脱期,胸腔积液,穿刺']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2
+试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047867.8129494
+user_intent:inform_protocol1.0
+message_id:35b69c9e78c84d63919afa7a9029486f
+USER:/inform_protocol{"sub": "心包积液,胸腔积液,腹水"}
+slot:sub心包积液,胸腔积液,腹水
+action:simple_protocol_form
+slot:main入选标准
+slot:sub心包积液,胸腔积液,腹水
+slot:sub_list['心包积液,胸腔积液,腹水']
+slot:sub心包积液,胸腔积液,腹水
+slot:sub_list['心包积液,胸腔积液,腹水']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047882.3735118
+user_intent:restart1.0
+message_id:81a2f58611d5459bab016d91dfb84b1b
+USER:/restart
+action:action_restart
+action:action_session_start
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655090034.8723726
+user_intent:greet0.9954973459243774
+message_id:74c6f93cca8b48eea5444c0059cf4e1b
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655090247.0209677
+user_intent:greet0.9954973459243774
+message_id:9862c1d1681a4692b344062cdbeda6ef
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好Admin，北京大学肿瘤医院的方案版本是2.1。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_nameAdmin
+slot:site_id北京大学肿瘤医院
+slot:version2.1
+slot:tokeneyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODY2MjAyMDcsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOnRydWUsInVzZXJOYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IkUxMEFEQzM5NDlCQTU5QUJCRTU2RTA1N0YyMEY4ODNFIiwibmFtZSI6IkFkbWluICIsImJ1aWx0SW4iOnRydWUsInR5cGUiOjEsImFjdGl2ZSI6dHJ1ZSwic2l0ZVZPTGlzdCI6W3siaWQiOjEyMzQ1NjEzMDEsIm5hbWUiOiLljJfkuqzlpKflrabogr_nmKTljLvpmaIiLCJleHBlcmltZW50YWxWZXJzaW9uIjoiMi4xIiwib3JnQ29kZSI6bnVsbH1dLCJlbWFpbCI6IkFkbWluMUBxcS5jb20ifSwic3ViIjoiYWRtaW4ifQ.2dlJ26vQ28rz1qacfO97vs91uopN9fsQOy-Hiup_LbF-DNropZpLExDB_N_8fsgvq1uOA36W_KVwSd2xdIulJQ
+slot:CRA_mobile13241111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655090314.723713
+user_intent:greet0.9954973459243774
+message_id:70e2e51d8a654dfb890858f46eeb0f06
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13111111111
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047888.1330328
+user_intent:inform_protocol1.0
+message_id:404293dc794646adbf1509b94d7171e3
+USER:腹水
+slot:sub腹水
+action:simple_protocol_form
+slot:sub腹水
+slot:main入选标准
+slot:sub_list['腹水', '腹水', '腹水']
+slot:sub['腹水', '腹水', '腹水']
+slot:main入选标准
+slot:sub_list['腹水', '腹水', '腹水']
+slot:requested_slotNone
+action:action_check_protocol
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047912.519764
+user_intent:greet0.9954973459243774
+message_id:b421864896e94ab9ab0abbec0db5bff3
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13211833746
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047919.6526444
+user_intent:inform_protocol1.0
+message_id:22393a028db8422787aa75341d0132d9
+USER:腹水
+slot:sub腹水
+action:simple_protocol_form
+slot:main入选标准
+slot:sub腹水
+slot:sub_list['腹水', '腹水', '腹水']
+slot:sub['腹水', '腹水', '腹水']
+slot:sub_list['腹水', '腹水', '腹水']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047926.7447464
+user_intent:inform_protocol1.0
+message_id:89f8ae2b54b4411d8ba77a004a9580ba
+USER:/inform_protocol{"sub": "前三个月,心包积液,洗脱期,腹水,胸腔积液"}
+slot:sub前三个月,心包积液,洗脱期,腹水,胸腔积液
+action:simple_protocol_form
+slot:main入选标准
+slot:sub前三个月,心包积液,洗脱期,腹水,胸腔积液
+slot:sub_list['前三个月,心包积液,洗脱期,腹水,胸腔积液']
+slot:sub前三个月,心包积液,洗脱期,腹水,胸腔积液
+slot:sub_list['前三个月,心包积液,洗脱期,腹水,胸腔积液']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655047937.975652
+user_intent:inform_protocol1.0
+message_id:9c064affda6f402b9d67ddde81e662a4
+USER:/inform_protocol{"sub": "肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液"}
+slot:sub肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液
+action:simple_protocol_form
+slot:main入选标准
+slot:sub肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液
+slot:sub_list['肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液']
+slot:sub肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液
+slot:sub_list['肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655048045.6777728
+user_intent:greet0.9954973459243774
+message_id:b11bf45aef3142d681250efc91066173
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13211833746
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655048054.3745213
+user_intent:inform_protocol1.0
+message_id:130895eb2b2c45b597728916963b6977
+USER:腹水
+slot:sub腹水
+action:simple_protocol_form
+slot:main入选标准
+slot:sub腹水
+slot:sub_list['腹水', '腹水', '腹水']
+slot:sub['腹水', '腹水', '腹水']
+slot:sub_list['腹水', '腹水', '腹水']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655048079.4777956
+user_intent:inform_protocol1.0
+message_id:f0e845fcfbc24fcc98383334977fd331
+USER:/inform_protocol{"sub": "心包积液,胸腔积液,腹水"}
+slot:sub心包积液,胸腔积液,腹水
+action:simple_protocol_form
+slot:main入选标准
+slot:sub心包积液,胸腔积液,腹水
+slot:sub_list['心包积液,胸腔积液,腹水']
+slot:sub心包积液,胸腔积液,腹水
+slot:sub_list['心包积液,胸腔积液,腹水']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655048469.847821
+user_intent:inform_protocol1.0
+message_id:82951391088c47f29b9d2d244992e2a2
+USER:/inform_protocol{"sub": "洗脱期,胸腔积液,穿刺"}
+slot:sub洗脱期,胸腔积液,穿刺
+action:simple_protocol_form
+slot:main入选标准
+slot:sub洗脱期,胸腔积液,穿刺
+slot:sub_list['洗脱期,胸腔积液,穿刺']
+slot:sub洗脱期,胸腔积液,穿刺
+slot:sub_list['洗脱期,胸腔积液,穿刺']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2
+试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655048501.796734
+user_intent:inform_protocol1.0
+message_id:8102b2e2102d4933a501ff4c6e8b9d4f
+USER:/inform_protocol{"sub": "知情同意"}
+slot:sub知情同意
+action:simple_protocol_form
+slot:main入选标准
+slot:sub知情同意
+slot:sub_list['知情同意']
+slot:sub知情同意
+slot:sub_list['知情同意']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>入选标准预筛选问题:/b><b>DL04问题: </b>2.	确认一下我的理解是否正确，即对于排除标准6，这只适用于在筛选时需要引流的患者，并且可以允许在知情同意前发生的任何引流。这是相关的，因为研究中心可能会为患者规划一个线路图，其中患者目前不适合进行研究，因为她/他需要进行引流，但是患者一旦从中恢复，可能会被邀请参与研究。
+<b>DL04回答: </b>这被解释为筛选时需要引流。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655093747.889884
+user_intent:greet0.9954973459243774
+message_id:52a075d96259493ab05b7ddbc198bc65
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile13211833746
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655093763.2530012
+user_intent:inform_protocol1.0
+message_id:16128c3757d54392a5ab762eb348d369
+USER:/inform_protocol{"sub": "炎性肠病"}
+slot:sub炎性肠病
+action:simple_protocol_form
+slot:sub炎性肠病
+slot:main入选标准
+slot:sub_list['炎性肠病']
+slot:sub炎性肠病
+slot:main入选标准
+slot:sub_list['炎性肠病']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第5条 
+活动性或既往有记录的自体免疫性或炎症性疾病（包括炎性肠病[如，结肠炎或克罗恩病]、憩室炎[憩室病除外]、系统性红斑狼疮、肉状瘤病、肉芽肿伴多血管炎、格雷夫斯病、类风湿关节炎、垂体炎、葡萄膜炎、自身免疫性肺炎、自身免疫性心肌炎。以下是该标准的例外情况：
+− 白癜风或脱发受试者
+− 接受激素替代治疗后病情稳定的甲状腺功能减退症受试者（如，桥本甲状腺炎后）
+− 任何不需要全身治疗的慢性皮肤病受试者。
+− 在过去 5 年内没有活动性疾病的受试者可以入组，但是仅在咨询阿斯利康研究医师后方可纳入。
+− 仅依靠饮食即可控制乳糜泻的受试者。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['皮肤病', '炎症']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_id北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+action:action_listen
