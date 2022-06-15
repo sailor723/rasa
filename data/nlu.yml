@@ -647,6 +647,7 @@ nlu:
     - [灭活疫苗](sub)可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [减毒](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [免疫缺陷](sub)
+    - [血小板]{"entity": "sub", "value": "\u8840\u5c0f\u677f\u8ba1\u6570"}计数标准
 - intent: thanks
   examples: |
     - 谢谢你
