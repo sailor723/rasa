@@ -39,7 +39,8 @@ for row, col in df.iterrows():
         print('warming, error for json load, tracker is:', tracker)
         continue
 
-print(len(v_list))
+print("length of tracker ", len(v_list))
+
 
 #-----------------------------dict to json-------------------------------------------------------------------#
 # new_col = [eval(item) if item != None else item for item  in df.parse_data]
@@ -62,108 +63,114 @@ def start_date_json (time_stamp):
     dict1 = dict(zip(time_key, time_value))
     return (dict1)
 
+if len(v_list) > 0:
 #-----------------------------interprate data for log file, extract entities and csp---------------------------------------#
 # generate log file
-chats_data_combined = ''
-list1 = []
-chats_data = ''
-chats_data_json = ''
-msg = ''
-num = 0
-print('-'* 120)
-user_message = ''
-sender_site = ''
-sender_name = ''
-json_list = []
+    chats_data_combined = ''
+    list1 = []
+    chats_data = ''
+    chats_data_json = ''
+    msg = ''
+    num = 0
+    print('-'* 120)
+    user_message = ''
+    site_name = ''
+    sender_name = ''
+    json_list = []
 
-for a in v_list:
+    for a in v_list:
 
-    if msg != '' and a['event'] == 'user':
+        if msg != '' and a['event'] == 'user':
+
+            print('site_name', site_name)
+            print('sender_name', sender_name)
+            print('user_message', user_message)
+            if sender_name:
+                user_message =  site_name + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
+                json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
+
+            print('-'* 120)
+
+            chats_data_combined += chats_data
+            
+            chats_data =  ('-'* 120 )
+            chats_data_json = ''
+    #         print('timestamp:', a['timestamp'])
+    #         chats_data += '\n'+ 'timestamp:' + str(v_list[0]['timestamp'])
+        if a['event'] == 'user':
+            
+            chats_data += '\n'+ 'timestamp:' + str(a['timestamp'])
+            
+            dt_object = datetime.fromtimestamp(a['timestamp'])
+            time_json = start_date_json(a['timestamp'])
+                                        
+            print('user_intent:', a['parse_data']['intent']['name'], a['parse_data']['intent']['confidence'])
+            chats_data += '\n'+ 'user_intent:' + str(a['parse_data']['intent']['name']) + str(a['parse_data']['intent']['confidence'])
+            num = num + 1
+            
+        if a['event'] == 'bot':
+                                        
+            print('BOT: ', a['text'])
+            chats_data +=  '\n'+'BOT: ' + str(a['text'])
+
+    #         chats_data_json +=  '<br>'+'BOT: ' + ''.join(['<p>' + item + '</p>' for item in cut_text(a['text'],40)])
+            chats_data_json +=  '<br><br>'+'BOT: ' + a['text']
+            
+            
+        if a['event'] == 'action':
+                                                                                
+            print(' '* 80, '|  action:', a['name'])
+            chats_data += '\n'+ 'action:' + a['name']
         
-        user_message =  sender_site + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
-        json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
+            
+        if a['event'] == 'slot':
+                                                
+            print(' ' * 80, '|  slot:',a['name'], a['value'])
+            chats_data +=  '\n'+'slot:' +  str(a['name']) + str(a['value'])
+            if a['name'] == 'site_name':
+                site_name = a['value']
+            if a['name'] == 'sender_name':
+                sender_name = a['value']
 
+        try:
+    #         print('message_id:',a['parse_data']['message_id'])
+            chats_data +=  '\n'+'message_id:' + a['parse_data']['message_id']
+                
+            print('USER:', a['parse_data']['text'])
+            user_message = a['parse_data']['text']
+            chats_data +=  '\n'+'USER:'+ a['parse_data']['text']
+    #         chats_data_json +=  '<br>'+'USER:'+ a['parse_data']['text'] + '<br>'
+                                                                                                        
+    #         chats_data_json += '<br>'+'USER: ' + ''.join(['<p>' + item + '</p>' for item in cut_text(a['parse_data']['text'],40)]) + '<br>'   
+            chats_data_json += '<br>'+'USER: ' + a['parse_data']['text']
+                                                                                                        
+            if msg == '':
+                msg = a['parse_data']['message_id']
+            else:
+                a['parse_data']['message_id']
+
+        except:
+            list1.append(a)
+            pass
+    if sender_name:
+        user_message =  site_name + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
+        json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
         print('-'* 120)
 
-        chats_data_combined += chats_data
+    chats_data_combined += chats_data
         
-        chats_data =  ('-'* 120 )
-        chats_data_json = ''
-#         print('timestamp:', a['timestamp'])
-#         chats_data += '\n'+ 'timestamp:' + str(v_list[0]['timestamp'])
-    if a['event'] == 'user':
-        
-        chats_data += '\n'+ 'timestamp:' + str(a['timestamp'])
-        
-        dt_object = datetime.fromtimestamp(a['timestamp'])
-        time_json = start_date_json(a['timestamp'])
-                                       
-        print('user_intent:', a['parse_data']['intent']['name'], a['parse_data']['intent']['confidence'])
-        chats_data += '\n'+ 'user_intent:' + str(a['parse_data']['intent']['name']) + str(a['parse_data']['intent']['confidence'])
-        num = num + 1
-        
-    if a['event'] == 'bot':
-                                       
-        print('BOT: ', a['text'])
-        chats_data +=  '\n'+'BOT: ' + str(a['text'])
+    # write log file
+    with open('chats_log.csv','w',encoding='utf-8-sig') as file:
+        file.write(chats_data_combined)
 
-#         chats_data_json +=  '<br>'+'BOT: ' + ''.join(['<p>' + item + '</p>' for item in cut_text(a['text'],40)])
-        chats_data_json +=  '<br><br>'+'BOT: ' + a['text']
-        
-        
-    if a['event'] == 'action':
-                                                                             
-        print(' '* 80, '|  action:', a['name'])
-        chats_data += '\n'+ 'action:' + a['name']
-    
-        
-    if a['event'] == 'slot':
-                                              
-        print(' ' * 80, '|  slot:',a['name'], a['value'])
-        chats_data +=  '\n'+'slot:' +  str(a['name']) + str(a['value'])
-        if a['name'] == 'site_id':
-            sender_site = a['value']
-        if a['name'] == 'sender_name':
-            sender_name = a['value']
+    # write json file
+    json_file = {'text': {'headline': 'Welcome to DCTA Dialog',
+            'text': 'DCTA conversational log'}, 
 
-    try:
-#         print('message_id:',a['parse_data']['message_id'])
-        chats_data +=  '\n'+'message_id:' + a['parse_data']['message_id']
-            
-        print('USER:', a['parse_data']['text'])
-        user_message = a['parse_data']['text']
-        chats_data +=  '\n'+'USER:'+ a['parse_data']['text']
-#         chats_data_json +=  '<br>'+'USER:'+ a['parse_data']['text'] + '<br>'
-                                                                                                    
-#         chats_data_json += '<br>'+'USER: ' + ''.join(['<p>' + item + '</p>' for item in cut_text(a['parse_data']['text'],40)]) + '<br>'   
-        chats_data_json += '<br>'+'USER: ' + a['parse_data']['text']
-                                                                                                    
-        if msg == '':
-            msg = a['parse_data']['message_id']
-        else:
-            a['parse_data']['message_id']
-
-    except:
-        list1.append(a)
-        pass
-user_message =  sender_site + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
-json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
-print('-'* 120)
-
-chats_data_combined += chats_data
-    
-# write log file
-with open('chats_log.csv','w',encoding='utf-8-sig') as file:
-    file.write(chats_data_combined)
-
-# write json file
-json_file = {'text': {'headline': 'Welcome to DCTA Dialog',
-         'text': 'DCTA conversational log'}, 
-
-'events': json_list}
-# write to json
-with open('chats_result.json','w',encoding='utf-8') as fp:
-    json.dump(json_file, fp,ensure_ascii=False)
+    'events': json_list}
+    # write to json
+    with open('chats_result.json','w',encoding='utf-8') as fp:
+        json.dump(json_file, fp,ensure_ascii=False)
 
 # print('total number',num)
         

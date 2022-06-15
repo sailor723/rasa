@@ -824,6 +824,8 @@ nlu:
     - 入排标准
     - 可入
     - 能入
+    - 标准
+    - 参加研究
 - synonym: 排除标准
   examples: |
     - 排除
@@ -885,6 +887,11 @@ nlu:
   examples: |
     - 线数
     - 一线
+- synonym: 临床试验
+  examples: |
+    - 临床研究
+    - 研究者发起的研究
+    - IIT研究
 - synonym: 鳞癌
   examples: |
     - 非鳞状
@@ -985,11 +992,6 @@ nlu:
     - 项目短标题
     - 短标题
     - 标题
-- synonym: 临床试验
-  examples: |
-    - 临床研究
-    - 研究者发起的研究
-    - IIT研究
 - synonym: 肺癌
   examples: |
     - 疾病类型

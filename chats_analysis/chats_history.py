@@ -4,7 +4,6 @@ import os, sys, subprocess
 import streamlit as st
 from streamlit_timeline import timeline
 import subprocess
-
 from datetime import datetime
 
 # get current data and time

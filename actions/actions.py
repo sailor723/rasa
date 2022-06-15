@@ -41,6 +41,12 @@ ALLOWED_MAIN_TYPES = ["入选标准", "排除标准"]
 INCLUSIONS = ["知情同意", "年龄", "受试者类型和疾病特征", "生殖方面"]
 EXCLUSIONS = ["医学疾病", "既往治疗/合并治疗", "既往/合并用药", "其他排除标准"]
 
+ERROR_1 = "我不太理解，我会把问题转给负责咱们中心的CRA。 <101>"
+ERROR_2 = "我在方案中没有找到，我会把问题转给负责咱们中心的CRA。<102>"
+ERROR_3 = "现在小易还不能回答，我会转给负责咱们中心的CRA。<103>"
+ERROR_4 = "数据库查询失败，我会把问题转给系统部门。谢谢。<104>"
+ERROR_5 = "CRA的电话是"
+DEFAULT_Mobile = '11111111111'
 EXCLUSION_SEC_1 = [1,16]
 
 TARGET_NODE_LIST = ["入选标准", "排除标准","DL04"]
@@ -219,38 +225,23 @@ class ActionLogin(Action):
         print('tracker_sender_id:', tracker_sender_id)
 
         try:
-<<<<<<< HEAD
-            sender_id = [_ for _ in tracker_sender_id.split('+')][0]
-            sender_name = [_ for _ in tracker_sender_id.split('+')][1]
-            site_id = [_ for _ in tracker_sender_id.split('+')][4]
-            version = [_ for _ in tracker_sender_id.split('+')][5].split('-')[0]
-            token = [_ for _ in tracker_sender_id.split('+')][6]
-            
-=======
             sender_id = [_ for _ in tracker_sender_id.split('+')][0].strip()
             sender_name = [_ for _ in tracker_sender_id.split('+')][1].strip()
-            site_id = [_ for _ in tracker_sender_id.split('+')][4].strip()
+            # site_id = [_ for _ in tracker_sender_id.split('+')][3].strip()
+            site_name = [_ for _ in tracker_sender_id.split('+')][4].strip()
             version = [_ for _ in tracker_sender_id.split('+')][5].split('-')[0].strip()
             token = [_ for _ in tracker_sender_id.split('+')][6].strip()
             CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7].strip()
             print('sender_name:', sender_name)
->>>>>>> feature-BI
         except:
-
             sender_id = '123465'
             sender_name = 'zhaoyisheng'
-            site_id ='北京肿瘤医院'
+            # site_id ='北京肿瘤医院'
+            site_name ='北京肿瘤医院'
             version = '2.0'
             token = None
-<<<<<<< HEAD
-        try:
-            CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7]
-        except:
-            CRA_mobile = '13111111111'
-=======
-            CRA_mobile = '13111111111'
+            CRA_mobile = '11111111111'
             print('sender_name:', sender_name)
->>>>>>> feature-BI
 
         msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
 
@@ -279,13 +270,14 @@ class ActionLogin(Action):
         if sender_id == '':
             text = msg + '\n' + msg2
         else:
-            text = '您好' + sender_name + '，' + site_id + '的方案版本是' + version + '。' +  msg  + '\n' + msg2
+            text = '您好' + sender_name + '，' + site_name + '的方案版本是' + version + '。' +  msg  + '\n' + msg2
 
         dispatcher.utter_message(text= text, buttons= button_list )
 
         return [SlotSet("sender_id", sender_id),
                 SlotSet("sender_name", sender_name), 
-                SlotSet("site_id", site_id), 
+                # SlotSet("site_id", site_id), 
+                SlotSet("site_name", site_name), 
                 SlotSet("version", version),
                 SlotSet("token", token),
                 SlotSet("CRA_mobile", CRA_mobile),
@@ -307,7 +299,7 @@ class ActionCheckProtocol(Action):
         print('tracker_sende_id:', tracker.current_state()['sender_id'])
 
         sender_id = tracker.get_slot('sender_id')
-
+ 
         if sender_id == None:
             sender_id = ''
 
@@ -319,7 +311,9 @@ class ActionCheckProtocol(Action):
 
         main = tracker.get_slot('main')
 
-        site_id = tracker.get_slot('site_id')
+        # site_id = tracker.get_slot('site_id')
+
+        site_name = tracker.get_slot('site_name')
 
         version = tracker.get_slot('version')
 
@@ -328,11 +322,7 @@ class ActionCheckProtocol(Action):
         CRA_mobile = tracker.get_slot('CRA_mobile')
 
         message = tracker.latest_message['text']
-      
-        text_CRA = '我不太理解，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
-
-        text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
-
+     
         sub_list = tracker.get_slot('sub_list')
 
         # sub = None
@@ -384,7 +374,7 @@ class ActionCheckProtocol(Action):
                 return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
-                        SlotSet("site_id", site_id), 
+                        SlotSet("site_name", site_name), 
                         SlotSet("version", version),
                         SlotSet("token", token)
                         ]
@@ -455,7 +445,7 @@ class ActionCheckProtocol(Action):
                         return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
-                                SlotSet("site_id", site_id), 
+                                SlotSet("site_name", site_name), 
                                 SlotSet("version", version),
                                 SlotSet("token", token)]
                         # return [SlotSet("sub",None)]                             # keep question_list
@@ -494,13 +484,14 @@ class ActionCheckProtocol(Action):
     # -------------------------- then, form dispatchd massage ---------------------------------#
 
             if len(result) == 0:
-                # msg = '对不起，小易没有找到。我还需要学习'
+                # KG not found
 
-                if CRA_mobile == '13111111111':
-                    text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA。'
+                if CRA_mobile == DEFAULT_Mobile:
+
+                    Text_Error_Response = ERROR_2
                 else:
                 
-                    text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
+                    Text_Error_Response = ERROR_2 + ERROR_5 + CRA_mobile
 
                 payload = {
                     "userId": sender_id,
@@ -521,8 +512,10 @@ class ActionCheckProtocol(Action):
 
                 # print('res.text:',res.text)
 
-                final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
+                final_message = sender_name + '老师，您的问题"' + message +'"' + Text_Error_Response
+
                 dispatcher.utter_message(text=final_message)
+
                 return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
                     SlotSet("index_list", index_list)]
                 
@@ -600,19 +593,15 @@ class ActionCheckProtocol(Action):
                         SlotSet("index_list", index_list),
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
-                        SlotSet("site_id", site_id), 
+                        SlotSet("site_name", site_name), 
                         SlotSet("version", version),
                         SlotSet("token", token)]
         
         except:
             print('error for check neo4j entities')
             
-            if CRA_mobile == '13111111111':
-                text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA。'
-            else:
-            
-                text_CRA_no_found = '我在方案中没有找到，我会把问题转给负责咱们中心的CRA, CRA的电话是' + CRA_mobile
-
+            Text_Error_Response = ERROR_4
+  
             payload = {
                 "userId": sender_id,
                 "question": message
@@ -620,7 +609,7 @@ class ActionCheckProtocol(Action):
             print('payload:', payload)
 
 
-            final_message = sender_name + '老师，您的问题"' + message +'"' + text_CRA_no_found
+            final_message = sender_name + '老师，您的问题"' + message +'"' + Text_Error_Response
             dispatcher.utter_message(text=final_message)
             return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None)]
             # return [SlotSet("sub",None)]
@@ -663,18 +652,19 @@ class ActionDefaultFallback(Action):
         message = tracker.latest_message['text']
         sender_id = tracker.get_slot('sender_id')
         sender_name = tracker.get_slot('sender_name')
-        site_id = tracker.get_slot('site_id')
+        site_name = tracker.get_slot('site_name')
         version = tracker.get_slot('version')
         token = tracker.get_slot('token')
         CRA_mobile = tracker.get_slot('CRA_mobile')
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
         
-        if CRA_mobile == '13111111111':
-            text_CRA =  '我不太理解，我会转给负责咱们中心的CRA。'
+        if CRA_mobile == DEFAULT_Mobile:
+
+            Text_Error_Response =  ERROR_1
         else:
         
-            text_CRA = '我不太理解，我会转给负责咱们中心的CRA。CRA的电话是' + CRA_mobile
+            Text_Error_Response =  ERROR_1 + ERROR_5 + CRA_mobile
 
         payload = {
             "userId": sender_id,
@@ -698,12 +688,12 @@ class ActionDefaultFallback(Action):
         except:
             Continue
 
-        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + text_CRA))
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + Text_Error_Response))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),
             SlotSet("sender_name", sender_name), 
-            SlotSet("site_id", site_id), 
+            SlotSet("site_name", site_name), 
             SlotSet("version", version),
             SlotSet("token", token)
             
@@ -724,7 +714,7 @@ class ActionDefaultFallback(Action):
         message = tracker.latest_message['text']
         sender_id = tracker.get_slot('sender_id')
         sender_name = tracker.get_slot('sender_name')
-        site_id = tracker.get_slot('site_id')
+        site_name = tracker.get_slot('site_name')
         version = tracker.get_slot('version')
         token = tracker.get_slot('token')
         CRA_mobile = tracker.get_slot('CRA_mobile')
@@ -732,10 +722,10 @@ class ActionDefaultFallback(Action):
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
         
-        if CRA_mobile == '13111111111':
-            text_CRA =  '现在小易还不能回答，我会转给负责咱们中心的CRA。'
+        if CRA_mobile == DEFAULT_Mobile:
+            Text_Error_Response =  ERROR_3
         else:
-            text_CRA = '现在小易还不能回答，我会转给负责咱们中心的CRA。 CRA的电话是' +  CRA_mobile
+            Text_Error_Response =  ERROR_3 + ERROR_5 +  CRA_mobile
 
         payload = {
             "userId": sender_id,
@@ -760,12 +750,12 @@ class ActionDefaultFallback(Action):
             Continue
 
 
-        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + text_CRA))
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + Text_Error_Response))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),
             SlotSet("sender_name", sender_name), 
-            SlotSet("site_id", site_id), 
+            SlotSet("site_name", site_name), 
             SlotSet("version", version),
             SlotSet("token", token)
                 ]
@@ -842,15 +832,15 @@ class ValidateSimplePizzaForm(FormValidationAction):
 
         sub = tracker.get_slot('sub')
 
+        if sub:
+            main = '入选标准'
+
         item_number = tracker.get_slot('item_number')
 
         if item_number:
             sub = ' '
 
         print('main:', main)
-
-        if main == '标准':
-            main = '入选标准'
 
         if main not in ALLOWED_MAIN_TYPES:
             dispatcher.utter_message(text=f"请选择" + ",".join(ALLOWED_MAIN_TYPES)+",或直接问具体方案的条目。谢谢")
