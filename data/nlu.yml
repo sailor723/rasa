@@ -648,6 +648,8 @@ nlu:
     - [减毒](sub)患者可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
     - [免疫缺陷](sub)
     - [血小板]{"entity": "sub", "value": "\u8840\u5c0f\u677f\u8ba1\u6570"}计数标准
+    - 同时[参加]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}另一项[临床研究](sub)可以吗
+    - 参与另一项[临床研究]{"entity": "sub", "value": "\u4e34\u5e8a\u8bd5\u9a8c"}，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
 - intent: thanks
   examples: |
     - 谢谢你
