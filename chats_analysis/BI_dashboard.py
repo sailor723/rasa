@@ -2,11 +2,43 @@ from email import header
 import streamlit as st
 import pandas as pd
 import numpy as np
-import os, json, csv
+import os, json, csv, sys, subprocess
 import plotly.figure_factory as ff
 import plotly.express as px
 import plotly.graph_objects as go
+from datetime import datetime
 # from sqlalchemy import create_engine
+
+
+st.set_page_config(
+     page_title="Ex-stream-ly Cool App",
+     page_icon="🧊",
+     layout="wide",
+     initial_sidebar_state="expanded",
+     menu_items={
+         'Get Help': 'https://www.extremelycoolapp.com/help',
+         'Report a bug': "https://www.extremelycoolapp.com/bug",
+         'About': "# This is a header. This is an *extremely* cool app!"
+     }
+ )
+# get current data and time
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+
+# hide manu and footer
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+# refresh
+if st.button('refesh'):
+     st.write(current_time)
+     subprocess.run(["bash", "BI_dashboard.sh"])
+
 
 SUB_COL= ['sub_entity', 'sub_confidence_entity', 'sub_value', 'sub_extractor', 'sub_processors']
 
@@ -28,17 +60,7 @@ ENTITIES_LIST = list(set(f.read().split('\n')))
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'converted_log.csv')
 
-st.set_page_config(
-     page_title="Ex-stream-ly Cool App",
-     page_icon="🧊",
-     layout="wide",
-     initial_sidebar_state="expanded",
-     menu_items={
-         'Get Help': 'https://www.extremelycoolapp.com/help',
-         'Report a bug': "https://www.extremelycoolapp.com/bug",
-         'About': "# This is a header. This is an *extremely* cool app!"
-     }
- )
+
 
 header = st.container()
 dataset = st.container()
@@ -215,13 +237,3 @@ with dataset:
 
     st.plotly_chart(fig)
 
-     #----------------------------------------- shwo chat log ------------------------------------------------------------#
-
-    st.subheader('Chat Log File')
-    file = open(chatlog_file_name,encoding="utf-8")
-    csvreader = csv.reader(file)
-    data_lines = list(csvreader)
-
-    for line in data_lines[:100]:
-        if line != []:
-            st.write(line[0])

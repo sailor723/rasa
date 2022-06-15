@@ -849,6 +849,9 @@ class ValidateSimplePizzaForm(FormValidationAction):
 
         print('main:', main)
 
+        if main == '标准':
+            main = '入选标准'
+
         if main not in ALLOWED_MAIN_TYPES:
             dispatcher.utter_message(text=f"请选择" + ",".join(ALLOWED_MAIN_TYPES)+",或直接问具体方案的条目。谢谢")
             return {"main": None}
