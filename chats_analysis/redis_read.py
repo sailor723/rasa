@@ -39,7 +39,8 @@ conn=pymysql.connect(
 
 cursor=conn.cursor()
 
-redis_client = redis.Redis(host=DCTA_REDIS_HOST, password=DCTA_REDIS_PWD, port=DCTA_REDIS_PORT, db=0)
+redis_client = redis.StrictRedis(host=DCTA_REDIS_HOST, password=DCTA_REDIS_PWD, port=DCTA_REDIS_PORT, db=0, ssl=True)
+# redis_client = redis.Redis(host=DCTA_REDIS_HOST, password=DCTA_REDIS_PWD, port=DCTA_REDIS_PORT, db=0)
 
 i = 0
 # 取前缀为tracker的Key
