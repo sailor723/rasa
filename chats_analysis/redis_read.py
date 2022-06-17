@@ -12,12 +12,6 @@ DCTA_MYSQL_HOST = os.getenv('DCTA_MYSQL_HOST')
 DCTA_MYSQL_PORT  = int(os.getenv('DCTA_MYSQL_PORT'))
 DCTA_MYSQL_DB  = os.getenv('DCTA_MYSQL_DB')
 DCTA_MYSQL_TABLE  = os.getenv('DCTA_MYSQL_TABLE')
-# print('DCTA_MYSQL_USER:', DCTA_MYSQL_USER)
-# print('DCTA_MYSQL_PWD:', DCTA_MYSQL_PWD)
-# print('DCTA_MYSQL_HOST:', DCTA_MYSQL_HOST)
-# print('DCTA_MYSQL_DB:', DCTA_MYSQL_DB)
-# print('DCTA_MYSQL_PORT:', DCTA_MYSQL_PORT)
-# print('DCTA_MYSQL_TABLE:', DCTA_MYSQL_TABLE)
 
 
 DCTA_REDIS_HOST = os.getenv('DCTA_REDIS_HOST')
@@ -47,8 +41,13 @@ cursor=conn.cursor()
 
 redis_client = redis.Redis(host=DCTA_REDIS_HOST, password=DCTA_REDIS_PWD, port=DCTA_REDIS_PORT, db=0)
 
+i = 0
 # 取前缀为tracker的Key
+len_tracker = len(list(redis_client.scan_iter("tracker*")))
 for redis_key in redis_client.scan_iter("tracker*"):
+      
+      i = i + 1
+      print('process tracker ' + str(i) + '  ' + str(len_tracker))
       
       try:
 

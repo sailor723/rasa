@@ -63,6 +63,7 @@ entities:
 - sub_list
 - sub_section
 - csp_item
+- qa_item
 slots:
   PERSON:
     type: rasa.shared.core.slots.TextSlot
@@ -140,7 +141,12 @@ slots:
     auto_fill: false
     influence_conversation: false
   csp_item:
-    type: rasa.shared.core.slots.TextSlot
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  qa_item:
+    type: rasa.shared.core.slots.ListSlot
     initial_value: null
     auto_fill: false
     influence_conversation: false
@@ -201,7 +207,7 @@ responses:
   utter_protocol_slots:
   - text: 我会查询方案的{main}中的{sub}.
   utter_please_rephrase:
-  - text: 您也可以请换个方式再说一下。谢谢
+  - text: 您的问题我不太理解，能否换个方式再说一下。谢谢
   utter_default:
   - text: 对不起，我不太明白，能请您再说一下吗？谢谢
   utter_out_of_scope:

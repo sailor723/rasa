@@ -42,10 +42,12 @@ INCLUSIONS = ["知情同意", "年龄", "受试者类型和疾病特征", "生�
 EXCLUSIONS = ["医学疾病", "既往治疗/合并治疗", "既往/合并用药", "其他排除标准"]
 
 ERROR_1 = "我不太理解，我会把问题转给负责咱们中心的CRA。 <101>"
-ERROR_2 = "我在方案中没有找到，我会把问题转给负责咱们中心的CRA。<102>"
-ERROR_3 = "现在小易还不能回答，我会转给负责咱们中心的CRA。<103>"
-ERROR_4 = "数据库查询失败，我会把问题转给系统部门。谢谢。<104>"
-ERROR_5 = "CRA的电话是"
+ERROR_2 = "我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。<102>"
+ERROR_3 = "我在Q&A Log中没有找到，我会把问题转给负责咱们中心的CRA。<103>"
+ERROR_4 = "现在小易还不能回答，我会转给负责咱们中心的CRA。<103>"
+ERROR_5 = "数据库查询失败，我会把问题转给系统部门。谢谢。<105>"
+
+ERROR_9 = "CRA的电话是"
 DEFAULT_Mobile = '11111111111'
 EXCLUSION_SEC_1 = [1,16]
 
@@ -218,8 +220,6 @@ class ActionLogin(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        print('tracker_sende_id:', tracker.current_state()['sender_id'])
-
         tracker_sender_id = tracker.current_state()['sender_id']
 
         print('tracker_sender_id:', tracker_sender_id)
@@ -296,8 +296,6 @@ class ActionCheckProtocol(Action):
 
 #--------------------------- extract slot ----------------------------------------#
 
-        print('tracker_sende_id:', tracker.current_state()['sender_id'])
-
         sender_id = tracker.get_slot('sender_id')
  
         if sender_id == None:
@@ -324,6 +322,8 @@ class ActionCheckProtocol(Action):
         message = tracker.latest_message['text']
      
         sub_list = tracker.get_slot('sub_list')
+
+        csp_item = tracker.get_slot('csp_item')
 
         # sub = None
         
@@ -405,18 +405,22 @@ class ActionCheckProtocol(Action):
 
                     try:                                 
                         print('had index_list, processing')
-                        params = {'node_sub': sub_list}
+                        params = {'node_sub': sub_list, 'csp_node': csp_item}
+                        print('csp_item', csp_item)
+                        qa_item = ['Q&A']
                         query = """
-                        match  (index_node) <-[to_index] - (question_node) <-[to_questions] - (answer_node) 
-                        where ToUpper(index_node.name) in $node_sub
-                        return question_node, answer_node 
+
+                        match  (index_node) <-[to_index] - (question_node) <-[to_questions] - (answer_node) <-[] - (m) 
+                        where ToUpper(index_node.name) in  $node_sub and m.name_item in $csp_node
+                        return question_node, answer_node,m
+
                         """
                         result = conn.query(query, parameters=params)
                         msg = ''
                         for item in result:
-                            if ('入选标准' not in item.data()['answer_node']['name'][:4]) and ('排除标准' not in item.data()['answer_node']['name'][:4]):
-                                msg_QA =  '<b>DL04问题: </b>'+ item.data()['question_node']['name']  + '\n<b>DL04回答: </b>' + item.data()['answer_node']['name'] +'\n'
-                                msg = msg_QA + msg
+                            # if ('入选标准' not in item.data()['answer_node']['name'][:4]) and ('排除标准' not in item.data()['answer_node']['name'][:4]):
+                            msg_QA =  '<b>' + ''.join(csp_item) + '问题: </b>'+ item.data()['question_node']['name']  + '\n<b>\n' + ''.join(csp_item) + '回答: </b>' + item.data()['answer_node']['name'] +'\n'
+                            msg = msg_QA + msg
 
                         # for item in sub_list:
                         #     index_list.pop(index_list.index(item))
@@ -446,11 +450,29 @@ class ActionCheckProtocol(Action):
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_name", site_name), 
+                                SlotSet("qa_item", qa_item), 
                                 SlotSet("version", version),
                                 SlotSet("token", token)]
                         # return [SlotSet("sub",None)]                             # keep question_list
                     except:
-                        print('error for check neo4j for index_list')
+                        
+                        if CRA_mobile == DEFAULT_Mobile:
+
+                            Text_Error_Response = ERROR_3
+                        else:
+                        
+                            Text_Error_Response = ERROR_3+ ERROR_9 + CRA_mobile
+
+                        dispatcher.utter_message(text= Text_Error_Response)          
+    
+                        return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
+                                SlotSet("sender_id", sender_id),
+                                SlotSet("sender_name", sender_name), 
+                                SlotSet("site_name", site_name), 
+                                SlotSet("qa_item", qa_item), 
+                                SlotSet("version", version),
+                                SlotSet("token", token)]
+
   
                 node_item_list = []
 # -------------------------- then, system will perform query --------------------------------#
@@ -480,7 +502,7 @@ class ActionCheckProtocol(Action):
             ORDER BY csp_node
             """
             result = conn.query(query, parameters=params)
-            print('result:', result)
+            # print('result:', result)
     # -------------------------- then, form dispatchd massage ---------------------------------#
 
             if len(result) == 0:
@@ -491,7 +513,7 @@ class ActionCheckProtocol(Action):
                     Text_Error_Response = ERROR_2
                 else:
                 
-                    Text_Error_Response = ERROR_2 + ERROR_5 + CRA_mobile
+                    Text_Error_Response = ERROR_2 + ERROR_9 + CRA_mobile
 
                 payload = {
                     "userId": sender_id,
@@ -512,7 +534,7 @@ class ActionCheckProtocol(Action):
 
                 # print('res.text:',res.text)
 
-                final_message = sender_name + '老师，您的问题"' + message +'"' + Text_Error_Response
+                final_message = sender_name + '老师，您的问题"' + message +'，' + Text_Error_Response
 
                 dispatcher.utter_message(text=final_message)
 
@@ -525,7 +547,7 @@ class ActionCheckProtocol(Action):
                 msg_entity_value_list = []
                 s_node = []
                 p_node = []
-
+                csp_item_list = []
                 for item in result:     
 
                     if item.data()['csp_node']['label'] != 'DL04':
@@ -541,7 +563,10 @@ class ActionCheckProtocol(Action):
                         name_item = item.data()['csp_node']['name_item']
                         page_num = '试验方案第' + str(int(float(item.data()['csp_node']['page']))) + '页'
 
+                    csp_item_list.append(name_item)
                     msg_csp = page_num + ' \n' + name_item + ' \n' + csp_description 
+
+                    print('csp_item_list-------------------:', csp_item_list)
 
                     msg_entity_value = '\n'.join([(item['name'] + ' : \n' + item['description']) for item in item.data()['entity_values'] if 'description' in item.keys()])
 
@@ -561,6 +586,8 @@ class ActionCheckProtocol(Action):
                         # question_list = [ item['name'] for item in item.data()['q_nodes'] if 'label' in item.keys() and item['label'] == 'question']
  
                     index_list = [ item['name'] for item in item.data()['index_nodes'] if 'label' in item.keys() and item['label'] == 'question_index']
+
+
                             
                     if index_list:          
 
@@ -591,6 +618,7 @@ class ActionCheckProtocol(Action):
 
                 return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
                         SlotSet("index_list", index_list),
+                        SlotSet("csp_item", csp_item_list),
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
                         SlotSet("site_name", site_name), 
@@ -600,7 +628,7 @@ class ActionCheckProtocol(Action):
         except:
             print('error for check neo4j entities')
             
-            Text_Error_Response = ERROR_4
+            Text_Error_Response = ERROR_5 + ERROR_9
   
             payload = {
                 "userId": sender_id,
@@ -609,7 +637,7 @@ class ActionCheckProtocol(Action):
             print('payload:', payload)
 
 
-            final_message = sender_name + '老师，您的问题"' + message +'"' + Text_Error_Response
+            final_message = sender_name + '老师，您的问题"' + message +',' + Text_Error_Response
             dispatcher.utter_message(text=final_message)
             return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None)]
             # return [SlotSet("sub",None)]
@@ -688,7 +716,7 @@ class ActionDefaultFallback(Action):
         except:
             Continue
 
-        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + Text_Error_Response))
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'，' + Text_Error_Response))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),
@@ -723,9 +751,9 @@ class ActionDefaultFallback(Action):
         print('message:', message)
         
         if CRA_mobile == DEFAULT_Mobile:
-            Text_Error_Response =  ERROR_3
+            Text_Error_Response =  ERROR_4
         else:
-            Text_Error_Response =  ERROR_3 + ERROR_5 +  CRA_mobile
+            Text_Error_Response =  ERROR_4 + ERROR_9 +  CRA_mobile
 
         payload = {
             "userId": sender_id,
@@ -750,7 +778,7 @@ class ActionDefaultFallback(Action):
             Continue
 
 
-        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'""' + Text_Error_Response))
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +',' + Text_Error_Response))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),

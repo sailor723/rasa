@@ -166,8 +166,7 @@ if len(v_list) > 0:
     # write json file
     json_file = {'text': {'headline': 'Welcome to DCTA Dialog',
             'text': 'DCTA conversational log'}, 
-
-    'events': json_list}
+            'events': json_list}
     # write to json
     with open('chats_result.json','w',encoding='utf-8') as fp:
         json.dump(json_file, fp,ensure_ascii=False)

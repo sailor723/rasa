@@ -132,7 +132,7 @@ for a in v_list:
        
         
 #----------------------------no answer question----------------------------------------------------------------#
-    if a['event'] == 'bot' and 'CRA的电话是' in a['text']:
+    if a['event'] == 'bot' and (('<101>' or '<102>' or '<103>' or  '<104> ') in a['text']):
 
         df_final.loc[message_id_in_memory,'action'] = 'no answer question'
         # print('a_location:', v_list.index(a))
@@ -163,6 +163,16 @@ df_final['clean_text'] = value_list
 bot_category = []
 
 for item in df_final.bot_text.to_list():
+
+    if  '<101>'  in item:
+        bot_category.append('<101>')
+    elif '<102>' in item:
+        bot_category.append('<102>')
+    elif '<103>' in item:
+        bot_category.append('<103>')
+    elif '<104>' in item:
+        bot_category.append('<104>')
+    elif 
 
     if '试验方案第' in item.split('\n')[0] and (('入选标准第') in item.split('\n')[1] or '排除标准第' in item.split('\n')[1]):
         bot_category.append(item.split('\n')[1])

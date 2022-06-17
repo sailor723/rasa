@@ -608,7 +608,7 @@ nlu:
     - 入组前3个月内有[重度COPD](sub) 可以[入组](main)嘛
     - [肺叶切除](sub)患者可以[入组]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}嘛
     - [入排标准](main)
-    - 我们的[入排标准](sub)/入排标准/入排
+    - 我们的[入排标准](main)/入排标准/入排
     - [血小板]{"entity": "sub", "value": "\u8840\u5c0f\u677f\u8ba1\u6570"}
     - [疫苗](sub)[疫苗](sub)[疫苗](sub)
     - [男性](sub)受试者的[年龄](sub)要求
@@ -650,6 +650,7 @@ nlu:
     - [血小板]{"entity": "sub", "value": "\u8840\u5c0f\u677f\u8ba1\u6570"}计数标准
     - 同时[参加]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}另一项[临床研究](sub)可以吗
     - 参与另一项[临床研究]{"entity": "sub", "value": "\u4e34\u5e8a\u8bd5\u9a8c"}，可以[入]{"entity": "main", "value": "\u5165\u9009\u6807\u51c6"}吗
+    - [nsclc](sub)[标准](main)
 - intent: thanks
   examples: |
     - 谢谢你
@@ -802,6 +803,7 @@ nlu:
 - intent: nlu_fallback
   examples: |
     - 今天天气如何
+    - 电饭锅不得不让他
 - intent: new_scope
   examples: |
     - SOA的要求
