@@ -69,7 +69,7 @@ for a in v_list:
 
         text_in_memory = a['text']
         message_id_in_memory = a['message_id']
-
+        
         if 'intent_ranking' in a['parse_data']:
 #             print('intent_ranking', a['parse_data']['intent_ranking'])
 
@@ -116,11 +116,13 @@ for a in v_list:
 #                 if len(df_working) > 1:
 #                     print('df_working:', df_working)
                 df_final = df_final.append(df_working)
+            df_final.loc[message_id_in_memory,'user_time'] = a['timestamp']
 #----------------------------extract slot     ----------------------------------------------------------------#
     if a['event'] == 'slot' and a['name'] != 'index_list':
 
         if a['name'] == 'entity_values':
-            # print('xxxxxxxxxxxxxxx a_value:', a['value'])
+            print('xxxxxxxxxxxxxxx a_value:', a['value'])
+            print('xxxxxxxxxxxxxxx a_name:', a['name'])
             name_list = [item['name'] for item in a['value']]
             desp_list = [item['description'] for item in a['value']]
             full_list = zip(name_list, desp_list)
@@ -156,8 +158,9 @@ for a in v_list:
         df_final.loc[message_id_in_memory, 'action'] = 'new action_default_fallback'
 #----------------------------bot text----------------------------------------------------------------#
     if a['event'] == 'bot':
+
         df_final.loc[message_id_in_memory,'bot_text'] = a['text']
- 
+        df_final.loc[message_id_in_memory,'bot_time'] = a['timestamp']
 #         df_final['action'] =  a['name']
 #         print('message_id by action : ', message_id_in_memory)
 #         print('user_text by action', text_in_memory)
@@ -171,7 +174,6 @@ for row, col in df_final.iterrows():
     else:
         value_list.append(col['text'])
 df_final['clean_text'] = value_list
-
 #---------------------------- bot catetory--------------------------------------------------------------#
 
 # bot_category = []

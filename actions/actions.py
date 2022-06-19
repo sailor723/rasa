@@ -41,11 +41,11 @@ ALLOWED_MAIN_TYPES = ["入选标准", "排除标准"]
 INCLUSIONS = ["知情同意", "年龄", "受试者类型和疾病特征", "生殖方面"]
 EXCLUSIONS = ["医学疾病", "既往治疗/合并治疗", "既往/合并用药", "其他排除标准"]
 
-ERROR_1 = "我不太理解，我会把问题转给负责咱们中心的CRA。 <101>"
-ERROR_2 = "我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。<102>"
-ERROR_3 = "我在Q&A Log中没有找到，我会把问题转给负责咱们中心的CRA。<103>"
-ERROR_4 = "现在小易还不能回答，我会转给负责咱们中心的CRA。<103>"
-ERROR_5 = "数据库查询失败，我会把问题转给系统部门。谢谢。<105>"
+ERROR_1 = "我不太理解，我会把问题转给负责咱们中心的CRA。"
+ERROR_2 = "我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。"
+ERROR_3 = "我在Q&A Log中没有找到，我会把问题转给负责咱们中心的CRA。"
+ERROR_4 = "现在小易还不能回答，我会转给负责咱们中心的CRA。"
+ERROR_5 = "数据库查询失败，我会把问题转给系统部门。谢谢。"
 
 ERROR_9 = "CRA的电话是"
 DEFAULT_Mobile = '11111111111'
@@ -451,25 +451,29 @@ class ActionCheckProtocol(Action):
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_name", site_name), 
                                 SlotSet("qa_item", qa_item), 
+                                SlotSet("csp_item", csp_item), 
                                 SlotSet("version", version),
                                 SlotSet("token", token)]
                         # return [SlotSet("sub",None)]                             # keep question_list
                     except:
-                        
+                        non_answer = ['<103>']
                         if CRA_mobile == DEFAULT_Mobile:
 
-                            Text_Error_Response = ERROR_3
+                            Text_Error_Response = ERROR_3 + non_answer[0]
                         else:
                         
-                            Text_Error_Response = ERROR_3+ ERROR_9 + CRA_mobile
+                            Text_Error_Response = ERROR_3+ ERROR_9 + CRA_mobile + ' ' + non_answer[0]
 
                         dispatcher.utter_message(text= Text_Error_Response)          
     
-                        return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
+                        return [SlotSet("sub",None), SlotSet("sub_list",None), 
+                                SlotSet("item_number",None), 
+                                SlotSet("index_list", index_list),
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_name", site_name), 
                                 SlotSet("qa_item", qa_item), 
+                                SlotSet("non_answer", non_answer),
                                 SlotSet("version", version),
                                 SlotSet("token", token)]
 
@@ -507,13 +511,14 @@ class ActionCheckProtocol(Action):
 
             if len(result) == 0:
                 # KG not found
+                non_answer = ['<102>']
 
                 if CRA_mobile == DEFAULT_Mobile:
 
-                    Text_Error_Response = ERROR_2
+                    Text_Error_Response = ERROR_2 + ' ' +  non_answer[0]
                 else:
                 
-                    Text_Error_Response = ERROR_2 + ERROR_9 + CRA_mobile
+                    Text_Error_Response = ERROR_2 + ERROR_9 + CRA_mobile + ' ' + non_answer[0]
 
                 payload = {
                     "userId": sender_id,
@@ -538,8 +543,11 @@ class ActionCheckProtocol(Action):
 
                 dispatcher.utter_message(text=final_message)
 
-                return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
-                    SlotSet("index_list", index_list)]
+                return [SlotSet("sub",None), 
+                        SlotSet("sub_list",None), 
+                        SlotSet("item_number",None),
+                        SlotSet("non_answer", non_answer),    
+                        SlotSet("index_list", index_list)]
                 
             else:
                 final_message = ''
@@ -548,6 +556,8 @@ class ActionCheckProtocol(Action):
                 s_node = []
                 p_node = []
                 csp_item_list = []
+                entity_values = []
+                entity_values_msg = []
                 for item in result:     
 
                     if item.data()['csp_node']['label'] != 'DL04':
@@ -568,7 +578,18 @@ class ActionCheckProtocol(Action):
 
                     print('csp_item_list-------------------:', csp_item_list)
 
-                    msg_entity_value = '\n'.join([(item['name'] + ' : \n' + item['description']) for item in item.data()['entity_values'] if 'description' in item.keys()])
+                    # msg_entity_value = '\n'.join([(item['name'] + ' : \n' + item['description']) for item in item.data()['entity_values']    \
+                    #                 if item['description' not in ['description', 'entity']]])
+                    en_list = [item for item in item.data()['entity_values']] 
+
+                    
+                    entity_values.extend([item for item in en_list if item['description'] not in   \
+                                ['entity','description','qustion', 'answer', 'question_index']])
+
+                    entity_values_msg.extend([item['name'] + ' : \n' + item['description'] for item in en_list if item['description'] not in   \
+                                ['entity','description','question', 'answer', 'question_index']])
+
+                    msg_entity_value = ''.join(entity_values_msg)
 
                     final_message = final_message + msg_csp + msg_entity_value + '\n'
                         # for entity_value in item.data()['entity_values']:               # process entity value
@@ -585,7 +606,7 @@ class ActionCheckProtocol(Action):
 
                         # question_list = [ item['name'] for item in item.data()['q_nodes'] if 'label' in item.keys() and item['label'] == 'question']
  
-                    index_list = [ item['name'] for item in item.data()['index_nodes'] if 'label' in item.keys() and item['label'] == 'question_index']
+                    index_list = [ item['name'] for item in item.data()['index_nodes'] if 'description' in item.keys() and item['description'] == 'question_index']
 
 
                             
@@ -623,12 +644,14 @@ class ActionCheckProtocol(Action):
                         SlotSet("sender_name", sender_name), 
                         SlotSet("site_name", site_name), 
                         SlotSet("version", version),
+                        SlotSet("entity_values", entity_values),
                         SlotSet("token", token)]
         
         except:
             print('error for check neo4j entities')
-            
-            Text_Error_Response = ERROR_5 + ERROR_9
+            non_answer = ['<105>']
+
+            Text_Error_Response = ERROR_5 + ERROR_9 + non_answer[0]
   
             payload = {
                 "userId": sender_id,
@@ -639,7 +662,10 @@ class ActionCheckProtocol(Action):
 
             final_message = sender_name + '老师，您的问题"' + message +',' + Text_Error_Response
             dispatcher.utter_message(text=final_message)
-            return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None)]
+            return [SlotSet("sub",None), 
+                    SlotSet("sub_list",None), 
+                    SlotSet("non_answer",non_answer), 
+                    SlotSet("item_number",None)]
             # return [SlotSet("sub",None)]
             # return [AllSlotsReset()]
             # return []
@@ -687,12 +713,14 @@ class ActionDefaultFallback(Action):
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
         
+        non_answer = ['<101>']
+
         if CRA_mobile == DEFAULT_Mobile:
 
-            Text_Error_Response =  ERROR_1
+            Text_Error_Response =  ERROR_1 + non_answer[0]
         else:
         
-            Text_Error_Response =  ERROR_1 + ERROR_5 + CRA_mobile
+            Text_Error_Response =  ERROR_1 + ERROR_5 + CRA_mobile + ' ' + non_answer[0]
 
         payload = {
             "userId": sender_id,
@@ -722,6 +750,7 @@ class ActionDefaultFallback(Action):
         return [ SlotSet("sender_id", sender_id),
             SlotSet("sender_name", sender_name), 
             SlotSet("site_name", site_name), 
+            SlotSet("non_answer", non_answer), 
             SlotSet("version", version),
             SlotSet("token", token)
             
@@ -750,10 +779,16 @@ class ActionDefaultFallback(Action):
         # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
         print('message:', message)
         
+        non_answer = ['<104>']
+        print('error_4', ERROR_4)
+        print('error_9', ERROR_9)
+        print('CRA_mobile', CRA_mobile)
+        print('non_answer_0', non_answer[0])
         if CRA_mobile == DEFAULT_Mobile:
-            Text_Error_Response =  ERROR_4
+
+            Text_Error_Response =  ERROR_4 + non_answer[0]
         else:
-            Text_Error_Response =  ERROR_4 + ERROR_9 +  CRA_mobile
+            Text_Error_Response =  ERROR_4 + ERROR_9 +  CRA_mobile + ' ' + non_answer[0]
 
         payload = {
             "userId": sender_id,
@@ -785,8 +820,8 @@ class ActionDefaultFallback(Action):
             SlotSet("sender_name", sender_name), 
             SlotSet("site_name", site_name), 
             SlotSet("version", version),
-            SlotSet("token", token)
-                ]
+            SlotSet("non_answer", non_answer),
+            SlotSet("token", token) ]
 
 class AskForVegetarianAction(Action):
     def name(self) -> Text:

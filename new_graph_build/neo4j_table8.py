@@ -76,12 +76,13 @@ p0 = pdf.pages[0]
 table = p0.extract_table()
 df = pd.DataFrame(table[0:], columns=table[0])
 df.columns = ['name','description']
+df['description'] = df['description'].fillna('description')
 
 node_all = []
 node = []
 node_head_name = '器官和骨髓'
 for index, row in df.iterrows():
-    if row['description'] == None:
+    if row['description'] == 'description':
         node_head = row['name']
         node_all.append([node_head_name,'Include',node_head])
     else:
@@ -103,6 +104,7 @@ for node in node_all:
         query = """
         MERGE(p:Inclusion {name:$node_head}) 
         MERGE(q:Inclusion {name:$node_description}) 
+        set p.description = 'description'
         MERGE(p) -[r:Include ] ->(q)
         RETURN p,q,r
         """
@@ -110,6 +112,7 @@ for node in node_all:
         query = """
         MERGE(p:Inclusion {name:$node_head}) 
         MERGE(q:Inclusion {name:$node_target}) 
+        set p.description = 'description'      
         SET q.description = $node_target + ':' + $node_description
         MERGE (p) -[r:Include ] ->(q) 
         RETURN p,q,r

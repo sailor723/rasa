@@ -64,6 +64,8 @@ entities:
 - sub_section
 - csp_item
 - qa_item
+- non_answer
+- entity_values
 slots:
   PERSON:
     type: rasa.shared.core.slots.TextSlot
@@ -135,12 +137,17 @@ slots:
     initial_value: null
     auto_fill: false
     influence_conversation: false
-  csp_description:
+  csp_item:
     type: rasa.shared.core.slots.ListSlot
     initial_value: null
     auto_fill: false
     influence_conversation: false
-  csp_item:
+  non_answer:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  entity_values:
     type: rasa.shared.core.slots.ListSlot
     initial_value: null
     auto_fill: false

@@ -97,9 +97,9 @@ for node in node_all:
         MERGE(t: Exclusion {name:$index})
         MERGE(o:Exclusion {name:$answer_node}) 
         MERGE(p:Exclusion {name:$question_node}) 
-        SET o.label = 'answer'
-        SET p.label = 'question'
-        SET t.label = 'question_index'
+        SET o.description = 'answer'
+        SET p.description = 'question'
+        SET t.description = 'question_index'
         MERGE (q) - [s:has_answer] -> (o) 
         MERGE (o) -[r:to_question ] ->(p) 
         MERGE (p) -[w:to_index ] ->(t) 
@@ -114,9 +114,9 @@ for node in node_all:
         MERGE(t: Inclusion {name:$index})
         MERGE(o:Inclusion {name:$answer_node}) 
         MERGE(p:Inclusion {name:$question_node})  
-        SET o.label = 'answer'
-        SET p.label = 'question'
-        SET t.label = 'question_index'
+        SET o.description = 'answer'
+        SET p.description = 'question'
+        SET t.description = 'question_index'
         MERGE (q) - [s:has_answer] -> (o) 
         MERGE (o) -[r:to_question ] ->(p) 
         MERGE (p) -[w:to_index ] ->(t) 
