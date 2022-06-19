@@ -28,10 +28,10 @@ mysql_string = 'mysql+pymysql://'+ DCTA_MYSQL_USER + ':'+ DCTA_MYSQL_PWD + '@' +
 engine = create_engine(mysql_string)
 df = pd.read_sql('tracker',engine)
 
-# full_chats_csv_name = os.path.abspath('new_all.csv')
-chat_full_name  = os.path.join(os.getcwd(),'converted_log.csv')
+full_chats_csv_name = os.path.abspath('new_all.csv')
+chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
 
-# df.to_csv(full_chats_csv_name,encoding='utf-8-sig')
+df.to_csv(full_chats_csv_name,encoding='utf-8-sig')
 # df = pd.read_csv(full_chats_csv_name,encoding='utf-8-sig')
 
 #----------------------------------special convert from csv -----------------------------------------#
@@ -48,11 +48,13 @@ for row, col in df.iterrows():
         print('warming, error for json load, tracker is:', tracker)
         continue
 
-# print(len(v_list))
+print(len(v_list))
 
 list1 = [v_list.index(item) for item in v_list if item['event'] == 'slot']
 SLOT_COL =list(set([v_list[index]['name'] for index in list1]))
 SUB_COL= ['sub_entity', 'sub_confidence_entity', 'sub_value', 'sub_extractor', 'sub_processors','action']
+
+# print(len(v_list))
 #--------------------------------- start convert ----------------------------------------------------#
 initial = True
 
@@ -116,19 +118,31 @@ for a in v_list:
                 df_final = df_final.append(df_working)
 #----------------------------extract slot     ----------------------------------------------------------------#
     if a['event'] == 'slot' and a['name'] != 'index_list':
-      
-        if a['value'] != None and a['value'] != []:
-            if type(a['value']) == list and a['value'] == a['value']:
+
+        if a['name'] == 'entity_values':
+            # print('xxxxxxxxxxxxxxx a_value:', a['value'])
+            name_list = [item['name'] for item in a['value']]
+            desp_list = [item['description'] for item in a['value']]
+            full_list = zip(name_list, desp_list)
+            for item in full_list:
+                df_final.loc[message_id_in_memory, item[0]] = item[1]   
+        elif a['value'] != None and a['value'] != []:
+            if type(a['value']) == list and a['value'] == a['value'] and a['name'] != 'entity_values':
                 a['value'] = a['value'][0]
+            df_final.loc[message_id_in_memory, a['name']] = a['value']
         else:
             a['value'] = ""
-        try:
             df_final.loc[message_id_in_memory, a['name']] = a['value']
-        except:
-            print('error a_name with a_value')
-            print('df_final_loc:', df_final.loc[message_id_in_memory, a['name']])
-            print('a_value:', a['value'])
-            continue
+
+#         try:
+            
+            
+#         except:
+#             print('error a_name with a_value')
+#             print('df_final_loc:', df_final.loc[message_id_in_memory, a['name']])
+#             print('a_name', a['name'])
+#             print('a_value:', a['value'])
+#             continue
        
         
 #----------------------------no answer question----------------------------------------------------------------#
@@ -160,42 +174,42 @@ df_final['clean_text'] = value_list
 
 #---------------------------- bot catetory--------------------------------------------------------------#
 
-bot_category = []
+# bot_category = []
 
-for item in df_final.bot_text.to_list():
+# for item in df_final.bot_text.to_list():
 
-    if  '<101>'  in item:
-        bot_category.append('<101>')
-    elif '<102>' in item:
-        bot_category.append('<102>')
-    elif '<103>' in item:
-        bot_category.append('<103>')
-    elif '<104>' in item:
-        bot_category.append('<104>')
-    elif 
+#     if  '<101>'  in item:
+#         bot_category.append('<101>')
+#     elif '<102>' in item:
+#         bot_category.append('<102>')
+#     elif '<103>' in item:
+#         bot_category.append('<103>')
+#     elif '<104>' in item:
+#         bot_category.append('<104>')
+#     elif 
 
-    if '试验方案第' in item.split('\n')[0] and (('入选标准第') in item.split('\n')[1] or '排除标准第' in item.split('\n')[1]):
-        bot_category.append(item.split('\n')[1])
-    elif 'DL04问题' in item:
+#     if '试验方案第' in item.split('\n')[0] and (('入选标准第') in item.split('\n')[1] or '排除标准第' in item.split('\n')[1]):
+#         bot_category.append(item.split('\n')[1])
+#     elif 'DL04问题' in item:
      
-        bot_category.append('Q&A Log')
+#         bot_category.append('Q&A Log')
         
-    elif '我是阿斯利康的临床试验智能助手小易，很高兴为您服务' in item and '您好' in item:
-        bot_category.append('打招呼')
+#     elif '我是阿斯利康的临床试验智能助手小易，很高兴为您服务' in item and '您好' in item:
+#         bot_category.append('打招呼')
         
-    elif '现在小易还不能回答' in item:
-        bot_category.append('由于范围不能回答')
+#     elif '现在小易还不能回答' in item:
+#         bot_category.append('由于范围不能回答')
       
-    elif '我在方案中没有找到' in item:
-        bot_category.append('图谱查询失败')
+#     elif '我在方案中没有找到' in item:
+#         bot_category.append('图谱查询失败')
 
-    elif '我不太理解' in item:
-        bot_category.append('问题不能理解')
+#     elif '我不太理解' in item:
+#         bot_category.append('问题不能理解')
 
-    else:
-        bot_category.append('其他')
+#     else:
+#         bot_category.append('其他')
 
-df_final['bot_category'] =  bot_category
+# df_final['bot_category'] =  bot_category
 
 #------------------------------------------------------------------------------------------------------------------
 

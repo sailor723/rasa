@@ -1,4 +1,4 @@
-import json
+import json,os
 import streamlit.components.v1 as components
 
 
@@ -31,9 +31,9 @@ def timeline(data, height=800):
     source_block = f'var {source_param} = {json_text};'
 
     # load css + js
-    cdn_path = 'https://cdn.knightlab.com/libs/timeline3/latest'
-    css_block = f'<link title="timeline-styles" rel="stylesheet" href="{cdn_path}/css/timeline.css">'
-    js_block  = f'<script src="{cdn_path}/js/timeline.js"></script>'
+    cdn_path = os.getcwd()
+    css_block = f'<link title="timeline-styles" rel="stylesheet" href="timeline.css">'
+    js_block  = f'<script src="timeline.js"></script>'
 
 
     # write html block

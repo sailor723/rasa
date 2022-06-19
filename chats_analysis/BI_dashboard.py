@@ -58,7 +58,7 @@ ENTITIES_LIST = list(set(f.read().split('\n')))
 
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
-chat_full_name  = os.path.join(os.getcwd(),'converted_log.csv')
+chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
 
 
 
@@ -78,7 +78,7 @@ hide_manu_style = """
 st.markdown(hide_manu_style, unsafe_allow_html=True)
 
 #----------------------------------------------read sql to df----------------------------------------------------------------------------#
-@st.cache
+# @st.cache
 def read_csv_to_df():
 
 #----------------------- read data and prepare data -----------------------------------#
