@@ -99,7 +99,7 @@ df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(t
 
 #----------------------------Streamlit plot-------------------------------------------------#
 
-g1, g2, g3 = st.columns((1,1,1))
+g1, g2, g3 = st.columns((2.2,3,1.2))
 
 #--------------------inclusion ----------------------------------
 fig = px.histogram(df_inclusion, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
