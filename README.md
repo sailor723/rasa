@@ -95,5 +95,5 @@ config: NLU and rule policy file
     DCTA/rasa/bash actions.sh
 
 8. Open web browser to check everything ready
-
+update on Jun 20
 
