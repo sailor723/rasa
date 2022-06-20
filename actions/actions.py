@@ -558,6 +558,7 @@ class ActionCheckProtocol(Action):
                 csp_item_list = []
                 entity_values = []
                 entity_values_msg = []
+
                 for item in result:     
 
                     if item.data()['csp_node']['label'] != 'DL04':
@@ -581,17 +582,18 @@ class ActionCheckProtocol(Action):
                     # msg_entity_value = '\n'.join([(item['name'] + ' : \n' + item['description']) for item in item.data()['entity_values']    \
                     #                 if item['description' not in ['description', 'entity']]])
                     en_list = [item for item in item.data()['entity_values']] 
-
-                    
+                   
                     entity_values.extend([item for item in en_list if item['description'] not in   \
                                 ['entity','description','qustion', 'answer', 'question_index']])
 
                     entity_values_msg.extend([item['name'] + ' : \n' + item['description'] for item in en_list if item['description'] not in   \
                                 ['entity','description','question', 'answer', 'question_index']])
 
-                    msg_entity_value = ''.join(entity_values_msg)
 
+                    msg_entity_value = ''.join(entity_values_msg)
+                    
                     final_message = final_message + msg_csp + msg_entity_value + '\n'
+
                         # for entity_value in item.data()['entity_values']:               # process entity value
 
                         #     try:
@@ -608,7 +610,7 @@ class ActionCheckProtocol(Action):
  
                     index_list = [ item['name'] for item in item.data()['index_nodes'] if 'description' in item.keys() and item['description'] == 'question_index']
 
-
+                    print('index_list:', index_list)
                             
                     if index_list:          
 
@@ -630,6 +632,7 @@ class ActionCheckProtocol(Action):
                             dict2 = {}
                             msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
+                print('msg2:', msg2)
                 final_message = final_message + msg2
 
                 print('final_message:', final_message)

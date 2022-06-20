@@ -162,6 +162,7 @@ for node in node_all:
         SET o.label = $label
         SET o.page = $page
         SET o.name_item = $name_item
+        set p.description = 'entity'
         MERGE (q) - [:Include] - (o) 
         MERGE (o) -[r:Include ] ->(p) 
         RETURN o,r,p
