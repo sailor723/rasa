@@ -9,6 +9,8 @@ import plotly.graph_objects as go
 from datetime import datetime
 from streamlit_timeline import timeline
 import time
+from st_aggrid import AgGrid, GridUpdateMode, JsCode
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # from sqlalchemy import create_engine
 
@@ -51,13 +53,13 @@ def read_csv_to_df(csv_file_name):
 
     return (df)
 
-@st.cache
+# @st.cache
 def convert_df(df):
      # IMPORTANT: Cache the conversion to prevent computation on every rerun
-     return df.to_csv().encode('utf-8')
+     return df.to_csv().encode('utf_8_sig')
 df = read_csv_to_df(chat_full_name)
-# log_csv = read_csv_to_df(chatlog_file_name)
-# log_csv = convert_df(log_csv)
+log_csv = read_csv_to_df(chatlog_file_name)
+log_csv = convert_df(log_csv)
 
 select_col = ['message_id','text','site_name', 'sender_name','csp_item', 'qa_item', 'non_answer','user_time']
 non_answer_col = ['message_id','user_time','sender_name', 'text', 'non_answer']
@@ -161,12 +163,13 @@ fig.update_layout(title_text="Inclusion",title_x=0,margin= dict(l=0,r=10,b=10,t=
 
 g1.plotly_chart(fig, use_container_width=True) 
 
+
 #------------------exclusion-------------------------
 fig = px.histogram(df_exclusion, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
 
 # fig.update_traces(marker_color='#264653')
 
-fig.update_layout(title_text="Excluion",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
+fig.update_layout(title_text="Exclusion",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
 
 g2.plotly_chart(fig, use_container_width=True) 
 
@@ -179,38 +182,54 @@ fig.update_layout(title_text="Q&A Log",title_x=0,margin= dict(l=0,r=10,b=10,t=30
 
 g3.plotly_chart(fig, use_container_width=True) 
 #-------------------------------preparetion ------------------------------------------------#
+gd = GridOptionsBuilder.from_dataframe(df_non_answer)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=False, grouptable = True)
 
-if st.button('Non Answer Questions Inquery'):
-     
-        fig = go.Figure(data=go.Table(
-        columnwidth = [2,1,1,8,1],
-        header = dict(values=df_non_answer.columns.to_list(), 
-                line_color='darkslategray',
-                fill_color='lightskyblue',
-                font=dict(color='black', size=11),
-                align=['left','center'],), 
-        cells = dict(values=[df_non_answer.message_id, df_non_answer.user_time, df_non_answer.sender_name, df_non_answer.text, df_non_answer.non_answer],
-                line_color='darkslategray',
-                fill_color='lightcyan',
-                font=dict(color='black', size=11),
-                align=['left'],
-        )))
+with st.expander("Non Answered Questions", expanded=False):
+        st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
+        sel_mode = st.radio("Selection Type", options = ['single', 'multiple'])
+        gd.configure_selection(selection_mode = sel_mode, use_checkbox=True)
+        gridoptions = gd.build()
+        grid_table = AgGrid(df_non_answer, gridOptions=gridoptions, 
+                        update_mode = GridUpdateMode.SELECTION_CHANGED,
+                        height = 500, 
+                        allow_upsafe_jscode=True,
+                        theme = "fresh")
+
+        st.write('Details')
+        sel_row = grid_table["selected_rows"]
+        st.write(sel_row)
+
+        # fig = go.Figure(data=go.Table(
+        # columnwidth = [2,1,1,8,1],
+        # header = dict(values=df_non_answer.columns.to_list(), 
+        #         line_color='darkslategray',
+        #         fill_color='lightskyblue',
+        #         font=dict(color='black', size=11),
+        #         align=['left','center'],), 
+        # cells = dict(values=[df_non_answer.message_id, df_non_answer.user_time, df_non_answer.sender_name, df_non_answer.text, df_non_answer.non_answer],
+        #         line_color='darkslategray',
+        #         fill_color='lightcyan',
+        #         font=dict(color='black', size=11),
+        #         align=['left'],
+        # )))
         
-        fig.update_layout(width=1600, height=800, margin=dict(l=5, r=5, b=5, t=5))
-                # paper_bgcolor = background_color)
-        st.write(fig)
-# else:
-#      st.write('No problem')
+        # fig.update_layout(width=1200, height=800, margin=dict(l=5, r=5, b=5, t=5))
+        #         # paper_bgcolor = background_color)
+        # st.write(fig)
+
 
 
 #-------------------------------preparetion ------------------------------------------------#
 
-if st.button('Conversational History'):
+
+with st.expander("Conversation History", expanded=False):
         # load data
         charts_result_name = os.path.abspath('chats_result.json')
         with open(charts_result_name, "r",encoding='utf-8') as f:
                 time_data = f.read()
-     
+
         new_json = json.loads(time_data)
         if site_list_selectd != '全部':
                 new_json['events'] = [item for item in new_json['events']            \
@@ -219,12 +238,34 @@ if st.button('Conversational History'):
         # render timeline
         timeline(new_json, height=800)
 
-# st.download_button(
-#      label="Download Conversational History CSV",
-#      data=log_csv,
-#      file_name='DCTA_conversational.csv',
-#      mime='text/csv',
-#  )
+#-------------------------------preparetion ------------------------------------------------#
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=False, grouptable = True)
+
+with st.expander("Full Dataset View", expanded=False):
+        st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
+        sel_mode_full = st.radio("Selection Type", options = ['single', 'multiple'],key='full')
+        gd.configure_selection(selection_mode = sel_mode_full, use_checkbox=True)
+        gridoptions = gd.build()
+        grid_table = AgGrid(df, gridOptions=gridoptions, 
+                        update_mode = GridUpdateMode.SELECTION_CHANGED,
+                        height = 500, 
+                        allow_upsafe_jscode=True,
+                        theme = "fresh")
+
+        st.write('Details')
+        sel_row = grid_table["selected_rows"]
+        st.write(sel_row)
+
+st.download_button(
+label="Log File Download",
+data=log_csv,
+file_name='DCTA_conversational.csv',
+mime='text/csv',
+)
+
+
 
 #---------------------------Question distribution -----------------------------------
 #     with col1:

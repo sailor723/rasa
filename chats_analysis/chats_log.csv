@@ -1,0 +1,4490 @@
+﻿
+action:action_session_start
+action:action_listen
+timestamp:1655648553.958102
+user_intent:greet0.9993818998336792
+message_id:6652b70b830f49d0a345a20523a6d3d7
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648563.3315825
+user_intent:inform_protocol1.0
+message_id:2bde6d1b7c38409ba2224f875a0b14ef
+USER:入组1
+slot:item_number1
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+入选标准第1条 
+能够签署知情同意书（如附录A所述），包括遵从ICF和本CSP中列出的要求和限制	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第1条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648571.7210927
+user_intent:inform_protocol1.0
+message_id:e44d9c7f30264f7dac5a52cc7197bec2
+USER:/inform_protocol{"sub": "胃肠道疾病"}
+slot:sub胃肠道疾病
+action:simple_protocol_form
+slot:main入选标准
+slot:sub胃肠道疾病
+slot:sub_list['胃肠道疾病']
+slot:sub胃肠道疾病
+slot:sub_list['胃肠道疾病']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第3条 
+存在未得到控制的并发疾病，包括但不限于持续感染或活动性感染、未受控制的高血压、与腹泻相关的严重慢性胃肠道疾病或限制研究要求依从性的精神疾病/社会状况、发生 AE 的风险显著增加或损害受试者提供书面知情同意的能力	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['T-DXD,感染,MSUD,代谢失']
+slot:csp_item['排除标准第3条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648580.5391023
+user_intent:inform_protocol1.0
+message_id:15f6049bab264e6fa9d5c997cd852224
+USER:入组2
+slot:item_number2
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+入选标准第2条 
+为支持基因组计划的可选遗传研究的样本采集前，提供签名并注明日期的书面可选遗传研究知情同意书（请见第附录D节）	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第2条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648590.361991
+user_intent:inform_protocol1.0
+message_id:3f16f1d1c19046279231f84f39ae545b
+USER:/inform_protocol{"sub": "炎性肠病"}
+slot:sub炎性肠病
+action:simple_protocol_form
+slot:main入选标准
+slot:sub炎性肠病
+slot:sub_list['炎性肠病']
+slot:sub炎性肠病
+slot:sub_list['炎性肠病']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第5条 
+活动性或既往有记录的自体免疫性或炎症性疾病（包括炎性肠病[如，结肠炎或克罗恩病]、憩室炎[憩室病除外]、系统性红斑狼疮、肉状瘤病、肉芽肿伴多血管炎、格雷夫斯病、类风湿关节炎、垂体炎、葡萄膜炎、自身免疫性肺炎、自身免疫性心肌炎。以下是该标准的例外情况：
+− 白癜风或脱发受试者
+− 接受激素替代治疗后病情稳定的甲状腺功能减退症受试者（如，桥本甲状腺炎后）
+− 任何不需要全身治疗的慢性皮肤病受试者。
+− 在过去 5 年内没有活动性疾病的受试者可以入组，但是仅在咨询阿斯利康研究医师后方可纳入。
+− 仅依靠饮食即可控制乳糜泻的受试者。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['皮肤病', '炎症']
+slot:csp_item['排除标准第5条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648598.6964319
+user_intent:inform_protocol1.0
+message_id:2adbee709a4d48be8c6cd863f0d43fb2
+USER:入组3
+slot:item_number3
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+入选标准第3条 
+实施任何强制要求的研究特定程序、采样或分析前，签署书面ICF并注明日期。注：无合格HER2突变状态结果的受试者将需要签署预筛选ICF，以允许采集血样进行HER2外显子19或20突变检测。只有在确认HER2突变状态符合研究要求后才能进行主研究知情同意和主研究资格评估	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第3条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648606.7251964
+user_intent:inform_protocol1.0
+message_id:0cdeb06ccae8446e880b45b0013bed0f
+USER:/inform_protocol{"sub": "肉芽肿伴多血管炎"}
+slot:sub肉芽肿伴多血管炎
+action:simple_protocol_form
+slot:main入选标准
+slot:sub肉芽肿伴多血管炎
+slot:sub_list['肉芽肿伴多血管炎']
+slot:sub肉芽肿伴多血管炎
+slot:sub_list['肉芽肿伴多血管炎']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第5条 
+活动性或既往有记录的自体免疫性或炎症性疾病（包括炎性肠病[如，结肠炎或克罗恩病]、憩室炎[憩室病除外]、系统性红斑狼疮、肉状瘤病、肉芽肿伴多血管炎、格雷夫斯病、类风湿关节炎、垂体炎、葡萄膜炎、自身免疫性肺炎、自身免疫性心肌炎。以下是该标准的例外情况：
+− 白癜风或脱发受试者
+− 接受激素替代治疗后病情稳定的甲状腺功能减退症受试者（如，桥本甲状腺炎后）
+− 任何不需要全身治疗的慢性皮肤病受试者。
+− 在过去 5 年内没有活动性疾病的受试者可以入组，但是仅在咨询阿斯利康研究医师后方可纳入。
+− 仅依靠饮食即可控制乳糜泻的受试者。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['皮肤病', '炎症']
+slot:csp_item['排除标准第5条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648615.169465
+user_intent:inform_protocol1.0
+message_id:05396077bf8541e192997716b4dae70c
+USER:/inform_protocol{"sub": "皮肤病"}
+slot:sub皮肤病
+action:simple_protocol_form
+slot:main入选标准
+slot:sub皮肤病
+slot:sub_list['皮肤病']
+slot:sub皮肤病
+slot:sub_list['皮肤病']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第5条问题: </b>关于“任何不需要系统治疗的慢性皮肤病”，服用抗组胺药的患者符合研究资格吗？
+<b>
+排除标准第5条回答: </b>为什么受试者服用抗组胺药？有慢性皮肤病的报告吗？
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['皮肤病', '炎症']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第5条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648629.1889296
+user_intent:inform_protocol1.0
+message_id:22bcc36ae97a45c696f764688220426e
+USER:入组4
+slot:item_number4
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第4条 
+签署ICF时，男性和女性受试者必须≥18岁。其他年龄限制可依照当地法规执行	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第4条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648637.5033534
+user_intent:inform_protocol1.0
+message_id:8019571eb69e4d8c8f7a95b808b815a1
+USER:入组5
+slot:item_number5
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2如果腺癌是主要的组织学类型，是否可以入组混合小细胞肺癌、鳞状组织学非小细胞肺癌和肉瘤样组织学变异非小细胞肺癌组织学类型的患者？ : 
+question
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['组织学类型,腺癌,小细胞肺癌']
+slot:csp_item['入选标准第5条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '如果腺癌是主要的组织学类型，是否可以入组混合小细胞肺癌、鳞状组织学非小细胞肺癌和肉瘤样组织学变异非小细胞肺癌组织学类型的患者？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648648.9197996
+user_intent:inform_protocol1.0
+message_id:88f489bdab5d475481ec0c8a16c4f24f
+USER:/inform_protocol{"sub": "组织学类型,腺癌,小细胞肺癌"}
+slot:sub组织学类型,腺癌,小细胞肺癌
+action:simple_protocol_form
+slot:main入选标准
+slot:sub组织学类型,腺癌,小细胞肺癌
+slot:sub_list['组织学类型,腺癌,小细胞肺癌']
+slot:sub组织学类型,腺癌,小细胞肺癌
+slot:sub_list['组织学类型,腺癌,小细胞肺癌']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>入选标准第5条问题: </b>如果腺癌是主要的组织学类型，是否可以入组混合小细胞肺癌、鳞状组织学非小细胞肺癌和肉瘤样组织学变异非小细胞肺癌组织学类型的患者？
+<b>
+入选标准第5条回答: </b>只有当腺癌是主要的组织学类型时，混合变异的受试者才有资格进入研究。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['组织学类型,腺癌,小细胞肺癌']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['入选标准第5条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648664.1193419
+user_intent:inform_protocol1.0
+message_id:681145ee9e3a405fb7d9b21133be1928
+USER:入组6
+slot:item_number6
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第6条 
+受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且在医学上适合接受一线治疗。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案进行全身治疗（新辅助治疗、辅助治疗或放化疗）的患者，如果其铂类化疗的末次给药时间距离首次研究治疗日期前6个月或更早，则允许此类患者入组。	/DL04 V2使用CBDCA预处理改善放射疗法的敏感性的患者能否入选研究？ : 
+questionPI认为对于晚期患者来说，2-3周不进行治疗的时间太长了。由于等待时间长，患者通常拒绝参加研究。PI希望确认在筛选前1个周期的化疗是否可以接受（提供足够的清洗期）。 : 
+question请阐明纳入标准#14中的充分治疗与洗脱期。研究方案的意思是否是指在规定的洗脱期内，可接受转移/不可切除诊断前的治疗，并且禁止诊断后的任何治疗？ : 
+question研究中心询问如果接受了Ⅲ期治疗，然后进展到IV期，IV期时未接受治疗。该受试者有资格参加研究吗？ : 
+question
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['CBDCA', '2-3周,晚期', '治疗洗脱期,洗脱期,方案', 'IV期,放疗,根治性治疗']
+slot:csp_item['入选标准第6条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '使用CBDCA预处理改善放射疗法的敏感性的患者能否入选研究？', 'description': 'question'}, {'name': 'PI认为对于晚期患者来说，2-3周不进行治疗的时间太长了。由于等待时间长，患者通常拒绝参加研究。PI希望确认在筛选前1个周期的化疗是否可以接受（提供足够的清洗期）。', 'description': 'question'}, {'name': '请阐明纳入标准#14中的充分治疗与洗脱期。研究方案的意思是否是指在规定的洗脱期内，可接受转移/不可切除诊断前的治疗，并且禁止诊断后的任何治疗？', 'description': 'question'}, {'name': '研究中心询问如果接受了Ⅲ期治疗，然后进展到IV期，IV期时未接受治疗。该受试者有资格参加研究吗？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648675.3740094
+user_intent:inform_protocol1.0
+message_id:8bbe29f0b30c4014bcb353bdfeeb87fa
+USER:/inform_protocol{"sub": "2-3周,晚期"}
+slot:sub2-3周,晚期
+action:simple_protocol_form
+slot:main入选标准
+slot:sub2-3周,晚期
+slot:sub_list['2-3周,晚期']
+slot:sub2-3周,晚期
+slot:sub_list['2-3周,晚期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>入选标准第6条问题: </b>PI认为对于晚期患者来说，2-3周不进行治疗的时间太长了。由于等待时间长，患者通常拒绝参加研究。PI希望确认在筛选前1个周期的化疗是否可以接受（提供足够的清洗期）。
+<b>
+入选标准第6条回答: </b>不允许。根据纳入标准#6，患者必须未接受晚期疾病的治疗。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['CBDCA', '2-3周,晚期', '治疗洗脱期,洗脱期,方案', 'IV期,放疗,根治性治疗']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['入选标准第6条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648688.6487906
+user_intent:new_scope0.8935592174530029
+message_id:1fbb6c9427554b2a809fcd37b048bfcd
+USER:soa
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"soa,现在小易还不能回答，我会转给负责咱们中心的CRA。<104>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:non_answer['<104>']
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648769.132646
+user_intent:inform_protocol1.0
+message_id:10bf837fc59f45d8998a99865663373c
+USER:入组7
+slot:item_number7
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第7条 
+经证实的合格HER2外显子19或20突变（合格的具有活性的HER2外显子19或20突变见附录O）
+a) 通过存档肿瘤组织样本（实验室资质要求方面的研究要求详见附录O）
+b) 通过可接受的非中心实验室的血浆ctDNA检测（符合该标准的可接受的检测见附录O）
+c) 无已知合格HER2突变状态结果的受试者将需要签署预筛选ICF，以允许采集血样进行HER2外显子19或20突变检测。在获得符合要求的中心实验室检测结果之前，不得开始主ICF和其他研究程序。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第7条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648779.7365484
+user_intent:inform_protocol1.0
+message_id:103b5d8d688b489d89c30f460bd9cd22
+USER:/inform_protocol{"sub": "心理疾病"}
+slot:sub心理疾病
+action:simple_protocol_form
+slot:main入选标准
+slot:sub心理疾病
+slot:sub_list['心理疾病']
+slot:sub心理疾病
+slot:sub_list['心理疾病']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第71页 
+排除标准第26条 
+存在物质滥用或研究者认为可能干扰受试者参与临床研究或临床研究结果评价的任何其他医学疾病（如具有临床意义的心脏或心理疾病）	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第26条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648789.7343147
+user_intent:inform_protocol1.0
+message_id:1ff1760692624eb382d2236bac5a2c00
+USER:入组8
+slot:item_number8
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第8条 
+必须获取FFPE肿瘤样本，送至中心实验室进行检测。如果未书面确认可提供存档肿瘤样本（首选）或选择最近获得的活检（作为其常规临床治疗途径的一部分进行，见第8.6.1.1节 ），则受试者没有资格参加研究。	/DL04 V2大多数患者都有存档的肿瘤样本可获得。  然而，有时数量低于要求，因为突变试验是在使用该样本的研究中心进行的。这些患者能入组研究吗？是否应获取新样本？如果是这样的话，我们要为这个程序付费吗？ : 
+question存档肿瘤组织可用的时间有多长？
+例如，在随机化分组之前的6个月… : 
+question对于早期疾病治疗后复发的患者，如果没有复发后的肿瘤组织，是否允许提交早期治疗前收集的肿瘤组织？ : 
+question
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+slot:csp_item['入选标准第8条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '大多数患者都有存档的肿瘤样本可获得。  然而，有时数量低于要求，因为突变试验是在使用该样本的研究中心进行的。这些患者能入组研究吗？是否应获取新样本？如果是这样的话，我们要为这个程序付费吗？', 'description': 'question'}, {'name': '存档肿瘤组织可用的时间有多长？\n例如，在随机化分组之前的6个月…', 'description': 'question'}, {'name': '对于早期疾病治疗后复发的患者，如果没有复发后的肿瘤组织，是否允许提交早期治疗前收集的肿瘤组织？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648801.2402186
+user_intent:inform_protocol1.0
+message_id:b35ffdbea8694bd0a1fea06c4d34f4df
+USER:/inform_protocol{"sub": "肿瘤样本,突变,样本,方案"}
+slot:sub肿瘤样本,突变,样本,方案
+action:simple_protocol_form
+slot:main入选标准
+slot:sub肿瘤样本,突变,样本,方案
+slot:sub_list['肿瘤样本,突变,样本,方案']
+slot:sub肿瘤样本,突变,样本,方案
+slot:sub_list['肿瘤样本,突变,样本,方案']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>入选标准第8条问题: </b>大多数患者都有存档的肿瘤样本可获得。  然而，有时数量低于要求，因为突变试验是在使用该样本的研究中心进行的。这些患者能入组研究吗？是否应获取新样本？如果是这样的话，我们要为这个程序付费吗？
+<b>
+入选标准第8条回答: </b>如果患者的病理玻片少于15张，他们应该联系全球研究团队并讨论选择方案。传递的信息应该是，这15张病理玻片是强制性的，如果患者不能提供符合CSP中定义的标准的15张玻片，则他们没有资格入选研究。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:qa_item['Q&A']
+slot:csp_item['入选标准第8条']
+slot:versionNone
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648810.108011
+user_intent:inform_protocol1.0
+message_id:d863665a48474da7893602e7c5a5d613
+USER:入组9
+slot:item_number9
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第9条 
+WHO/ECOG体能状态评分为0或1，基线或首次给药前2周内无恶化	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第9条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648853.3877134
+user_intent:inform_protocol1.0
+message_id:e1dce7735e364708a9f36dc59a49578d
+USER:入组9
+slot:item_number9
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第9条 
+WHO/ECOG体能状态评分为0或1，基线或首次给药前2周内无恶化	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第9条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648863.2645977
+user_intent:inform_protocol1.0
+message_id:91ac32e67ed04a7fb1d269d8defae517
+USER:/inform_protocol{"sub": "舍格林病"}
+slot:sub舍格林病
+action:simple_protocol_form
+slot:main入选标准
+slot:sub舍格林病
+slot:sub_list['舍格林病']
+slot:sub舍格林病
+slot:sub_list['舍格林病']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第12条 
+肺部标准：
+− 具有临床意义的肺特异性并发疾病，包括但不限于任何基础肺部疾病（例如，研究入组前3个月内肺栓塞、重度哮喘、重度COPD、限制性肺部疾病、胸腔积液等）
+− 任何有记录的自身免疫性、结缔组织或炎症性疾病（即类风湿性关节炎、舍格林病、肉状瘤病等），或筛选时怀疑肺部受累。对于入选研究的受试者，疾病的全部详细内容均应记录在 eCRF 中。
+− 既往全肺切除术 注：允许既往肺叶或肺段切除	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肺炎,类固醇']
+slot:csp_item['排除标准第12条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648872.2653775
+user_intent:inform_protocol1.0
+message_id:9ce0e40500fc48ecbc59af25c38b63a6
+USER:/inform_protocol{"sub": "肺炎,类固醇"}
+slot:sub肺炎,类固醇
+action:simple_protocol_form
+slot:main入选标准
+slot:sub肺炎,类固醇
+slot:sub_list['肺炎,类固醇']
+slot:sub肺炎,类固醇
+slot:sub_list['肺炎,类固醇']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第12条问题: </b>3. 有使用类固醇治疗的放射性肺炎病史的患者是否符合条件？
+<b>
+排除标准第12条回答: </b>符合条件。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肺炎,类固醇']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第12条']
+slot:versionNone
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648886.1312609
+user_intent:inform_protocol1.0
+message_id:a1859592029a43a78140006d2f5920cc
+USER:入组10
+slot:item_number10
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第10条 
+至少有一个根据RECIST  1.1标准判断的可测量的病灶。注：如果既往接受过放疗的病灶边界清晰、根据RECIST可测量且已明显进展，则可视为靶病灶。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第10条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648897.2669322
+user_intent:inform_protocol1.0
+message_id:06c5061b6c714950b57cacb1abbd960f
+USER:入组11
+slot:item_number11
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第11条 
+随机化/入组前14天内具有足够的器官和骨髓功能，如下所示	/DL04 V2血小板计数 : 
+血小板计数:≥100,000/mm3。（筛选评估前1周内不得输注血小板）血红蛋白 : 
+血红蛋白:≥9.0 g/dL。备注：需要持续输血或生长因子支持以维持血红蛋白
+≥9.0 g/dL的受试者不符合要求（筛选评估前1周内不允许输注红
+细胞）中性粒细胞绝对计数 : 
+中性粒细胞绝对计数:≥1,500/mm3。（筛选评估前1周内不允许给予粒细胞集落刺激因
+子）ALT和AST : 
+ALT和AST:≤3×ULN（肝转移受试者<5×ULN）总胆红素 : 
+总胆红素:如果无肝转移，≤1.5×ULN；或基线时存在经证实的Gilbert综合
+征（非结合型高胆红素血症）或肝转移记录时，<3×ULN血清白蛋白 : 
+血清白蛋白:≥2.5 g/dLCRCL : 
+CRCL:通过Cockcroft Gault确定≥45 mL/min（采用实际体重）。 
+男性： 
+CrCL=    体重（kg）×（140-年龄） 
+（mL/min）72×血清肌酐（mg/dL） 
+女性： 
+CrCL=    体重（kg）×（140-年龄）×0.85 
+（mL/min）72×血清肌酐（mg/dL）国际标准化比例或PT以及部
+分凝血活酶或活化部分凝血
+活酶时间 : 
+国际标准化比例或PT以及部
+分凝血活酶或活化部分凝血
+活酶时间:≤1.5×ULN如果使用顺铂，将按如下所示6个月后开始治疗。
+如果使用免疫检查点抑制剂，我需要等待多久？
+
+受试者必须未接受过针对局部晚期或转移性疾病的姑息性全身治疗，且在医学上符合接受一线治疗的要求。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案来进行全身治疗（新辅助、辅助或放化疗）的患者，如果其铂类化疗的末次给药时间是首次研究治疗日期前6个月或更早，则允许此类患者入组。 : 
+question根据研究方案中表8所示，血红蛋白可接受值>=9.0 G/DL，并且在评估前一周内不允许输血。患者出现贫血G4和输血。根据CSP的说法，患者一旦恢复，研究人员是否必须在最后一次输血后等待一周才能进行随机化分组？ : 
+question
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第11条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '血小板计数', 'description': '血小板计数:≥100,000/mm3。（筛选评估前1周内不得输注血小板）'}, {'name': '血红蛋白', 'description': '血红蛋白:≥9.0 g/dL。备注：需要持续输血或生长因子支持以维持血红蛋白\n≥9.0 g/dL的受试者不符合要求（筛选评估前1周内不允许输注红\n细胞）'}, {'name': '中性粒细胞绝对计数', 'description': '中性粒细胞绝对计数:≥1,500/mm3。（筛选评估前1周内不允许给予粒细胞集落刺激因\n子）'}, {'name': 'ALT和AST', 'description': 'ALT和AST:≤3×ULN（肝转移受试者<5×ULN）'}, {'name': '总胆红素', 'description': '总胆红素:如果无肝转移，≤1.5×ULN；或基线时存在经证实的Gilbert综合\n征（非结合型高胆红素血症）或肝转移记录时，<3×ULN'}, {'name': '血清白蛋白', 'description': '血清白蛋白:≥2.5 g/dL'}, {'name': 'CRCL', 'description': 'CRCL:通过Cockcroft Gault确定≥45 mL/min（采用实际体重）。 \n男性： \nCrCL=    体重（kg）×（140-年龄） \n（mL/min）72×血清肌酐（mg/dL） \n女性： \nCrCL=    体重（kg）×（140-年龄）×0.85 \n（mL/min）72×血清肌酐（mg/dL）'}, {'name': '国际标准化比例或PT以及部\n分凝血活酶或活化部分凝血\n活酶时间', 'description': '国际标准化比例或PT以及部\n分凝血活酶或活化部分凝血\n活酶时间:≤1.5×ULN'}, {'name': '如果使用顺铂，将按如下所示6个月后开始治疗。\n如果使用免疫检查点抑制剂，我需要等待多久？\n\n受试者必须未接受过针对局部晚期或转移性疾病的姑息性全身治疗，且在医学上符合接受一线治疗的要求。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案来进行全身治疗（新辅助、辅助或放化疗）的患者，如果其铂类化疗的末次给药时间是首次研究治疗日期前6个月或更早，则允许此类患者入组。', 'description': 'question'}, {'name': '根据研究方案中表8所示，血红蛋白可接受值>=9.0 G/DL，并且在评估前一周内不允许输血。患者出现贫血G4和输血。根据CSP的说法，患者一旦恢复，研究人员是否必须在最后一次输血后等待一周才能进行随机化分组？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648962.8530624
+user_intent:inform_protocol1.0
+message_id:e0863210c6e34fb0a86891ea9d94d6bd
+USER:胆红素
+slot:sub总胆红素
+action:simple_protocol_form
+slot:sub总胆红素
+slot:main入选标准
+slot:sub_list['总胆红素', '总胆红素', '总胆红素']
+slot:sub['总胆红素', '总胆红素', '总胆红素']
+slot:main入选标准
+slot:sub_list['总胆红素', '总胆红素', '总胆红素']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第11条 
+随机化/入组前14天内具有足够的器官和骨髓功能，如下所示	/DL04 V2总胆红素 : 
+总胆红素:如果无肝转移，≤1.5×ULN；或基线时存在经证实的Gilbert综合
+征（非结合型高胆红素血症）或肝转移记录时，<3×ULN
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第11条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '总胆红素', 'description': '总胆红素:如果无肝转移，≤1.5×ULN；或基线时存在经证实的Gilbert综合\n征（非结合型高胆红素血症）或肝转移记录时，<3×ULN'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648975.338323
+user_intent:inform_protocol1.0
+message_id:1fefa39f072847c49580c2705fb932de
+USER:入组12
+slot:item_number12
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第66页 
+入选标准第12条 
+随机化/入组前28天内左心室射血分数≥50%。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第12条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655648988.1808648
+user_intent:inform_protocol1.0
+message_id:cc21a0ef33164f19a3c91928349439db
+USER:/inform_protocol{"sub": "大于6个月"}
+slot:sub大于6个月
+action:simple_protocol_form
+slot:main入选标准
+slot:sub大于6个月
+slot:sub_list['大于6个月']
+slot:sub大于6个月
+slot:sub_list['大于6个月']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第6条 
+受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且在医学上适合接受一线治疗。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案进行全身治疗（新辅助治疗、辅助治疗或放化疗）的患者，如果其铂类化疗的末次给药时间距离首次研究治疗日期前6个月或更早，则允许此类患者入组。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['CBDCA', '2-3周,晚期', '治疗洗脱期,洗脱期,方案', 'IV期,放疗,根治性治疗']
+slot:csp_item['入选标准第6条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649001.9975448
+user_intent:inform_protocol1.0
+message_id:102b563d27394124a1388cc4b7e4d81f
+USER:入组13
+slot:item_number13
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第66页 
+入选标准第13条 
+预期生存时间至少有12周。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第13条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649015.2463455
+user_intent:inform_protocol1.0
+message_id:7b77bc581f3741fab30028532df5eb8f
+USER:入组14
+slot:item_number14
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2治疗洗脱期 : 
+受试者类型和疾病特征重大手术（由研究者确定） : 
+首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。放射治疗，包括胸部姑息性立体定向放射治疗 : 
+≥4周其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4） : 
+≥2周抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法 : 
+≥3周基于抗体的抗癌治疗 : 
+≥4周靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇） : 
+≥2周或5个半衰期，以较长者为准亚硝基脲类或丝裂霉素C : 
+≥6周批准用于NSCLC治疗的TKI : 
+≥1周氯喹/羟氯喹 : 
+≥14天胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗 : 
+筛选评估前≥2周你能确认下面的病例是否可以进行随机分组吗？ 
+1) 术后6个月以及接受辅助治疗的患者 : 
+question你能确认下面的病例是否可以进行随机分组吗？ 
+2) CCRT术后复发的患者 : 
+question请阐明纳入标准#14中的充分治疗与洗脱期。研究方案的意思是否是指在规定的洗脱期内，可接受转移/不可切除诊断前的治疗，并且禁止诊断后的任何治疗？ : 
+question筛选前有2周洗脱期的引流/分流/CART是否可以接受？ : 
+question反复穿刺后的洗脱期需要多久？ : 
+question根据表9，在筛选评估前，胸腔积液引流的洗脱期应至少≥2周。那么，如果只获得了筛选ICF，而没有进行任何其他评估，那么洗脱期可以在筛选ICF获得日期的两周内吗？ : 
+question研究中心询问如果接受了Ⅲ期治疗，然后进展到IV期，IV期时未接受治疗。该受试者有资格参加研究吗？ : 
+question如果使用顺铂，将按如下所示6个月后开始治疗。
+如果使用免疫检查点抑制剂，我需要等待多久？
+
+受试者必须未接受过针对局部晚期或转移性疾病的姑息性全身治疗，且在医学上符合接受一线治疗的要求。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案来进行全身治疗（新辅助、辅助或放化疗）的患者，如果其铂类化疗的末次给药时间是首次研究治疗日期前6个月或更早，则允许此类患者入组。 : 
+question根据研究方案中表8所示，血红蛋白可接受值>=9.0 G/DL，并且在评估前一周内不允许输血。患者出现贫血G4和输血。根据CSP的说法，患者一旦恢复，研究人员是否必须在最后一次输血后等待一周才能进行随机化分组？ : 
+question
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第14条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '治疗洗脱期', 'description': '受试者类型和疾病特征'}, {'name': '重大手术（由研究者确定）', 'description': '首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。'}, {'name': '放射治疗，包括胸部姑息性立体定向放射治疗', 'description': '≥4周'}, {'name': '其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4）', 'description': '≥2周'}, {'name': '抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法', 'description': '≥3周'}, {'name': '基于抗体的抗癌治疗', 'description': '≥4周'}, {'name': '靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇）', 'description': '≥2周或5个半衰期，以较长者为准'}, {'name': '亚硝基脲类或丝裂霉素C', 'description': '≥6周'}, {'name': '批准用于NSCLC治疗的TKI', 'description': '≥1周'}, {'name': '氯喹/羟氯喹', 'description': '≥14天'}, {'name': '胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗', 'description': '筛选评估前≥2周'}, {'name': '你能确认下面的病例是否可以进行随机分组吗？ \n1) 术后6个月以及接受辅助治疗的患者', 'description': 'question'}, {'name': '你能确认下面的病例是否可以进行随机分组吗？ \n2) CCRT术后复发的患者', 'description': 'question'}, {'name': '请阐明纳入标准#14中的充分治疗与洗脱期。研究方案的意思是否是指在规定的洗脱期内，可接受转移/不可切除诊断前的治疗，并且禁止诊断后的任何治疗？', 'description': 'question'}, {'name': '筛选前有2周洗脱期的引流/分流/CART是否可以接受？', 'description': 'question'}, {'name': '反复穿刺后的洗脱期需要多久？', 'description': 'question'}, {'name': '根据表9，在筛选评估前，胸腔积液引流的洗脱期应至少≥2周。那么，如果只获得了筛选ICF，而没有进行任何其他评估，那么洗脱期可以在筛选ICF获得日期的两周内吗？', 'description': 'question'}, {'name': '研究中心询问如果接受了Ⅲ期治疗，然后进展到IV期，IV期时未接受治疗。该受试者有资格参加研究吗？', 'description': 'question'}, {'name': '如果使用顺铂，将按如下所示6个月后开始治疗。\n如果使用免疫检查点抑制剂，我需要等待多久？\n\n受试者必须未接受过针对局部晚期或转移性疾病的姑息性全身治疗，且在医学上符合接受一线治疗的要求。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案来进行全身治疗（新辅助、辅助或放化疗）的患者，如果其铂类化疗的末次给药时间是首次研究治疗日期前6个月或更早，则允许此类患者入组。', 'description': 'question'}, {'name': '根据研究方案中表8所示，血红蛋白可接受值>=9.0 G/DL，并且在评估前一周内不允许输血。患者出现贫血G4和输血。根据CSP的说法，患者一旦恢复，研究人员是否必须在最后一次输血后等待一周才能进行随机化分组？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649040.47413
+user_intent:inform_protocol1.0
+message_id:59c25b171481401d8f263fa831ea90e2
+USER:抗癌治疗的洗脱期
+slot:sub治疗洗脱期
+action:simple_protocol_form
+slot:main入选标准
+slot:sub治疗洗脱期
+slot:sub_list['基于抗体的抗癌治疗', '治疗洗脱期']
+slot:sub['基于抗体的抗癌治疗', '治疗洗脱期']
+slot:sub_list['基于抗体的抗癌治疗', '治疗洗脱期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2基于抗体的抗癌治疗 : 
+≥4周
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第14条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '基于抗体的抗癌治疗', 'description': '≥4周'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649065.93143
+user_intent:inform_protocol1.0
+message_id:a2f7f81ef5c643ed888e5ed260f10668
+USER:器官和骨髓
+slot:sub器官和骨髓
+action:simple_protocol_form
+slot:main入选标准
+slot:sub器官和骨髓
+slot:sub_list['器官和骨髓', '器官和骨髓', '器官和骨髓']
+slot:sub['器官和骨髓', '器官和骨髓', '器官和骨髓']
+slot:sub_list['器官和骨髓', '器官和骨髓', '器官和骨髓']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第11条 
+随机化/入组前14天内具有足够的器官和骨髓功能，如下所示	/DL04 V2血小板计数 : 
+血小板计数:≥100,000/mm3。（筛选评估前1周内不得输注血小板）血红蛋白 : 
+血红蛋白:≥9.0 g/dL。备注：需要持续输血或生长因子支持以维持血红蛋白
+≥9.0 g/dL的受试者不符合要求（筛选评估前1周内不允许输注红
+细胞）中性粒细胞绝对计数 : 
+中性粒细胞绝对计数:≥1,500/mm3。（筛选评估前1周内不允许给予粒细胞集落刺激因
+子）ALT和AST : 
+ALT和AST:≤3×ULN（肝转移受试者<5×ULN）总胆红素 : 
+总胆红素:如果无肝转移，≤1.5×ULN；或基线时存在经证实的Gilbert综合
+征（非结合型高胆红素血症）或肝转移记录时，<3×ULN血清白蛋白 : 
+血清白蛋白:≥2.5 g/dLCRCL : 
+CRCL:通过Cockcroft Gault确定≥45 mL/min（采用实际体重）。 
+男性： 
+CrCL=    体重（kg）×（140-年龄） 
+（mL/min）72×血清肌酐（mg/dL） 
+女性： 
+CrCL=    体重（kg）×（140-年龄）×0.85 
+（mL/min）72×血清肌酐（mg/dL）国际标准化比例或PT以及部
+分凝血活酶或活化部分凝血
+活酶时间 : 
+国际标准化比例或PT以及部
+分凝血活酶或活化部分凝血
+活酶时间:≤1.5×ULN
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第11条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '血小板计数', 'description': '血小板计数:≥100,000/mm3。（筛选评估前1周内不得输注血小板）'}, {'name': '血红蛋白', 'description': '血红蛋白:≥9.0 g/dL。备注：需要持续输血或生长因子支持以维持血红蛋白\n≥9.0 g/dL的受试者不符合要求（筛选评估前1周内不允许输注红\n细胞）'}, {'name': '中性粒细胞绝对计数', 'description': '中性粒细胞绝对计数:≥1,500/mm3。（筛选评估前1周内不允许给予粒细胞集落刺激因\n子）'}, {'name': 'ALT和AST', 'description': 'ALT和AST:≤3×ULN（肝转移受试者<5×ULN）'}, {'name': '总胆红素', 'description': '总胆红素:如果无肝转移，≤1.5×ULN；或基线时存在经证实的Gilbert综合\n征（非结合型高胆红素血症）或肝转移记录时，<3×ULN'}, {'name': '血清白蛋白', 'description': '血清白蛋白:≥2.5 g/dL'}, {'name': 'CRCL', 'description': 'CRCL:通过Cockcroft Gault确定≥45 mL/min（采用实际体重）。 \n男性： \nCrCL=    体重（kg）×（140-年龄） \n（mL/min）72×血清肌酐（mg/dL） \n女性： \nCrCL=    体重（kg）×（140-年龄）×0.85 \n（mL/min）72×血清肌酐（mg/dL）'}, {'name': '国际标准化比例或PT以及部\n分凝血活酶或活化部分凝血\n活酶时间', 'description': '国际标准化比例或PT以及部\n分凝血活酶或活化部分凝血\n活酶时间:≤1.5×ULN'}]
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649125.2772322
+user_intent:inform_protocol1.0
+message_id:31455900509f4f86ae3e3d483c0bdea3
+USER:洗脱期
+slot:sub治疗洗脱期
+action:simple_protocol_form
+slot:sub治疗洗脱期
+slot:main入选标准
+slot:sub_list['治疗洗脱期']
+slot:sub治疗洗脱期
+slot:main入选标准
+slot:sub_list['治疗洗脱期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2治疗洗脱期 : 
+受试者类型和疾病特征重大手术（由研究者确定） : 
+首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。放射治疗，包括胸部姑息性立体定向放射治疗 : 
+≥4周其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4） : 
+≥2周抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法 : 
+≥3周基于抗体的抗癌治疗 : 
+≥4周靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇） : 
+≥2周或5个半衰期，以较长者为准亚硝基脲类或丝裂霉素C : 
+≥6周批准用于NSCLC治疗的TKI : 
+≥1周氯喹/羟氯喹 : 
+≥14天胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗 : 
+筛选评估前≥2周
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第14条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '治疗洗脱期', 'description': '受试者类型和疾病特征'}, {'name': '重大手术（由研究者确定）', 'description': '首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。'}, {'name': '放射治疗，包括胸部姑息性立体定向放射治疗', 'description': '≥4周'}, {'name': '其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4）', 'description': '≥2周'}, {'name': '抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法', 'description': '≥3周'}, {'name': '基于抗体的抗癌治疗', 'description': '≥4周'}, {'name': '靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇）', 'description': '≥2周或5个半衰期，以较长者为准'}, {'name': '亚硝基脲类或丝裂霉素C', 'description': '≥6周'}, {'name': '批准用于NSCLC治疗的TKI', 'description': '≥1周'}, {'name': '氯喹/羟氯喹', 'description': '≥14天'}, {'name': '胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗', 'description': '筛选评估前≥2周'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649147.0714831
+user_intent:inform_protocol1.0
+message_id:9b5678c6cff648698e5b52d535edefa6
+USER:入组14
+slot:item_number14
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2治疗洗脱期 : 
+受试者类型和疾病特征重大手术（由研究者确定） : 
+首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。放射治疗，包括胸部姑息性立体定向放射治疗 : 
+≥4周其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4） : 
+≥2周抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法 : 
+≥3周基于抗体的抗癌治疗 : 
+≥4周靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇） : 
+≥2周或5个半衰期，以较长者为准亚硝基脲类或丝裂霉素C : 
+≥6周批准用于NSCLC治疗的TKI : 
+≥1周氯喹/羟氯喹 : 
+≥14天胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗 : 
+筛选评估前≥2周你能确认下面的病例是否可以进行随机分组吗？ 
+1) 术后6个月以及接受辅助治疗的患者 : 
+question你能确认下面的病例是否可以进行随机分组吗？ 
+2) CCRT术后复发的患者 : 
+question请阐明纳入标准#14中的充分治疗与洗脱期。研究方案的意思是否是指在规定的洗脱期内，可接受转移/不可切除诊断前的治疗，并且禁止诊断后的任何治疗？ : 
+question筛选前有2周洗脱期的引流/分流/CART是否可以接受？ : 
+question反复穿刺后的洗脱期需要多久？ : 
+question根据表9，在筛选评估前，胸腔积液引流的洗脱期应至少≥2周。那么，如果只获得了筛选ICF，而没有进行任何其他评估，那么洗脱期可以在筛选ICF获得日期的两周内吗？ : 
+question研究中心询问如果接受了Ⅲ期治疗，然后进展到IV期，IV期时未接受治疗。该受试者有资格参加研究吗？ : 
+question如果使用顺铂，将按如下所示6个月后开始治疗。
+如果使用免疫检查点抑制剂，我需要等待多久？
+
+受试者必须未接受过针对局部晚期或转移性疾病的姑息性全身治疗，且在医学上符合接受一线治疗的要求。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案来进行全身治疗（新辅助、辅助或放化疗）的患者，如果其铂类化疗的末次给药时间是首次研究治疗日期前6个月或更早，则允许此类患者入组。 : 
+question根据研究方案中表8所示，血红蛋白可接受值>=9.0 G/DL，并且在评估前一周内不允许输血。患者出现贫血G4和输血。根据CSP的说法，患者一旦恢复，研究人员是否必须在最后一次输血后等待一周才能进行随机化分组？ : 
+question
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第14条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '治疗洗脱期', 'description': '受试者类型和疾病特征'}, {'name': '重大手术（由研究者确定）', 'description': '首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。'}, {'name': '放射治疗，包括胸部姑息性立体定向放射治疗', 'description': '≥4周'}, {'name': '其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4）', 'description': '≥2周'}, {'name': '抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法', 'description': '≥3周'}, {'name': '基于抗体的抗癌治疗', 'description': '≥4周'}, {'name': '靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇）', 'description': '≥2周或5个半衰期，以较长者为准'}, {'name': '亚硝基脲类或丝裂霉素C', 'description': '≥6周'}, {'name': '批准用于NSCLC治疗的TKI', 'description': '≥1周'}, {'name': '氯喹/羟氯喹', 'description': '≥14天'}, {'name': '胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗', 'description': '筛选评估前≥2周'}, {'name': '你能确认下面的病例是否可以进行随机分组吗？ \n1) 术后6个月以及接受辅助治疗的患者', 'description': 'question'}, {'name': '你能确认下面的病例是否可以进行随机分组吗？ \n2) CCRT术后复发的患者', 'description': 'question'}, {'name': '请阐明纳入标准#14中的充分治疗与洗脱期。研究方案的意思是否是指在规定的洗脱期内，可接受转移/不可切除诊断前的治疗，并且禁止诊断后的任何治疗？', 'description': 'question'}, {'name': '筛选前有2周洗脱期的引流/分流/CART是否可以接受？', 'description': 'question'}, {'name': '反复穿刺后的洗脱期需要多久？', 'description': 'question'}, {'name': '根据表9，在筛选评估前，胸腔积液引流的洗脱期应至少≥2周。那么，如果只获得了筛选ICF，而没有进行任何其他评估，那么洗脱期可以在筛选ICF获得日期的两周内吗？', 'description': 'question'}, {'name': '研究中心询问如果接受了Ⅲ期治疗，然后进展到IV期，IV期时未接受治疗。该受试者有资格参加研究吗？', 'description': 'question'}, {'name': '如果使用顺铂，将按如下所示6个月后开始治疗。\n如果使用免疫检查点抑制剂，我需要等待多久？\n\n受试者必须未接受过针对局部晚期或转移性疾病的姑息性全身治疗，且在医学上符合接受一线治疗的要求。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案来进行全身治疗（新辅助、辅助或放化疗）的患者，如果其铂类化疗的末次给药时间是首次研究治疗日期前6个月或更早，则允许此类患者入组。', 'description': 'question'}, {'name': '根据研究方案中表8所示，血红蛋白可接受值>=9.0 G/DL，并且在评估前一周内不允许输血。患者出现贫血G4和输血。根据CSP的说法，患者一旦恢复，研究人员是否必须在最后一次输血后等待一周才能进行随机化分组？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649512.443097
+user_intent:inform_protocol1.0
+message_id:fb29f20e82914fe8bd0779d690b1c2b1
+USER:入组14
+slot:item_number14
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2治疗洗脱期 : 
+受试者类型和疾病特征重大手术（由研究者确定） : 
+首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。放射治疗，包括胸部姑息性立体定向放射治疗 : 
+≥4周其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4） : 
+≥2周抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法 : 
+≥3周基于抗体的抗癌治疗 : 
+≥4周靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇） : 
+≥2周或5个半衰期，以较长者为准亚硝基脲类或丝裂霉素C : 
+≥6周批准用于NSCLC治疗的TKI : 
+≥1周氯喹/羟氯喹 : 
+≥14天胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗 : 
+筛选评估前≥2周
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第14条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '治疗洗脱期', 'description': '受试者类型和疾病特征'}, {'name': '重大手术（由研究者确定）', 'description': '首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。'}, {'name': '放射治疗，包括胸部姑息性立体定向放射治疗', 'description': '≥4周'}, {'name': '其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4）', 'description': '≥2周'}, {'name': '抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法', 'description': '≥3周'}, {'name': '基于抗体的抗癌治疗', 'description': '≥4周'}, {'name': '靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇）', 'description': '≥2周或5个半衰期，以较长者为准'}, {'name': '亚硝基脲类或丝裂霉素C', 'description': '≥6周'}, {'name': '批准用于NSCLC治疗的TKI', 'description': '≥1周'}, {'name': '氯喹/羟氯喹', 'description': '≥14天'}, {'name': '胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗', 'description': '筛选评估前≥2周'}, {'name': '你能确认下面的病例是否可以进行随机分组吗？ \n1) 术后6个月以及接受辅助治疗的患者', 'description': 'question'}, {'name': '你能确认下面的病例是否可以进行随机分组吗？ \n2) CCRT术后复发的患者', 'description': 'question'}, {'name': '请阐明纳入标准#14中的充分治疗与洗脱期。研究方案的意思是否是指在规定的洗脱期内，可接受转移/不可切除诊断前的治疗，并且禁止诊断后的任何治疗？', 'description': 'question'}, {'name': '筛选前有2周洗脱期的引流/分流/CART是否可以接受？', 'description': 'question'}, {'name': '反复穿刺后的洗脱期需要多久？', 'description': 'question'}, {'name': '根据表9，在筛选评估前，胸腔积液引流的洗脱期应至少≥2周。那么，如果只获得了筛选ICF，而没有进行任何其他评估，那么洗脱期可以在筛选ICF获得日期的两周内吗？', 'description': 'question'}, {'name': '研究中心询问如果接受了Ⅲ期治疗，然后进展到IV期，IV期时未接受治疗。该受试者有资格参加研究吗？', 'description': 'question'}, {'name': '如果使用顺铂，将按如下所示6个月后开始治疗。\n如果使用免疫检查点抑制剂，我需要等待多久？\n\n受试者必须未接受过针对局部晚期或转移性疾病的姑息性全身治疗，且在医学上符合接受一线治疗的要求。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案来进行全身治疗（新辅助、辅助或放化疗）的患者，如果其铂类化疗的末次给药时间是首次研究治疗日期前6个月或更早，则允许此类患者入组。', 'description': 'question'}, {'name': '根据研究方案中表8所示，血红蛋白可接受值>=9.0 G/DL，并且在评估前一周内不允许输血。患者出现贫血G4和输血。根据CSP的说法，患者一旦恢复，研究人员是否必须在最后一次输血后等待一周才能进行随机化分组？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649528.5921803
+user_intent:inform_protocol1.0
+message_id:70bffbb9e721483a87379a2010768e7d
+USER:入组15
+slot:item_number15
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第15条 
+与未绝育的男性伴侣性生活活跃、且有生育能力女性具有绝经后状态或血清妊娠试验结果为阴性的证据。
+A)对于有生育能力的女性，在筛选访视时必须具有血清妊娠试验阴性结果（试验的灵敏度必须至少为25 mIU/mL），每次研究干预给药前尿β-HCG妊娠试验结果必须呈阴性。
+B)女性在无其他医学原因的情况下停经12个月或接受过绝育手术（双侧卵巢切除术或子宫切除术）被认为绝经。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第15条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649540.1625533
+user_intent:inform_protocol1.0
+message_id:640d983f27694049b7305c4d9bd382f9
+USER:/inform_protocol{"sub": "脊髓压迫"}
+slot:sub脊髓压迫
+action:simple_protocol_form
+slot:main入选标准
+slot:sub脊髓压迫
+slot:sub_list['脊髓压迫']
+slot:sub脊髓压迫
+slot:sub_list['脊髓压迫']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第4条 
+任何脊髓压迫、软脑膜疾病或临床活动性CNS转移。注：临床活动性 CNS转移定义为未经治疗且有症状的、或需要皮质类固醇或抗惊厥药治疗以控制相关症状。
+CNS 转移受试者必须既往完成过局部治疗。
+−  如果无症状或神经系统稳定且已从既往治疗的急性毒性作用中恢复，则允许既往接受过治疗的 CNS 转移受试者入组。
+− 接受放疗的 CNS 转移受试者必须符合以下要求：
+o 入组前行立体定向放射手术或伽玛刀后≥7 天。
+o 入组前接受全脑放射治疗后≥14 天。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['病灶,中枢神经系统转移,局部治疗', '局部治疗,方案,T-DXD,第4,脑转移,中枢神经系统转移', '病灶,局部治疗,靶病灶,RECIST,中枢神经系统转移', 'CNS,局部治疗,方案,CNS转移,日本,中枢神经系统转移', '中枢神经系统,脑转移,洗脱期,ICF']
+slot:csp_item['排除标准第4条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649547.4949203
+user_intent:inform_protocol1.0
+message_id:c0459331a6b44d009287b55d749e3079
+USER:入组16
+slot:item_number16
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第16条 
+对于与未绝育的男性伴侣性生活活跃且具有生育能力的女性受试者，必须从筛选开始使用至少1种高效避孕方法，并且必须同意在 T-DXd末次给药后7个月内以及其他研究治疗/干预的相关药品说明书中规定期限内继续使用此类避孕措施。在研究期间和药物洗脱期间不发生性行为是可接受的避孕方法；但是，定期或偶尔禁欲、安全期避孕法和体外射精均不是可接受的避孕方法。并非所有的避孕方法均为高效（高效避孕方法的完整列表见表23）。女性受试者从筛选时开始至整个研究干预期	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第16条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649564.40741
+user_intent:inform_protocol1.0
+message_id:6e83f146903f4c92944d40f19adf3ce5
+USER:入组17
+slot:item_number17
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+入选标准第17条 
+与有生育能力的女性伴侣保持性生活活跃的未绝育男性受试者从筛选至 T-DXd末次给药后4个月以及其他研究干预的相关药品说明书中规定期限内，必须使用含杀精剂的避孕套。在研究期间和药物洗脱期间不发生性行为是可接受的避孕方法；但是，定期或偶尔禁欲、安全期避孕法和体外射精均不是可接受的避孕方法。强烈建议男性受试者的女性伴侣在此期间也至少采用一种高效避孕方法，如表23所述。此外，研究期间和IP末次给药后4个月内（或对于第2组，根据相关药品说明书要求的更长期限），男性受试者应避免授精或捐献精子。如需保留精子，则应考虑在入选本研究前进行。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第17条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649579.528945
+user_intent:inform_protocol1.0
+message_id:d5b0043deec7481596e6eee0b32a5b7e
+USER:入组18
+slot:item_number18
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649625.5113444
+user_intent:greet0.9993818998336792
+message_id:f7622e2dd6f84b6aa441df7482237e9a
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649638.7015278
+user_intent:inform_protocol1.0
+message_id:a834e2d3b92e42a5a259285bc31591fc
+USER:入组18
+slot:item_number18
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:sub_list[]
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"入组18，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list[]
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649733.159019
+user_intent:inform_protocol1.0
+message_id:39c9446efd8846368f2338c07755648b
+USER:排除1
+slot:item_number1
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第1条 
+混合型小细胞肺癌、鳞状组织学NSCLC和肉瘤样组织学变异型NSCLC。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第1条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649746.128286
+user_intent:inform_protocol1.0
+message_id:c852a0ec43414ea2ac0c2e6e5c8937a4
+USER:排除2
+slot:item_number2
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第2条 
+携带靶向EGFR改变（或其他靶向突变，包括但不限于ALK，如果通过常规检测确定为有获批可用治疗的靶向改变）的肿瘤。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:csp_item['排除标准第2条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': 'KRAS突变患者是否适用于排除标准2？', 'description': 'question'}, {'name': '研究人员在SQV期间给出了排除标准的反馈。排除标准#2非常严格，限制了患者人群。他表示，最好排除有可用一线治疗的靶向突变。除此之外，对于一些没有可用一线治疗，但可能有二线治疗的靶向突变患者也被排除在外。然而，这些患者不能用这些药物治疗，因为患者需要一线治疗。  请对这一建议发表评论。', 'description': 'question'}, {'name': '我们注意到不同的研究中心会检测不同的靶向突变（EGFR、ALK、ROS1、PDL1等）。如果在当地常规检测中未检测到某些突变，但在中心CTDNA检测中检测到，该如何处理。在筛选期间，该患者是否符合研究条件？对于已有数据且已在研究中接受随机分组的患者，这是否是一种方案偏离？', 'description': 'question'}, {'name': '请确认以下医疗状况是否符合条件？\n1. 已知B-RAF（V600）突变', 'description': 'question'}, {'name': 'CSP中提到，“如果通过批准的可用疗法常规检测为靶向性突变，则排除含有EGFR靶向性突变（或其他靶向性突变，包括但不限于ALK）的肿瘤。” \n该标准是否适用于当地批准情况？ \n（例如，埃万妥单抗和莫博替尼在美国被批准用于EGFR EX20插入突变，但在日本尚未获得批准）\n如果是这样，应当加以说明。', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649760.5793397
+user_intent:inform_protocol1.0
+message_id:de892f5d7b7249ab9eca8328699d049e
+USER:排除3
+slot:item_number3
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第3条 
+存在未得到控制的并发疾病，包括但不限于持续感染或活动性感染、未受控制的高血压、与腹泻相关的严重慢性胃肠道疾病或限制研究要求依从性的精神疾病/社会状况、发生 AE 的风险显著增加或损害受试者提供书面知情同意的能力	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['T-DXD,感染,MSUD,代谢失']
+slot:csp_item['排除标准第3条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '请让我确认排除标准3。\n患有枫糖尿症并发症的患者符合条件吗？\n仅通过营养治疗（有限支链氨基酸（缬氨酸、亮氨酸和异亮氨酸）和特殊牛奶），患者的症状稳定，因此医生认为患者不符合排除标准#3。', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649770.7353227
+user_intent:inform_protocol1.0
+message_id:18ebb98e2b5943729421c748ae94bb63
+USER:/inform_protocol{"sub": "T-DXD,感染,MSUD,代谢失"}
+slot:subT-DXD,感染,MSUD,代谢失
+action:simple_protocol_form
+slot:main入选标准
+slot:subT-DXD,感染,MSUD,代谢失
+slot:sub_list['T-DXD,感染,MSUD,代谢失']
+slot:subT-DXD,感染,MSUD,代谢失
+slot:sub_list['T-DXD,感染,MSUD,代谢失']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第3条问题: </b>请让我确认排除标准3。
+患有枫糖尿症并发症的患者符合条件吗？
+仅通过营养治疗（有限支链氨基酸（缬氨酸、亮氨酸和异亮氨酸）和特殊牛奶），患者的症状稳定，因此医生认为患者不符合排除标准#3。
+<b>
+排除标准第3条回答: </b>目前没有关于纳入的病情控制良好的枫糖尿症患者使用T-DXd特定安全性考虑的记录，但这将由研究者决定他们是否认为这是“控制良好的”。MSUD（枫糖尿症）的症状和严重程度因患者而异，在很大程度上取决于残余酶活性的多少。研究者应考虑疾病过去的控制情况、患者对饮食治疗的依从性，并考虑即使在控制饮食时也会发生突然或逐渐复发的代谢失代偿的风险。代谢危机可能会在这些患者身上隐匿发生，也可能在任何代谢应激期间迅速发生，包括感染，甚至非常轻微的心理或生理应激、创伤或禁食。  考虑到这些因素和患者过去的疾病经历，研究者应该考虑他们是否符合排除标准3或7。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['T-DXD,感染,MSUD,代谢失']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第3条']
+slot:versionNone
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649788.0325384
+user_intent:inform_protocol1.0
+message_id:00d552ace8f140328f169645474a5721
+USER:排除4
+slot:item_number4
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第4条 
+任何脊髓压迫、软脑膜疾病或临床活动性CNS转移。注：临床活动性 CNS转移定义为未经治疗且有症状的、或需要皮质类固醇或抗惊厥药治疗以控制相关症状。
+CNS 转移受试者必须既往完成过局部治疗。
+−  如果无症状或神经系统稳定且已从既往治疗的急性毒性作用中恢复，则允许既往接受过治疗的 CNS 转移受试者入组。
+− 接受放疗的 CNS 转移受试者必须符合以下要求：
+o 入组前行立体定向放射手术或伽玛刀后≥7 天。
+o 入组前接受全脑放射治疗后≥14 天。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['病灶,中枢神经系统转移,局部治疗', '局部治疗,方案,T-DXD,第4,脑转移,中枢神经系统转移', '病灶,局部治疗,靶病灶,RECIST,中枢神经系统转移', 'CNS,局部治疗,方案,CNS转移,日本,中枢神经系统转移', '中枢神经系统,脑转移,洗脱期,ICF']
+slot:csp_item['排除标准第4条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '如何处理那些出现新诊断（尚未有症状）的有中枢神经系统转移的患者。在筛查过程中，可能会发现确实无任何症状的新病灶，这些患者是否仍被允许参与研究？', 'description': 'question'}, {'name': '关于第4条排除标准：未经治疗的非活动性中枢神经系统转移瘤的患者是否可以参加研究？所有PI均指出，非活动性中枢神经系统转移瘤的患者不接受常规治疗，如果需要，这将是一个限制性排除标准。\n方案中指出：“有中枢神经系统转移瘤的参与者在之前必须完成过局部治疗”，但目前尚不清楚这是否只是针对于活动性的中枢神经系统转移', 'description': 'question'}, {'name': '受试者大脑内只有一个靶病灶是否合格', 'description': 'question'}, {'name': '关于CSP中的中枢神经系统转移，检测到的活动性CNS定义为“未经治疗且有症状的临床活动性CNS转移，”\n\n因此，一些研究人员理解为，对于未经治疗但无症状的CNS转移，完成局部治疗不是强制性的。  但在QA和培训中，我们明确了解，受试者必须完成局部治疗，即使转移瘤没有症状。\n\n最近的CSP中似乎并未明确说明上述情况。请您考虑提供方案澄清函，因为它对治疗前CNS转移的误解有很高的风险。在日本，如果CNS转移瘤是无症状的，则常规治疗中不进行CNS转移的放射治疗。', 'description': 'question'}, {'name': '如果受试者知晓存在脑转移瘤并签署了主要的ICF，在筛选期间接受脑转移瘤治疗，并在随机化分组前已经度过了洗脱期，这是否可以纳入研究？\n换言之，中枢神经系统治疗的洗脱期在入选前已经完成。入组是否意味着随机化分组或治疗？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649803.1507087
+user_intent:greet0.9993818998336792
+message_id:0e404f780b264abf964ddbb80e748ef6
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649876.1489992
+user_intent:inform_protocol1.0
+message_id:9ac505fec97d4a15b8e3a3b148a0fadd
+USER:排除5
+slot:item_number5
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第5条 
+活动性或既往有记录的自体免疫性或炎症性疾病（包括炎性肠病[如，结肠炎或克罗恩病]、憩室炎[憩室病除外]、系统性红斑狼疮、肉状瘤病、肉芽肿伴多血管炎、格雷夫斯病、类风湿关节炎、垂体炎、葡萄膜炎、自身免疫性肺炎、自身免疫性心肌炎。以下是该标准的例外情况：
+− 白癜风或脱发受试者
+− 接受激素替代治疗后病情稳定的甲状腺功能减退症受试者（如，桥本甲状腺炎后）
+− 任何不需要全身治疗的慢性皮肤病受试者。
+− 在过去 5 年内没有活动性疾病的受试者可以入组，但是仅在咨询阿斯利康研究医师后方可纳入。
+− 仅依靠饮食即可控制乳糜泻的受试者。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['皮肤病', '炎症']
+slot:csp_item['排除标准第5条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '关于“任何不需要系统治疗的慢性皮肤病”，服用抗组胺药的患者符合研究资格吗？', 'description': 'question'}, {'name': '（Q353的补充问题）\n例如，假设服用抗组胺药的特应性皮炎患者适用。\n我们是否应该就此类病例咨询每位患者？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649888.6616466
+user_intent:inform_protocol1.0
+message_id:e9df3206b00546c0ac331ce1e09c3254
+USER:排除6
+slot:item_number6
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第6条 
+需要引流、腹腔分流术或浓缩无细胞腹水再输注疗法治疗的胸腔积液、腹水或心包积液	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
+slot:csp_item['排除标准第6条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '排除标准6；有需要引流的胸腔积液、腹水或心包积液病史的患者是否可以接受？如果是，截止时间是什么时候？', 'description': 'question'}, {'name': '2.\t确认一下我的理解是否正确，即对于排除标准6，这只适用于在筛选时需要引流的患者，并且可以允许在知情同意前发生的任何引流。这是相关的，因为研究中心可能会为患者规划一个线路图，其中患者目前不适合进行研究，因为她/他需要进行引流，但是患者一旦从中恢复，可能会被邀请参与研究。', 'description': 'question'}, {'name': '接受引流或腹腔分流术后从胸腔积液中恢复的受试者是否符合研究条件？', 'description': 'question'}, {'name': '为什么有胸腔积液的患者不被允许？这是肺癌的常见症状。根据PI的判断，符合该排除标准的患者将不能参与研究', 'description': 'question'}, {'name': '对于排除标准#6：请确认无需引流的胸腔穿刺患者是否具备研究资格？', 'description': 'question'}, {'name': '是否排除留置引流管（PLEURX型）的患者？反复胸腔穿刺的患者也被排除在外吗？ \n如果是，穿刺后的洗脱期需要多久？因为这代表了很大一部分患者', 'description': 'question'}, {'name': '反复胸腔穿刺的患者被排除在外吗？', 'description': 'question'}, {'name': '2. 胸腔积液不需要引流的患者是否很符合条件', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649907.9253545
+user_intent:inform_protocol1.0
+message_id:b06eb20705a9420ca44d56d428d5bcbf
+USER:排除7
+slot:item_number7
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第7条 
+研究者认为有可能增加毒性风险的共存疾病。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第7条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649922.8072777
+user_intent:inform_protocol1.0
+message_id:e919c8bd3291491799405964fcde0c6f
+USER:/inform_protocol{"sub": "维生素B12"}
+slot:sub维生素B12
+action:simple_protocol_form
+slot:main入选标准
+slot:sub维生素B12
+slot:sub_list['维生素B12']
+slot:sub维生素B12
+slot:sub_list['维生素B12']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第18条 
+ 不能或不愿意接受叶酸或维生素 B12 补充剂。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第18条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649939.072518
+user_intent:inform_protocol1.0
+message_id:e1c8443a2bc7411b8e0295a34ca2a999
+USER:排除8
+slot:item_number8
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第8条 
+3年内存在多种原发性恶性肿瘤情况，以下除外：已充分切除的非黑素性皮肤癌、已治愈的原位疾病、其他已治愈的实体瘤。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第8条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649960.7398021
+user_intent:inform_protocol1.0
+message_id:5a8a16dec64a4f959b3390d7e8dae1a8
+USER:排除9
+slot:item_number9
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第9条 
+随机化/入组前6个月内有心肌梗死病史或患有症状性充血性心脏衰竭（NYHA II 至IV级）的受试者。注：筛选时肌钙蛋白水平高于ULN（由生产商规定）且无任何心肌梗死相关症状的受试者应在入选前接受心脏病会诊，以排除心肌梗死。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第9条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649977.8796153
+user_intent:inform_protocol1.0
+message_id:a10796d3475e4a6085e4cfc70def4a1d
+USER:/inform_protocol{"sub": "局部晚期"}
+slot:sub局部晚期
+action:simple_protocol_form
+slot:main入选标准
+slot:sub局部晚期
+slot:sub_list['局部晚期']
+slot:sub局部晚期
+slot:sub_list['局部晚期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['组织学类型,腺癌,小细胞肺癌']
+slot:csp_item['入选标准第5条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649991.0754051
+user_intent:inform_protocol1.0
+message_id:770ae485a850408eb5a9883f2df9b515
+USER:排除10
+slot:item_number10
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第10条 
+基于筛选期三次12导联ECG结果平均值，QTcF延长至>470 msec（女性）或>450msec（男性）。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第10条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655649996.343988
+user_intent:inform_protocol1.0
+message_id:e88cc64e15bc42a7a5b616b7f8eee113
+USER:/inform_protocol{"sub": "组织学类型,腺癌,小细胞肺癌"}
+slot:sub组织学类型,腺癌,小细胞肺癌
+action:simple_protocol_form
+slot:main入选标准
+slot:sub组织学类型,腺癌,小细胞肺癌
+slot:sub_list['组织学类型,腺癌,小细胞肺癌']
+slot:sub组织学类型,腺癌,小细胞肺癌
+slot:sub_list['组织学类型,腺癌,小细胞肺癌']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第5条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650023.7296646
+user_intent:inform_protocol1.0
+message_id:1e6eb69cc22142ed952f0a77ff9f7747
+USER:排除11
+slot:item_number11
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第11条 
+有需要类固醇激素治疗的（非感染性）ILD/非感染性肺炎病史、当前有ILD/非感染性肺炎、或筛选时影像学检查不能排除疑似 ILD/非感染性肺炎。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['感染,ILD,类固醇,炎症']
+slot:csp_item['排除标准第11条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '你能确认下面的病例是否可以进行随机分组吗？ \nIPF （特发性肺纤维化）', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650039.3585327
+user_intent:inform_protocol1.0
+message_id:d470b0fba6654f2cb0c61cc9011a123d
+USER:排除12
+slot:item_number12
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第12条 
+肺部标准：
+− 具有临床意义的肺特异性并发疾病，包括但不限于任何基础肺部疾病（例如，研究入组前3个月内肺栓塞、重度哮喘、重度COPD、限制性肺部疾病、胸腔积液等）
+− 任何有记录的自身免疫性、结缔组织或炎症性疾病（即类风湿性关节炎、舍格林病、肉状瘤病等），或筛选时怀疑肺部受累。对于入选研究的受试者，疾病的全部详细内容均应记录在 eCRF 中。
+− 既往全肺切除术 注：允许既往肺叶或肺段切除	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肺炎,类固醇']
+slot:csp_item['排除标准第12条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '3. 有使用类固醇治疗的放射性肺炎病史的患者是否符合条件？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650157.1799865
+user_intent:inform_protocol1.0
+message_id:eaeac884c00f4014937e25f9f49b88a5
+USER:排除13
+slot:item_number13
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第13条 
+需要静脉用抗生素、抗病毒药物或抗真菌药物的未受控制感染或活动性感染包括结核病（临床评估，包括临床病史、体格检查和影像学检查结果，以及符合当地治疗原则的结核病检测）。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第13条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650175.1132357
+user_intent:inform_protocol1.0
+message_id:80f799f10d2b44d294f15d2800ef1ac8
+USER:/inform_protocol{"sub": "大于6个月"}
+slot:sub大于6个月
+action:simple_protocol_form
+slot:main入选标准
+slot:sub大于6个月
+slot:sub_list['大于6个月']
+slot:sub大于6个月
+slot:sub_list['大于6个月']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第6条 
+受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且在医学上适合接受一线治疗。允许纳入既往针对早期疾病进行治疗的受试者。对于既往针对早期疾病使用了基于铂的方案进行全身治疗（新辅助治疗、辅助治疗或放化疗）的患者，如果其铂类化疗的末次给药时间距离首次研究治疗日期前6个月或更早，则允许此类患者入组。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['CBDCA', '2-3周,晚期', '治疗洗脱期,洗脱期,方案', 'IV期,放疗,根治性治疗']
+slot:csp_item['入选标准第6条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650191.2522008
+user_intent:inform_protocol1.0
+message_id:538fc874aee14deda32726467ff36449
+USER:/inform_protocol{"sub": "2-3周,晚期"}
+slot:sub2-3周,晚期
+action:simple_protocol_form
+slot:main入选标准
+slot:sub2-3周,晚期
+slot:sub_list['2-3周,晚期']
+slot:sub2-3周,晚期
+slot:sub_list['2-3周,晚期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>入选标准第6条问题: </b>PI认为对于晚期患者来说，2-3周不进行治疗的时间太长了。由于等待时间长，患者通常拒绝参加研究。PI希望确认在筛选前1个周期的化疗是否可以接受（提供足够的清洗期）。
+<b>
+入选标准第6条回答: </b>不允许。根据纳入标准#6，患者必须未接受晚期疾病的治疗。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['CBDCA', '2-3周,晚期', '治疗洗脱期,洗脱期,方案', 'IV期,放疗,根治性治疗']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:qa_item['Q&A']
+slot:csp_item['入选标准第6条']
+slot:versionNone
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650201.300011
+user_intent:inform_protocol1.0
+message_id:5ac16d4f1b86417f9587e6bfc6f2ed8e
+USER:排除14
+slot:item_number14
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第14条 
+活动性原发性免疫缺陷，已知存在HIV感染，或活动性乙型肝炎或丙型肝炎感染。
+注： HCV 抗体呈阳性的受试者仅聚合酶链反应显示 HCV RNA呈阴性的情况下可参与本项研究。如果当地法规或机构审评委员会/伦理委员会要求，受试者应在随机化/入组前接受 HIV 检测。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第14条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650226.2297754
+user_intent:inform_protocol1.0
+message_id:2e91418b2f2c46ecb46a6ba81115f520
+USER:排除15
+slot:item_number15
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第15条 
+T-DXd首次给药前30天内接种减毒活疫苗。注：入组后，受试者在研究期间及研究干预治疗末次给药后 30 天内不得接种活疫苗。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第15条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650237.8895936
+user_intent:inform_protocol1.0
+message_id:5d0f9e91111942359fe2a9587ca74cc5
+USER:排除16
+slot:item_number16
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第16条 
+既往抗癌治疗后毒性未缓解，定义为毒性尚未缓解至≤1级或基线（脱发除外）。
+注：发生研究者认为与既往抗癌治疗相关的慢性、稳定的 2 级毒性（定义为在入组前至少 3 个月内未恶化至 > 2 级，并通过标准治疗进行管理）的受试者可入选研究，例如：
+− 化疗引起的神经病变
+− 疲乏
+− 既往 IO 治疗的残留毒性： 1 级或 2 级内分泌疾病，可能包括：
+o 甲状腺功能减退症/甲状腺功能亢进症
+o 1 型糖尿病
+o 高血糖症
+o 肾上腺功能不全
+o 肾上腺炎
+o 皮肤色素减退（白癜风）。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第16条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650269.3837566
+user_intent:inform_protocol1.0
+message_id:791e79d2f8134111ba0aa921acdfd4ec
+USER:排除17
+slot:item_number17
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第17条 
+铂类二联化疗或帕博利珠单抗的医学禁忌。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性']
+slot:csp_item['排除标准第17条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '排除标准17：“含铂双联化疗的医学禁忌症。”PI询问有免疫疗法禁忌症的患者是否合格？（与对照组IMP相关的问题：帕博利珠单抗）', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650285.5341547
+user_intent:inform_protocol1.0
+message_id:d8868673a35444fe8bd3e2a3018f693a
+USER:/inform_protocol{"sub": "帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性"}
+slot:sub帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性
+action:simple_protocol_form
+slot:main入选标准
+slot:sub帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性
+slot:sub_list['帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性']
+slot:sub帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性
+slot:sub_list['帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第17条问题: </b>排除标准17：“含铂双联化疗的医学禁忌症。”PI询问有免疫疗法禁忌症的患者是否合格？（与对照组IMP相关的问题：帕博利珠单抗）
+<b>
+排除标准第17条回答: </b>不合格—除了与自身免疫疾病和免疫疗法毒性相关的排除标准5和16之外，请参考最终CSP中的排除标准17（含铂双联化疗或帕博利珠单抗的医学禁忌症）。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['帕博利珠,铂,MP相关,医学禁忌,禁忌症,自身免疫,免疫,毒性']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第17条']
+slot:versionNone
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650291.6560457
+user_intent:inform_protocol1.0
+message_id:7baa78ccb2e0403b83503cfb1a2bc485
+USER:排除18
+slot:item_number18
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第18条 
+ 不能或不愿意接受叶酸或维生素 B12 补充剂。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第18条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650316.3808684
+user_intent:inform_protocol1.0
+message_id:7e24964d39a2424e8cc56ce59742f945
+USER:排除19
+slot:item_number19
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第19条 
+既往已随机入组本研究。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第19条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650337.436396
+user_intent:inform_protocol1.0
+message_id:8159752cbb9b445aacc4eca82ecb271c
+USER:排除20
+slot:item_number20
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第20条 
+随机化至既往T-DXd研究，不考虑治疗分配。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第20条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650353.8539696
+user_intent:inform_protocol1.0
+message_id:5db963dab76e428d848442f50d799436
+USER:排除21
+slot:item_number21
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第21条 
+同时参与另一项治疗性临床研究。注：允许入组观察性研究。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['ICF,观察性,临床试验,第21,临床研究']
+slot:csp_item['排除标准第21条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '根据排除标准第21项，不允许同时参加另一项治疗性临床研究。注：允许参加观察性研究。\n参加其他研究是否表明主要ICF签名，因为受试者可以在预选ICF的同时签署其他研究ICF？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650373.2028112
+user_intent:inform_protocol1.0
+message_id:7013b401672d43f096b51dea7651979f
+USER:排除22
+slot:item_number22
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第22条 
+已知会对研究干预药物或任何研究药物辅料或其他mAb产生过敏反应或超敏反应。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第22条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650393.5531955
+user_intent:inform_protocol1.0
+message_id:ad85ed5fc6c5401f9805e484de8379b1
+USER:排除23
+slot:item_number23
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第23条 
+参与本研究设计和/或实施的人员（适用于阿斯利康的工作人员和/或研究中心工作人员）	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['工作人员']
+slot:csp_item['排除标准第23条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[{'name': '研究中心工作人员的家属有资格参加吗？', 'description': 'question'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650413.6835952
+user_intent:inform_protocol1.0
+message_id:6b1aabc4e9dc45c6977e783eda338e75
+USER:排除24
+slot:item_number24
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第24条 
+经研究者判定不太可能遵从研究步骤、限制及要求的受试者不得参与本研究。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第24条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650432.45662
+user_intent:inform_protocol1.0
+message_id:e6bd8bf59c7942b48d18ec927ee9ee95
+USER:排除25
+slot:item_number25
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第25条 
+妊娠期（经妊娠试验阳性证实）或哺乳期女性受试者或计划怀孕的受试者。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第25条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650449.2335112
+user_intent:inform_protocol1.0
+message_id:dc5aeaf9d7f74c38af8be04d03980130
+USER:排除26
+slot:item_number26
+slot:main排除标准
+action:simple_protocol_form
+slot:main排除标准
+slot:sub 
+slot:main排除标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第71页 
+排除标准第26条 
+存在物质滥用或研究者认为可能干扰受试者参与临床研究或临床研究结果评价的任何其他医学疾病（如具有临床意义的心脏或心理疾病）	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第26条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650465.8707292
+user_intent:inform_protocol1.0
+message_id:a12ddce03a004047a75b9b0a8161d3d7
+USER:/inform_protocol{"sub": "ICF"}
+slot:subICF
+action:simple_protocol_form
+slot:main入选标准
+slot:subICF
+slot:sub_list['ICF']
+slot:subICF
+slot:sub_list['ICF']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第63页 
+入选标准预筛选 
+在执行方案规定的任何程序（包括预筛选/基线评价）之前，必须获得书面知情同意书和当地要求的隐私法文件授权。 
+HER2 突变状态未知的受试者将需要签署预筛选ICF，以允许在28 天筛选时间窗之前采集血样进行用于确认合格性的 HER2 外显子 19 或 20 突变检测。在签署预筛选ICF时，根据现有信息（例如，病史、NSCLC、治疗线限制、肿瘤组织样本的可用性），研究者应确保受试者有可能成为本研究的候选受试者。签署预筛选ICF 后，在获得符合要求的中心实验室检测结果之前，不得开始主ICF 和其他研究程序。将要求已知既往存在符合要求的HER2 突变或经中心实验室检测结果证实的HER2 突变受试者在参与研究前签署主ICF。关于非中心实验室评估的 HER2 外显子 19 或 20 突变合格性评估的研究要求的详细信息，参见附录O。 
+关于说明研究HER2 外显子19 或20 突变合格性评估的（预）筛选要求的示意图，参见图2。 
+受试者将在签署预筛选 ICF 和/或主 ICF 后入组研究。不符合合格性标准（包括预筛选评估）的受试者被称为“筛选失败”。 
+签署主 ICF 后，将开始筛选和基线程序。筛选期设为从入选日起最多 28 天。筛选和基线程序完成时，符合合格性标准的受试者将随机入组研究。应尽量缩短从随机化至开始治疗的时间（参见第1.3.2 节）。	/DL04 V2
+试验方案第64页 
+入选标准第1条 
+能够签署知情同意书（如附录A所述），包括遵从ICF和本CSP中列出的要求和限制	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准预筛选', '入选标准第1条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650483.213037
+user_intent:nlu_fallback0.7
+message_id:931802c47c9348268354b76b9eba887a
+USER:jan jmonth
+action:utter_please_rephrase
+BOT: 您的问题我不太理解，能否换个方式再说一下。谢谢
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655650517.581826
+user_intent:inform_protocol1.0
+message_id:908dfb364bf7432ba5355a8f7ccefd5e
+USER:疫苗
+slot:sub疫苗
+action:simple_protocol_form
+slot:main入选标准
+slot:sub疫苗
+slot:sub_list['疫苗', '疫苗', '疫苗']
+slot:sub['疫苗', '疫苗', '疫苗']
+slot:sub_list['疫苗', '疫苗', '疫苗']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第15条 
+T-DXd首次给药前30天内接种减毒活疫苗。注：入组后，受试者在研究期间及研究干预治疗末次给药后 30 天内不得接种活疫苗。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第15条']
+slot:sender_id
+slot:sender_nameNone
+slot:site_nameNone
+slot:versionNone
+slot:entity_values[]
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655730086.0793657
+user_intent:greet0.9993957281112671
+message_id:c40ae1913ab649a7a5aa7a597841b7a8
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655730130.675523
+user_intent:inform_protocol1.0
+message_id:1a06f67e3fc3436fb920dd527908670e
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:sub目标人群
+slot:main入选标准
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:main入选标准
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655731607.7584503
+user_intent:inform_protocol1.0
+message_id:61879d46d0bb43dc94c19638ae5b99aa
+USER:这个项目对应哪些人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655731644.2200549
+user_intent:inform_protocol1.0
+message_id:099d7b85ed2b494a8164845db78bf6e2
+USER:什么样的患者可以参加这个试验
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655731718.3729384
+user_intent:inform_protocol1.0
+message_id:a12cd522388e479aab4c7ad1f8ff3d24
+USER:kres突变患者是否可以参加这个试验
+slot:subkres突变
+action:simple_protocol_form
+slot:main入选标准
+slot:subkres突变
+slot:sub_list['kres突变']
+slot:subkres突变
+slot:sub_list['kres突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"kres突变患者是否可以参加这个试验，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list[]
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655731768.0415678
+user_intent:inform_protocol1.0
+message_id:8fd8d861d3804e6ca4df52f7742bb8ee
+USER:基因突变
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第2条 
+携带靶向EGFR改变（或其他靶向突变，包括但不限于ALK，如果通过常规检测确定为有获批可用治疗的靶向改变）的肿瘤。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:csp_item['排除标准第2条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655731991.5240057
+user_intent:inform_protocol1.0
+message_id:b3e63751f32449f48185a27be4345592
+USER:kras突变
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>请确认以下医疗状况是否符合条件？
+1. 已知B-RAF（V600）突变
+<b>
+排除标准第2条回答: </b>您的研究中心通常是否为B-Raf（V600）突变患者使用靶向药物？如果不是这样，那么从这个角度来看，患者应该是符合条件的。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732046.1022592
+user_intent:inform_protocol1.0
+message_id:7b65e8140fd540be9ac032044cc04206
+USER:kras突变患者可以入吗
+slot:main入选标准
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>请确认以下医疗状况是否符合条件？
+1. 已知B-RAF（V600）突变
+<b>
+排除标准第2条回答: </b>您的研究中心通常是否为B-Raf（V600）突变患者使用靶向药物？如果不是这样，那么从这个角度来看，患者应该是符合条件的。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732071.8123949
+user_intent:inform_protocol1.0
+message_id:77879e83a5e44e01972a32fa8781de41
+USER:疫苗
+slot:sub疫苗
+action:simple_protocol_form
+slot:main入选标准
+slot:sub疫苗
+slot:sub_list['疫苗', '疫苗', '疫苗']
+slot:sub['疫苗', '疫苗', '疫苗']
+slot:sub_list['疫苗', '疫苗', '疫苗']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第15条 
+T-DXd首次给药前30天内接种减毒活疫苗。注：入组后，受试者在研究期间及研究干预治疗末次给药后 30 天内不得接种活疫苗。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第15条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732093.60074
+user_intent:inform_protocol1.0
+message_id:e819ff2bdce04276a1d49d8aaec2a5ab
+USER:kras突变患者可以入吗
+slot:main入选标准
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第2条 
+携带靶向EGFR改变（或其他靶向突变，包括但不限于ALK，如果通过常规检测确定为有获批可用治疗的靶向改变）的肿瘤。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:csp_item['排除标准第2条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732151.912574
+user_intent:inform_protocol1.0
+message_id:bf31bebd65b7426ba5a63dd3e43da024
+USER:kras突变患者能否适用于排除标准2
+slot:item_number2
+slot:main排除标准
+slot:sub2
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:sub_list['突变', '2']
+slot:main入选标准
+slot:sub 
+slot:sub_list['突变', '2']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>请确认以下医疗状况是否符合条件？
+1. 已知B-RAF（V600）突变
+<b>
+排除标准第2条回答: </b>您的研究中心通常是否为B-Raf（V600）突变患者使用靶向药物？如果不是这样，那么从这个角度来看，患者应该是符合条件的。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732183.1464088
+user_intent:inform_protocol1.0
+message_id:f927ce3ff76b4632a0833355fc94738a
+USER:kras突变患者能否适用于
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>请确认以下医疗状况是否符合条件？
+1. 已知B-RAF（V600）突变
+<b>
+排除标准第2条回答: </b>您的研究中心通常是否为B-Raf（V600）突变患者使用靶向药物？如果不是这样，那么从这个角度来看，患者应该是符合条件的。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732215.5518749
+user_intent:inform_protocol1.0
+message_id:cbbeb80644bc4a4683760a5b7fa19952
+USER:/inform_protocol{"sub": "CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变"}
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+action:simple_protocol_form
+slot:main入选标准
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+slot:sub_list['CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变']
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+slot:sub_list['CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>我们注意到不同的研究中心会检测不同的靶向突变（EGFR、ALK、ROS1、PDL1等）。如果在当地常规检测中未检测到某些突变，但在中心CTDNA检测中检测到，该如何处理。在筛选期间，该患者是否符合研究条件？对于已有数据且已在研究中接受随机分组的患者，这是否是一种方案偏离？
+<b>
+排除标准第2条回答: </b>患者研究资格的纳入和排除标准中未考虑PDL1。申办方认识到生物标志物测试中存在区域差异。根据排除标准2，应该明确所有患者的EGFR靶向突变均为阴性。如果其它靶向突变有一种经批准且可用的治疗方法，还应该明确患者对这些靶向突变呈阴性。例如，如果ALK靶向治疗方法已获得批准并可用，则患者应该是ALK突变呈阴性。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732242.8634
+user_intent:inform_protocol1.0
+message_id:47435e8da517469ca6d63d73f1d651e1
+USER:kras突变患者，可以入吗
+slot:main入选标准
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>请确认以下医疗状况是否符合条件？
+1. 已知B-RAF（V600）突变
+<b>
+排除标准第2条回答: </b>您的研究中心通常是否为B-Raf（V600）突变患者使用靶向药物？如果不是这样，那么从这个角度来看，患者应该是符合条件的。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732265.3125637
+user_intent:restart1.0
+message_id:a950f524fc014caf9d24433e186cfb73
+USER:/restart
+action:action_restart
+action:action_session_start
+action:action_listen
+action:action_session_start
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719323.2847512
+user_intent:greet0.9995810985565186
+message_id:87d247c1f034443aac81b159ff1ca45e
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719341.4266708
+user_intent:inform_protocol1.0
+message_id:db1a5eac381147cc8178e0532166bf6d
+USER:疾病类型
+slot:sub肺癌
+action:simple_protocol_form
+slot:sub肺癌
+slot:main入选标准
+slot:sub_list['肺癌']
+slot:sub肺癌
+slot:main入选标准
+slot:sub_list['肺癌']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2
+试验方案第68页 
+排除标准第1条 
+混合型小细胞肺癌、鳞状组织学NSCLC和肉瘤样组织学变异型NSCLC。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第5条', '排除标准第1条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719357.1008987
+user_intent:inform_protocol1.0
+message_id:4b0525e116ed48f2865c4bf74f163eaf
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719384.659986
+user_intent:inform_protocol1.0
+message_id:b42a6f22fd9645bea552c9332c76206a
+USER:筛选期的HIV检查
+slot:subHIV
+action:simple_protocol_form
+slot:main入选标准
+slot:subHIV
+slot:sub_list['HIV']
+slot:subHIV
+slot:sub_list['HIV']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第14条 
+活动性原发性免疫缺陷，已知存在HIV感染，或活动性乙型肝炎或丙型肝炎感染。
+注： HCV 抗体呈阳性的受试者仅聚合酶链反应显示 HCV RNA呈阴性的情况下可参与本项研究。如果当地法规或机构审评委员会/伦理委员会要求，受试者应在随机化/入组前接受 HIV 检测。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第14条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719408.2478898
+user_intent:inform_protocol1.0
+message_id:2ec70ef712664f9f82ab8aa8cf4f63dc
+USER:项目的研究人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719427.1314456
+user_intent:inform_protocol1.0
+message_id:3268ab75723c4fe9b0ceae9f78eec73e
+USER:有男女性别的限制吗
+action:simple_protocol_form
+slot:main入选标准
+slot:subNone
+slot:requested_slotsub
+BOT: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, 样本活检的要求; 或FFPE。也可以直接问：入组8。
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719463.9410884
+user_intent:inform_protocol1.0
+message_id:bfbacd4f6a5142a99a9e2a2f5f312f20
+USER:患者无法提供15张病理切片，如何
+slot:item_number15
+slot:sub无法
+action:simple_protocol_form
+slot:sub无法
+slot:sub_list['无法']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"患者无法提供15张病理切片，如何，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list[]
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719680.2996016
+user_intent:inform_protocol1.0
+message_id:0aa1555701f04b59b8f7e4ad4541de44
+USER:对患者或其伴侣的避孕要求
+slot:sub避孕
+action:simple_protocol_form
+slot:main入选标准
+slot:sub避孕
+slot:sub_list['避孕']
+slot:sub避孕
+slot:sub_list['避孕']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第16条 
+对于与未绝育的男性伴侣性生活活跃且具有生育能力的女性受试者，必须从筛选开始使用至少1种高效避孕方法，并且必须同意在 T-DXd末次给药后7个月内以及其他研究治疗/干预的相关药品说明书中规定期限内继续使用此类避孕措施。在研究期间和药物洗脱期间不发生性行为是可接受的避孕方法；但是，定期或偶尔禁欲、安全期避孕法和体外射精均不是可接受的避孕方法。并非所有的避孕方法均为高效（高效避孕方法的完整列表见表23）。女性受试者从筛选时开始至整个研究干预期	/DL04 V2
+试验方案第68页 
+入选标准第17条 
+与有生育能力的女性伴侣保持性生活活跃的未绝育男性受试者从筛选至 T-DXd末次给药后4个月以及其他研究干预的相关药品说明书中规定期限内，必须使用含杀精剂的避孕套。在研究期间和药物洗脱期间不发生性行为是可接受的避孕方法；但是，定期或偶尔禁欲、安全期避孕法和体外射精均不是可接受的避孕方法。强烈建议男性受试者的女性伴侣在此期间也至少采用一种高效避孕方法，如表23所述。此外，研究期间和IP末次给药后4个月内（或对于第2组，根据相关药品说明书要求的更长期限），男性受试者应避免授精或捐献精子。如需保留精子，则应考虑在入选本研究前进行。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第16条', '入选标准第17条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719697.2306302
+user_intent:inform_protocol0.9072587490081787
+message_id:4d8e4298d92c417587d8057899eeec3a
+USER:问题
+action:simple_protocol_form
+slot:main入选标准
+slot:subNone
+slot:requested_slotsub
+BOT: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, 样本活检的要求; 或FFPE。也可以直接问：入组8。
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655719731.5318751
+user_intent:new_scope0.9995728135108948
+message_id:a484ec3b14d043f491eeaaed0ff17428
+USER:受试者C3访视都需要填写哪些问题
+slot:item_number3
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"受试者C3访视都需要填写哪些问题,现在小易还不能回答，我会转给负责咱们中心的CRA。<104>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:non_answer['<104>']
+slot:tokenNone
+action:simple_protocol_form
+slot:requested_slotsub
+BOT: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, 样本活检的要求; 或FFPE。也可以直接问：入组8。
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735488.1464305
+user_intent:greet0.9984763264656067
+message_id:0ba0d31db89a4f0b948e366404dd6106
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735494.7349782
+user_intent:inquiry_protocol0.9974205493927002
+message_id:0ce652b88db746b38bb1e623bde2c54d
+USER:问题
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:simple_protocol_form
+slot:requested_slotmain
+BOT: 您想查询入组还是排除?
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735543.5166764
+user_intent:inform_protocol1.0
+message_id:9ca1f1125d1641209378e021b6d06bd4
+USER:kras突变
+slot:sub突变
+action:simple_protocol_form
+slot:sub突变
+slot:main入选标准
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第2条 
+携带靶向EGFR改变（或其他靶向突变，包括但不限于ALK，如果通过常规检测确定为有获批可用治疗的靶向改变）的肿瘤。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:csp_item['排除标准第2条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735549.9821453
+user_intent:inform_protocol1.0
+message_id:965d1885c3264be28f71ce67955a0688
+USER:/inform_protocol{"sub": "CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变"}
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+action:simple_protocol_form
+slot:main入选标准
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+slot:sub_list['CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变']
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+slot:sub_list['CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>我们注意到不同的研究中心会检测不同的靶向突变（EGFR、ALK、ROS1、PDL1等）。如果在当地常规检测中未检测到某些突变，但在中心CTDNA检测中检测到，该如何处理。在筛选期间，该患者是否符合研究条件？对于已有数据且已在研究中接受随机分组的患者，这是否是一种方案偏离？
+<b>
+排除标准第2条回答: </b>患者研究资格的纳入和排除标准中未考虑PDL1。申办方认识到生物标志物测试中存在区域差异。根据排除标准2，应该明确所有患者的EGFR靶向突变均为阴性。如果其它靶向突变有一种经批准且可用的治疗方法，还应该明确患者对这些靶向突变呈阴性。例如，如果ALK靶向治疗方法已获得批准并可用，则患者应该是ALK突变呈阴性。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735590.438004
+user_intent:inform_protocol1.0
+message_id:127e20a463f147f89a4a36b4801a326b
+USER:入组10
+slot:item_number10
+slot:main入选标准
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第10条 
+至少有一个根据RECIST  1.1标准判断的可测量的病灶。注：如果既往接受过放疗的病灶边界清晰、根据RECIST可测量且已明显进展，则可视为靶病灶。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第10条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735598.7215755
+user_intent:inform_protocol1.0
+message_id:e0b531405150413cac5cc11e7ded4f53
+USER:/inform_protocol{"sub": "治疗洗脱期"}
+slot:sub治疗洗脱期
+action:simple_protocol_form
+slot:main入选标准
+slot:sub治疗洗脱期
+slot:sub_list['治疗洗脱期']
+slot:sub治疗洗脱期
+slot:sub_list['治疗洗脱期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2治疗洗脱期 : 
+受试者类型和疾病特征重大手术（由研究者确定） : 
+首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。放射治疗，包括胸部姑息性立体定向放射治疗 : 
+≥4周其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4） : 
+≥2周抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法 : 
+≥3周基于抗体的抗癌治疗 : 
+≥4周靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇） : 
+≥2周或5个半衰期，以较长者为准亚硝基脲类或丝裂霉素C : 
+≥6周批准用于NSCLC治疗的TKI : 
+≥1周氯喹/羟氯喹 : 
+≥14天胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗 : 
+筛选评估前≥2周
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:csp_item['入选标准第14条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '治疗洗脱期', 'description': '受试者类型和疾病特征'}, {'name': '重大手术（由研究者确定）', 'description': '首次给药前或正在从既往手术中恢复≥4周。注：如果在研究干预首次给药前完成，允许进行局部手术。'}, {'name': '放射治疗，包括胸部姑息性立体定向放射治疗', 'description': '≥4周'}, {'name': '其他解剖区域的姑息性立体定向放射治疗（CNS放疗除外，见排除标准4）', 'description': '≥2周'}, {'name': '抗癌化疗[免疫治疗（非抗体疗法）]、类视黄醇疗法、激素疗法', 'description': '≥3周'}, {'name': '基于抗体的抗癌治疗', 'description': '≥4周'}, {'name': '靶向药物和小分子（如5-氟尿嘧啶类药物、亚叶酸类药物、每周给予紫杉醇）', 'description': '≥2周或5个半衰期，以较长者为准'}, {'name': '亚硝基脲类或丝裂霉素C', 'description': '≥6周'}, {'name': '批准用于NSCLC治疗的TKI', 'description': '≥1周'}, {'name': '氯喹/羟氯喹', 'description': '≥14天'}, {'name': '胸腔积液、腹水或心包积液需要无细胞和CART，腹腔分流或引流治疗', 'description': '筛选评估前≥2周'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735606.1942706
+user_intent:inform_protocol1.0
+message_id:db3d8fb1a9ef40d8a0748e4ec6c7cafb
+USER:/inform_protocol{"sub": "两周,洗脱期,ICF,方案,胸腔积液"}
+slot:sub两周,洗脱期,ICF,方案,胸腔积液
+action:simple_protocol_form
+slot:main入选标准
+slot:sub两周,洗脱期,ICF,方案,胸腔积液
+slot:sub_list['两周,洗脱期,ICF,方案,胸腔积液']
+slot:sub两周,洗脱期,ICF,方案,胸腔积液
+slot:sub_list['两周,洗脱期,ICF,方案,胸腔积液']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>入选标准第14条问题: </b>根据表9，在筛选评估前，胸腔积液引流的洗脱期应至少≥2周。那么，如果只获得了筛选ICF，而没有进行任何其他评估，那么洗脱期可以在筛选ICF获得日期的两周内吗？
+<b>
+入选标准第14条回答: </b>你应该遵循研究方案中的规定，在筛选评估前有≥2周的洗脱期。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['入选标准第14条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735706.409669
+user_intent:inform_protocol1.0
+message_id:efd456ad516c441bbafe1f82568f9005
+USER:CCRT术后复发的患者
+slot:sub复发
+action:simple_protocol_form
+slot:main入选标准
+slot:sub复发
+slot:sub_list['CCRT术后', '复发']
+slot:sub['CCRT术后', '复发']
+slot:sub_list['CCRT术后', '复发']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"CCRT术后复发的患者，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['6个月,辅助治疗,洗脱期', 'CCRT术,洗脱期', '治疗洗脱期,洗脱期,方案', '洗脱期,2周', '洗脱期,胸腔积液,穿刺', '两周,洗脱期,ICF,方案,胸腔积液', 'IV期,放疗,根治性治疗', '铂,局部晚期,6个月后,6个月,洗脱期,方案,免疫,全身治疗,姑息性全身治疗,铂类,一线治疗,3周', '一周,前一周,方案']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655735772.73892
+user_intent:inform_protocol1.0
+message_id:9e98afe0607a4c73b0fdf1bbff12ca10
+USER:KRAS突变患者是否适用于排除标准2
+slot:item_number2
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:sub_list['突变']
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第2条 
+携带靶向EGFR改变（或其他靶向突变，包括但不限于ALK，如果通过常规检测确定为有获批可用治疗的靶向改变）的肿瘤。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:csp_item['排除标准第2条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655736118.9716437
+user_intent:inform_protocol1.0
+message_id:986a1fbfc37c48758a2bc61dd94888a2
+USER:/inform_protocol{"sub": "突变"}
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>请确认以下医疗状况是否符合条件？
+1. 已知B-RAF（V600）突变
+<b>
+排除标准第2条回答: </b>您的研究中心通常是否为B-Raf（V600）突变患者使用靶向药物？如果不是这样，那么从这个角度来看，患者应该是符合条件的。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655736127.683333
+user_intent:inform_protocol1.0
+message_id:f479f444689147939742639fcbba5e8c
+USER:ffpe
+slot:subffpe
+action:simple_protocol_form
+slot:main入选标准
+slot:subffpe
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:sub['ffpe', 'ffpe', 'ffpe']
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第8条 
+必须获取FFPE肿瘤样本，送至中心实验室进行检测。如果未书面确认可提供存档肿瘤样本（首选）或选择最近获得的活检（作为其常规临床治疗途径的一部分进行，见第8.6.1.1节 ），则受试者没有资格参加研究。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+slot:csp_item['入选标准第8条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655736236.4695086
+user_intent:inform_protocol1.0
+message_id:89bd4cb593e340e6a17d5a4d4c484c52
+USER:肉瘤样组织变异性nsclc可以入吗
+slot:main入选标准
+slot:subnsclc
+action:simple_protocol_form
+slot:main入选标准
+slot:subnsclc
+slot:sub_list['肉瘤样', 'nsclc']
+slot:main入选标准
+slot:sub['肉瘤样', 'nsclc']
+slot:sub_list['肉瘤样', 'nsclc']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2
+试验方案第68页 
+排除标准第1条 
+混合型小细胞肺癌、鳞状组织学NSCLC和肉瘤样组织学变异型NSCLC。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第5条', '排除标准第1条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655712602.08829
+user_intent:greet0.9993818998336792
+message_id:c4ee6cc9e7c244459f1a03e1fc1d3607
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655712606.5127718
+user_intent:inform_protocol1.0
+message_id:3dab21a0427f4b9d9af4858923f448f9
+USER:受试者有哪些类型符合入排标准
+slot:sub类型
+action:simple_protocol_form
+slot:sub类型
+slot:main入选标准
+slot:sub_list['受试者', '类型']
+slot:sub['受试者', '类型']
+slot:main入选标准
+slot:sub_list['受试者', '类型']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者有哪些类型符合入排标准，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_listNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655712668.2583523
+user_intent:inform_protocol1.0
+message_id:e5e84e4316bc49a48fceafc0dd8ebdbe
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"试验面对的目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655712693.8174655
+user_intent:inform_protocol1.0
+message_id:269bf94e00c74453a72ea3db7b4d8a08
+USER:疫苗
+slot:sub疫苗
+action:simple_protocol_form
+slot:main入选标准
+slot:sub疫苗
+slot:sub_list['疫苗', '疫苗', '疫苗']
+slot:sub['疫苗', '疫苗', '疫苗']
+slot:sub_list['疫苗', '疫苗', '疫苗']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第70页 
+排除标准第15条 
+T-DXd首次给药前30天内接种减毒活疫苗。注：入组后，受试者在研究期间及研究干预治疗末次给药后 30 天内不得接种活疫苗。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第15条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655712704.9505992
+user_intent:inform_protocol1.0
+message_id:22e56d85ee204aae89c0aaa1b394b232
+USER:目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群', '目标人群', '目标人群']
+slot:sub['目标人群', '目标人群', '目标人群']
+slot:sub_list['目标人群', '目标人群', '目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655712981.6519115
+user_intent:inform_protocol1.0
+message_id:d847afadb7224271962adfc15bfbc35a
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"试验面对的目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713144.509401
+user_intent:inform_protocol1.0
+message_id:ee22ec1e4d964900b50e9f85c602b42d
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"试验面对的目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713207.8770363
+user_intent:inform_protocol1.0
+message_id:8da7775d38284853ab6f9917dd5baa3d
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"试验面对的目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713261.3665838
+user_intent:inform_protocol1.0
+message_id:ca27a8c35bd54ba4976640e9b5b2698f
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"试验面对的目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713366.2245998
+user_intent:inform_protocol1.0
+message_id:677e31f35dcc4c4087d5acddec742084
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"试验面对的目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713451.2265973
+user_intent:inform_protocol1.0
+message_id:c0844bdc65a146729378f8882e24a14b
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"试验面对的目标人群,数据库查询失败，我会把问题转给系统部门。谢谢。CRA的电话是<105>
+slot:subNone
+slot:sub_listNone
+slot:non_answer['<105>']
+slot:item_numberNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713863.6229298
+user_intent:inform_protocol1.0
+message_id:23341293b2ff4c4094db72856c1492c3
+USER:试验面对的目标人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713932.4191716
+user_intent:inform_protocol1.0
+message_id:93bbe7d486c84878a24d4eabdceeb387
+USER:试验面对的人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655713956.638697
+user_intent:inform_protocol1.0
+message_id:a60b37040ed74fb08ebb44669929ec42
+USER:受试者有哪些类型符合入排标准
+slot:sub类型
+action:simple_protocol_form
+slot:main入选标准
+slot:sub类型
+slot:sub_list['受试者', '类型']
+slot:sub['受试者', '类型']
+slot:sub_list['受试者', '类型']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者有哪些类型符合入排标准，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list[]
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714075.074102
+user_intent:inform_protocol0.9021745324134827
+message_id:139018ea3d76445c977fa53987b9449b
+USER:疾病类型是什么
+slot:sub肺癌
+action:simple_protocol_form
+slot:main入选标准
+slot:sub肺癌
+slot:sub_list['肺癌']
+slot:sub肺癌
+slot:sub_list['肺癌']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2
+试验方案第68页 
+排除标准第1条 
+混合型小细胞肺癌、鳞状组织学NSCLC和肉瘤样组织学变异型NSCLC。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第5条', '排除标准第1条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714198.6754081
+user_intent:inform_protocol1.0
+message_id:33d587eeb5f84883a69d800d9a564833
+USER:受试者类型选择中，是否有特殊要求
+slot:sub类型
+action:simple_protocol_form
+slot:main入选标准
+slot:sub类型
+slot:sub_list['类型']
+slot:sub类型
+slot:sub_list['类型']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者类型选择中，是否有特殊要求，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list[]
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714219.0006456
+user_intent:inform_protocol0.9021745324134827
+message_id:471ffe3a9bce4fb4af81a61d9894b74a
+USER:疾病类型是什么
+slot:sub肺癌
+action:simple_protocol_form
+slot:main入选标准
+slot:sub肺癌
+slot:sub_list['肺癌']
+slot:sub肺癌
+slot:sub_list['肺癌']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2
+试验方案第68页 
+排除标准第1条 
+混合型小细胞肺癌、鳞状组织学NSCLC和肉瘤样组织学变异型NSCLC。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第5条', '排除标准第1条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714361.6063192
+user_intent:inform_protocol1.0
+message_id:469244c5598946e59c0286323a377b89
+USER:腺癌患者是否有资格参与研究
+slot:main参与
+slot:sub腺癌
+action:simple_protocol_form
+slot:main入选标准
+slot:sub腺癌
+slot:sub_list['腺癌']
+slot:main入选标准
+slot:sub腺癌
+slot:sub_list['腺癌']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第5条 
+组织学证实的不适合根治性治疗（手术或放化疗）的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8版）。如果腺癌是主要组织学类型，则混合组织学类型的受试者有资格参加研究	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['组织学类型,腺癌,小细胞肺癌']
+slot:csp_item['入选标准第5条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714436.2044861
+user_intent:inform_protocol1.0
+message_id:0840c37f65a3458480eca9cb05bd3a42
+USER:有男女性别的限制吗
+action:simple_protocol_form
+slot:main入选标准
+slot:subNone
+slot:requested_slotsub
+BOT: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, 样本活检的要求; 或FFPE。也可以直接问：入组8。
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714447.4705923
+user_intent:inform_protocol1.0
+message_id:8a14b7c59a284ba9b5530ee2c11dffff
+USER:男性
+slot:sub男性
+action:simple_protocol_form
+slot:sub['男性', '男性', '男性']
+slot:sub_list['男性', '男性', '男性']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+入选标准第17条 
+与有生育能力的女性伴侣保持性生活活跃的未绝育男性受试者从筛选至 T-DXd末次给药后4个月以及其他研究干预的相关药品说明书中规定期限内，必须使用含杀精剂的避孕套。在研究期间和药物洗脱期间不发生性行为是可接受的避孕方法；但是，定期或偶尔禁欲、安全期避孕法和体外射精均不是可接受的避孕方法。强烈建议男性受试者的女性伴侣在此期间也至少采用一种高效避孕方法，如表23所述。此外，研究期间和IP末次给药后4个月内（或对于第2组，根据相关药品说明书要求的更长期限），男性受试者应避免授精或捐献精子。如需保留精子，则应考虑在入选本研究前进行。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第17条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714945.304915
+user_intent:inform_protocol1.0
+message_id:6cf1c111baad4539afab1936cb10e144
+USER:试验面对的人群
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655714970.6974442
+user_intent:inform_protocol1.0
+message_id:df5b050195fa4636b7182108253ef344
+USER:什么样的患者可以参加这个试验
+slot:sub目标人群
+action:simple_protocol_form
+slot:main入选标准
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:sub目标人群
+slot:sub_list['目标人群']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+DL04研究人群 
+本研究关注的目标人群为患有组织学证实的不适合根治性治疗（手术或放化疗的非鳞状3期局部晚期、不可切除NSCLC或4期或复发转移性NSCLC（根据IASLC胸部肿瘤学分期手册第8 版）的受试者。受试者必须未接受过局部晚期或转移性疾病的姑息性全身治疗，且必须携带 HER2 外显子19 或 20 突变。受试者必须≥18 岁有至少一个（RECIST 1.1）可测量病灶，入组时WHO/ECOG PS 为0 或1。 
+不允许前瞻性批准违背招募和入选标准的方案偏离（也称为方案免除或豁免）。应无偏倚选择受试者人群。研究者应保留进入研究前筛选的受试者记录，即受试者筛选日志。每名受试者应符合本研究的所有入选标准，并且不符合任何排除标准。在任何情况下，本规则均无例外情况。 
+不符合资格标准要求的受试者（包括未通过预筛选合格性中心HER2 突变检测的受试者）为筛选失败；参见第1.3.1 和5.4 节。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['DL04研究人群']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715024.917793
+user_intent:inform_protocol1.0
+message_id:80b31e12a6fb4f5385fb3cdbb118bbf9
+USER:对患者或者其伴侣的避孕要求
+slot:sub避孕
+action:simple_protocol_form
+slot:main入选标准
+slot:sub避孕
+slot:sub_list['伴侣', '避孕']
+slot:sub['伴侣', '避孕']
+slot:sub_list['伴侣', '避孕']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第16条 
+对于与未绝育的男性伴侣性生活活跃且具有生育能力的女性受试者，必须从筛选开始使用至少1种高效避孕方法，并且必须同意在 T-DXd末次给药后7个月内以及其他研究治疗/干预的相关药品说明书中规定期限内继续使用此类避孕措施。在研究期间和药物洗脱期间不发生性行为是可接受的避孕方法；但是，定期或偶尔禁欲、安全期避孕法和体外射精均不是可接受的避孕方法。并非所有的避孕方法均为高效（高效避孕方法的完整列表见表23）。女性受试者从筛选时开始至整个研究干预期	/DL04 V2
+试验方案第68页 
+入选标准第17条 
+与有生育能力的女性伴侣保持性生活活跃的未绝育男性受试者从筛选至 T-DXd末次给药后4个月以及其他研究干预的相关药品说明书中规定期限内，必须使用含杀精剂的避孕套。在研究期间和药物洗脱期间不发生性行为是可接受的避孕方法；但是，定期或偶尔禁欲、安全期避孕法和体外射精均不是可接受的避孕方法。强烈建议男性受试者的女性伴侣在此期间也至少采用一种高效避孕方法，如表23所述。此外，研究期间和IP末次给药后4个月内（或对于第2组，根据相关药品说明书要求的更长期限），男性受试者应避免授精或捐献精子。如需保留精子，则应考虑在入选本研究前进行。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第16条', '入选标准第17条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715094.1584113
+user_intent:new_scope0.9933752417564392
+message_id:09ec49265a84416085de9e2f22a88c83
+USER:HI SIRI，SOA 脚注J中描述“将在筛选期进行三次ECG检查，如果后续ECG检测到异常也进行三次检查”，请问这句话中提到的“三次ECG检查”每次检查时间间隔约多少分钟？
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"HI SIRI，SOA 脚注J中描述“将在筛选期进行三次ECG检查，如果后续ECG检测到异常也进行三次检查”，请问这句话中提到的“三次ECG检查”每次检查时间间隔约多少分钟？,现在小易还不能回答，我会转给负责咱们中心的CRA。<104>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:non_answer['<104>']
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715122.801902
+user_intent:new_scope0.988010048866272
+message_id:60568142040f411990ad2eb543e61486
+USER:HI SIRI，如果受试者有第一周期第一天研究干预给药前3天内正常的12导联ECG检查结果的话，那么第一周期第一天研究干预给药前的12导联ECG检查是否可以豁免？
+slot:item_number12
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"HI SIRI，如果受试者有第一周期第一天研究干预给药前3天内正常的12导联ECG检查结果的话，那么第一周期第一天研究干预给药前的12导联ECG检查是否可以豁免？,现在小易还不能回答，我会转给负责咱们中心的CRA。<104>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:non_answer['<104>']
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715145.5398843
+user_intent:inform_protocol1.0
+message_id:79dbd55bf4c24c90aa0adb6402cd70a1
+USER:HI SIRI，筛选期HIV 检查是否是可选项
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第66页 
+入选标准第12条 
+随机化/入组前28天内左心室射血分数≥50%。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第12条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715173.3157022
+user_intent:inform_protocol1.0
+message_id:dd9b011ef3f7421489ac52241e4f837c
+USER:Hiv的要求
+slot:subHiv
+action:simple_protocol_form
+slot:main入选标准
+slot:subHiv
+slot:sub_list['Hiv']
+slot:subHiv
+slot:sub_list['Hiv']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第69页 
+排除标准第14条 
+活动性原发性免疫缺陷，已知存在HIV感染，或活动性乙型肝炎或丙型肝炎感染。
+注： HCV 抗体呈阳性的受试者仅聚合酶链反应显示 HCV RNA呈阴性的情况下可参与本项研究。如果当地法规或机构审评委员会/伦理委员会要求，受试者应在随机化/入组前接受 HIV 检测。	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['排除标准第14条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715187.2766151
+user_intent:inform_protocol1.0
+message_id:0a3ee1c8e2c5493ea73754ae911dd745
+USER:HI SIRI，筛选期HIV 检查是否是可选项
+action:simple_protocol_form
+slot:main入选标准
+slot:subNone
+slot:requested_slotsub
+BOT: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, 样本活检的要求; 或FFPE。也可以直接问：入组8。
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715225.7165082
+user_intent:new_scope0.980557382106781
+message_id:66d64b5006f64055b41c3996385502af
+USER:HI SIRI，什么是纵向血液样本
+slot:sub肿瘤样本
+action:simple_protocol_form
+slot:sub肿瘤样本
+slot:sub_list['肿瘤样本']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第8条 
+必须获取FFPE肿瘤样本，送至中心实验室进行检测。如果未书面确认可提供存档肿瘤样本（首选）或选择最近获得的活检（作为其常规临床治疗途径的一部分进行，见第8.6.1.1节 ），则受试者没有资格参加研究。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+slot:csp_item['入选标准第8条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715300.3417666
+user_intent:new_scope0.980557382106781
+message_id:36187f2891de46ea80a22d8bcde635c8
+USER:HI SIRI，什么是纵向血液样本
+slot:sub肿瘤样本
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"HI SIRI，什么是纵向血液样本,现在小易还不能回答，我会转给负责咱们中心的CRA。<104>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:non_answer['<104>']
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715352.6154828
+user_intent:inform_protocol1.0
+message_id:8694e96d3eaf47c4a431feea2479bfaf
+USER:EOT如果和安全性访视时间重合或者日期非常接近，是否可以合并
+slot:main和
+slot:sub重合
+action:simple_protocol_form
+slot:main入选标准
+slot:sub重合
+slot:sub_list['重合']
+slot:main入选标准
+slot:sub重合
+slot:sub_list['重合']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"EOT如果和安全性访视时间重合或者日期非常接近，是否可以合并，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715435.9933643
+user_intent:inform_protocol1.0
+message_id:72dd23dfff5a4d32af342069f826d7bc
+USER:患者问卷在访视中的先后顺序
+action:simple_protocol_form
+slot:main入选标准
+slot:subNone
+slot:requested_slotsub
+BOT: 谢谢。入选标准下有知情同意、年龄、试者类型和疾病特征、生殖方面等17项内容。有些内容还包括Q&A库。由于内容比较多，小易不能一一列出。您可以这样问, 样本活检的要求; 或FFPE。也可以直接问：入组8。
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715479.561654
+user_intent:inform_protocol1.0
+message_id:3c416e4ac2ea46c4812e3a530f079c94
+USER:受试者在筛选期我需要安排患者做哪些检查？
+slot:sub期
+action:simple_protocol_form
+slot:sub期
+slot:sub_list['期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者在筛选期我需要安排患者做哪些检查？，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715520.6738203
+user_intent:inform_protocol1.0
+message_id:7b338398b7d24dd99c2052d8557f5253
+USER:受试者在筛选期各项检查时间窗？
+slot:sub期
+action:simple_protocol_form
+slot:main入选标准
+slot:sub期
+slot:sub_list['期']
+slot:sub期
+slot:sub_list['期']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者在筛选期各项检查时间窗？，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715561.7657788
+user_intent:treatment_history0.7223134636878967
+message_id:4bdf0123d0fd4eb9a91e01dafeab94dd
+USER:受试者C1用药需采那些血样？
+slot:item_number1
+action:action_default_fallback
+BOT: this is from fallback受试者C1用药需采那些血样？
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715612.6016576
+user_intent:inform_protocol1.0
+message_id:37707ab346684f83a26ca44168839247
+USER:受试者C3访视都需要填写哪些问卷？
+slot:item_number3
+slot:subC3
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:sub_list['C3']
+slot:subC3
+slot:sub_list['C3']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者C3访视都需要填写哪些问卷？，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715632.3628914
+user_intent:inform_protocol1.0
+message_id:e075b3921a124c769663661b3b14b7dc
+USER:受试者C3访视是否需要肿评？
+slot:item_number3
+slot:subC3
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:sub_list['C3']
+slot:subC3
+slot:sub_list['C3']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者C3访视是否需要肿评？，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715646.0868654
+user_intent:inform_protocol1.0
+message_id:905e4bbe5bdc4b06955a094c1bd1e3ca
+USER:受试者出现骨髓抑制3级是否可以正常用药？
+slot:item_number3
+slot:sub足够的骨髓功能
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:sub_list['足够的骨髓功能']
+slot:sub足够的骨髓功能
+slot:sub_list['足够的骨髓功能']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者出现骨髓抑制3级是否可以正常用药？，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715669.173321
+user_intent:inform_protocol1.0
+message_id:6e13ee89153b4d07a0012ea461eb17c3
+USER:受试者今天进行C3，下一次来院访视时间窗口期在哪天？
+slot:item_number3
+slot:subC3
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:sub_list['C3']
+slot:subC3
+slot:sub_list['C3']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"受试者今天进行C3，下一次来院访视时间窗口期在哪天？，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715688.1067255
+user_intent:inform_protocol1.0
+message_id:78a18a29cb8f412fb78fb2818f891c62
+USER:AE/CM需要收集到受试者出组后多久？
+slot:subAE
+action:simple_protocol_form
+slot:main入选标准
+slot:subAE
+slot:sub_list['AE']
+slot:subAE
+slot:sub_list['AE']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第3条 
+存在未得到控制的并发疾病，包括但不限于持续感染或活动性感染、未受控制的高血压、与腹泻相关的严重慢性胃肠道疾病或限制研究要求依从性的精神疾病/社会状况、发生 AE 的风险显著增加或损害受试者提供书面知情同意的能力	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['T-DXD,感染,MSUD,代谢失']
+slot:csp_item['排除标准第3条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715711.8530245
+user_intent:inform_protocol1.0
+message_id:efcaa721bedf4911b93c6ab1c56f2a95
+USER:HI，请问SOA中"乙型肝炎/丙型肝炎血清学检查"角标Q“丙型肝炎抗体呈阳性的受试者中，仅聚合酶链反应显示HCV RNA呈阴性的受试者有资格入组研究。“那么如果出现乙肝抗体阳性如何处理？
+slot:main入选标准
+slot:sub乙型肝炎
+action:simple_protocol_form
+slot:main入选标准
+slot:sub乙型肝炎
+slot:sub_list['乙型肝炎', '基于抗体的抗癌治疗', '乙型肝炎', '乙型肝炎']
+slot:main入选标准
+slot:sub['乙型肝炎', '基于抗体的抗癌治疗', '乙型肝炎', '乙型肝炎']
+slot:sub_list['乙型肝炎', '基于抗体的抗癌治疗', '乙型肝炎', '乙型肝炎']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第67页 
+入选标准第14条 
+随机化/入组前有足够的治疗洗脱期，定义为：	/DL04 V2基于抗体的抗癌治疗 : 
+≥4周
+试验方案第69页 
+排除标准第14条 
+活动性原发性免疫缺陷，已知存在HIV感染，或活动性乙型肝炎或丙型肝炎感染。
+注： HCV 抗体呈阳性的受试者仅聚合酶链反应显示 HCV RNA呈阴性的情况下可参与本项研究。如果当地法规或机构审评委员会/伦理委员会要求，受试者应在随机化/入组前接受 HIV 检测。	/DL04 V2基于抗体的抗癌治疗 : 
+≥4周
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第14条', '排除标准第14条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[{'name': '基于抗体的抗癌治疗', 'description': '≥4周'}]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655715728.7346237
+user_intent:inform_protocol0.9245423674583435
+message_id:3f8e75bdb41b4d1592176a4aafd695ab
+USER:HI, SOA中SPO2，要求“第1周期第1天前3天内以及干预期每次给药前后”，请问是否有时间窗口？例如给药前3天内，给药后1小时内？
+slot:item_number1
+action:simple_protocol_form
+slot:main入选标准
+slot:sub 
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第64页 
+入选标准第1条 
+能够签署知情同意书（如附录A所述），包括遵从ICF和本CSP中列出的要求和限制	/DL04 V2
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list[]
+slot:csp_item['入选标准第1条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655729962.0794628
+user_intent:inform_protocol1.0
+message_id:cee9c04c5bed46a78811ee1b72bece85
+USER:试验面对目标人群
+slot:sub目标人群
+action:simple_protocol_form
+action:action_check_protocol
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732274.316534
+user_intent:greet0.9993957281112671
+message_id:addf63f692864b8ea7c5c1f669bdd6a6
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732289.623148
+user_intent:inform_protocol1.0
+message_id:5afdd2c634de41f0b2773342d5f033dd
+USER:kras突变患者可以入吗
+slot:main入选标准
+slot:sub突变
+action:simple_protocol_form
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:main入选标准
+slot:sub突变
+slot:sub_list['突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第68页 
+排除标准第2条 
+携带靶向EGFR改变（或其他靶向突变，包括但不限于ALK，如果通过常规检测确定为有获批可用治疗的靶向改变）的肿瘤。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:csp_item['排除标准第2条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732327.6407027
+user_intent:inform_protocol1.0
+message_id:a0b226adf48c4749b23311159d1dd5ee
+USER:/inform_protocol{"sub": "CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变"}
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+action:simple_protocol_form
+slot:main入选标准
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+slot:sub_list['CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变']
+slot:subCTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变
+slot:sub_list['CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: <b>排除标准第2条问题: </b>我们注意到不同的研究中心会检测不同的靶向突变（EGFR、ALK、ROS1、PDL1等）。如果在当地常规检测中未检测到某些突变，但在中心CTDNA检测中检测到，该如何处理。在筛选期间，该患者是否符合研究条件？对于已有数据且已在研究中接受随机分组的患者，这是否是一种方案偏离？
+<b>
+排除标准第2条回答: </b>患者研究资格的纳入和排除标准中未考虑PDL1。申办方认识到生物标志物测试中存在区域差异。根据排除标准2，应该明确所有患者的EGFR靶向突变均为阴性。如果其它靶向突变有一种经批准且可用的治疗方法，还应该明确患者对这些靶向突变呈阴性。例如，如果ALK靶向治疗方法已获得批准并可用，则患者应该是ALK突变呈阴性。
+
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第2条']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732436.8847554
+user_intent:inform_protocol0.8751709461212158
+message_id:7e4bfc33673d4144ad44c19646a25324
+USER:问题
+slot:sub问题
+action:simple_protocol_form
+slot:main入选标准
+slot:sub问题
+slot:sub_list['问题']
+slot:sub问题
+slot:sub_list['问题']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"问题，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655732835.9384544
+user_intent:write0.7651762366294861
+message_id:97ca4efb50e04e7fb358cbb8a4cfda5b
+USER:问题
+action:action_write_text
+BOT: zhaoyisheng老师，您的问题"问题，我不太理解，我会把问题转给负责咱们中心的CRA。<101>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:non_answer['<101>']
+slot:version2.0
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655733610.6872327
+user_intent:write0.7651762366294861
+message_id:8b8501541e5d4f04a8e7abac7ee25846
+USER:问题
+action:action_write_text
+BOT: zhaoyisheng老师，您的问题"问题，我不太理解，我会把问题转给负责咱们中心的CRA。<101>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:non_answer['<101>']
+slot:version2.0
+slot:tokenNone
+action:action_listen
+action:action_session_start
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655728069.2508063
+user_intent:greet0.9995810985565186
+message_id:222faaeba3c6452ba867668d80115fbb
+USER:hello
+action:utter_protocol
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+action:action_Login
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+<b>小易推荐如下选项，请参照选择。谢谢</b>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:tokenNone
+slot:CRA_mobile11111111111
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655728092.3488746
+user_intent:inform_protocol1.0
+message_id:5cbb69cc17204bcf9d6e86921a754898
+USER:患者无法提供15张病理切片怎么办
+slot:item_number15
+slot:sub无法
+action:simple_protocol_form
+slot:sub无法
+slot:main入选标准
+slot:sub_list['无法']
+slot:sub无法
+slot:main入选标准
+slot:sub_list['无法']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: zhaoyisheng老师，您的问题"患者无法提供15张病理切片怎么办，我在临床方案中没有找到，我会把问题转给负责咱们中心的CRA。 <102>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:non_answer['<102>']
+slot:index_listNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1655728099.9098418
+user_intent:inform_protocol1.0
+message_id:88a812d789f043f4b76ae6ed72dedf98
+USER:ffpe
+slot:subffpe
+action:simple_protocol_form
+slot:main入选标准
+slot:subffpe
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:sub['ffpe', 'ffpe', 'ffpe']
+slot:sub_list['ffpe', 'ffpe', 'ffpe']
+slot:requested_slotNone
+action:action_check_protocol
+BOT: 试验方案第65页 
+入选标准第8条 
+必须获取FFPE肿瘤样本，送至中心实验室进行检测。如果未书面确认可提供存档肿瘤样本（首选）或选择最近获得的活检（作为其常规临床治疗途径的一部分进行，见第8.6.1.1节 ），则受试者没有资格参加研究。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
+slot:subNone
+slot:sub_listNone
+slot:item_numberNone
+slot:index_list['肿瘤样本,突变,样本,方案', '肿瘤组织,2个月,6个月,切片,样本', '肿瘤组织']
+slot:csp_item['入选标准第8条']
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:version2.0
+slot:entity_values[]
+slot:tokenNone
+action:action_listen
