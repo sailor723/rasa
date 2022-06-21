@@ -7,6 +7,7 @@ import plotly.figure_factory as ff
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
+from streamlit_timeline import timeline
 import time
 
 # from sqlalchemy import create_engine
@@ -15,10 +16,10 @@ st.set_page_config(page_title='SWAST - Handover Delays',  layout='wide', page_ic
 
 t1, t2 = st.columns((0.07,1)) 
 
-t1.image('az_log.jpg', width = 80)
+t1.image('DCTA_logo.png', width = 80)
 t2.title("Digital Clinical Trial Assistant  - Conversational Report")
 
-t2.markdown(" **tel:** +86 21 6030 2288 **| website:** https://www.astrazeneca.com.cn/zh/ **| email:** mailto:data.science@swast.nhs.uk")
+t2.markdown(" **tel:** +86 21 6030 2288 **| website:** https://www.astrazeneca.com.cn/zh/ **| email:** mailto:support@astrazene.com")
 
 # get current data and time
 now = datetime.now()
@@ -34,48 +35,36 @@ hide_menu_style = """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 # refresh
-if st.button('refesh'):
+if st.button('Refesh'):
      st.write(current_time)
      subprocess.run(["bash", "BI_dashboard.sh"])
 
-# setting
-# SUB_COL= ['sub_entity', 'sub_confidence_entity', 'sub_value', 'sub_extractor', 'sub_processors']
 
-# entities_file_name  = os.path.join(os.getcwd(),'sub.txt')
-# f = open(entities_file_name, "r",encoding='utf-8-sig')
-# ENTITIES_LIST = list(set(f.read().split('\n')))
-
-# DCTA_MYSQL_USER = os.getenv('DCTA_MYSQL_USER')
-# DCTA_MYSQL_PWD = os.getenv('DCTA_MYSQL_PWD')
-# DCTA_MYSQL_HOST = os.getenv('DCTA_MYSQL_HOST')
-# DCTA_MYSQL_PORT  = os.getenv('DCTA_MYSQL_PORT')
-# DCTA_MYSQL_DB  = os.getenv('DCTA_MYSQL_DB')
-# DCTA_MYSQL_TABLE  = os.getenv('DCTA_MYSQL_TABLE')
-
-# mysql_string = 'mysql+pymysql://'+ DCTA_MYSQL_USER + ':'+ DCTA_MYSQL_PWD + '@' + DCTA_MYSQL_HOST \
-#             + ":" + str(DCTA_MYSQL_PORT) + '/' + DCTA_MYSQL_DB
-
-# data
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
 
 #----------------------------------------------read sql to df----------------------------------------------------------------------------#
-# @st.cache
-def read_csv_to_df():
+@st.cache
+def read_csv_to_df(csv_file_name):
 
-#----------------------- read data and prepare data -----------------------------------#
-    # engine = create_engine(mysql_string)
-    df = pd.read_csv(chat_full_name)
+    df = pd.read_csv(csv_file_name,error_bad_lines=False)
 
     return (df)
 
-df = read_csv_to_df()
+@st.cache
+def convert_df(df):
+     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+     return df.to_csv().encode('utf-8')
+df = read_csv_to_df(chat_full_name)
+# log_csv = read_csv_to_df(chatlog_file_name)
+# log_csv = convert_df(log_csv)
 
-select_col = ['message_id','text', 'sender_name','csp_item', 'qa_item', 'non_answer','user_time']
+select_col = ['message_id','text','site_name', 'sender_name','csp_item', 'qa_item', 'non_answer','user_time']
 non_answer_col = ['message_id','user_time','sender_name', 'text', 'non_answer']
 df= df[select_col]
 df['qa_item'] = df['qa_item'].fillna('CSP')
 df['sender_name'] = df['sender_name'].fillna(' ')
+df['site_name'] = df['site_name'].fillna('测试中心')
 
 
 inclusion_order = [('入选标准第' + str(i) +  '条') for i in range (1,18)]
@@ -97,6 +86,68 @@ df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
 df_non_answer = df[df['non_answer'].notnull()][non_answer_col]
 df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
 
+# start_time_2 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].min()))
+# end_time_2  = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].max()))
+
+start_time = pd.Timestamp(df['user_time'].min())
+end_time = pd.Timestamp(df['user_time'].max())
+
+
+start_time_1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].min()))
+start_time_1 = pd.Timestamp(start_time_1).to_pydatetime()
+
+end_time_1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].max()))
+end_time_1 = pd.Timestamp(end_time_1).to_pydatetime()
+
+# -------------------------header selectbox for report -------------------------------------------#
+
+with st.spinner('Updating Report...'):
+                
+        #Metrics setting and rendering
+        site_list = ['全部']
+        site_list.extend(list(df['site_name'].unique()))
+        site_list_selectd = st.selectbox('Sites Selection', site_list, help = 'Filter report to show selected Sits')
+
+        if site_list_selectd == '全部':
+
+                df_selected = df
+        else:
+                df_selected = df[df['site_name'] == site_list_selectd]
+        # select_range = st.slider(
+        #         "Please select range",
+        #         value=(start_time_1,
+        #                end_time_1), 
+        #         format="MM/DD hh:mm:ss")
+        # st.write("range:", select_range)
+
+        df_inclusion = df_selected.loc[df_selected['csp_item'].isin(inclusion_order)]
+        df_inclusion.drop_duplicates()
+
+        df_exclusion = df_selected.loc[df_selected['csp_item'].isin(exclusion_order)]
+        df_exclusion.drop_duplicates()
+
+        df_inclusion['csp_item_short'] = [item[4:] for item in df_inclusion['csp_item']]
+        df_exclusion['csp_item_short'] = [item[4:] for item in df_exclusion['csp_item']]
+
+        df_qa = df_selected[df_selected['qa_item'] == 'Q&A']
+        df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
+
+        df_non_answer = df_selected[df_selected['non_answer'].notnull()][non_answer_col]
+        df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
+
+        m1, m2, m3, m4, m5,m6 = st.columns((1,1,1,1,1,1))
+        
+
+        m1.metric(label ='Total Conversation',value = len(df_selected))
+        m2.metric(label ='Number of PIs',value = df_selected['sender_name'].nunique())
+        m3.metric(label ='CSP Inclusion',value = len(df_inclusion))
+        m4.metric(label ='CSP Exclusion',value = len(df_exclusion))
+        m5.metric(label ='CSP Q&A Log',value = len(df_qa))
+        m6.metric(label ='Non Answers',value = len(df_non_answer))
+
+
+with st.spinner('Sites Selected!'):
+        time.sleep(1)    
 #----------------------------Streamlit plot-------------------------------------------------#
 
 g1, g2, g3 = st.columns((2.2,3,1.2))
@@ -129,25 +180,51 @@ fig.update_layout(title_text="Q&A Log",title_x=0,margin= dict(l=0,r=10,b=10,t=30
 g3.plotly_chart(fig, use_container_width=True) 
 #-------------------------------preparetion ------------------------------------------------#
 
+if st.button('Non Answer Questions Inquery'):
+     
+        fig = go.Figure(data=go.Table(
+        columnwidth = [2,1,1,8,1],
+        header = dict(values=df_non_answer.columns.to_list(), 
+                line_color='darkslategray',
+                fill_color='lightskyblue',
+                font=dict(color='black', size=11),
+                align=['left','center'],), 
+        cells = dict(values=[df_non_answer.message_id, df_non_answer.user_time, df_non_answer.sender_name, df_non_answer.text, df_non_answer.non_answer],
+                line_color='darkslategray',
+                fill_color='lightcyan',
+                font=dict(color='black', size=11),
+                align=['left'],
+        )))
+        
+        fig.update_layout(width=1600, height=800, margin=dict(l=5, r=5, b=5, t=5))
+                # paper_bgcolor = background_color)
+        st.write(fig)
+# else:
+#      st.write('No problem')
 
-fig = go.Figure(data=go.Table(
-    columnwidth = [2,1,1,1],
-    header = dict(values=df_non_answer.columns.to_list(), 
-            line_color='darkslategray',
-            fill_color='lightskyblue',
-            font=dict(color='black', size=11),
-            align=['left','center'],), 
-    cells = dict(values=[df_non_answer.message_id, df_non_answer.user_time, df_non_answer.sender_name, df_non_answer.text, df_non_answer.non_answer],
-            line_color='darkslategray',
-            fill_color='lightcyan',
-            font=dict(color='black', size=11),
-            align=['left', 'center'],
-    )))
-    
-fig.update_layout(margin=dict(l=5, r=5, b=5, t=5))
-        # paper_bgcolor = background_color)
-st.write(fig)
 
+#-------------------------------preparetion ------------------------------------------------#
+
+if st.button('Conversational History'):
+        # load data
+        charts_result_name = os.path.abspath('chats_result.json')
+        with open(charts_result_name, "r",encoding='utf-8') as f:
+                time_data = f.read()
+     
+        new_json = json.loads(time_data)
+        if site_list_selectd != '全部':
+                new_json['events'] = [item for item in new_json['events']            \
+                        if new_json['events'][0]['text']['headline'].split('<br>')[0] == site_list_selectd ]
+
+        # render timeline
+        timeline(new_json, height=800)
+
+# st.download_button(
+#      label="Download Conversational History CSV",
+#      data=log_csv,
+#      file_name='DCTA_conversational.csv',
+#      mime='text/csv',
+#  )
 
 #---------------------------Question distribution -----------------------------------
 #     with col1:
