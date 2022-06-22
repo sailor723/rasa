@@ -9,8 +9,8 @@ import plotly.graph_objects as go
 from datetime import datetime
 from streamlit_timeline import timeline
 import time
-# from st_aggrid import AgGrid, GridUpdateMode, JsCode
-# from st_aggrid.grid_options_builder import GridOptionsBuilder
+from st_aggrid import AgGrid, GridUpdateMode, JsCode
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # from sqlalchemy import create_engine
 
@@ -182,42 +182,42 @@ fig.update_layout(title_text="Q&A Log",title_x=0,margin= dict(l=0,r=10,b=10,t=30
 
 g3.plotly_chart(fig, use_container_width=True) 
 #-------------------------------preparetion ------------------------------------------------#
-# gd = GridOptionsBuilder.from_dataframe(df_non_answer)
-# gd.configure_pagination(enabled=True)
-# gd.configure_default_column(editable=False, grouptable = True)
+gd = GridOptionsBuilder.from_dataframe(df_non_answer)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=False, grouptable = True)
 
 with st.expander("Non Answered Questions", expanded=False):
         st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
-        # sel_mode = st.radio("Selection Type", options = ['single', 'multiple'])
-        # gd.configure_selection(selection_mode = sel_mode, use_checkbox=True)
-        # gridoptions = gd.build()
-        # grid_table = AgGrid(df_non_answer, gridOptions=gridoptions, 
-        #                 update_mode = GridUpdateMode.SELECTION_CHANGED,
-        #                 height = 500, 
-        #                 allow_upsafe_jscode=True,
-        #                 theme = "fresh")
+        sel_mode = st.radio("Selection Type", options = ['single', 'multiple'])
+        gd.configure_selection(selection_mode = sel_mode, use_checkbox=True)
+        gridoptions = gd.build()
+        grid_table = AgGrid(df_non_answer, gridOptions=gridoptions, 
+                        update_mode = GridUpdateMode.SELECTION_CHANGED,
+                        height = 500, 
+                        allow_upsafe_jscode=True,
+                        theme = "fresh")
 
-        # st.write('Details')
-        # sel_row = grid_table["selected_rows"]
-        # st.write(sel_row)
+        st.write('Details')
+        sel_row = grid_table["selected_rows"]
+        st.write(sel_row)
 
-        fig = go.Figure(data=go.Table(
-        columnwidth = [2,1,1,8,1],
-        header = dict(values=df_non_answer.columns.to_list(), 
-                line_color='darkslategray',
-                fill_color='lightskyblue',
-                font=dict(color='black', size=11),
-                align=['left','center'],), 
-        cells = dict(values=[df_non_answer.message_id, df_non_answer.user_time, df_non_answer.sender_name, df_non_answer.text, df_non_answer.non_answer],
-                line_color='darkslategray',
-                fill_color='lightcyan',
-                font=dict(color='black', size=11),
-                align=['left'],
-        )))
+        # fig = go.Figure(data=go.Table(
+        # columnwidth = [2,1,1,8,1],
+        # header = dict(values=df_non_answer.columns.to_list(), 
+        #         line_color='darkslategray',
+        #         fill_color='lightskyblue',
+        #         font=dict(color='black', size=11),
+        #         align=['left','center'],), 
+        # cells = dict(values=[df_non_answer.message_id, df_non_answer.user_time, df_non_answer.sender_name, df_non_answer.text, df_non_answer.non_answer],
+        #         line_color='darkslategray',
+        #         fill_color='lightcyan',
+        #         font=dict(color='black', size=11),
+        #         align=['left'],
+        # )))
         
-        fig.update_layout(width=1200, height=800, margin=dict(l=5, r=5, b=5, t=5))
-                # paper_bgcolor = background_color)
-        st.write(fig)
+        # fig.update_layout(width=1200, height=800, margin=dict(l=5, r=5, b=5, t=5))
+        #         # paper_bgcolor = background_color)
+        # st.write(fig)
 
 
 
@@ -239,24 +239,24 @@ with st.expander("Conversation History", expanded=False):
         timeline(new_json, height=800)
 
 #-------------------------------preparetion ------------------------------------------------#
-# gd = GridOptionsBuilder.from_dataframe(df)
-# gd.configure_pagination(enabled=True)
-# gd.configure_default_column(editable=False, grouptable = True)
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=False, grouptable = True)
 
-# with st.expander("Full Dataset View", expanded=False):
-#         st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
-#         sel_mode_full = st.radio("Selection Type", options = ['single', 'multiple'],key='full')
-#         gd.configure_selection(selection_mode = sel_mode_full, use_checkbox=True)
-#         gridoptions = gd.build()
-#         grid_table = AgGrid(df, gridOptions=gridoptions, 
-#                         update_mode = GridUpdateMode.SELECTION_CHANGED,
-#                         height = 500, 
-#                         allow_upsafe_jscode=True,
-#                         theme = "fresh")
+with st.expander("Full Dataset View", expanded=False):
+        st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
+        sel_mode_full = st.radio("Selection Type", options = ['single', 'multiple'],key='full')
+        gd.configure_selection(selection_mode = sel_mode_full, use_checkbox=True)
+        gridoptions = gd.build()
+        grid_table = AgGrid(df, gridOptions=gridoptions, 
+                        update_mode = GridUpdateMode.SELECTION_CHANGED,
+                        height = 500, 
+                        allow_upsafe_jscode=True,
+                        theme = "fresh")
 
-#         st.write('Details')
-#         sel_row = grid_table["selected_rows"]
-#         st.write(sel_row)
+        st.write('Details')
+        sel_row = grid_table["selected_rows"]
+        st.write(sel_row)
 
 st.download_button(
 label="Log File Download",
