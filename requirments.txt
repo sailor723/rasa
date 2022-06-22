@@ -201,6 +201,8 @@ SQLAlchemy==1.3.22
 srsly==2.4.2
 stack-data==0.2.0
 streamlit==1.8.1
+streamlit-aggrid==0.2.3.post2
+streamlit-timeline==0.0.2
 tabulate==0.8.9
 tarsafe==0.0.3
 tenacity==8.0.1
