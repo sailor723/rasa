@@ -48,7 +48,7 @@ for row, col in df.iterrows():
         print('warming, error for json load, tracker is:', tracker)
         continue
 
-print(len(v_list))
+print(f"In chats_df_generation, total records are {len(v_list)}")
 
 list1 = [v_list.index(item) for item in v_list if item['event'] == 'slot']
 SLOT_COL =list(set([v_list[index]['name'] for index in list1]))
@@ -61,10 +61,7 @@ initial = True
 df2 = pd.DataFrame(columns = SUB_COL)
 
 for a in v_list:
-    # if v_list.index(a) == 1000:
-    #     break
-    
-    print(f"Total records are {len(v_list)},now procedding {v_list.index(a) + 1}")
+
     if a['event'] == 'user':
 
         text_in_memory = a['text']
@@ -121,8 +118,7 @@ for a in v_list:
     if a['event'] == 'slot' and a['name'] != 'index_list':
 
         if a['name'] == 'entity_values':
-            print('xxxxxxxxxxxxxxx a_value:', a['value'])
-            print('xxxxxxxxxxxxxxx a_name:', a['name'])
+ 
             name_list = [item['name'] for item in a['value']]
             desp_list = [item['description'] for item in a['value']]
             full_list = zip(name_list, desp_list)
@@ -136,17 +132,7 @@ for a in v_list:
             a['value'] = ""
             df_final.loc[message_id_in_memory, a['name']] = a['value']
 
-#         try:
-            
-            
-#         except:
-#             print('error a_name with a_value')
-#             print('df_final_loc:', df_final.loc[message_id_in_memory, a['name']])
-#             print('a_name', a['name'])
-#             print('a_value:', a['value'])
-#             continue
-       
-        
+
 #----------------------------no answer question----------------------------------------------------------------#
     if a['event'] == 'bot' and (('<101>' or '<102>' or '<103>' or  '<104> ') in a['text']):
 
@@ -161,10 +147,11 @@ for a in v_list:
 
         df_final.loc[message_id_in_memory,'bot_text'] = a['text']
         df_final.loc[message_id_in_memory,'bot_time'] = a['timestamp']
-#         df_final['action'] =  a['name']
-#         print('message_id by action : ', message_id_in_memory)
-#         print('user_text by action', text_in_memory)
-#         print('df_finaL_text', df_final.loc[:-1]['text'])
+
+    if (v_list.index(a) + 1) < len(v_list):
+        print(f"Total records are {len(v_list)} now complete {v_list.index(a) + 1}", end='\r')
+    else:
+        print(f"chats_df_generatation now complete!", end="")
 
 value_list = []
 
@@ -174,50 +161,8 @@ for row, col in df_final.iterrows():
     else:
         value_list.append(col['text'])
 df_final['clean_text'] = value_list
-#---------------------------- bot catetory--------------------------------------------------------------#
-
-# bot_category = []
-
-# for item in df_final.bot_text.to_list():
-
-#     if  '<101>'  in item:
-#         bot_category.append('<101>')
-#     elif '<102>' in item:
-#         bot_category.append('<102>')
-#     elif '<103>' in item:
-#         bot_category.append('<103>')
-#     elif '<104>' in item:
-#         bot_category.append('<104>')
-#     elif 
-
-#     if '试验方案第' in item.split('\n')[0] and (('入选标准第') in item.split('\n')[1] or '排除标准第' in item.split('\n')[1]):
-#         bot_category.append(item.split('\n')[1])
-#     elif 'DL04问题' in item:
-     
-#         bot_category.append('Q&A Log')
-        
-#     elif '我是阿斯利康的临床试验智能助手小易，很高兴为您服务' in item and '您好' in item:
-#         bot_category.append('打招呼')
-        
-#     elif '现在小易还不能回答' in item:
-#         bot_category.append('由于范围不能回答')
-      
-#     elif '我在方案中没有找到' in item:
-#         bot_category.append('图谱查询失败')
-
-#     elif '我不太理解' in item:
-#         bot_category.append('问题不能理解')
-
-#     else:
-#         bot_category.append('其他')
-
-# df_final['bot_category'] =  bot_category
-
-#------------------------------------------------------------------------------------------------------------------
-
-# df_final
 
 df_final.to_csv(chat_full_name)
 
-print('total conversation:', df_final.shape[0])
+print(' Total conversation:', df_final.shape[0])
 

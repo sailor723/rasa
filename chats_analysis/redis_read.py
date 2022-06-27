@@ -48,7 +48,7 @@ len_tracker = len(list(redis_client.scan_iter("tracker*")))
 for redis_key in redis_client.scan_iter("tracker*"):
       
       i = i + 1
-      print('process tracker ' + str(i) + '  ' + str(len_tracker))
+      print('process tracker ' + str(i) + '  ' + str(len_tracker),end='\r')
       
       try:
 

@@ -103,7 +103,7 @@ slots:
     auto_fill: false
     influence_conversation: false
   CRA_mobile:
-    type: rasa.shared.core.slots.TextSlot
+    type: rasa.shared.core.slots.ListSlot
     initial_value: null
     auto_fill: false
     influence_conversation: false

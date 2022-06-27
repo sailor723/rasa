@@ -2,6 +2,7 @@ from email import header
 import streamlit as st
 import pandas as pd
 import numpy as np
+import requests
 import os, json, csv, sys, subprocess
 import plotly.figure_factory as ff
 import plotly.express as px
@@ -14,7 +15,7 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # from sqlalchemy import create_engine
 
-st.set_page_config(page_title='SWAST - Handover Delays',  layout='wide', page_icon=':ambulance:')
+st.set_page_config(page_title='DCTA BI dashboard',  layout='wide', page_icon=':chatbot:')
 
 t1, t2 = st.columns((0.07,1)) 
 
@@ -36,20 +37,38 @@ hide_menu_style = """
         """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-# refresh
-if st.button('Refesh'):
-     st.write(current_time)
-     subprocess.run(["bash", "BI_dashboard.sh"])
+#-------------------------------------------------define functions ------------------------------------------------------
+def run_and_display_stdout(*cmd_with_agrs):
+    result = subprocess.Popen(cmd_with_agrs, stdout=subprocess.PIPE)
+  
+    for line in iter(lambda: result.stdout.readline(), b""):
+        st.text(line.decode("utf-8"))
 
+# # refresh
+# if st.button('Refesh'):
+#      st.write(current_time)
+#      run_and_display_stdout("bash", "BI_dashboard.sh")
+
+
+# if st.button("Run"):
+#     run_and_display_stdout("ls", "-Al", "/")
+
+# fetch the site_id
+# site_list_get = st.experimental_get_query_params()
+# site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
+# site_list_get = site_list_get['siteid'].split(',')
+# st.write('fetched site_id:', site_list_get)
+site_list_get = ['1111111111']
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
 
-#----------------------------------------------read sql to df----------------------------------------------------------------------------#
-@st.cache
-def read_csv_to_df(csv_file_name):
 
-    df = pd.read_csv(csv_file_name,error_bad_lines=False)
+#----------------------------------------------read sql to df----------------------------------------------------------------------------#
+# @st.cache
+def read_csv_to_df(csv_file_name,sep):
+
+    df = pd.read_csv(csv_file_name,sep=sep)
 
     return (df)
 
@@ -57,16 +76,28 @@ def read_csv_to_df(csv_file_name):
 def convert_df(df):
      # IMPORTANT: Cache the conversion to prevent computation on every rerun
      return df.to_csv().encode('utf_8_sig')
-df = read_csv_to_df(chat_full_name)
-log_csv = read_csv_to_df(chatlog_file_name)
+df = read_csv_to_df(chat_full_name,',')
+
+log_csv = read_csv_to_df(chatlog_file_name,'&&')
 log_csv = convert_df(log_csv)
 
-select_col = ['message_id','text','site_name', 'sender_name','csp_item', 'qa_item', 'non_answer','user_time']
-non_answer_col = ['message_id','user_time','sender_name', 'text', 'non_answer']
+select_col_target = ['message_id','text','site_id','site_name', 'sender_name','csp_item', 'qa_item', 'non_answer','user_time']
+select_col = [item for item in df.columns if item in select_col_target]
+
+if 'non_answer' in select_col:  
+        non_answer_col = ['message_id','user_time','sender_name', 'text', 'non_answer']
+else:
+        non_answer_col = []
+
 df= df[select_col]
-df['qa_item'] = df['qa_item'].fillna('CSP')
+
+if 'qa_item' in select_col:
+        df['qa_item'] = df['qa_item'].fillna('CSP')
+
 df['sender_name'] = df['sender_name'].fillna(' ')
 df['site_name'] = df['site_name'].fillna('测试中心')
+df['site_id'] = [str(int(float((item)))) for item in df['site_id'].fillna('0')]
+
 
 
 inclusion_order = [('入选标准第' + str(i) +  '条') for i in range (1,18)]
@@ -82,11 +113,19 @@ df_exclusion.drop_duplicates()
 df_inclusion['csp_item_short'] = [item[4:] for item in df_inclusion['csp_item']]
 df_exclusion['csp_item_short'] = [item[4:] for item in df_exclusion['csp_item']]
 
-df_qa = df[df['qa_item'] == 'Q&A']
-df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
 
-df_non_answer = df[df['non_answer'].notnull()][non_answer_col]
-df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
+if 'qa_item' in df.columns:
+
+        df_qa = df[df['qa_item'] == 'Q&A']
+        df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
+else:
+        df_qa = []
+
+if 'non_answer' in df.columns:
+        df_non_answer = df[df['non_answer'].notnull()][non_answer_col]
+        df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
+else:
+        df_non_answer = []
 
 # start_time_2 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].min()))
 # end_time_2  = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].max()))
@@ -106,16 +145,14 @@ end_time_1 = pd.Timestamp(end_time_1).to_pydatetime()
 with st.spinner('Updating Report...'):
                 
         #Metrics setting and rendering
-        site_list = ['全部']
-        site_list.extend(list(df['site_name'].unique()))
-        site_list_selectd = st.selectbox('Sites Selection', site_list, help = 'Filter report to show selected Sits')
+        # site_list = ['全部']
+        list_options = list(df[df['site_id'].isin(site_list_get)]['site_name'].unique())
+        site_list_selected = st.multiselect('Sites Selection', list_options, default = list_options, help = 'Filter report to show selected sites')
 
-        if site_list_selectd == '全部':
+        # st.write('selected_site:', site_list_selected)
 
-                df_selected = df
-        else:
-                df_selected = df[df['site_name'] == site_list_selectd]
-        # select_range = st.slider(
+        df_selected = df[df['site_name'].isin(site_list_selected)]
+        # # select_range = st.slider(
         #         "Please select range",
         #         value=(start_time_1,
         #                end_time_1), 
@@ -131,21 +168,27 @@ with st.spinner('Updating Report...'):
         df_inclusion['csp_item_short'] = [item[4:] for item in df_inclusion['csp_item']]
         df_exclusion['csp_item_short'] = [item[4:] for item in df_exclusion['csp_item']]
 
-        df_qa = df_selected[df_selected['qa_item'] == 'Q&A']
-        df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
+        if len(df_qa) > 0:
+        
+                df_qa = df_selected[df_selected['qa_item'] == 'Q&A']
+                df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
 
-        df_non_answer = df_selected[df_selected['non_answer'].notnull()][non_answer_col]
-        df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
+        if len(df_non_answer) > 0:
+                df_non_answer = df_selected[df_selected['non_answer'].notnull()][non_answer_col]
+                df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
+
+        
+        with open('style.css') as f:
+                st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
         m1, m2, m3, m4, m5,m6 = st.columns((1,1,1,1,1,1))
         
-
-        m1.metric(label ='Total Conversation',value = len(df_selected))
+        m1.metric(label ='Total Conversations',value = len(df_selected))
         m2.metric(label ='Number of PIs',value = df_selected['sender_name'].nunique())
-        m3.metric(label ='CSP Inclusion',value = len(df_inclusion))
-        m4.metric(label ='CSP Exclusion',value = len(df_exclusion))
-        m5.metric(label ='CSP Q&A Log',value = len(df_qa))
-        m6.metric(label ='Non Answers',value = len(df_non_answer))
+        m3.metric(label ='Inclusion Inquiry',value = len(df_inclusion))
+        m4.metric(label ='Exclusion Inquiry',value = len(df_exclusion))
+        m5.metric(label ='Q&A Log',value = len(df_qa))
+        m6.metric(label ='Non Answers #',value = len(df_non_answer))
 
 
 with st.spinner('Sites Selected!'):
@@ -174,32 +217,36 @@ fig.update_layout(title_text="Exclusion",title_x=0,margin= dict(l=0,r=10,b=10,t=
 g2.plotly_chart(fig, use_container_width=True) 
 
 #------------------qa-------------------------
-fig = px.histogram(df_qa, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
+if len(df_qa) > 0:
+        fig = px.histogram(df_qa, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
 
-# fig.update_traces(marker_color='#264653')
+        # fig.update_traces(marker_color='#264653')
 
-fig.update_layout(title_text="Q&A Log",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
+        fig.update_layout(title_text="Q&A Log",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
 
-g3.plotly_chart(fig, use_container_width=True) 
-#-------------------------------preparetion ------------------------------------------------#
-gd = GridOptionsBuilder.from_dataframe(df_non_answer)
-gd.configure_pagination(enabled=True)
-gd.configure_default_column(editable=False, grouptable = True)
+        g3.plotly_chart(fig, use_container_width=True) 
+        #-------------------------------preparetion ------------------------------------------------#
+        gd = GridOptionsBuilder.from_dataframe(df_non_answer)
+        gd.configure_pagination(enabled=True)
+        gd.configure_default_column(editable=False, grouptable = True)
 
-with st.expander("Non Answered Questions", expanded=False):
-        st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
-        sel_mode = st.radio("Selection Type", options = ['single', 'multiple'])
-        gd.configure_selection(selection_mode = sel_mode, use_checkbox=True)
-        gridoptions = gd.build()
-        grid_table = AgGrid(df_non_answer, gridOptions=gridoptions, 
-                        update_mode = GridUpdateMode.SELECTION_CHANGED,
-                        height = 500, 
-                        allow_upsafe_jscode=True,
-                        theme = "fresh")
+        with st.expander("Non Answered Questions", expanded=False):
+                if len(df_non_answer):
+                        st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
+                        sel_mode = st.radio("Selection Type", options = ['single', 'multiple'])
+                        gd.configure_selection(selection_mode = sel_mode, use_checkbox=True)
+                        gridoptions = gd.build()
+                        grid_table = AgGrid(df_non_answer, gridOptions=gridoptions, 
+                                        update_mode = GridUpdateMode.SELECTION_CHANGED,
+                                        height = 500, 
+                                        allow_upsafe_jscode=True,
+                                        theme = "fresh")
 
-        st.write('Details')
-        sel_row = grid_table["selected_rows"]
-        st.write(sel_row)
+                        st.write('Details')
+                        sel_row = grid_table["selected_rows"]
+                        st.write(sel_row)
+                else:
+                        st.markdown("**Total Now Answer :" + 0 +"**")
 
         # fig = go.Figure(data=go.Table(
         # columnwidth = [2,1,1,8,1],
@@ -231,9 +278,9 @@ with st.expander("Conversation History", expanded=False):
                 time_data = f.read()
 
         new_json = json.loads(time_data)
-        if site_list_selectd != '全部':
+        if site_list_selected != '全部':
                 new_json['events'] = [item for item in new_json['events']            \
-                        if new_json['events'][0]['text']['headline'].split('<br>')[0] == site_list_selectd ]
+                        if new_json['events'][0]['text']['headline'].split('<br>')[0] in site_list_selected ]
 
         # render timeline
         timeline(new_json, height=800)
@@ -244,7 +291,7 @@ gd.configure_pagination(enabled=True)
 gd.configure_default_column(editable=False, grouptable = True)
 
 with st.expander("Full Dataset View", expanded=False):
-        st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
+        st.markdown("**Total Conversations :" + str(len(df_non_answer))+"**")
         sel_mode_full = st.radio("Selection Type", options = ['single', 'multiple'],key='full')
         gd.configure_selection(selection_mode = sel_mode_full, use_checkbox=True)
         gridoptions = gd.build()

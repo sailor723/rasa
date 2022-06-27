@@ -72,7 +72,7 @@ if len(v_list) > 0:
     chats_data_json = ''
     msg = ''
     num = 0
-    print('-'* 120)
+    # print('-'* 120)
     user_message = ''
     site_name = ''
     sender_name = ''
@@ -80,16 +80,18 @@ if len(v_list) > 0:
 
     for a in v_list:
 
+        print(f"Total records are {len(v_list)} now processing {v_list.index(a) + 1}", end='\r')
+
         if msg != '' and a['event'] == 'user':
 
-            print('site_name', site_name)
-            print('sender_name', sender_name)
-            print('user_message', user_message)
+            # print('site_name', site_name)
+            # print('sender_name', sender_name)
+            # print('user_message', user_message)
             if sender_name:
                 user_message =  site_name + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
                 json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
 
-            print('-'* 120)
+            # print('-'* 120)
 
             chats_data_combined += chats_data
             
@@ -104,13 +106,13 @@ if len(v_list) > 0:
             dt_object = datetime.fromtimestamp(a['timestamp'])
             time_json = start_date_json(a['timestamp'])
                                         
-            print('user_intent:', a['parse_data']['intent']['name'], a['parse_data']['intent']['confidence'])
+            # print('user_intent:', a['parse_data']['intent']['name'], a['parse_data']['intent']['confidence'])
             chats_data += '\n'+ 'user_intent:' + str(a['parse_data']['intent']['name']) + str(a['parse_data']['intent']['confidence'])
             num = num + 1
             
         if a['event'] == 'bot':
                                         
-            print('BOT: ', a['text'])
+            # print('BOT: ', a['text'])
             chats_data +=  '\n'+'BOT: ' + str(a['text'])
 
     #         chats_data_json +=  '<br>'+'BOT: ' + ''.join(['<p>' + item + '</p>' for item in cut_text(a['text'],40)])
@@ -119,13 +121,13 @@ if len(v_list) > 0:
             
         if a['event'] == 'action':
                                                                                 
-            print(' '* 80, '|  action:', a['name'])
+            # print(' '* 80, '|  action:', a['name'])
             chats_data += '\n'+ 'action:' + a['name']
         
             
         if a['event'] == 'slot':
                                                 
-            print(' ' * 80, '|  slot:',a['name'], a['value'])
+            # print(' ' * 80, '|  slot:',a['name'], a['value'])
             chats_data +=  '\n'+'slot:' +  str(a['name']) + str(a['value'])
             if a['name'] == 'site_name':
                 site_name = a['value']
@@ -136,7 +138,7 @@ if len(v_list) > 0:
     #         print('message_id:',a['parse_data']['message_id'])
             chats_data +=  '\n'+'message_id:' + a['parse_data']['message_id']
                 
-            print('USER:', a['parse_data']['text'])
+            # print('USER:', a['parse_data']['text'])
             user_message = a['parse_data']['text']
             chats_data +=  '\n'+'USER:'+ a['parse_data']['text']
     #         chats_data_json +=  '<br>'+'USER:'+ a['parse_data']['text'] + '<br>'
@@ -155,7 +157,7 @@ if len(v_list) > 0:
     if sender_name:
         user_message =  site_name + '<br>' + sender_name + '<br><br><b>' + user_message +'</b>'
         json_list.append({'start_date': time_json,'text': {'headline': user_message, 'text': chats_data_json}})
-        print('-'* 120)
+        # print('-'* 120)
 
     chats_data_combined += chats_data
         

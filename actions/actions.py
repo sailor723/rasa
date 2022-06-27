@@ -17,7 +17,7 @@ import datetime as dt
 from neo4j import GraphDatabase
 from typing import Any, Text, Dict, List
 import pandas as pd
-import random, os
+import random, os,re
 import json, webbrowser, arrow, dateparser, requests
 # from rasa_sdk.events import SlotSet
 
@@ -47,6 +47,7 @@ ERROR_3 = "我在Q&A Log中没有找到，我会把问题转给负责咱们中�
 ERROR_4 = "现在小易还不能回答，我会转给负责咱们中心的CRA。"
 ERROR_5 = "数据库查询失败，我会把问题转给系统部门。谢谢。"
 
+ERROR_8 = "老师你好，您的登录已经过期，烦请重新登录。谢谢"
 ERROR_9 = "CRA的电话是"
 DEFAULT_Mobile = '11111111111'
 EXCLUSION_SEC_1 = [1,16]
@@ -224,23 +225,26 @@ class ActionLogin(Action):
 
         print('tracker_sender_id:', tracker_sender_id)
 
+        pattern = re.compile(r"(\d+)")
         try:
             sender_id = [_ for _ in tracker_sender_id.split('+')][0].strip()
             sender_name = [_ for _ in tracker_sender_id.split('+')][1].strip()
-            # site_id = [_ for _ in tracker_sender_id.split('+')][3].strip()
+            site_id = [_ for _ in tracker_sender_id.split('+')][3].strip()
             site_name = [_ for _ in tracker_sender_id.split('+')][4].strip()
             version = [_ for _ in tracker_sender_id.split('+')][5].split('-')[0].strip()
             token = [_ for _ in tracker_sender_id.split('+')][6].strip()
             CRA_mobile = [_ for _ in tracker_sender_id.split('+')][7].strip()
+            CRA_mobile = pattern.findall(CRA_mobile)
+
             print('sender_name:', sender_name)
         except:
             sender_id = '123465'
             sender_name = 'zhaoyisheng'
-            # site_id ='北京肿瘤医院'
+            site_id ='1111111111'
             site_name ='北京肿瘤医院'
             version = '2.0'
             token = None
-            CRA_mobile = '11111111111'
+            CRA_mobile = ['11111111111']
             print('sender_name:', sender_name)
 
         msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
@@ -276,7 +280,7 @@ class ActionLogin(Action):
 
         return [SlotSet("sender_id", sender_id),
                 SlotSet("sender_name", sender_name), 
-                # SlotSet("site_id", site_id), 
+                SlotSet("site_id", site_id), 
                 SlotSet("site_name", site_name), 
                 SlotSet("version", version),
                 SlotSet("token", token),
@@ -303,13 +307,20 @@ class ActionCheckProtocol(Action):
 
         print('sender_id', sender_id)
 
+        if sender_id == '':
+            print('sender is here')
+            dispatcher.utter_message(text= ERROR_8)          
+
+            return []
+
+
         sender_name = tracker.get_slot('sender_name')
 
         item_number = tracker.get_slot('item_number')
 
         main = tracker.get_slot('main')
 
-        # site_id = tracker.get_slot('site_id')
+        site_id = tracker.get_slot('site_id')
 
         site_name = tracker.get_slot('site_name')
 
@@ -332,6 +343,8 @@ class ActionCheckProtocol(Action):
         #     print('sub:', sub)
         index_list = tracker.get_slot('index_list')       #get index_list
         print('index_list:', index_list)
+#-----------------------------check site_id, sender_id------------------------------------------------------------------
+
 
 #--------------------------- GENERATE RANDOM 15 entities ---------------------------------------------------------------#
 
@@ -450,6 +463,7 @@ class ActionCheckProtocol(Action):
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_name", site_name), 
+                                SlotSet("site_id", site_id), 
                                 SlotSet("qa_item", qa_item), 
                                 SlotSet("csp_item", csp_item), 
                                 SlotSet("version", version),
@@ -457,12 +471,12 @@ class ActionCheckProtocol(Action):
                         # return [SlotSet("sub",None)]                             # keep question_list
                     except:
                         non_answer = ['<103>']
-                        if CRA_mobile == DEFAULT_Mobile:
+                        if CRA_mobile[0] == DEFAULT_Mobile:
 
                             Text_Error_Response = ERROR_3 + non_answer[0]
                         else:
                         
-                            Text_Error_Response = ERROR_3+ ERROR_9 + CRA_mobile + ' ' + non_answer[0]
+                            Text_Error_Response = ERROR_3+ ERROR_9 + " 或 ".join(CRA_mobile) + ' ' + non_answer[0]
 
                         dispatcher.utter_message(text= Text_Error_Response)          
     
@@ -472,6 +486,7 @@ class ActionCheckProtocol(Action):
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_name", site_name), 
+                                SlotSet("site_id", site_id), 
                                 SlotSet("qa_item", qa_item), 
                                 SlotSet("non_answer", non_answer),
                                 SlotSet("version", version),
@@ -513,12 +528,12 @@ class ActionCheckProtocol(Action):
                 # KG not found
                 non_answer = ['<102>']
 
-                if CRA_mobile == DEFAULT_Mobile:
+                if CRA_mobile[0] == DEFAULT_Mobile:
 
                     Text_Error_Response = ERROR_2 + ' ' +  non_answer[0]
                 else:
                 
-                    Text_Error_Response = ERROR_2 + ERROR_9 + CRA_mobile + ' ' + non_answer[0]
+                    Text_Error_Response = ERROR_2 + ERROR_9 + " 或 ".join(CRA_mobile) + ' ' + non_answer[0]
 
                 payload = {
                     "userId": sender_id,
@@ -646,6 +661,7 @@ class ActionCheckProtocol(Action):
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
                         SlotSet("site_name", site_name), 
+                        SlotSet("site_id", site_id), 
                         SlotSet("version", version),
                         SlotSet("entity_values", entity_values),
                         SlotSet("token", token)]
@@ -710,20 +726,25 @@ class ActionDefaultFallback(Action):
         sender_id = tracker.get_slot('sender_id')
         sender_name = tracker.get_slot('sender_name')
         site_name = tracker.get_slot('site_name')
+        site_id = tracker.get_slot('site_id')
         version = tracker.get_slot('version')
         token = tracker.get_slot('token')
         CRA_mobile = tracker.get_slot('CRA_mobile')
-        # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
+        if sender_id == '':
+            print('sender is here')
+            dispatcher.utter_message(text= ERROR_8)          
+            return []
+            
         print('message:', message)
         
         non_answer = ['<101>']
 
-        if CRA_mobile == DEFAULT_Mobile:
+        if CRA_mobile[0] == DEFAULT_Mobile:
 
             Text_Error_Response =  ERROR_1 + non_answer[0]
         else:
         
-            Text_Error_Response =  ERROR_1 + ERROR_5 + CRA_mobile + ' ' + non_answer[0]
+            Text_Error_Response =  ERROR_1 + ERROR_5 + " 或 ".join(CRA_mobile) + ' ' + non_answer[0]
 
         payload = {
             "userId": sender_id,
@@ -753,6 +774,7 @@ class ActionDefaultFallback(Action):
         return [ SlotSet("sender_id", sender_id),
             SlotSet("sender_name", sender_name), 
             SlotSet("site_name", site_name), 
+            SlotSet("site_id", site_id), 
             SlotSet("non_answer", non_answer), 
             SlotSet("version", version),
             SlotSet("token", token)
@@ -775,11 +797,14 @@ class ActionDefaultFallback(Action):
         sender_id = tracker.get_slot('sender_id')
         sender_name = tracker.get_slot('sender_name')
         site_name = tracker.get_slot('site_name')
+        site_id = tracker.get_slot('site_id')
         version = tracker.get_slot('version')
         token = tracker.get_slot('token')
         CRA_mobile = tracker.get_slot('CRA_mobile')
-        print('CRA_mobile:', CRA_mobile)
-        # token = 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODI2ODU2MjYsInVzZXIiOnsiaWQiOjEyMzQ2NSwic3RhdHVzIjoxLCJjcmVhdGVkVGltZSI6bnVsbCwiY3JlYXRlZEJ5IjpudWxsLCJ1cGRhdGVkVGltZSI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJzZXgiOmZhbHNlLCJ1c2VyTmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJFMTBBREMzOTQ5QkE1OUFCQkU1NkUwNTdGMjBGODgzRSIsIm5hbWUiOiJBZG1pbiAiLCJidWlsdEluIjp0cnVlLCJ0eXBlIjoxLCJhY3RpdmUiOnRydWUsInNpdGVWT0xpc3QiOltdLCJlbWFpbCI6bnVsbH0sInN1YiI6ImFkbWluIn0.-QHy3YbbelIWzWx8yvTqaaHbBjAIPWQK_O11Txg6msLEU_GX-Ld4VlGLOZGhdsJJCP1mYKFdhzZEits7sv20Sw'
+        if sender_id == '':
+            print('sender is here')
+            dispatcher.utter_message(text= ERROR_8)          
+            return []
         print('message:', message)
         
         non_answer = ['<104>']
@@ -787,11 +812,11 @@ class ActionDefaultFallback(Action):
         print('error_9', ERROR_9)
         print('CRA_mobile', CRA_mobile)
         print('non_answer_0', non_answer[0])
-        if CRA_mobile == DEFAULT_Mobile:
+        if CRA_mobile[0] == DEFAULT_Mobile:
 
             Text_Error_Response =  ERROR_4 + non_answer[0]
         else:
-            Text_Error_Response =  ERROR_4 + ERROR_9 +  CRA_mobile + ' ' + non_answer[0]
+            Text_Error_Response =  ERROR_4 + ERROR_9 +  " 或 ".join(CRA_mobile) + ' ' + non_answer[0]
 
         payload = {
             "userId": sender_id,
@@ -822,6 +847,7 @@ class ActionDefaultFallback(Action):
         return [ SlotSet("sender_id", sender_id),
             SlotSet("sender_name", sender_name), 
             SlotSet("site_name", site_name), 
+            SlotSet("site_id", site_id),
             SlotSet("version", version),
             SlotSet("non_answer", non_answer),
             SlotSet("token", token) ]
