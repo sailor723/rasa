@@ -4,6 +4,7 @@
 import pandas as pd
 import numpy as np
 import pymysql, json, os
+from datetime import datetime
 from sqlalchemy  import create_engine, Column, Integer, String
 # import pandas_profiling
 
@@ -161,7 +162,10 @@ for row, col in df_final.iterrows():
     else:
         value_list.append(col['text'])
 df_final['clean_text'] = value_list
-
+# df_final.user_time = df_final.user_time.astype('datetime64[s]')
+# df_final.bot_time = df_final.bot_time.astype('datetime64[s]')
+df_final.user_time = [datetime.fromtimestamp(item) for item in df_final.user_time]
+df_final.bot_time = [datetime.fromtimestamp(item) for item in df_final.bot_time]
 df_final.to_csv(chat_full_name)
 
 print(' Total conversation:', df_final.shape[0])

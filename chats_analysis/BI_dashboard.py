@@ -7,7 +7,7 @@ import os, json, csv, sys, subprocess
 import plotly.figure_factory as ff
 import plotly.express as px
 import plotly.graph_objects as go
-from datetime import datetime
+from datetime import datetime,timedelta
 from streamlit_timeline import timeline
 import time
 from st_aggrid import AgGrid, GridUpdateMode, JsCode
@@ -47,8 +47,8 @@ def run_and_display_stdout(*cmd_with_agrs):
 # # refresh
 if st.button('Refesh'):
      st.write(current_time)
-     run_and_display_stdout("bash", "BI_dashboard.sh")
-     subprocess("bash", "BI_dashboard.sh")
+#      run_and_display_stdout("bash", "BI_dashboard.sh")
+     subprocess.run(["bash", "BI_dashboard.sh"])
 
 
 # if st.button("Run"):
@@ -71,6 +71,9 @@ def read_csv_to_df(csv_file_name,sep):
 
     df = pd.read_csv(csv_file_name,sep=sep)
 
+    if 'user_time' in df.columns:
+        df['user_time'] = pd.to_datetime(df['user_time'])
+
     return (df)
 
 @st.cache
@@ -82,6 +85,17 @@ df = read_csv_to_df(chat_full_name,',')
 log_csv = read_csv_to_df(chatlog_file_name,'&&')
 log_csv = convert_df(log_csv)
 
+
+#-----------------------------function start_date_json-------- ----------------------------------------------------------------#
+
+def start_date_json (time_dict):
+    string = time_dict['year'] +'-' + time_dict['month'] +'-' + time_dict['day']  +' ' + time_dict['hour']      \
+        +':' + time_dict['minute'] +':' + time_dict['second'] 
+
+    return (datetime.strptime(string, "%Y-%m-%d %H:%M:%S"))
+# df prepare 
+
+
 select_col_target = ['message_id','text','site_id','site_name', 'sender_name','csp_item', 'qa_item', 'non_answer','user_time']
 select_col = [item for item in df.columns if item in select_col_target]
 
@@ -91,6 +105,7 @@ else:
         non_answer_col = []
 
 df= df[select_col]
+df = df.drop_duplicates()
 
 if 'qa_item' in select_col:
         df['qa_item'] = df['qa_item'].fillna('CSP')
@@ -99,11 +114,8 @@ df['sender_name'] = df['sender_name'].fillna(' ')
 df['site_name'] = df['site_name'].fillna('测试中心')
 df['site_id'] = [str(int(float((item)))) for item in df['site_id'].fillna('0')]
 
-
-
 inclusion_order = [('入选标准第' + str(i) +  '条') for i in range (1,18)]
 exclusion_order = [('排除标准第' + str(i) +  '条') for i in range (1,26)]
-
 
 df_inclusion = df.loc[df['csp_item'].isin(inclusion_order)]
 df_inclusion.drop_duplicates()
@@ -114,7 +126,6 @@ df_exclusion.drop_duplicates()
 df_inclusion['csp_item_short'] = [item[4:] for item in df_inclusion['csp_item']]
 df_exclusion['csp_item_short'] = [item[4:] for item in df_exclusion['csp_item']]
 
-
 if 'qa_item' in df.columns:
 
         df_qa = df[df['qa_item'] == 'Q&A']
@@ -124,22 +135,9 @@ else:
 
 if 'non_answer' in df.columns:
         df_non_answer = df[df['non_answer'].notnull()][non_answer_col]
-        df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
+        # df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
 else:
         df_non_answer = []
-
-# start_time_2 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].min()))
-# end_time_2  = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].max()))
-
-start_time = pd.Timestamp(df['user_time'].min())
-end_time = pd.Timestamp(df['user_time'].max())
-
-
-start_time_1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].min()))
-start_time_1 = pd.Timestamp(start_time_1).to_pydatetime()
-
-end_time_1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(df['user_time'].max()))
-end_time_1 = pd.Timestamp(end_time_1).to_pydatetime()
 
 # -------------------------header selectbox for report -------------------------------------------#
 
@@ -153,12 +151,21 @@ with st.spinner('Updating Report...'):
         # st.write('selected_site:', site_list_selected)
 
         df_selected = df[df['site_name'].isin(site_list_selected)]
-        # # select_range = st.slider(
-        #         "Please select range",
-        #         value=(start_time_1,
-        #                end_time_1), 
-        #         format="MM/DD hh:mm:ss")
-        # st.write("range:", select_range)
+
+        start_time = pd.Timestamp(df_selected['user_time'].min()) - timedelta(hours=1)
+        end_time = pd.Timestamp(df_selected['user_time'].max()) + timedelta(hours=1)
+
+        range_list = pd.date_range(start_time,end_time,freq='H')
+        start_date, end_date = st.select_slider(
+                        'Select a range of date',
+                        options=range_list,
+                        value=(range_list[0], range_list[-1]))
+
+        st.write('You selected date between', start_date, 'and', end_date)
+
+        # start_date = pd.to_datetime(start_date)
+
+        df_selected = df_selected[(df_selected.user_time >= start_date) & (df_selected.user_time <= end_date)]
 
         df_inclusion = df_selected.loc[df_selected['csp_item'].isin(inclusion_order)]
         df_inclusion.drop_duplicates()
@@ -176,7 +183,7 @@ with st.spinner('Updating Report...'):
 
         if len(df_non_answer) > 0:
                 df_non_answer = df_selected[df_selected['non_answer'].notnull()][non_answer_col]
-                df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
+                # df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
 
         
         with open('style.css') as f:
@@ -281,8 +288,10 @@ with st.expander("Conversation History", expanded=False):
         new_json = json.loads(time_data)
 
         if site_list_selected != '全部':
-                new_json['events'] = [item for item in new_json['events']  if item['text']['headline'].split('<br>')[0] in list_options]
-
+                new_json['events'] = [item for item in new_json['events']  if (item['text']['headline'].split('<br>')[0] in list_options)   \
+                                and (start_date_json(item['start_date']) >= start_date )
+                                and (start_date_json(item['start_date']) <= end_date) ]
+        st.write('Total History Inquired: ', len(new_json['events']))
         # render timeline
         timeline(new_json, height=800)
 
