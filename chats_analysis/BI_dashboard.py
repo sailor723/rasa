@@ -65,14 +65,14 @@ chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
 
 
 #----------------------------------------------read sql to df----------------------------------------------------------------------------#
-# @st.cache
+@st.cache
 def read_csv_to_df(csv_file_name,sep):
 
     df = pd.read_csv(csv_file_name,sep=sep)
 
     return (df)
 
-# @st.cache
+@st.cache
 def convert_df(df):
      # IMPORTANT: Cache the conversion to prevent computation on every rerun
      return df.to_csv().encode('utf_8_sig')
@@ -280,7 +280,7 @@ with st.expander("Conversation History", expanded=False):
         new_json = json.loads(time_data)
         if site_list_selected != '全部':
                 new_json['events'] = [item for item in new_json['events']            \
-                        if new_json['events'][0]['text']['headline'].split('<br>')[0] in site_list_selected ]
+                        if new_json['events'][0]['text']['headline'].split('<br>')[0] in list_options ]
 
         # render timeline
         timeline(new_json, height=800)
@@ -291,11 +291,11 @@ gd.configure_pagination(enabled=True)
 gd.configure_default_column(editable=False, grouptable = True)
 
 with st.expander("Full Dataset View", expanded=False):
-        st.markdown("**Total Conversations :" + str(len(df_non_answer))+"**")
+        st.markdown("**Total Conversations :" + str(len(df_selected))+"**")
         sel_mode_full = st.radio("Selection Type", options = ['single', 'multiple'],key='full')
         gd.configure_selection(selection_mode = sel_mode_full, use_checkbox=True)
         gridoptions = gd.build()
-        grid_table = AgGrid(df, gridOptions=gridoptions, 
+        grid_table = AgGrid(df_selected, gridOptions=gridoptions, 
                         update_mode = GridUpdateMode.SELECTION_CHANGED,
                         height = 500, 
                         allow_upsafe_jscode=True,
