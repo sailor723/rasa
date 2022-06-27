@@ -45,20 +45,21 @@ def run_and_display_stdout(*cmd_with_agrs):
         st.text(line.decode("utf-8"))
 
 # # refresh
-# if st.button('Refesh'):
-#      st.write(current_time)
-#      run_and_display_stdout("bash", "BI_dashboard.sh")
+if st.button('Refesh'):
+     st.write(current_time)
+     run_and_display_stdout("bash", "BI_dashboard.sh")
+     subprocess("bash", "BI_dashboard.sh")
 
 
 # if st.button("Run"):
 #     run_and_display_stdout("ls", "-Al", "/")
 
 # fetch the site_id
-site_list_get = st.experimental_get_query_params()
-site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
-site_list_get = site_list_get['siteid'].split(',')
-st.write('fetched site_id:', site_list_get)
-# site_list_get = ['1111111111']
+# site_list_get = st.experimental_get_query_params()
+# site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
+# site_list_get = site_list_get['siteid'].split(',')
+# st.write('fetched site_id:', site_list_get)
+site_list_get = ['1111111111']
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
@@ -278,9 +279,9 @@ with st.expander("Conversation History", expanded=False):
                 time_data = f.read()
 
         new_json = json.loads(time_data)
+
         if site_list_selected != '全部':
-                new_json['events'] = [item for item in new_json['events']            \
-                        if new_json['events'][0]['text']['headline'].split('<br>')[0] in list_options ]
+                new_json['events'] = [item for item in new_json['events']  if item['text']['headline'].split('<br>')[0] in list_options]
 
         # render timeline
         timeline(new_json, height=800)
@@ -311,8 +312,6 @@ data=log_csv,
 file_name='DCTA_conversational.csv',
 mime='text/csv',
 )
-
-
 
 #---------------------------Question distribution -----------------------------------
 #     with col1:
