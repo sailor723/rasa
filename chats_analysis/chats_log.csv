@@ -1,14 +1,16 @@
 ﻿
 action:action_session_start
 action:action_listen
-timestamp:1656342443.1177807
-user_intent:greet0.9996041059494019
-message_id:6d8bd31d73524c8bb9343442fd8ad884
+timestamp:1656426239.326709
+user_intent:greet0.9993460774421692
+message_id:9d63f06086094be4835385b9c88114f5
 USER:hello
 action:utter_protocol
-BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。
+action:utter_protocol1
+BOT: 现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
 action:action_Login
-BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
 <b>小易推荐如下选项，请参照选择。谢谢</b>
 slot:sender_id123465
 slot:sender_namezhaoyisheng
@@ -18,36 +20,29 @@ slot:version2.0
 slot:tokenNone
 slot:CRA_mobile['11111111111']
 action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342448.2381353
+timestamp:1656426242.6224105
 user_intent:inform_protocol1.0
-message_id:19c17543abf04b50b9886f311460c11b
-USER:/inform_protocol{"sub": "ICF"}
-slot:subICF
+message_id:f319a5ababf74ffb81ae733604c4b794
+USER:/inform_protocol{"sub": "突变"}
+slot:sub突变
 action:simple_protocol_form
-slot:subICF
+slot:sub突变
 slot:main入选标准
-slot:sub_list['ICF']
-slot:subICF
+slot:sub_list['突变']
+slot:sub突变
 slot:main入选标准
-slot:sub_list['ICF']
+slot:sub_list['突变']
 slot:requested_slotNone
 action:action_check_protocol
-BOT: 试验方案第63页 
-入选标准预筛选 
-在执行方案规定的任何程序（包括预筛选/基线评价）之前，必须获得书面知情同意书和当地要求的隐私法文件授权。 
-HER2 突变状态未知的受试者将需要签署预筛选ICF，以允许在28 天筛选时间窗之前采集血样进行用于确认合格性的 HER2 外显子 19 或 20 突变检测。在签署预筛选ICF时，根据现有信息（例如，病史、NSCLC、治疗线限制、肿瘤组织样本的可用性），研究者应确保受试者有可能成为本研究的候选受试者。签署预筛选ICF 后，在获得符合要求的中心实验室检测结果之前，不得开始主ICF 和其他研究程序。将要求已知既往存在符合要求的HER2 突变或经中心实验室检测结果证实的HER2 突变受试者在参与研究前签署主ICF。关于非中心实验室评估的 HER2 外显子 19 或 20 突变合格性评估的研究要求的详细信息，参见附录O。 
-关于说明研究HER2 外显子19 或20 突变合格性评估的（预）筛选要求的示意图，参见图2。 
-受试者将在签署预筛选 ICF 和/或主 ICF 后入组研究。不符合合格性标准（包括预筛选评估）的受试者被称为“筛选失败”。 
-签署主 ICF 后，将开始筛选和基线程序。筛选期设为从入选日起最多 28 天。筛选和基线程序完成时，符合合格性标准的受试者将随机入组研究。应尽量缩短从随机化至开始治疗的时间（参见第1.3.2 节）。	/DL04 V2
-试验方案第64页 
-入选标准第1条 
-能够签署知情同意书（如附录A所述），包括遵从ICF和本CSP中列出的要求和限制	/DL04 V2
-<b>小易推荐如下选项，请参照选择。谢谢</b>
+BOT: 试验方案第68页 
+排除标准第2条 
+携带靶向EGFR改变（或其他靶向突变，包括但不限于ALK，如果通过常规检测确定为有获批可用治疗的靶向改变）的肿瘤。	/DL04 V2
+<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
 slot:subNone
 slot:sub_listNone
 slot:item_numberNone
-slot:index_list[]
-slot:csp_item['入选标准预筛选', '入选标准第1条']
+slot:index_list['一线治疗,KRAS,突变', '人群,一线治疗,突变,HER2突变', 'CTDNA,ROS1、PDL1,EGFR,方案,ALK,数据且,突变', '突变', 'EGFR,美国,ALK,日本,莫博替尼,突变']
+slot:csp_item['排除标准第2条']
 slot:sender_id123465
 slot:sender_namezhaoyisheng
 slot:site_name北京肿瘤医院
@@ -56,9 +51,23 @@ slot:version2.0
 slot:entity_values[]
 slot:tokenNone
 action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342456.5286903
+timestamp:1656426252.3898714
+user_intent:new_scope0.996529757976532
+message_id:52682c05dcae43ce9cecb1813a53ba48
+USER:soa
+action:action_new_scope
+BOT: zhaoyisheng老师，您的问题"soa",现在小易还不能回答，我会转给负责咱们中心的CRA。<104>
+slot:sender_id123465
+slot:sender_namezhaoyisheng
+slot:site_name北京肿瘤医院
+slot:site_id1111111111
+slot:version2.0
+slot:non_answer['<104>']
+slot:tokenNone
+action:action_listen------------------------------------------------------------------------------------------------------------------------
+timestamp:1656426257.8254168
 user_intent:inform_protocol1.0
-message_id:a561595ec4934e1f87ac13b351a72419
+message_id:034dbe3b719a4a8e9ade57d75b6771c4
 USER:腹水
 slot:sub腹水
 action:simple_protocol_form
@@ -86,95 +95,49 @@ slot:version2.0
 slot:entity_values[]
 slot:tokenNone
 action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342462.3913262
-user_intent:new_scope0.9934822916984558
-message_id:d91bbe5dad07427f9bc31fd6f159b530
-USER:soa
-action:action_new_scope
-BOT: zhaoyisheng老师，您的问题"soa,现在小易还不能回答，我会转给负责咱们中心的CRA。<104>
-slot:sender_id123465
-slot:sender_namezhaoyisheng
-slot:site_name北京肿瘤医院
-slot:site_id1111111111
-slot:version2.0
-slot:non_answer['<104>']
-slot:tokenNone
-action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342472.2600093
+timestamp:1656426263.3610282
 user_intent:inform_protocol1.0
-message_id:15213d5e282c479f90950cfa56cff0dd
-USER:入组的年龄
-slot:sub年龄
+message_id:e06f248aecec48d38aa651064dc0e338
+USER:/inform_protocol{"sub": "胸腔积液,洗脱期,穿刺"}
+slot:sub胸腔积液,洗脱期,穿刺
 action:simple_protocol_form
 slot:main入选标准
-slot:sub年龄
-slot:sub_list['年龄']
-slot:sub年龄
-slot:sub_list['年龄']
+slot:sub胸腔积液,洗脱期,穿刺
+slot:sub_list['胸腔积液,洗脱期,穿刺']
+slot:sub胸腔积液,洗脱期,穿刺
+slot:sub_list['胸腔积液,洗脱期,穿刺']
 slot:requested_slotNone
 action:action_check_protocol
-BOT: 试验方案第65页 
-入选标准第4条 
-签署ICF时，男性和女性受试者必须≥18岁。其他年龄限制可依照当地法规执行	/DL04 V2
-<b>小易推荐如下选项，请参照选择。谢谢</b>
-slot:subNone
-slot:sub_listNone
-slot:item_numberNone
-slot:index_list[]
-slot:csp_item['入选标准第4条']
-slot:sender_id123465
-slot:sender_namezhaoyisheng
-slot:site_name北京肿瘤医院
-slot:site_id1111111111
-slot:version2.0
-slot:entity_values[]
-slot:tokenNone
-action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342477.4320023
-user_intent:inform_protocol1.0
-message_id:bcbb77a8ef0342cc8e28ee12635989a7
-USER:/inform_protocol{"sub": "脑放疗"}
-slot:sub脑放疗
-action:simple_protocol_form
-slot:main入选标准
-slot:sub脑放疗
-slot:sub_list['脑放疗']
-slot:sub脑放疗
-slot:sub_list['脑放疗']
-slot:requested_slotNone
-action:action_check_protocol
-BOT: 试验方案第68页 
-排除标准第4条 
-任何脊髓压迫、软脑膜疾病或临床活动性CNS转移。注：临床活动性 CNS转移定义为未经治疗且有症状的、或需要皮质类固醇或抗惊厥药治疗以控制相关症状。
-CNS 转移受试者必须既往完成过局部治疗。
-−  如果无症状或神经系统稳定且已从既往治疗的急性毒性作用中恢复，则允许既往接受过治疗的 CNS 转移受试者入组。
-− 接受放疗的 CNS 转移受试者必须符合以下要求：
-o 入组前行立体定向放射手术或伽玛刀后≥7 天。
-o 入组前接受全脑放射治疗后≥14 天。	/DL04 V2
+BOT: <b>排除标准第6条问题: </b>反复胸腔穿刺的患者被排除在外吗？
+<b>
+排除标准第6条回答: </b>只要符合表9中的洗脱期要求，这并不排除以前做过任何数量胸腔积液引流或胸腔穿刺术的患者。根据表9，胸腔积液引流至少需要2周的洗脱期。
+
 <b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
 slot:subNone
 slot:sub_listNone
 slot:item_numberNone
-slot:index_list['病灶,中枢神经系统转移,局部治疗', '局部治疗,方案,T-DXD,第4,脑转移,中枢神经系统转移', '病灶,局部治疗,靶病灶,RECIST,中枢神经系统转移', 'CNS,局部治疗,方案,CNS转移,日本,中枢神经系统转移', '中枢神经系统,脑转移,洗脱期,ICF']
-slot:csp_item['排除标准第4条']
+slot:index_list['心包积液,胸腔积液,腹水', '知情同意', '前三个月,心包积液,洗脱期,腹水,胸腔积液', '肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液', '穿刺', '洗脱期,胸腔积液,穿刺', '胸腔积液,洗脱期,穿刺', '胸腔积液']
 slot:sender_id123465
 slot:sender_namezhaoyisheng
 slot:site_name北京肿瘤医院
 slot:site_id1111111111
+slot:qa_item['Q&A']
+slot:csp_item['排除标准第6条']
 slot:version2.0
-slot:entity_values[]
 slot:tokenNone
 action:action_listen
 action:action_session_start
 action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342574.2047694
-user_intent:greet0.9996041059494019
-message_id:e454cfb4d7ff4bb7a4e592d5bfe504be
+timestamp:1656426477.3554487
+user_intent:greet0.9993460774421692
+message_id:832fcc467d21445990106a129e99a9ea
 USER:hello
 action:utter_protocol
-BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。
+action:utter_protocol1
+BOT: 现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
 action:action_Login
-BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
 <b>小易推荐如下选项，请参照选择。谢谢</b>
 slot:sender_id123465
 slot:sender_namezhaoyisheng
@@ -184,89 +147,9 @@ slot:version2.0
 slot:tokenNone
 slot:CRA_mobile['11111111111']
 action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342581.1325057
+timestamp:1656426481.3925118
 user_intent:inform_protocol1.0
-message_id:3cd4ed3fb06c4e489d97c73417b5926b
-USER:/inform_protocol{"sub": "编号"}
-slot:sub编号
-action:simple_protocol_form
-slot:sub编号
-slot:main入选标准
-slot:sub_list['编号']
-slot:sub编号
-slot:main入选标准
-slot:sub_list['编号']
-slot:requested_slotNone
-action:action_check_protocol
-BOT: 试验方案第11页 
-DL04方案标题 
-一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）
-<b>小易推荐如下选项，请参照选择。谢谢</b>
-slot:subNone
-slot:sub_listNone
-slot:item_numberNone
-slot:index_list[]
-slot:csp_item['DL04方案标题']
-slot:sender_id123465
-slot:sender_namezhaoyisheng
-slot:site_name北京肿瘤医院
-slot:site_id1111111111
-slot:version2.0
-slot:entity_values[]
-slot:tokenNone
-action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656342587.2161605
-user_intent:inform_protocol1.0
-message_id:7d05ce589d434be2a8f24d1f49a643fc
-USER:/inform_protocol{"sub": "类固醇"}
-slot:sub类固醇
-action:simple_protocol_form
-slot:main入选标准
-slot:sub类固醇
-slot:sub_list['类固醇']
-slot:sub类固醇
-slot:sub_list['类固醇']
-slot:requested_slotNone
-action:action_check_protocol
-BOT: 试验方案第69页 
-排除标准第11条 
-有需要类固醇激素治疗的（非感染性）ILD/非感染性肺炎病史、当前有ILD/非感染性肺炎、或筛选时影像学检查不能排除疑似 ILD/非感染性肺炎。	/DL04 V2
-<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>
-slot:subNone
-slot:sub_listNone
-slot:item_numberNone
-slot:index_list['感染,ILD,类固醇,炎症']
-slot:csp_item['排除标准第11条']
-slot:sender_id123465
-slot:sender_namezhaoyisheng
-slot:site_name北京肿瘤医院
-slot:site_id1111111111
-slot:version2.0
-slot:entity_values[]
-slot:tokenNone
-action:action_listen
-action:action_session_start
-action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656344438.8665001
-user_intent:greet0.9996041059494019
-message_id:f4dd31c945924ad29ec143ec9ecdff1f
-USER:hello
-action:utter_protocol
-BOT: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
-action:action_Login
-BOT: 您好zhaoyisheng，北京肿瘤医院的方案版本是2.0。我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
-<b>小易推荐如下选项，请参照选择。谢谢</b>
-slot:sender_id123465
-slot:sender_namezhaoyisheng
-slot:site_id1111111111
-slot:site_name北京肿瘤医院
-slot:version2.0
-slot:tokenNone
-slot:CRA_mobile['11111111111']
-action:action_listen------------------------------------------------------------------------------------------------------------------------
-timestamp:1656344445.5667524
-user_intent:inform_protocol1.0
-message_id:3a8bc506f34648a6a953028eef8078cb
+message_id:018b9375f1ba4dd4a38b48dc2f9dc656
 USER:cns
 slot:subCNS转移
 action:simple_protocol_form

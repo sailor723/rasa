@@ -55,11 +55,11 @@ if st.button('Refesh'):
 #     run_and_display_stdout("ls", "-Al", "/")
 
 # fetch the site_id
-site_list_get = st.experimental_get_query_params()
-site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
-site_list_get = site_list_get['siteid'].split(',')
-# st.write('fetched site_id:', site_list_get)
-# site_list_get = ['999']
+# site_list_get = st.experimental_get_query_params()
+# site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
+# site_list_get = site_list_get['siteid'].split(',')
+# # st.write('fetched site_id:', site_list_get)
+site_list_get = ['999']
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
@@ -110,7 +110,7 @@ df = df.drop_duplicates()
 if 'qa_item' in select_col:
         df['qa_item'] = df['qa_item'].fillna('CSP')
 
-df['sender_name'] = df['sender_name'].str.split('(')[0].fillna(' ')
+df['sender_name'] = df['sender_name'].fillna(' ')
 df['site_name'] = df['site_name'].fillna('测试中心')
 df['site_id'] = [str(int(float((item)))) for item in df['site_id'].fillna('0')]
 
