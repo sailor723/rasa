@@ -58,8 +58,8 @@ if st.button('Refesh'):
 site_list_get = st.experimental_get_query_params()
 site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
 site_list_get = site_list_get['siteid'].split(',')
-st.write('fetched site_id:', site_list_get)
-# site_list_get = ['1111111111']
+# st.write('fetched site_id:', site_list_get)
+# site_list_get = ['999']
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
@@ -144,8 +144,10 @@ else:
 with st.spinner('Updating Report...'):
                 
         #Metrics setting and rendering
-        # site_list = ['全部']
-        list_options = list(df[df['site_id'].isin(site_list_get)]['site_name'].unique())
+        if site_list_get == ['999']:
+                list_options = df['site_name'].unique()
+        else:
+                list_options = list(df[df['site_id'].isin(site_list_get)]['site_name'].unique())
         site_list_selected = st.multiselect('Sites Selection', list_options, default = list_options, help = 'Filter report to show selected sites')
 
         # st.write('selected_site:', site_list_selected)
@@ -161,7 +163,7 @@ with st.spinner('Updating Report...'):
                         options=range_list,
                         value=(range_list[0], range_list[-1]))
 
-        st.write('You selected date between', start_date, 'and', end_date)
+        # st.write('You selected date between', start_date, 'and', end_date)
 
         # start_date = pd.to_datetime(start_date)
 
@@ -254,7 +256,7 @@ if len(df_qa) > 0:
                         sel_row = grid_table["selected_rows"]
                         st.write(sel_row)
                 else:
-                        st.markdown("**Total Now Answer :" + 0 +"**")
+                        st.markdown("**Total Now Answer :" + '0' +"**")
 
         # fig = go.Figure(data=go.Table(
         # columnwidth = [2,1,1,8,1],
@@ -287,10 +289,12 @@ with st.expander("Conversation History", expanded=False):
 
         new_json = json.loads(time_data)
 
-        if site_list_selected != '全部':
-                new_json['events'] = [item for item in new_json['events']  if (item['text']['headline'].split('<br>')[0] in list_options)   \
-                                and (start_date_json(item['start_date']) >= start_date )
-                                and (start_date_json(item['start_date']) <= end_date) ]
+
+
+        new_json['events'] = [item for item in new_json['events']  if (item['text']['headline'].split('<br>')[0] in df_selected['site_name'].unique())   \
+                        and (start_date_json(item['start_date']) >= start_date )
+                        and (start_date_json(item['start_date']) <= end_date) 
+                        ]
         st.write('Total History Inquired: ', len(new_json['events']))
         # render timeline
         timeline(new_json, height=800)
