@@ -1,0 +1,13 @@
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.27.59.87:8501
+  External URL: http://125.34.222.185:8501
+
+2022-06-28 18:47:31.374 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/weiping/venv/lib/python3.8/site-packages/streamlit/scriptrunner/script_runner.py", line 554, in _run_script
+    exec(code, module.__dict__)
+  File "BI_dashboard.py", line 60, in <module>
+    site_list_get = site_list_get['siteid'].split(',')
+KeyError: 'siteid'

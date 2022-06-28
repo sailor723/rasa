@@ -1,0 +1,20 @@
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.27.59.87:8501
+  External URL: http://125.34.222.185:8501
+
+2022-06-28 18:45:57.095 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/weiping/venv/lib/python3.8/site-packages/streamlit/scriptrunner/script_runner.py", line 554, in _run_script
+    exec(code, module.__dict__)
+  File "chats_analysis/BI_dashboard.py", line 22, in <module>
+    t1.image('DCTA_logo.png', width = 80)
+  File "/home/weiping/venv/lib/python3.8/site-packages/streamlit/elements/image.py", line 138, in image
+    marshall_images(
+  File "/home/weiping/venv/lib/python3.8/site-packages/streamlit/elements/image.py", line 423, in marshall_images
+    proto_img.url = image_to_url(
+  File "/home/weiping/venv/lib/python3.8/site-packages/streamlit/elements/image.py", line 339, in image_to_url
+    with open(image, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'DCTA_logo.png'
+  Stopping...
