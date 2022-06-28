@@ -164,7 +164,7 @@ for row, col in df_final.iterrows():
 df_final['clean_text'] = value_list
 # df_final.user_time = df_final.user_time.astype('datetime64[s]')
 # df_final.bot_time = df_final.bot_time.astype('datetime64[s]')
-df_final.user_time = [datetime.fromtimestamp(item) for item in df_final.user_time]
+df_final.user_time = [datetime.fromtimestamp(item) for item in df_final.user_time.astype(int)]
 df_final.bot_time = [datetime.fromtimestamp(item) for item in df_final.bot_time.fillna(0)]
 df_final.sender_name = df_final.sender_name.str.split('(', expand=True)[0]
 df_final.to_csv(chat_full_name)
