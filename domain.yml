@@ -194,7 +194,9 @@ responses:
       title: 排除
     text: 您想查询入组还是排除?
   utter_protocol:
-  - text: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 小易可以为您提供查询服务。 您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。
+  - text: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。
+  utter_protocol1:
+  - text: 现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
   utter_ask_sub:
   - condition:
     - name: main

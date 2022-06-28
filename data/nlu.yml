@@ -653,6 +653,7 @@ nlu:
     - 对[切片](sub)的要求
     - [kras突变](sub)患者是否可以参加这个试验
     - [kras突变](sub)患者能否适用于排除标准2
+    - [穿刺](sub)
 - intent: thanks
   examples: |
     - 谢谢你

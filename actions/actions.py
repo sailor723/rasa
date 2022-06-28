@@ -247,7 +247,7 @@ class ActionLogin(Action):
             CRA_mobile = ['11111111111']
             print('sender_name:', sender_name)
 
-        msg = '我是阿斯利康的临床试验智能助手小易，很高兴为您服务。'
+        msg = '您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。'
 
 #--------------------------- GENERATE RANDOM 15 entities ----------------------------------------#
 
@@ -554,7 +554,7 @@ class ActionCheckProtocol(Action):
 
                 # print('res.text:',res.text)
 
-                final_message = sender_name + '老师，您的问题"' + message +'，' + Text_Error_Response
+                final_message = sender_name + '老师，您的问题"' + message +'"，' + Text_Error_Response
 
                 dispatcher.utter_message(text=final_message)
 
@@ -679,7 +679,7 @@ class ActionCheckProtocol(Action):
             print('payload:', payload)
 
 
-            final_message = sender_name + '老师，您的问题"' + message +',' + Text_Error_Response
+            final_message = sender_name + '老师，您的问题"' + message +'",' + Text_Error_Response
             dispatcher.utter_message(text=final_message)
             return [SlotSet("sub",None), 
                     SlotSet("sub_list",None), 
@@ -768,7 +768,7 @@ class ActionDefaultFallback(Action):
         except:
             Continue
 
-        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'，' + Text_Error_Response))
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'"，' + Text_Error_Response))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),
@@ -841,7 +841,7 @@ class ActionDefaultFallback(Action):
             Continue
 
 
-        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +',' + Text_Error_Response))
+        dispatcher.utter_message(text=(sender_name +'老师，您的问题"' + message +'",' + Text_Error_Response))
 
         # Revert user message which led to fallback.
         return [ SlotSet("sender_id", sender_id),
