@@ -114,30 +114,6 @@ df['sender_name'] = df['sender_name'].fillna(' ')
 df['site_name'] = df['site_name'].fillna('测试中心')
 df['site_id'] = [str(int(float((item)))) for item in df['site_id'].fillna('0')]
 
-inclusion_order = [('入选标准第' + str(i) +  '条') for i in range (1,18)]
-exclusion_order = [('排除标准第' + str(i) +  '条') for i in range (1,26)]
-
-df_inclusion = df.loc[df['csp_item'].isin(inclusion_order)]
-df_inclusion.drop_duplicates()
-
-df_exclusion = df.loc[df['csp_item'].isin(exclusion_order)]
-df_exclusion.drop_duplicates()
-
-df_inclusion['csp_item_short'] = [item[4:] for item in df_inclusion['csp_item']]
-df_exclusion['csp_item_short'] = [item[4:] for item in df_exclusion['csp_item']]
-
-if 'qa_item' in df.columns:
-
-        df_qa = df[df['qa_item'] == 'Q&A']
-        df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
-else:
-        df_qa = []
-
-if 'non_answer' in df.columns:
-        df_non_answer = df[df['non_answer'].notnull()][non_answer_col]
-        # df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
-else:
-        df_non_answer = []
 
 # -------------------------header selectbox for report -------------------------------------------#
 
@@ -157,36 +133,45 @@ with st.spinner('Updating Report...'):
         start_time = pd.Timestamp(df_selected['user_time'].min()) - timedelta(hours=1)
         end_time = pd.Timestamp(df_selected['user_time'].max()) + timedelta(hours=1)
 
+        inclusion_items = [('入选标准第' + str(i) +  '条') for i in range (1,18)]
+        exclusion_items = [('排除标准第' + str(i) +  '条') for i in range (1,26)]
+
+        inclusion_order = [('第' + str(i) +  '条') for i in range (1,18)]
+        exclusion_order = [('第' + str(i) +  '条') for i in range (1,26)]
+
         range_list = pd.date_range(start_time,end_time,freq='H')
         start_date, end_date = st.select_slider(
                         'Select a range of date',
                         options=range_list,
                         value=(range_list[0], range_list[-1]))
-
-        # st.write('You selected date between', start_date, 'and', end_date)
-
-        # start_date = pd.to_datetime(start_date)
-
+ 
         df_selected = df_selected[(df_selected.user_time >= start_date) & (df_selected.user_time <= end_date)]
 
-        df_inclusion = df_selected.loc[df_selected['csp_item'].isin(inclusion_order)]
+        df_inclusion = df_selected[df_selected['csp_item'].isin(inclusion_items)]
         df_inclusion.drop_duplicates()
 
-        df_exclusion = df_selected.loc[df_selected['csp_item'].isin(exclusion_order)]
+        df_exclusion = df_selected[df_selected['csp_item'].isin(exclusion_items)]
         df_exclusion.drop_duplicates()
 
         df_inclusion['csp_item_short'] = [item[4:] for item in df_inclusion['csp_item']]
         df_exclusion['csp_item_short'] = [item[4:] for item in df_exclusion['csp_item']]
 
-        if len(df_qa) > 0:
-        
+        inclusion_order = [item for item in inclusion_order if item in df_inclusion['csp_item_short'].unique()]
+        exclusion_order = [item for item in exclusion_order if item in df_exclusion['csp_item_short'].unique()]
+
+
+        if 'qa_item' in df_selected.columns:
+
                 df_qa = df_selected[df_selected['qa_item'] == 'Q&A']
                 df_qa['csp_item_short'] = [item[4:] for item in df_qa['csp_item']]
+        else:
+                df_qa = []
 
-        if len(df_non_answer) > 0:
+        if 'non_answer' in df_selected.columns:
                 df_non_answer = df_selected[df_selected['non_answer'].notnull()][non_answer_col]
                 # df_non_answer['user_time'] = [time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp)) for timestamp in df_non_answer.user_time.to_list()]
-
+        else:
+                df_non_answer = []
         
         with open('style.css') as f:
                 st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -195,6 +180,7 @@ with st.spinner('Updating Report...'):
         
         m1.metric(label ='Total Conversations',value = len(df_selected))
         m2.metric(label ='Number of PIs',value = df_selected['sender_name'].nunique())
+        st.write(df_selected['sender_name'].unique())
         m3.metric(label ='Inclusion Inquiry',value = len(df_inclusion))
         m4.metric(label ='Exclusion Inquiry',value = len(df_exclusion))
         m5.metric(label ='Q&A Log',value = len(df_qa))
@@ -207,8 +193,13 @@ with st.spinner('Sites Selected!'):
 
 g1, g2, g3 = st.columns((2.2,3,1.2))
 
+
 #--------------------inclusion ----------------------------------
-fig = px.histogram(df_inclusion, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
+
+fig = px.histogram(df_inclusion, x = 'csp_item_short',  
+                  category_orders = dict(csp_item_short=inclusion_order),
+                  template = 'seaborn',
+                  color = "sender_name")
 
 # fig.update_traces(marker_color='#264653')
 
@@ -218,7 +209,10 @@ g1.plotly_chart(fig, use_container_width=True)
 
 
 #------------------exclusion-------------------------
-fig = px.histogram(df_exclusion, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
+fig = px.histogram(df_exclusion, x = 'csp_item_short', 
+                   category_orders = dict(csp_item_short=exclusion_order),
+                   template = 'seaborn',
+                   color = "sender_name")
 
 # fig.update_traces(marker_color='#264653')
 
