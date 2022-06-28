@@ -601,11 +601,11 @@ class ActionCheckProtocol(Action):
                     entity_values.extend([item for item in en_list if item['description'] not in   \
                                 ['entity','description','qustion', 'answer', 'question_index']])
 
-                    entity_values_msg.extend([item['name'] + ' : \n' + item['description'] for item in en_list if item['description'] not in   \
+                    entity_values_msg.extend([item['name'] + ' : ' + item['description'] for item in en_list if item['description'] not in   \
                                 ['entity','description','question', 'answer', 'question_index']])
 
 
-                    msg_entity_value = ''.join(entity_values_msg)
+                    msg_entity_value = '\n'.join(entity_values_msg)
                     
                     final_message = final_message + msg_csp + msg_entity_value + '\n'
 
