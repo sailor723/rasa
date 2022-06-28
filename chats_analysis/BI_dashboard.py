@@ -110,7 +110,7 @@ df = df.drop_duplicates()
 if 'qa_item' in select_col:
         df['qa_item'] = df['qa_item'].fillna('CSP')
 
-df['sender_name'] = df['sender_name'].split('(')[0].fillna(' ')
+df['sender_name'] = df['sender_name'].str.split('(')[0].fillna(' ')
 df['site_name'] = df['site_name'].fillna('测试中心')
 df['site_id'] = [str(int(float((item)))) for item in df['site_id'].fillna('0')]
 
