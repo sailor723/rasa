@@ -37,6 +37,7 @@ df.to_csv(full_chats_csv_name,encoding='utf-8-sig')
 
 #----------------------------------special convert from csv -----------------------------------------#
 
+
 value_list = df.value
 df.shape
 v_list = []
@@ -126,8 +127,16 @@ for a in v_list:
             for item in full_list:
                 df_final.loc[message_id_in_memory, item[0]] = item[1]   
         elif a['value'] != None and a['value'] != []:
+
             if type(a['value']) == list and a['value'] == a['value'] and a['name'] != 'entity_values':
-                a['value'] = a['value'][0]
+    
+                if a['name'] in ['csp_item', 'section_item']:
+  
+                    a['value'] =  '%@'.join(a['value'])
+
+                else:
+                    a['value'] = a['value'][0]
+                    
             df_final.loc[message_id_in_memory, a['name']] = a['value']
         else:
             a['value'] = ""

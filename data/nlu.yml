@@ -902,6 +902,7 @@ nlu:
   examples: |
     - 线数
     - 一线
+    - 对线数
 - synonym: 临床试验
   examples: |
     - 临床研究

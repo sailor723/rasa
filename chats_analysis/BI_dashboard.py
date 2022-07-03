@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import requests
-import os, json, csv, sys, subprocess
+import os, json, csv, sys, subprocess,re
 import plotly.figure_factory as ff
 import plotly.express as px
 import plotly.graph_objects as go
@@ -12,6 +12,11 @@ from streamlit_timeline import timeline
 import time
 from st_aggrid import AgGrid, GridUpdateMode, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
+
+from bokeh.plotting import figure, output_file, show, save
+from bokeh.models import ColumnDataSource, FactorRange,LabelSet
+from bokeh.transform import factor_cmap
+from bokeh.palettes import Spectral5, Spectral6
 
 # from sqlalchemy import create_engine
 
@@ -44,6 +49,26 @@ def run_and_display_stdout(*cmd_with_agrs):
     for line in iter(lambda: result.stdout.readline(), b""):
         st.text(line.decode("utf-8"))
 
+def bokeh_plot (x, counts, marker):
+    
+# index_cmap = factor_cmap('section_item_csp_item', palette=Spectral5, factors=section_order, end=1)
+
+ 
+    source = ColumnDataSource(data=dict(x=x, counts=counts))
+
+    p = figure(x_range=FactorRange(*x), plot_height=250, 
+               toolbar_location=None, title= marker)
+    p.vbar(x='x', top='counts', width=0.6, source=source, )
+
+    p.y_range.start = 0
+    p.x_range.range_padding = 0.05
+    p.xgrid.grid_line_color = None
+#     p.xaxis.axis_label = "CSP Inqury by SManufacturer grouped by # Cylinders"
+    p.xaxis.major_label_orientation = 1.2
+    p.outline_line_color = None
+    st.bokeh_chart(p, use_container_width=True)
+    return
+
 # # refresh
 if st.button('Refesh'):
      st.write(current_time)
@@ -55,11 +80,11 @@ if st.button('Refesh'):
 #     run_and_display_stdout("ls", "-Al", "/")
 
 # fetch the site_id
-# site_list_get = st.experimental_get_query_params()
-# site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
-# site_list_get = site_list_get['siteid'].split(',')
+site_list_get = st.experimental_get_query_params()
+site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
+site_list_get = site_list_get['siteid'].split(',')
 # # st.write('fetched site_id:', site_list_get)
-site_list_get = ['999']
+# site_list_get = ['999']
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
@@ -80,7 +105,7 @@ def read_csv_to_df(csv_file_name,sep):
 def convert_df(df):
      # IMPORTANT: Cache the conversion to prevent computation on every rerun
      return df.to_csv().encode('utf_8_sig')
-df = read_csv_to_df(chat_full_name,',')
+df = read_csv_to_df(chat_full_name,',').copy()
 
 log_csv = read_csv_to_df(chatlog_file_name,'&&')
 log_csv = convert_df(log_csv)
@@ -93,12 +118,12 @@ def start_date_json (time_dict):
         +':' + time_dict['minute'] +':' + time_dict['second'] 
 
     return (datetime.strptime(string, "%Y-%m-%d %H:%M:%S"))
-# df prepare 
 
 
-select_col_target = ['message_id','text','site_id','site_name', 'sender_name','csp_item', 'qa_item', 'non_answer','user_time']
+# --------------------------------- data preperation --------------------------------------------------------------------------#
+
+select_col_target = ['message_id','text','site_id','site_name', 'sender_name','csp_item', 'section_item', 'qa_item', 'non_answer','user_time']
 select_col = [item for item in df.columns if item in select_col_target]
-
 if 'non_answer' in select_col:  
         non_answer_col = ['message_id','user_time','sender_name', 'text', 'non_answer']
 else:
@@ -106,13 +131,24 @@ else:
 
 df= df[select_col]
 df = df.drop_duplicates()
+df['count'] = 1
 
-if 'qa_item' in select_col:
-        df['qa_item'] = df['qa_item'].fillna('CSP')
 
 df['sender_name'] = df['sender_name'].fillna(' ')
 df['site_name'] = df['site_name'].fillna('测试中心')
 df['site_id'] = [str(int(float((item)))) for item in df['site_id'].fillna('0')]
+
+
+df.section_item.fillna('', inplace=True)
+df.csp_item.fillna('', inplace=True)
+
+df.section_item = [item for item in [item.split('%@') for item in df.section_item]]
+df.csp_item = [item.split('%@') for item in df.csp_item]
+
+df = df.explode(['section_item','csp_item'])
+
+if 'qa_item' in select_col:
+        df['qa_item'] = df['qa_item'].fillna('CSP')
 
 
 # -------------------------header selectbox for report -------------------------------------------#
@@ -144,7 +180,8 @@ with st.spinner('Updating Report...'):
                         'Select a range of date',
                         options=range_list,
                         value=(range_list[0], range_list[-1]))
- 
+
+  
         df_selected = df_selected[(df_selected.user_time >= start_date) & (df_selected.user_time <= end_date)]
 
         df_inclusion = df_selected[df_selected['csp_item'].isin(inclusion_items)]
@@ -152,6 +189,7 @@ with st.spinner('Updating Report...'):
 
         df_exclusion = df_selected[df_selected['csp_item'].isin(exclusion_items)]
         df_exclusion.drop_duplicates()
+
 
         df_inclusion['csp_item_short'] = [item[4:] for item in df_inclusion['csp_item']]
         df_exclusion['csp_item_short'] = [item[4:] for item in df_exclusion['csp_item']]
@@ -178,9 +216,8 @@ with st.spinner('Updating Report...'):
 
         m1, m2, m3, m4, m5,m6 = st.columns((1,1,1,1,1,1))
         
-        m1.metric(label ='Total Conversations',value = len(df_selected))
+        m1.metric(label ='Total Conversations',value = df_selected.message_id.nunique())
         m2.metric(label ='Number of PIs',value = df_selected['sender_name'].nunique())
-        st.write(df_selected['sender_name'].unique())
         m3.metric(label ='Inclusion Inquiry',value = len(df_inclusion))
         m4.metric(label ='Exclusion Inquiry',value = len(df_exclusion))
         m5.metric(label ='Q&A Log',value = len(df_qa))
@@ -191,66 +228,124 @@ with st.spinner('Sites Selected!'):
         time.sleep(1)    
 #----------------------------Streamlit plot-------------------------------------------------#
 
-g1, g2, g3 = st.columns((2.2,3,1.2))
-
 
 #--------------------inclusion ----------------------------------
 
-fig = px.histogram(df_inclusion, x = 'csp_item_short',  
-                  category_orders = dict(csp_item_short=inclusion_order),
-                  template = 'seaborn',
-                  color = "sender_name")
+        
+section_order =  ['知情同意','年龄','受试者类型和疾病特征','生殖方面' ]
 
-# fig.update_traces(marker_color='#264653')
+# reorder section item
+df_inclusion['csp_item'] = pd.Categorical(df_inclusion['csp_item'], inclusion_items )
+df_inclusion = df_inclusion.sort_values('csp_item')
+df_inclusion.reset_index(drop=True,inplace=True)
 
-fig.update_layout(title_text="Inclusion",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
+df_exclusion['csp_item'] = pd.Categorical(df_exclusion['csp_item'], exclusion_items )
+df_exclusion = df_exclusion.sort_values('csp_item')
+df_exclusion.reset_index(drop=True,inplace=True)
 
-g1.plotly_chart(fig, use_container_width=True) 
+# get x and factor for plotting 
+df_group_inclusion = df_inclusion.groupby('csp_item').count()
+df_group_exclusion = df_exclusion.groupby('csp_item').count()
+count_inclusion = df_group_inclusion['count'].to_list()
+count_exclusion = df_group_exclusion['count'].to_list()
+x_inclusion = []
+x_exclusion = []
+color_inclusion= []
+color_exclusion = []
+
+for item in df_group_inclusion.index.to_list():
+       
+    number = int(re.compile(r'\d+').findall(item)[0])
+
+    if number in range(1,4):
+        section = '知情同意'
+    elif number == 4:
+        section = '年龄'
+    elif number in range(5,15):
+        section = '受试者类型\n和疾病特征'
+    elif number in range(15, 18):
+        section = '生殖方面'
+    x_inclusion.append((section, item[4:]))
+    color_inclusion.append(section)
+    
+
+for item in df_group_exclusion.index.to_list():
+       
+    number = int(re.compile(r'\d+').findall(item)[0])
+
+    if number in range(1,16):
+        section = '医学疾病'
+    elif number in range(16,19):
+        section = '既往治疗\n合并治疗'
+    elif number in range(19,23):
+        section = '既往/合并用药\n临床研究经验'
+    elif number in range(23, 27):
+        section = '其他排除标准'
+    x_exclusion.append((section, item[4:]))
+    color_exclusion.append(section)
+
+    
+c1, c2 = st.columns((2,3))
+with c1:
+        bokeh_plot(x_inclusion,count_inclusion,'Inclusion')
+with c2:
+        bokeh_plot(x_exclusion,count_exclusion,'Exclusion')
+
+# fig = px.histogram(df_inclusion, x = 'csp_item_short',  
+#                   category_orders = dict(csp_item_short=inclusion_order),
+#                   template = 'seaborn',
+# #                   color = "sender_name")
+
+# # fig.update_traces(marker_color='#264653')
+
+# fig.update_layout(title_text="Inclusion",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
+
+# g1.plotly_chart(fig, use_container_width=True) 
 
 
 #------------------exclusion-------------------------
-fig = px.histogram(df_exclusion, x = 'csp_item_short', 
-                   category_orders = dict(csp_item_short=exclusion_order),
-                   template = 'seaborn',
-                   color = "sender_name")
+# fig = px.histogram(df_exclusion, x = 'csp_item_short', 
+#                    category_orders = dict(csp_item_short=exclusion_order),
+#                    template = 'seaborn',
+#                    color = "sender_name")
 
-# fig.update_traces(marker_color='#264653')
+# # fig.update_traces(marker_color='#264653')
 
-fig.update_layout(title_text="Exclusion",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
+# fig.update_layout(title_text="Exclusion",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
 
-g2.plotly_chart(fig, use_container_width=True) 
+# g2.plotly_chart(fig, use_container_width=True) 
 
 #------------------qa-------------------------
-if len(df_qa) > 0:
-        fig = px.histogram(df_qa, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
+# if len(df_qa) > 0:
+#         fig = px.histogram(df_qa, x = 'csp_item_short', template = 'seaborn',color = "sender_name")
 
-        # fig.update_traces(marker_color='#264653')
+#         # fig.update_traces(marker_color='#264653')
 
-        fig.update_layout(title_text="Q&A Log",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
+#         fig.update_layout(title_text="Q&A Log",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
 
-        g3.plotly_chart(fig, use_container_width=True) 
-        #-------------------------------preparetion ------------------------------------------------#
-        gd = GridOptionsBuilder.from_dataframe(df_non_answer)
-        gd.configure_pagination(enabled=True)
-        gd.configure_default_column(editable=False, grouptable = True)
+#         g3.plotly_chart(fig, use_container_width=True) 
+#-------------------------------preparetion ------------------------------------------------#
+gd = GridOptionsBuilder.from_dataframe(df_non_answer)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=False, grouptable = True)
 
-        with st.expander("Non Answered Questions", expanded=False):
-                if len(df_non_answer):
-                        st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
-                        sel_mode = st.radio("Selection Type", options = ['single', 'multiple'])
-                        gd.configure_selection(selection_mode = sel_mode, use_checkbox=True)
-                        gridoptions = gd.build()
-                        grid_table = AgGrid(df_non_answer, gridOptions=gridoptions, 
-                                        update_mode = GridUpdateMode.SELECTION_CHANGED,
-                                        height = 500, 
-                                        allow_upsafe_jscode=True,
-                                        theme = "fresh")
+with st.expander("Non Answered Questions", expanded=False):
+        if len(df_non_answer):
+                st.markdown("**Total Now Answer :" + str(len(df_non_answer))+"**")
+                sel_mode = st.radio("Selection Type", options = ['single', 'multiple'])
+                gd.configure_selection(selection_mode = sel_mode, use_checkbox=True)
+                gridoptions = gd.build()
+                grid_table = AgGrid(df_non_answer, gridOptions=gridoptions, 
+                                update_mode = GridUpdateMode.SELECTION_CHANGED,
+                                height = 500, 
+                                allow_upsafe_jscode=True,
+                                theme = "fresh")
 
-                        st.write('Details')
-                        sel_row = grid_table["selected_rows"]
-                        st.write(sel_row)
-                else:
-                        st.markdown("**Total Now Answer :" + '0' +"**")
+                st.write('Details')
+                sel_row = grid_table["selected_rows"]
+                st.write(sel_row)
+        else:
+                st.markdown("**Total Now Answer :" + '0' +"**")
 
         # fig = go.Figure(data=go.Table(
         # columnwidth = [2,1,1,8,1],
@@ -283,8 +378,6 @@ with st.expander("Conversation History", expanded=False):
 
         new_json = json.loads(time_data)
 
-
-
         new_json['events'] = [item for item in new_json['events']  if (item['text']['headline'].split('<br>')[0] in df_selected['site_name'].unique())   \
                         and (start_date_json(item['start_date']) >= start_date )
                         and (start_date_json(item['start_date']) <= end_date) 
@@ -299,7 +392,7 @@ gd.configure_pagination(enabled=True)
 gd.configure_default_column(editable=False, grouptable = True)
 
 with st.expander("Full Dataset View", expanded=False):
-        st.markdown("**Total Conversations :" + str(len(df_selected))+"**")
+        st.markdown("**Total Conversations :" + str(df_selected.message_id.nunique()) + "\t Full Extraction :" + str(len(df_selected)) + "**")
         sel_mode_full = st.radio("Selection Type", options = ['single', 'multiple'],key='full')
         gd.configure_selection(selection_mode = sel_mode_full, use_checkbox=True)
         gridoptions = gd.build()

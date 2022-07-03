@@ -336,6 +336,8 @@ class ActionCheckProtocol(Action):
 
         csp_item = tracker.get_slot('csp_item')
 
+        section_item = tracker.get_slot('section_item')
+
         # sub = None
         
         # if tracker.get_slot('sub'):
@@ -457,7 +459,10 @@ class ActionCheckProtocol(Action):
                             dict1 = {}
                             dict2 = {}
                     
-                        dispatcher.utter_message(text= ( msg + '\n' + msg2 ), buttons= button_list)          
+                        dispatcher.utter_message(text= ( msg + '\n' + msg2 ), buttons= button_list)  
+
+                        section_item = [ item +'Q&A' for item in section_item]   
+   
     
                         return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
                                 SlotSet("sender_id", sender_id),
@@ -466,6 +471,7 @@ class ActionCheckProtocol(Action):
                                 SlotSet("site_id", site_id), 
                                 SlotSet("qa_item", qa_item), 
                                 SlotSet("csp_item", csp_item), 
+                                SlotSet("section_item", section_item), 
                                 SlotSet("version", version),
                                 SlotSet("token", token)]
                         # return [SlotSet("sub",None)]                             # keep question_list
@@ -571,6 +577,7 @@ class ActionCheckProtocol(Action):
                 s_node = []
                 p_node = []
                 csp_item_list = []
+                section_item_list = []
                 entity_values = []
                 entity_values_msg = []
 
@@ -583,13 +590,16 @@ class ActionCheckProtocol(Action):
                             csp_description = item.data()['csp_node']['description_v2']
                         page_num = '试验方案第' + str(int(float(item.data()['csp_node']['page']))) + '页'
                         name_item = item.data()['csp_node']['name_item']
+                        section_item = item.data()['csp_node']['section']
     
                     else:
                         csp_description = item.data()['csp_node']['description']
                         name_item = item.data()['csp_node']['name_item']
+                        section_item = item.data()['csp_node']['section']
                         page_num = '试验方案第' + str(int(float(item.data()['csp_node']['page']))) + '页'
 
                     csp_item_list.append(name_item)
+                    section_item_list.append(section_item)
                     msg_csp = page_num + ' \n' + name_item + ' \n' + csp_description 
 
                     print('csp_item_list-------------------:', csp_item_list)
@@ -658,6 +668,7 @@ class ActionCheckProtocol(Action):
                 return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
                         SlotSet("index_list", index_list),
                         SlotSet("csp_item", csp_item_list),
+                        SlotSet("section_item", section_item_list),
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
                         SlotSet("site_name", site_name), 

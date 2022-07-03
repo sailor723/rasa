@@ -81,6 +81,7 @@ def node_generate_for_KG (df_to_generate):
 
             node_working.append(df_to_generate.columns[0])
             node_working.append(df_to_generate.loc[row][df_to_generate.columns[0]])
+            node_working.append(df_to_generate.loc[row]['分类'])
             node_working.append(df_to_generate.loc[row]['CSP'])
             node_working.append(df_to_generate.loc[row]['Detail'])
             node_working.append(df_to_generate.loc[row]['page'])
@@ -110,18 +111,19 @@ node_generate_for_KG (df_exclusion)
 for node in node_all:
     query = ''
 
-    if len(node) == 7:
-        params = {'name': node[0] + node[1], 'label': node[0], 'name_item': node[0] + node[1], 'description': node[2],  
-                'detail': node[3], 'page': node[4], 'target_node': node[5], 'version': node[6]}
+    if len(node) == 8:
+        params = {'name': node[0] + node[1], 'label': node[0], 'name_item': node[0] + node[1], 'section': node[2],'description': node[3], 
+                'detail': node[4], 'page': node[5], 'target_node': node[6], 'version': node[7]}
     else:
-        params = {'name': node[0] + node[1], 'label': node[0], 'name_item': node[0] + node[1], 'description': node[2],  
-                'detail': node[3], 'page': node[4], 'target_node': node[5]}
+        params = {'name': node[0] + node[1], 'label': node[0], 'name_item': node[0] + node[1], 'section': node[2],'description': node[3],  
+                'detail': node[4], 'page': node[5], 'target_node': node[6]}
 
     if node[0] == '入选标准':
         query = """
         MERGE(q: Inclusion {name:'入选标准'})
         MERGE(o:Inclusion {name:$name}) 
         MERGE(p:Facts {name:$target_node}) 
+        SET o.section = $section
         SET o.description = $description
         SET o.description_v2 = $version
         SET o.detail = $detail
@@ -139,6 +141,7 @@ for node in node_all:
         MERGE(q: Exclusion {name:'排除标准'})
         MERGE(o:Exclusion {name:$name}) 
         MERGE(p:Facts {name:$target_node}) 
+        SET o.section = $section
         SET o.description = $description
         SET o.description_v2 = $version
         SET o.detail = $detail
@@ -216,4 +219,4 @@ result = conn.query(query, parameters=params)
 #------------------------Write entities txt ifle----------------------------------------#
 
 with open("sub.txt","w",encoding='utf-8-sig') as datafile:  
-    datafile.writelines("\n".join([node[5] for node in node_all]))
+    datafile.writelines("\n".join([node[6] for node in node_all]))

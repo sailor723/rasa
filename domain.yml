@@ -63,6 +63,7 @@ entities:
 - sub_list
 - sub_section
 - csp_item
+- section_item
 - qa_item
 - non_answer
 - entity_values
@@ -138,6 +139,11 @@ slots:
     auto_fill: false
     influence_conversation: false
   csp_item:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  section_item:
     type: rasa.shared.core.slots.ListSlot
     initial_value: null
     auto_fill: false
