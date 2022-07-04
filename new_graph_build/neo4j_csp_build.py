@@ -159,6 +159,7 @@ for node in node_all:
         MERGE(q: DL04_MAIN {name:'DL04'})
         MERGE(o:DL04 {name: $name}) 
         MERGE(p:Facts {name:$target_node}) 
+        SET o.section = $section
         SET o.description = $description
         SET o.detail = $detail
         SET o.version = "1,2"

@@ -654,6 +654,7 @@ nlu:
     - [kras突变](sub)患者是否可以参加这个试验
     - [kras突变](sub)患者能否适用于排除标准2
     - [穿刺](sub)
+    - 试验的[研究人群]{"entity": "sub", "value": "\u76ee\u6807\u4eba\u7fa4"}
 - intent: thanks
   examples: |
     - 谢谢你
