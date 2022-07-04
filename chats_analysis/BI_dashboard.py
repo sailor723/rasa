@@ -19,15 +19,15 @@ from bokeh.transform import factor_cmap
 from bokeh.palettes import Spectral5, Spectral6
 
 # from sqlalchemy import create_engine
-
+log_file_name  = os.path.join(os.getcwd(),'DCTA_logo.png')
 st.set_page_config(page_title='DCTA BI dashboard',  layout='wide', page_icon=':chatbot:')
 
 t1, t2 = st.columns((0.07,1)) 
 
-t1.image('DCTA_logo.png', width = 80)
+t1.image(log_file_name, width = 80)
 t2.title("Digital Clinical Trial Assistant  - Conversational Report")
 
-t2.markdown(" **tel:** +86 21 6030 2288 **| website:** https://www.astrazeneca.com.cn/zh/ **| email:** mailto:support@astrazene.com")
+t2.markdown(" **| email:** AsiaScience.DeskSupport@astrazeneca.com")
 
 # get current data and time
 now = datetime.now()
@@ -69,22 +69,28 @@ def bokeh_plot (x, counts, marker):
     st.bokeh_chart(p, use_container_width=True)
     return
 
-# # refresh
-if st.button('Refesh'):
-     st.write(current_time)
-#      run_and_display_stdout("bash", "BI_dashboard.sh")
-     subprocess.run(["bash", "BI_dashboard.sh"])
-
 
 # if st.button("Run"):
 #     run_and_display_stdout("ls", "-Al", "/")
 
 # fetch the site_id
-# site_list_get = st.experimental_get_query_params()
-# site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
-# site_list_get = site_list_get['siteid'].split(',')
+try:
+        site_list_get = st.experimental_get_query_params()
+        site_list_get = {k: v[0] if isinstance(v, list) else v for k, v in site_list_get.items()} # fetch the first item in each query string as we don't have multiple values for each query string key in this example
+        site_list_get = site_list_get['siteid'].split(',')
 # # st.write('fetched site_id:', site_list_get)
-site_list_get = ['999']
+except :        
+        site_list_get = ['999']
+        st.write('collect site_id error, use default admin')
+
+        
+#  refresh
+if site_list_get == ['999']:
+        if st.button('Refesh'):
+                st.write(current_time)
+                #      run_and_display_stdout("bash", "BI_dashboard.sh")
+                subprocess.run(["bash", "BI_dashboard.sh"])
+
 
 chatlog_file_name  = os.path.join(os.getcwd(),'chats_log.csv')
 chat_full_name  = os.path.join(os.getcwd(),'chats_df.csv')
@@ -160,7 +166,9 @@ with st.spinner('Updating Report...'):
                 list_options = df['site_name'].unique()
         else:
                 list_options = list(df[df['site_id'].isin(site_list_get)]['site_name'].unique())
-        site_list_selected = st.multiselect('Sites Selection', list_options, default = list_options, help = 'Filter report to show selected sites')
+        
+        site_list_selected = st.multiselect('Sites Selection', list_options, default = list_options,
+                help = 'Filter report to show selected sites')
 
         # st.write('selected_site:', site_list_selected)
 
