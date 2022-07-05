@@ -357,6 +357,25 @@ class ActionCheckProtocol(Action):
         dict1 = {}
         dict2 = {}
         button_list = []
+        
+        dict1["sub"] = "Appraise"
+        dict1 = json.dumps(dict1,ensure_ascii=False)
+        dict2["payload"] = "/inform_protocol"  + str(dict1) 
+        dict2["title"] = "Appraise" 
+        button_list.append(dict2)
+
+        
+        dict1 = {}
+        dict2 = {}
+
+        dict1["sub"] = "Disagree"
+        dict1 = json.dumps(dict1,ensure_ascii=False)
+        dict2["payload"] = "/inform_protocol"  + str(dict1) 
+        dict2["title"] =  "Disagree"
+        button_list.append(dict2)
+
+        dict1 = {}
+        dict2 = {}
 
         for item in initial_entities:
             
@@ -412,6 +431,12 @@ class ActionCheckProtocol(Action):
 
                 print('after check and with table9, sub_list:', sub_list)
 
+                if sub_list[0] in ['APPRAISE','DISAGREE']:
+
+                    print('Thanks------------------------------')
+                    return [SlotSet("sub",None), SlotSet("sub_list",None), 
+                        SlotSet("feedback", sub_list[0])] 
+
                 print('ready to check Neo4j ----------------')
 
 #----------------------------check index_list ---------------------------------------------------------#
@@ -444,6 +469,24 @@ class ActionCheckProtocol(Action):
                             dict1 = {}
                             dict2 = {}
                             button_list = []
+        
+                            dict1["sub"] = "Appraise"
+                            dict1 = json.dumps(dict1,ensure_ascii=False)
+                            dict2["payload"] = "/inform_protocol"  + str(dict1) 
+                            dict2["title"] = "Appraise" 
+                            button_list.append(dict2)
+
+                            dict1 = {}
+                            dict2 = {}
+
+                            dict1["sub"] = "Disagree"
+                            dict1 = json.dumps(dict1,ensure_ascii=False)
+                            dict2["payload"] = "/inform_protocol"  + str(dict1) 
+                            dict2["title"] =  "Disagree"
+                            button_list.append(dict2)
+
+                            dict1 = {}
+                            dict2 = {}
 
                             msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
@@ -646,6 +689,26 @@ class ActionCheckProtocol(Action):
 
                         print('index_list in action:', index_list)
 
+                        dict1["sub"] = "Appraise"
+                        dict1 = json.dumps(dict1,ensure_ascii=False)
+                        dict2["payload"] = "/inform_protocol"  + str(dict1) 
+                        dict2["title"] = "Appraise" 
+                        button_list.append(dict2)
+
+                        
+                        dict1 = {}
+                        dict2 = {}
+
+                        dict1["sub"] = "Disagree"
+                        dict1 = json.dumps(dict1,ensure_ascii=False)
+                        dict2["payload"] = "/inform_protocol"  + str(dict1) 
+                        dict2["title"] =  "Disagree"
+                        button_list.append(dict2)
+
+                        dict1 = {}
+                        dict2 = {}
+
+
                         for item in index_list:
                                         
                             dict1["sub"] = item
@@ -656,7 +719,7 @@ class ActionCheckProtocol(Action):
                             dict1 = {}
                             dict2 = {}
                             msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
-
+    
                 print('msg2:', msg2)
                 final_message = final_message + msg2
 

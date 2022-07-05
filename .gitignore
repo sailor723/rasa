@@ -21,3 +21,4 @@ chats_analysis/chats_log.csv
 chats_analsysis/converted_log.csv
 chats_analsysi/error_inquiry.csv
 chats_analsysis/t_remind.csv
+chats_analsysis/redis_read.py

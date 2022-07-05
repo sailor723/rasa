@@ -67,8 +67,14 @@ entities:
 - qa_item
 - non_answer
 - entity_values
+- feedback
 slots:
   PERSON:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  feedback:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true

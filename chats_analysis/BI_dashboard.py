@@ -49,25 +49,45 @@ def run_and_display_stdout(*cmd_with_agrs):
     for line in iter(lambda: result.stdout.readline(), b""):
         st.text(line.decode("utf-8"))
 
-def bokeh_plot (x, counts, marker):
-    
+def bokeh_plot (x, counts, marker, color):
+
 # index_cmap = factor_cmap('section_item_csp_item', palette=Spectral5, factors=section_order, end=1)
+                
+        counts_label = []
 
- 
-    source = ColumnDataSource(data=dict(x=x, counts=counts))
+        for item in counts:
 
-    p = figure(x_range=FactorRange(*x), plot_height=250, 
-               toolbar_location=None, title= marker)
-    p.vbar(x='x', top='counts', width=0.6, source=source, )
+                if item == 0:
+                        item_label = ' '
+                else:
+                        item_label = str(item)
 
-    p.y_range.start = 0
-    p.x_range.range_padding = 0.05
-    p.xgrid.grid_line_color = None
-#     p.xaxis.axis_label = "CSP Inqury by SManufacturer grouped by # Cylinders"
-    p.xaxis.major_label_orientation = 1.2
-    p.outline_line_color = None
-    st.bokeh_chart(p, use_container_width=True)
-    return
+                counts_label.append(item_label)
+        source = ColumnDataSource(data=dict(x=x, counts=counts, counts_label=counts_label))
+
+        p = figure(x_range=FactorRange(*x), plot_height=250, background_fill_color="#fafafa",
+                toolbar_location=None, title= marker)
+        p.vbar(x='x', top='counts', width=0.6, source=source, fill_color=color, line_color=None )
+
+        p.y_range.start = 0
+        p.xaxis.axis_label_text_font_size = '6px'
+        p.x_range.range_padding = 0.05
+        p.xgrid.grid_line_color = None
+        #     p.xaxis.axis_label = "CSP Inqury by SManufacturer grouped by # Cylinders"
+        p.xaxis.major_label_orientation = 1.2
+        p.xgrid.grid_line_color = None
+        p.ygrid.grid_line_color = None  
+        p.yaxis.visible = False
+        p.xaxis.axis_line_color = color
+        p.outline_line_color = None
+
+        labels = LabelSet(x='x', y='counts', text='counts_label', level='glyph',
+                  x_offset=-2, y_offset=-10, source=source, render_mode='canvas',text_color='midnightblue',text_font_size = {'value': '10px'})
+
+        p.add_layout(labels)
+
+        st.bokeh_chart(p, use_container_width=True)
+        return
 
 
 # if st.button("Run"):
@@ -128,7 +148,8 @@ def start_date_json (time_dict):
 
 # --------------------------------- data preperation --------------------------------------------------------------------------#
 
-select_col_target = ['message_id','text','site_id','site_name', 'sender_name','csp_item', 'section_item', 'qa_item', 'non_answer','user_time']
+select_col_target = ['message_id','text','site_id','site_name', 'sender_name','csp_item',               \
+                'section_item', 'qa_item', 'non_answer','user_time', 'feedback']
 select_col = [item for item in df.columns if item in select_col_target]
 if 'non_answer' in select_col:  
         non_answer_col = ['message_id','user_time','sender_name', 'text', 'non_answer']
@@ -266,13 +287,13 @@ for item in df_group_inclusion.index.to_list():
     number = int(re.compile(r'\d+').findall(item)[0])
 
     if number in range(1,4):
-        section = '知情同意'
+        section = '\n知情同意'
     elif number == 4:
-        section = '年龄'
+        section = '\n年龄'
     elif number in range(5,15):
-        section = '受试者类型\n和疾病特征'
+        section = '\n受试者类型和疾病特征'
     elif number in range(15, 18):
-        section = '生殖方面'
+        section = '\n生殖方面'
     x_inclusion.append((section, item[4:]))
     color_inclusion.append(section)
     
@@ -282,22 +303,23 @@ for item in df_group_exclusion.index.to_list():
     number = int(re.compile(r'\d+').findall(item)[0])
 
     if number in range(1,16):
-        section = '医学疾病'
+        section = '\n医学疾病'
     elif number in range(16,19):
         section = '既往治疗\n合并治疗'
     elif number in range(19,23):
         section = '既往/合并用药\n临床研究经验'
     elif number in range(23, 27):
-        section = '其他排除标准'
+        section = '\n其他排除标准'
     x_exclusion.append((section, item[4:]))
     color_exclusion.append(section)
 
     
 c1, c2 = st.columns((2,3))
 with c1:
-        bokeh_plot(x_inclusion,count_inclusion,'Inclusion')
+        bokeh_plot(x_inclusion,count_inclusion,'Inclusion','lightsteelblue')
+
 with c2:
-        bokeh_plot(x_exclusion,count_exclusion,'Exclusion')
+        bokeh_plot(x_exclusion,count_exclusion,'Exclusion','peachpuff')
 
 # fig = px.histogram(df_inclusion, x = 'csp_item_short',  
 #                   category_orders = dict(csp_item_short=inclusion_order),

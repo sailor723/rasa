@@ -909,6 +909,12 @@ nlu:
     - 临床研究
     - 研究者发起的研究
     - IIT研究
+- synonym: 目标人群
+  examples: |
+    - 研究人群
+    - 人群
+    - 什么样的患者
+    - 受试者类型
 - synonym: 病理切片
   examples: |
     - 切片
@@ -1055,12 +1061,6 @@ nlu:
 - synonym: 肺部疾病
   examples: |
     - 肺部状况
-- synonym: 目标人群
-  examples: |
-    - 研究人群
-    - 人群
-    - 什么样的患者
-    - 受试者类型
 - synonym: CrCL
   examples: |
     - 肌酐清除率
