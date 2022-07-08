@@ -66,4 +66,898 @@ stories:
     - requested_slot: null
   - intent: goodbye
   - action: utter_goodbye
-  #6.9.23.43
+- story: Story from Conversation ID f09683b9f1e94b9f8f3be4911c8aaab5
+  steps:
+  - intent: greet
+  - action: utter_protocol
+  - action: utter_protocol1
+  - action: action_Login
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - token: null
+  - slot_was_set:
+    - CRA_mobile:
+      - '11111111111'
+  - intent: inform_protocol
+    entities:
+    - sub: 女性
+  - slot_was_set:
+    - sub: 女性
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - sub: 女性
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub_list:
+      - 女性
+  - slot_was_set:
+    - sub: 女性
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub_list:
+      - 女性
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 入选标准第15条
+      - 入选标准第16条
+  - slot_was_set:
+    - section_item:
+      - 生殖方面
+      - 生殖方面
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - sub: 版本
+  - slot_was_set:
+    - sub: 版本
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 版本
+  - slot_was_set:
+    - sub_list:
+      - 版本
+  - slot_was_set:
+    - sub: 版本
+  - slot_was_set:
+    - sub_list:
+      - 版本
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - non_answer:
+      - <105>
+  - slot_was_set:
+    - item_number: null
+  - intent: affirm
+    entities:
+    - sub: 版本
+  - slot_was_set:
+    - sub: 版本
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - intent: inform_protocol
+    entities:
+    - sub: 年龄
+    - sub: 年龄
+    - sub: 年龄
+  - slot_was_set:
+    - sub: 年龄
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 入选标准第4条
+  - slot_was_set:
+    - section_item:
+      - 年龄
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: affirm
+    entities:
+    - sub: 版本
+  - slot_was_set:
+    - sub: 版本
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - intent: greet
+  - action: utter_protocol
+  - action: utter_protocol1
+  - action: action_Login
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - token: null
+  - slot_was_set:
+    - CRA_mobile:
+      - '11111111111'
+  - intent: affirm
+    entities:
+    - sub: 版本
+  - slot_was_set:
+    - sub: 版本
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - intent: inform_protocol
+    entities:
+    - sub: 年龄
+    - sub: 年龄
+    - sub: 年龄
+  - slot_was_set:
+    - sub: 年龄
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 入选标准第4条
+  - slot_was_set:
+    - section_item:
+      - 年龄
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: affirm
+    entities:
+    - sub: 版本
+  - slot_was_set:
+    - sub: 版本
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - intent: greet
+  - action: utter_protocol
+  - action: utter_protocol1
+  - action: action_Login
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - token: null
+  - slot_was_set:
+    - CRA_mobile:
+      - '11111111111'
+  - intent: inform_protocol
+    entities:
+    - sub: 知情同意
+  - slot_was_set:
+    - sub: 知情同意
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 知情同意
+  - slot_was_set:
+    - sub_list:
+      - 知情同意
+  - slot_was_set:
+    - sub: 知情同意
+  - slot_was_set:
+    - sub_list:
+      - 知情同意
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list:
+      - 心包积液,胸腔积液,腹水
+      - 前三个月,心包积液,洗脱期,腹水,胸腔积液
+      - 肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液
+      - 穿刺
+      - 洗脱期,胸腔积液,穿刺
+      - 胸腔积液,洗脱期,穿刺
+      - 胸腔积液
+  - slot_was_set:
+    - csp_item:
+      - 入选标准预筛选
+      - 入选标准第1条
+      - 入选标准第2条
+      - 入选标准第3条
+      - 排除标准第6条
+  - slot_was_set:
+    - section_item:
+      - 预筛选
+      - 知情同意
+      - 知情同意
+      - 知情同意
+      - 医学疾病
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values:
+      - name: "2.\t确认一下我的理解是否正确，即对于排除标准6，这只适用于在筛选时需要引流的患者，并且可以允许在知情同意前发生的任何引流。这是相关的，因为研究中心可能会为患者规划一个线路图，其中患者目前不适合进行研究，因为她/他需要进行引流，但是患者一旦从中恢复，可能会被邀请参与研究。"
+        description: question
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - sub: 胸腔积液
+  - slot_was_set:
+    - sub: 胸腔积液
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 胸腔积液
+  - slot_was_set:
+    - sub_list:
+      - 胸腔积液
+  - slot_was_set:
+    - sub: 胸腔积液
+  - slot_was_set:
+    - sub_list:
+      - 胸腔积液
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list:
+      - 心包积液,胸腔积液,腹水
+      - 前三个月,心包积液,洗脱期,腹水,胸腔积液
+      - 肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液
+      - 穿刺
+      - 洗脱期,胸腔积液,穿刺
+      - 胸腔积液,洗脱期,穿刺
+      - 胸腔积液
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - qa_item:
+      - Q&A
+  - slot_was_set:
+    - csp_item:
+      - 入选标准预筛选
+      - 入选标准第1条
+      - 入选标准第2条
+      - 入选标准第3条
+      - 排除标准第6条
+  - slot_was_set:
+    - section_item:
+      - 预筛选Q&A
+      - 知情同意Q&A
+      - 知情同意Q&A
+      - 知情同意Q&A
+      - 医学疾病Q&A
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - sub: 洗脱期,胸腔积液,穿刺
+  - slot_was_set:
+    - sub: 洗脱期,胸腔积液,穿刺
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 洗脱期,胸腔积液,穿刺
+  - slot_was_set:
+    - sub_list:
+      - 洗脱期,胸腔积液,穿刺
+  - slot_was_set:
+    - sub: 洗脱期,胸腔积液,穿刺
+  - slot_was_set:
+    - sub_list:
+      - 洗脱期,胸腔积液,穿刺
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list:
+      - 心包积液,胸腔积液,腹水
+      - 前三个月,心包积液,洗脱期,腹水,胸腔积液
+      - 肺癌,肺炎,心包积液,洗脱期,腹水,T-DXD,胸腔积液
+      - 穿刺
+      - 洗脱期,胸腔积液,穿刺
+      - 胸腔积液,洗脱期,穿刺
+      - 胸腔积液
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - qa_item:
+      - Q&A
+  - slot_was_set:
+    - csp_item:
+      - 入选标准预筛选
+      - 入选标准第1条
+      - 入选标准第2条
+      - 入选标准第3条
+      - 排除标准第6条
+  - slot_was_set:
+    - section_item:
+      - 预筛选Q&AQ&A
+      - 知情同意Q&AQ&A
+      - 知情同意Q&AQ&A
+      - 知情同意Q&AQ&A
+      - 医学疾病Q&AQ&A
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - item_number: '1'
+    - main: 排除标准
+    - item_number: '1'
+    - item_number: '1'
+  - slot_was_set:
+    - item_number: '1'
+  - slot_was_set:
+    - main: 排除标准
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 排除标准
+  - slot_was_set:
+    - sub: ' '
+  - slot_was_set:
+    - main: 排除标准
+  - slot_was_set:
+    - sub: ' '
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 排除标准第1条
+  - slot_was_set:
+    - section_item:
+      - 医学疾病
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - item_number: '2'
+    - main: 入选标准
+    - item_number: '2'
+    - item_number: '2'
+  - slot_was_set:
+    - item_number: '2'
+  - slot_was_set:
+    - main: 入选标准
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: ' '
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: ' '
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 入选标准第2条
+  - slot_was_set:
+    - section_item:
+      - 知情同意
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - sub: 肌钙蛋白
+  - slot_was_set:
+    - sub: 肌钙蛋白
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 肌钙蛋白
+  - slot_was_set:
+    - sub_list:
+      - 肌钙蛋白
+  - slot_was_set:
+    - sub: 肌钙蛋白
+  - slot_was_set:
+    - sub_list:
+      - 肌钙蛋白
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 排除标准第9条
+  - slot_was_set:
+    - section_item:
+      - 医学疾病
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - sub: Appraise
+  - slot_was_set:
+    - sub: Appraise
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: Appraise
+  - slot_was_set:
+    - sub_list:
+      - Appraise
+  - slot_was_set:
+    - sub: Appraise
+  - slot_was_set:
+    - sub_list:
+      - Appraise
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - feedback: APPRAISE
+  - intent: inform_protocol
+    entities:
+    - sub: 年龄
+    - sub: 年龄
+    - sub: 年龄
+  - slot_was_set:
+    - sub: 年龄
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 入选标准第4条
+  - slot_was_set:
+    - section_item:
+      - 年龄
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - sub: Appraise
+  - slot_was_set:
+    - sub: Appraise
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: Appraise
+  - slot_was_set:
+    - sub_list:
+      - Appraise
+  - slot_was_set:
+    - sub: Appraise
+  - slot_was_set:
+    - sub_list:
+      - Appraise
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - feedback: APPRAISE
+  - intent: inform_protocol
+    entities:
+    - sub: 年龄
+    - sub: 年龄
+    - sub: 年龄
+  - slot_was_set:
+    - sub: 年龄
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - sub_list:
+      - 年龄
+      - 年龄
+      - 年龄
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - item_number: null
+  - slot_was_set:
+    - index_list: []
+  - slot_was_set:
+    - csp_item:
+      - 入选标准第4条
+  - slot_was_set:
+    - section_item:
+      - 年龄
+  - slot_was_set:
+    - sender_id: '123465'
+  - slot_was_set:
+    - sender_name: zhaoyisheng
+  - slot_was_set:
+    - site_name: 北京肿瘤医院
+  - slot_was_set:
+    - site_id: '1111111111'
+  - slot_was_set:
+    - version: '2.0'
+  - slot_was_set:
+    - entity_values: []
+  - slot_was_set:
+    - token: null
+  - intent: inform_protocol
+    entities:
+    - sub: Appraise
+  - slot_was_set:
+    - sub: Appraise
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: Appraise
+  - slot_was_set:
+    - sub_list:
+      - Appraise
+  - slot_was_set:
+    - sub: Appraise
+  - slot_was_set:
+    - sub_list:
+      - Appraise
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - feedback: APPRAISE
+  - intent: inform_protocol
+    entities:
+    - sub: DISAGREE
+  - slot_was_set:
+    - sub: DISAGREE
+  - action: simple_protocol_form
+  - active_loop: simple_protocol_form
+  - slot_was_set:
+    - main: 入选标准
+  - slot_was_set:
+    - sub: DISAGREE
+  - slot_was_set:
+    - sub_list:
+      - DISAGREE
+  - slot_was_set:
+    - sub: DISAGREE
+  - slot_was_set:
+    - sub_list:
+      - DISAGREE
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_protocol
+  - slot_was_set:
+    - sub: null
+  - slot_was_set:
+    - sub_list: null
+  - slot_was_set:
+    - feedback: DISAGREE

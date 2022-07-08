@@ -61,7 +61,7 @@ print(result[0]['count'])
 # ----------------- MAIN CODE --------------------------------------------------
 
 # question_file_name  = os.path.abspath('DL04_annotation_20220321 cyr combined.xlsx')
-question_file_name  = os.path.abspath('DL04_annotation_combined.xlsx')
+question_file_name  = os.path.abspath('DL04_annotation.xlsx')
 
 df_inclusion = pd.read_excel(question_file_name, sheet_name='Inclusion',header=0)
 df_inclusion_V2 = pd.read_excel(question_file_name, sheet_name='Inclusion_V2',header=0)

@@ -82,7 +82,7 @@ def bokeh_plot (x, counts, marker, color):
         p.outline_line_color = None
 
         labels = LabelSet(x='x', y='counts', text='counts_label', level='glyph',
-                  x_offset=-2, y_offset=-10, source=source, render_mode='canvas',text_color='midnightblue',text_font_size = {'value': '10px'})
+                  x_offset=-5, y_offset=-10, source=source, render_mode='canvas',text_color='midnightblue',text_font_size = {'value': '10px'})
 
         p.add_layout(labels)
 

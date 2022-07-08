@@ -49,7 +49,8 @@ ERROR_5 = "数据库查询失败，我会把问题转给系统部门。谢谢。
 
 ERROR_8 = "老师你好，您的登录已经过期，烦请重新登录。谢谢"
 ERROR_9 = "CRA的电话是"
-DEFAULT_Mobile = '11111111111'
+msg3 = '小易找到试验方案表和洗脱期里的多个回答，请您具体选择，谢谢'
+                   
 EXCLUSION_SEC_1 = [1,16]
 
 TARGET_NODE_LIST = ["入选标准", "排除标准","DL04"]
@@ -57,6 +58,93 @@ TARGET_NODE_LIST = ["入选标准", "排除标准","DL04"]
 entities_file_name  = os.path.join(os.getcwd(),'new_graph_build/sub.txt')
 f = open(entities_file_name, "r",encoding='utf-8-sig')
 ENTITIES_LIST = list(set(f.read().split('\n')))
+
+def make_button(sub_list, title_list,entity_type):
+    
+    button_list = []
+    
+    dict1 = {}
+    dict2 = {}
+
+
+    for sub, title  in list(zip(sub_list, title_list)):
+
+        dict1[entity_type] = sub                                  # pointer sub to entity
+        dict1 = json.dumps(dict1,ensure_ascii=False)
+        dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
+        dict2["title"] = title                                # add sub entity as title 
+        button_list.append(dict2)                            # build button_list with dict2
+        dict1 = {}
+        dict2 = {}
+        
+    return(button_list)
+
+
+
+def make_button2(item_list, entity_type):
+       
+    button_list = []
+    
+    dict1 = {}
+    dict2 = {}
+
+      
+    for item in item_list:
+
+        if entity_type == "main":
+
+            dict1[entity_type] = item[0]
+            dict1["item_number"] = item[1]
+            dict1 = json.dumps(dict1,ensure_ascii=False)
+#             dict2["payload"] = item[0] + item[1]  # define intent as /inform_protocol, add sub entities 
+            dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
+            dict2["title"] = item[0] + '第' + item[1]  + '条'     
+            # add sub entity as title 
+
+        elif entity_type == '洗脱期':
+                
+#             dict1["sub"] = item
+#             dict1 = json.dumps(dict1,ensure_ascii=False)
+            dict2["payload"] = item.split("洗脱期")[0]  # define intent as /inform_protocol, add sub entities 
+#             dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
+            dict2["title"] = item.split("洗脱期")[0]
+    
+        elif entity_type == 'sub':
+                
+            dict1["sub"] = item
+            dict1 = json.dumps(dict1,ensure_ascii=False)
+            dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
+            dict2["title"] = item.split("洗脱期")[0]
+            
+        else:
+            dict1["sub"] = item
+            dict1 = json.dumps(dict1,ensure_ascii=False)
+            dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
+            dict2["title"] = item
+
+        button_list.append(dict2)                            # build button_list with dict2
+        dict1 = {}
+        dict2 = {}
+        
+    return(button_list)
+
+
+def entity_filter(original_list):
+    
+    original_list.sort(key= lambda i: len(i), reverse=True)
+
+    new_list =[]
+    for x in original_list: 
+
+        if len(new_list) == 0:
+            new_list.append(x)
+        else:
+            for y in new_list:
+
+                if x not in y:
+
+                    new_list.append(x)
+        return(new_list)
 
 def string_convert(string_input):                               # string convert to unicode 
     string_output = ''
@@ -166,7 +254,6 @@ def list_for_table9(entity_list):
             if l1 != []:
                 entity_list.pop(entity_list.index('治疗洗脱期'))
 
-
     return(entity_list)
 
 #---------------------------  action_initial——protocol  -----------------------------------------------#
@@ -188,27 +275,14 @@ class ActionInitialProtocol(Action):
         print('sub:', sub)
         print('index_list::', index_list)
 
-
 #--------------------------- GENERATE RANDOM 15 entities ----------------------------------------#
 
         initial_entities = [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],15)]
 
 # -------------------------- dispatch 15 entities for selction -----------------------------------#
  
-        dict1 = {}
-        dict2 = {}
-        button_list = []
+        button_list = make_button2(initial_entities,"sub")   
 
-        for item in initial_entities:
-            
-            dict1["sub"] = item                                  # pointer sub to entity
-            dict1 = json.dumps(dict1,ensure_ascii=False)
-            dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
-            dict2["title"] = item                                # add sub entity as title 
-            button_list.append(dict2)                            # build button_list with dict2
-            dict1 = {}
-            dict2 = {}
-        print('================= button_list:', button_list)
         dispatcher.utter_message(text='小易推荐如下选项，请参照选择。谢谢', buttons= button_list)         # return to rasa with button_list
         return [SlotSet("sender_id", None)]
 
@@ -255,19 +329,7 @@ class ActionLogin(Action):
 
 # -------------------------- Generate button list for 15 entities -------------------------------------------------------#
  
-        dict1 = {}
-        dict2 = {}
-        button_list = []
-
-        for item in initial_entities:
-            
-            dict1["sub"] = item                                  # pointer sub to entity
-            dict1 = json.dumps(dict1,ensure_ascii=False)
-            dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
-            dict2["title"] = item                                # add sub entity as title CSP原文
-            button_list.append(dict2)                            # build button_list with dict2
-            dict1 = {}
-            dict2 = {}
+        button_list = make_button2(initial_entities,"sub")
 
         msg2 = '<b>小易推荐如下选项，请参照选择。谢谢</b>'
 
@@ -348,44 +410,13 @@ class ActionCheckProtocol(Action):
 #-----------------------------check site_id, sender_id------------------------------------------------------------------
 
 
-#--------------------------- GENERATE RANDOM 15 entities ---------------------------------------------------------------#
+#--------------------------- GENERATE button for random 15 entities ---------------------------------------------------------------#
 
-        initial_entities =  [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],15)]
+        updated_entities = ['Appraise','Disagree']
+        initial_entities = [ENTITIES_LIST[i] for i in random.sample([_ for _ in range(len(ENTITIES_LIST))],15)]
+        updated_entities.extend(initial_entities)
 
-# -------------------------- Generate button list for 5 entities -------------------------------------------------------#
- 
-        dict1 = {}
-        dict2 = {}
-        button_list = []
-        
-        dict1["sub"] = "Appraise"
-        dict1 = json.dumps(dict1,ensure_ascii=False)
-        dict2["payload"] = "/inform_protocol"  + str(dict1) 
-        dict2["title"] = "Appraise" 
-        button_list.append(dict2)
-
-        
-        dict1 = {}
-        dict2 = {}
-
-        dict1["sub"] = "Disagree"
-        dict1 = json.dumps(dict1,ensure_ascii=False)
-        dict2["payload"] = "/inform_protocol"  + str(dict1) 
-        dict2["title"] =  "Disagree"
-        button_list.append(dict2)
-
-        dict1 = {}
-        dict2 = {}
-
-        for item in initial_entities:
-            
-            dict1["sub"] = item                                  # pointer sub to entity
-            dict1 = json.dumps(dict1,ensure_ascii=False)
-            dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
-            dict2["title"] = item                                # add sub entity as title CSP原文
-            button_list.append(dict2)                            # build button_list with dict2
-            dict1 = {}
-            dict2 = {}
+        button_list = make_button2(updated_entities,"sub")
 
         msg2 = '<b>小易推荐如下选项，请参照选择。谢谢</b>'
 
@@ -434,6 +465,11 @@ class ActionCheckProtocol(Action):
                 if sub_list[0] in ['APPRAISE','DISAGREE']:
 
                     print('Thanks------------------------------')
+
+                    button_list = make_button2(sub_list,"sub")   
+
+                    # dispatcher.utter_message(text='小易推荐如下选项，请参照选择。谢谢', buttons= button_list)         # return to rasa with button_list
+
                     return [SlotSet("sub",None), SlotSet("sub_list",None), 
                         SlotSet("feedback", sub_list[0])] 
 
@@ -466,42 +502,16 @@ class ActionCheckProtocol(Action):
                         #     index_list.pop(index_list.index(item))
 
                         if index_list:
-                            dict1 = {}
-                            dict2 = {}
-                            button_list = []
-        
-                            dict1["sub"] = "Appraise"
-                            dict1 = json.dumps(dict1,ensure_ascii=False)
-                            dict2["payload"] = "/inform_protocol"  + str(dict1) 
-                            dict2["title"] = "Appraise" 
-                            button_list.append(dict2)
-
-                            dict1 = {}
-                            dict2 = {}
-
-                            dict1["sub"] = "Disagree"
-                            dict1 = json.dumps(dict1,ensure_ascii=False)
-                            dict2["payload"] = "/inform_protocol"  + str(dict1) 
-                            dict2["title"] =  "Disagree"
-                            button_list.append(dict2)
-
-                            dict1 = {}
-                            dict2 = {}
 
                             msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
                             print('index_list in action:', index_list)
 
-                        for item in index_list:
-                                        
-                            dict1["sub"] = item
-                            dict1 = json.dumps(dict1,ensure_ascii=False)
-                            dict2["payload"] = "/inform_protocol"  + str(dict1) 
-                            dict2["title"] = item
-                            button_list.append(dict2)
-                            dict1 = {}
-                            dict2 = {}
-                    
+                            updated_entities = ['Appraise','Disagree']
+                            updated_entities.extend(index_list)
+
+                            button_list = make_button2(updated_entities,"sub")
+
                         dispatcher.utter_message(text= ( msg + '\n' + msg2 ), buttons= button_list)  
 
                         section_item = [ item +'Q&A' for item in section_item]   
@@ -517,7 +527,8 @@ class ActionCheckProtocol(Action):
                                 SlotSet("section_item", section_item), 
                                 SlotSet("version", version),
                                 SlotSet("token", token)]
-                        # return [SlotSet("sub",None)]                             # keep question_list
+                        # return [SlotSet("sub",None)]  
+                        #                            # keep question_list
                     except:
                         non_answer = ['<103>']
                         if CRA_mobile[0] == DEFAULT_Mobile:
@@ -565,7 +576,7 @@ class ActionCheckProtocol(Action):
  
             query = """
             match (index_node) <-[to_index*0..1] - (question_node) <-[to_questions*0..1] - (answer_node) <- [has_answer*0..1] -(csp_node) -[r*] ->(entity_node) -[*0..3] ->(entity_value)
-            where csp_node.label in ["入选标准", "排除标准","DL04"]  and  (( ToUpper(entity_node.name) in $node_sub )or (csp_node.name_item in $node_item))
+            where csp_node.label in ["入选标准", "排除标准","DL04"]  and  (any( word in $node_sub where ToUpper(entity_node.name) contains word ) or (csp_node.name_item in $node_item))
             return collect(distinct index_node) as index_nodes, csp_node, collect( distinct  entity_value) as entity_values
             ORDER BY csp_node
             """
@@ -581,7 +592,7 @@ class ActionCheckProtocol(Action):
 
                     Text_Error_Response = ERROR_2 + ' ' +  non_answer[0]
                 else:
-                
+    
                     Text_Error_Response = ERROR_2 + ERROR_9 + " 或 ".join(CRA_mobile) + ' ' + non_answer[0]
 
                 payload = {
@@ -589,19 +600,6 @@ class ActionCheckProtocol(Action):
                     "question": message
                 }
                 print('payload:', payload)
-
-                #请求头
-                # header = {
-                #     "content-type": "application/json",
-                #     "token": token
-                # }
-                # print('payload:', payload)
-                # print('header:', header)
-
-                # url = 'http://127.0.0.1:8090/unansweredQuestion/addUnansweredQuestion'
-                # res = requests.post(url,json=payload,headers=header)
-
-                # print('res.text:',res.text)
 
                 final_message = sender_name + '老师，您的问题"' + message +'"，' + Text_Error_Response
 
@@ -639,7 +637,10 @@ class ActionCheckProtocol(Action):
                         csp_description = item.data()['csp_node']['description']
                         name_item = item.data()['csp_node']['name_item']
                         section_item = item.data()['csp_node']['section']
-                        page_num = '试验方案第' + str(int(float(item.data()['csp_node']['page']))) + '页'
+                        if item.data()['csp_node']['page'] != 'nan':
+                            page_num = '试验方案第' + str(int(float(item.data()['csp_node']['page']))) + '页'
+                        else:
+                            page_num = ''
 
                     csp_item_list.append(name_item)
                     section_item_list.append(section_item)
@@ -647,17 +648,62 @@ class ActionCheckProtocol(Action):
 
                     print('csp_item_list-------------------:', csp_item_list)
 
-                    # msg_entity_value = '\n'.join([(item['name'] + ' : \n' + item['description']) for item in item.data()['entity_values']    \
-                    #                 if item['description' not in ['description', 'entity']]])
                     en_list = [item for item in item.data()['entity_values']] 
-                   
+                    
                     entity_values.extend([item for item in en_list if item['description'] not in   \
-                                ['entity','description','qustion', 'answer', 'question_index']])
+                                ['entity','description','question', 'answer', 'question_index']])
 
                     entity_values_msg.extend([item['name'] + ' : ' + item['description'] for item in en_list if item['description'] not in   \
                                 ['entity','description','question', 'answer', 'question_index']])
 
+                    print('entity_vallue-------------------:', entity_values)
 
+                if len(csp_item_list) > 1 and len(entity_values) > 0 and '入选标准第14条' in csp_item_list:
+
+
+                    entity_values_list = [(item['name'] + '洗脱期')  for item in [item for item in entity_values]]
+
+                    csp_item_list.extend(entity_values_list)
+
+                    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa csp_list', csp_item_list)
+                    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb entity_values', entity_values)
+
+
+                    csp_list_only = [re.sub(r"\s+", "", item) for item in csp_item_list if '洗脱期' not in item]
+                    item_list = [((item[:4]), item[5:-1]) for item in csp_list_only]
+                    table9_list = [item for item in csp_item_list if '洗脱期' in item]
+                    print('33333333333333333333333333 table9_list', table9_list)
+                    button_list = make_button2(item_list, "main")
+                    print('111111111111111111111111111111111111 button_list', button_list)
+
+                    button_list.extend(make_button2(table9_list, "洗脱期"))
+                    print('222222222222222222222222222222222222222button_list', button_list)
+                    # button_list = [{'payload': '重大手术（由研究者确定）', 'title': '重大手术（由研究者确定）'}]
+
+                    msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
+
+                    print('msg2:', msg2)
+                    
+                    final_message = msg3
+
+                    print('final_message:', final_message)
+        
+                    dispatcher.utter_message(text=final_message, buttons= button_list)
+                    # dispatcher.utter_message(text=( page_num + msg_csp + msg_entity_value + ' \n' +  msg2))
+
+                    return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
+                            SlotSet("index_list", index_list),
+                            SlotSet("csp_item", csp_item_list),
+                            SlotSet("section_item", section_item_list),
+                            SlotSet("sender_id", sender_id),
+                            SlotSet("sender_name", sender_name), 
+                            SlotSet("site_name", site_name), 
+                            SlotSet("site_id", site_id), 
+                            SlotSet("version", version),
+                            SlotSet("entity_values", entity_values),
+                            SlotSet("token", token)]
+                            
+                else:
                     msg_entity_value = '\n'.join(entity_values_msg)
                     
                     final_message = final_message + msg_csp + msg_entity_value + '\n'
@@ -675,50 +721,21 @@ class ActionCheckProtocol(Action):
                             # msg_entity_value = msg_entity_value + msg_entity_value1 + msg_entity_value2[:-1]
 
                         # question_list = [ item['name'] for item in item.data()['q_nodes'] if 'label' in item.keys() and item['label'] == 'question']
- 
+       
                     index_list = [ item['name'] for item in item.data()['index_nodes'] if 'description' in item.keys() and item['description'] == 'question_index']
 
                     print('index_list:', index_list)
                             
                     if index_list:          
-
-                        button_list = []
-
-                        dict1 = {}
-                        dict2 = {}
-
+    
                         print('index_list in action:', index_list)
 
-                        dict1["sub"] = "Appraise"
-                        dict1 = json.dumps(dict1,ensure_ascii=False)
-                        dict2["payload"] = "/inform_protocol"  + str(dict1) 
-                        dict2["title"] = "Appraise" 
-                        button_list.append(dict2)
+                        msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
-                        
-                        dict1 = {}
-                        dict2 = {}
-
-                        dict1["sub"] = "Disagree"
-                        dict1 = json.dumps(dict1,ensure_ascii=False)
-                        dict2["payload"] = "/inform_protocol"  + str(dict1) 
-                        dict2["title"] =  "Disagree"
-                        button_list.append(dict2)
-
-                        dict1 = {}
-                        dict2 = {}
-
-
-                        for item in index_list:
-                                        
-                            dict1["sub"] = item
-                            dict1 = json.dumps(dict1,ensure_ascii=False)
-                            dict2["payload"] = "/inform_protocol"  + str(dict1) 
-                            dict2["title"] = item
-                            button_list.append(dict2)
-                            dict1 = {}
-                            dict2 = {}
-                            msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
+                        updated_entities = ['Appraise','Disagree']
+                        updated_entities.extend(index_list)
+                        print('xxxxxxxxxxxxx updated_entities', updated_entities)
+                        button_list = make_button2(updated_entities,"sub")
     
                 print('msg2:', msg2)
                 final_message = final_message + msg2
@@ -1033,10 +1050,18 @@ class ValidateSimplePizzaForm(FormValidationAction):
 
         entities = tracker.latest_message['entities']
 
-        for entities_value in tracker.latest_message['entities']:
+        print('before entity_filer, ', entities)
+
+        for entities_value in entities:
             if entities_value.get('entity') == 'sub':
-                print(entities_value.get('value'))
+                print('entity_value_get:', entities_value.get('value'))
                 sub_list.append(entities_value.get('value'))
+                print('in process sub_list:', sub_list)
+        print('final sub_list:', sub_list)
+
+
+        sub_list = entity_filter(sub_list)
+
 
         print('entities:', entities)
 
