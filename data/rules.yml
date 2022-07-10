@@ -5,9 +5,10 @@ rules:
   - or:
     - intent: greet
     - intent: login
-  - action: utter_protocol
-  - action: utter_protocol1
+  # - action: utter_protocol
+  # - action: utter_protocol1
   - action: action_Login
+
 
 - rule: Say goodbye anytime the user says goodbye
   steps:

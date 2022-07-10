@@ -49,7 +49,14 @@ ERROR_5 = "数据库查询失败，我会把问题转给系统部门。谢谢。
 
 ERROR_8 = "老师你好，您的登录已经过期，烦请重新登录。谢谢"
 ERROR_9 = "CRA的电话是"
-msg3 = '小易找到试验方案表和洗脱期里的多个回答，请您具体选择，谢谢'
+msg3 = '小易找到试验方案和洗脱期的多个回答，请您具体选择，谢谢'
+
+DEFAULT_Mobile = 13111111111
+
+MSG_Welcome_1 = '我是阿斯利康的临床数字助手小易。本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2    \
+            外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。'
+MSG_Welcome_2 = '您可以提问入选和排除标准问题，小易会从方案截取相关内容回答您，其中还包括相关条目的Q&ALog. 欢迎您在下方输入您的问题。    \
+            <span class="font-small">为了避免侵犯他人的隐私权，请您在使用智能 问答问题服务时不要披露您的患者或者他人的个人信息。<span>'
                    
 EXCLUSION_SEC_1 = [1,16]
 
@@ -114,7 +121,7 @@ def make_button2(item_list, entity_type):
             dict1["sub"] = item
             dict1 = json.dumps(dict1,ensure_ascii=False)
             dict2["payload"] = "/inform_protocol"  + str(dict1)  # define intent as /inform_protocol, add sub entities 
-            dict2["title"] = item.split("洗脱期")[0]
+            dict2["title"] = item
             
         else:
             dict1["sub"] = item
@@ -270,10 +277,10 @@ class ActionInitialProtocol(Action):
         print('I am action_initial_protocol')
         main = tracker.get_slot('main')
         sub = tracker.get_slot('sub')
-        index_list = tracker.get_slot('index_list')
+        question_list = tracker.get_slot('question_list')
         print('main:', main)
         print('sub:', sub)
-        print('index_list::', index_list)
+        print('question_list::', question_list)
 
 #--------------------------- GENERATE RANDOM 15 entities ----------------------------------------#
 
@@ -321,7 +328,7 @@ class ActionLogin(Action):
             CRA_mobile = ['11111111111']
             print('sender_name:', sender_name)
 
-        msg = '您可以直接问具体的问题，也可以按照小易的说明逐步问。同时，也可以点击选项卡提问。'
+
 
 #--------------------------- GENERATE RANDOM 15 entities ----------------------------------------#
 
@@ -331,12 +338,14 @@ class ActionLogin(Action):
  
         button_list = make_button2(initial_entities,"sub")
 
-        msg2 = '<b>小易推荐如下选项，请参照选择。谢谢</b>'
+        # msg2 = '<b>小易推荐如下选项，请参照选择。谢谢</b>'
 
         if sender_id == '':
-            text = msg + '\n' + msg2
+            # text = msg + '\n' + msg2
+            text = MSG_Welcome_1 + MSG_Welcome_2
         else:
-            text = '您好' + sender_name + '，' + site_name + '的方案版本是' + version + '。' +  msg  + '\n' + msg2
+            # text = site_name + '的方案版本是' + version + '。' +  msg  + '\n' + msg2
+            text = 'Hi '+ sender_name + '老师,' + MSG_Welcome_1 +  '\n' + site_name + '的方案版本是' + str(version) + '。'  + MSG_Welcome_2
 
         dispatcher.utter_message(text= text, buttons= button_list )
 
@@ -400,13 +409,15 @@ class ActionCheckProtocol(Action):
 
         section_item = tracker.get_slot('section_item')
 
+        question_list = tracker.get_slot('question_list')       
+
+
         # sub = None
         
         # if tracker.get_slot('sub'):
         #     sub = list(set(tracker.get_slot('sub')))                           # get sub entity, no need main
         #     print('sub:', sub)
-        index_list = tracker.get_slot('index_list')       #get index_list
-        print('index_list:', index_list)
+
 #-----------------------------check site_id, sender_id------------------------------------------------------------------
 
 
@@ -435,8 +446,8 @@ class ActionCheckProtocol(Action):
 
                 msg = '请提供您要查询的具体内容，谢谢'
                 dispatcher.utter_message(text=msg)
-                index_list = None
-                return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
+                question_list = None
+                return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("question_list", question_list),
                         SlotSet("sender_id", sender_id),
                         SlotSet("sender_name", sender_name), 
                         SlotSet("site_name", site_name), 
@@ -475,19 +486,22 @@ class ActionCheckProtocol(Action):
 
                 print('ready to check Neo4j ----------------')
 
-#----------------------------check index_list ---------------------------------------------------------#
+#----------------------------check question_list ---------------------------------------------------------#
 
-                if index_list and sub_list[0] in index_list:              # check index_list, also sub[0] in index_list
+                print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@ question_list:', question_list)
+                print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@ sub_list:', sub_list)
+
+                if question_list and sub_list[0] in question_list:              # check question_list, also sub[0] in question_list
 
                     try:                                 
-                        print('had index_list, processing')
+                        print('had question_list, processing')
                         params = {'node_sub': sub_list, 'csp_node': csp_item}
                         print('csp_item', csp_item)
                         qa_item = ['Q&A']
                         query = """
 
-                        match  (index_node) <-[to_index] - (question_node) <-[to_questions] - (answer_node) <-[] - (m) 
-                        where ToUpper(index_node.name) in  $node_sub and m.name_item in $csp_node
+                        match  (question_node) <-[to_questions] - (answer_node) <-[] - (m) 
+                        where ToUpper(question_node.name) in  $node_sub and m.name_item in $csp_node
                         return question_node, answer_node,m
 
                         """
@@ -501,23 +515,22 @@ class ActionCheckProtocol(Action):
                         # for item in sub_list:
                         #     index_list.pop(index_list.index(item))
 
-                        if index_list:
+                        # if question_list:
 
-                            msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
+                        msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
-                            print('index_list in action:', index_list)
+                        print('question_list in action:', question_list)
 
-                            updated_entities = ['Appraise','Disagree']
-                            updated_entities.extend(index_list)
+                        updated_entities = ['Appraise','Disagree']
+                        updated_entities.extend(question_list)
 
-                            button_list = make_button2(updated_entities,"sub")
+                        button_list = make_button2(updated_entities,"sub")
 
                         dispatcher.utter_message(text= ( msg + '\n' + msg2 ), buttons= button_list)  
 
                         section_item = [ item +'Q&A' for item in section_item]   
-   
     
-                        return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("index_list", index_list),
+                        return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None), SlotSet("question_list", question_list),
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_name", site_name), 
@@ -542,7 +555,7 @@ class ActionCheckProtocol(Action):
     
                         return [SlotSet("sub",None), SlotSet("sub_list",None), 
                                 SlotSet("item_number",None), 
-                                SlotSet("index_list", index_list),
+                                SlotSet("question_list", question_list),
                                 SlotSet("sender_id", sender_id),
                                 SlotSet("sender_name", sender_name), 
                                 SlotSet("site_name", site_name), 
@@ -575,9 +588,9 @@ class ActionCheckProtocol(Action):
             print('params:', params)
  
             query = """
-            match (index_node) <-[to_index*0..1] - (question_node) <-[to_questions*0..1] - (answer_node) <- [has_answer*0..1] -(csp_node) -[r*] ->(entity_node) -[*0..3] ->(entity_value)
+            match  (question_node) <-[to_questions*0..1] - (answer_node) <- [has_answer*0..1] -(csp_node) -[r*] ->(entity_node) -[*0..3] ->(entity_value)
             where csp_node.label in ["入选标准", "排除标准","DL04"]  and  (any( word in $node_sub where ToUpper(entity_node.name) contains word ) or (csp_node.name_item in $node_item))
-            return collect(distinct index_node) as index_nodes, csp_node, collect( distinct  entity_value) as entity_values
+            return collect(distinct question_node) as question_nodes, csp_node, collect( distinct  entity_value) as entity_values
             ORDER BY csp_node
             """
             result = conn.query(query, parameters=params)
@@ -609,7 +622,7 @@ class ActionCheckProtocol(Action):
                         SlotSet("sub_list",None), 
                         SlotSet("item_number",None),
                         SlotSet("non_answer", non_answer),    
-                        SlotSet("index_list", index_list)]
+                        SlotSet("question_list", question_list)]
                 
             else:
                 final_message = ''
@@ -644,9 +657,10 @@ class ActionCheckProtocol(Action):
 
                     csp_item_list.append(name_item)
                     section_item_list.append(section_item)
-                    msg_csp = page_num + ' \n' + name_item + ' \n' + csp_description 
+                    msg_csp = msg_csp + page_num + ' \n' + name_item + ' \n' + csp_description 
 
                     print('csp_item_list-------------------:', csp_item_list)
+                    print('msg_csp-------------------:', msg_csp)
 
                     en_list = [item for item in item.data()['entity_values']] 
                     
@@ -660,30 +674,25 @@ class ActionCheckProtocol(Action):
 
                 if len(csp_item_list) > 1 and len(entity_values) > 0 and '入选标准第14条' in csp_item_list:
 
+                    # aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    csp_item_list.remove('入选标准第14条')
 
                     entity_values_list = [(item['name'] + '洗脱期')  for item in [item for item in entity_values]]
 
                     csp_item_list.extend(entity_values_list)
 
-                    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa csp_list', csp_item_list)
-                    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb entity_values', entity_values)
-
-
                     csp_list_only = [re.sub(r"\s+", "", item) for item in csp_item_list if '洗脱期' not in item]
                     item_list = [((item[:4]), item[5:-1]) for item in csp_list_only]
                     table9_list = [item for item in csp_item_list if '洗脱期' in item]
-                    print('33333333333333333333333333 table9_list', table9_list)
-                    button_list = make_button2(item_list, "main")
-                    print('111111111111111111111111111111111111 button_list', button_list)
 
+                    button_list = make_button2(item_list, "main")
+ 
                     button_list.extend(make_button2(table9_list, "洗脱期"))
-                    print('222222222222222222222222222222222222222button_list', button_list)
+
+                    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@ button_list in question_list', button_list)
+  
                     # button_list = [{'payload': '重大手术（由研究者确定）', 'title': '重大手术（由研究者确定）'}]
 
-                    msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
-
-                    print('msg2:', msg2)
-                    
                     final_message = msg3
 
                     print('final_message:', final_message)
@@ -692,12 +701,13 @@ class ActionCheckProtocol(Action):
                     # dispatcher.utter_message(text=( page_num + msg_csp + msg_entity_value + ' \n' +  msg2))
 
                     return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
-                            SlotSet("index_list", index_list),
+                            SlotSet("question_list", question_list),
                             SlotSet("csp_item", csp_item_list),
                             SlotSet("section_item", section_item_list),
                             SlotSet("sender_id", sender_id),
                             SlotSet("sender_name", sender_name), 
                             SlotSet("site_name", site_name), 
+                            SlotSet("bot_button", button_list), 
                             SlotSet("site_id", site_id), 
                             SlotSet("version", version),
                             SlotSet("entity_values", entity_values),
@@ -722,20 +732,21 @@ class ActionCheckProtocol(Action):
 
                         # question_list = [ item['name'] for item in item.data()['q_nodes'] if 'label' in item.keys() and item['label'] == 'question']
        
-                    index_list = [ item['name'] for item in item.data()['index_nodes'] if 'description' in item.keys() and item['description'] == 'question_index']
-
-                    print('index_list:', index_list)
+                    # index_list = [ item['name'] for item in item.data()['index_nodes'] if 'description' in item.keys() and item['description'] == 'question_index']
+                    question_list = [ item['name'] for item in item.data()['question_nodes'] if 'description' in item.keys() and item['description'] == 'question']
+                    print('question_list:', question_list)
                             
-                    if index_list:          
+                    if question_list:          
     
-                        print('index_list in action:', index_list)
+                        print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&question_list in action:', question_list)
 
                         msg2 = '<b>此项下还有以下Q＆A Log中问题，请参照选择。您也可以输入其他问题。谢谢</b>'
 
                         updated_entities = ['Appraise','Disagree']
-                        updated_entities.extend(index_list)
-                        print('xxxxxxxxxxxxx updated_entities', updated_entities)
+                        updated_entities.extend(question_list)
+                        print('&&&&&&&&&&&&&&&&&&&&&&&&&& updated_entities', updated_entities)
                         button_list = make_button2(updated_entities,"sub")
+                        print('&&&&&&&&&&&&&&&&&&&&&&&&&_button_list', button_list)
     
                 print('msg2:', msg2)
                 final_message = final_message + msg2
@@ -746,7 +757,7 @@ class ActionCheckProtocol(Action):
                 # dispatcher.utter_message(text=( page_num + msg_csp + msg_entity_value + ' \n' +  msg2))
 
                 return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
-                        SlotSet("index_list", index_list),
+                        SlotSet("question_list", question_list),
                         SlotSet("csp_item", csp_item_list),
                         SlotSet("section_item", section_item_list),
                         SlotSet("sender_id", sender_id),

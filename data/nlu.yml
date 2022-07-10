@@ -814,6 +814,8 @@ nlu:
   examples: |
     - 今天天气如何
     - 电饭锅不得不让他
+    - [风俗](sub)
+    - 返回
 - intent: new_scope
   examples: |
     - SOA的要求
@@ -927,6 +929,10 @@ nlu:
     - 人群
     - 什么样的患者
     - 受试者类型
+- synonym: 肺癌
+  examples: |
+    - 疾病特征
+    - 疾病类型
 - synonym: 病理切片
   examples: |
     - 切片
@@ -1030,10 +1036,6 @@ nlu:
     - 项目短标题
     - 短标题
     - 标题
-- synonym: 肺癌
-  examples: |
-    - 疾病类型
-    - 疾病特征
 - synonym: RECIST
   examples: |
     - RECIST1.1

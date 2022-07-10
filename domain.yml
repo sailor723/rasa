@@ -55,6 +55,8 @@ intents:
 entities:
 - AGE
 - PERSON
+- bot_text
+- bot_button
 - index_list
 - item_number
 - main
@@ -86,6 +88,16 @@ slots:
     influence_conversation: true
   sender_id:
     type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  bot_text:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  bot_button:
+    type: rasa.shared.core.slots.ListSlot
     initial_value: null
     auto_fill: true
     influence_conversation: false
@@ -197,7 +209,7 @@ responses:
   utter_goodbye:
   - text: 谢谢{sender_name}老师。很高兴认识您，再见
   utter_iamabot:
-  - text: 您好{sender_name}老师，我是阿斯利康的临床数字助手小易,很高兴为您服务。这里有研究方案相关的入选标准，希望可以帮助到您，让我们来一起对话吧
+  - text: 您好{sender_name}老师，我是阿斯利康的临床数字助手小易,很高兴为您服务。您可以提问入选和排除标准问题，小易会从方案截取相关内容回答您，其中还包括相关条目的Q&ALog. 欢迎您在下方输入您的问题。 * 为了避免侵犯他人的隐私权，请您在使用智能 问答问题服务时不要披露您的患者或者他人的个人信息。
   utter_ask_main:
   - buttons:
     - payload: /inform_protocol{{"main":"入选标准"}}
@@ -206,9 +218,9 @@ responses:
       title: 排除
     text: 您想查询入组还是排除?
   utter_protocol:
-  - text: 本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。
+  - text: Hi{sender_name}老师，我是阿斯利康的临床数字助手小易。\n本方案是一项评估Trastuzumab  Deruxtecan 作为携带HER2 外显子 19 或 20 突变的不可切除、局部晚期或转移性 NSCLC 患者一线治疗的有效性和安全性的开放性、随机、多中心、III 期研究（DESTINY-Lung04）。
   utter_protocol1:
-  - text: 现有入选标准17条，排除标准26条。另外，还包括相关条目的Q&A Log. 我是阿斯利康的临床试验智能助手小易，很高兴为您服务。
+  - text: 您可以提问入选和排除标准问题，小易会从方案截取相关内容回答您，其中还包括相关条目的Q&ALog. 欢迎您在下方输入您的问题。 * 为了避免侵犯他人的隐私权，请您在使用智能 问答问题服务时不要披露您的患者或者他人的个人信息。
   utter_ask_sub:
   - condition:
     - name: main

@@ -3,8 +3,8 @@ stories:
 - story: Story from Conversation ID bca1b90f7ec94fc7835fce5ba1adbbca
   steps:
   - intent: greet
-  - action: utter_protocol
-  - action: utter_protocol1
+  # - action: utter_protocol
+  # - action: utter_protocol1
   - action: action_Login
   - slot_was_set:
     - sender_id: '123465'
@@ -69,8 +69,8 @@ stories:
 - story: Story from Conversation ID f09683b9f1e94b9f8f3be4911c8aaab5
   steps:
   - intent: greet
-  - action: utter_protocol
-  - action: utter_protocol1
+  # - action: utter_protocol
+  # - action: utter_protocol1
   - action: action_Login
   - slot_was_set:
     - sender_id: '123465'
@@ -253,8 +253,8 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - intent: greet
-  - action: utter_protocol
-  - action: utter_protocol1
+  # - action: utter_protocol
+  # - action: utter_protocol1
   - action: action_Login
   - slot_was_set:
     - sender_id: '123465'
@@ -350,8 +350,8 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - intent: greet
-  - action: utter_protocol
-  - action: utter_protocol1
+  # - action: utter_protocol
+  # - action: utter_protocol1
   - action: action_Login
   - slot_was_set:
     - sender_id: '123465'
