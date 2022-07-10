@@ -634,6 +634,7 @@ class ActionCheckProtocol(Action):
                 section_item_list = []
                 entity_values = []
                 entity_values_msg = []
+                question_list = []
 
                 for item in result:     
 
@@ -658,65 +659,66 @@ class ActionCheckProtocol(Action):
                     csp_item_list.append(name_item)
                     section_item_list.append(section_item)
                     msg_csp = msg_csp + page_num + ' \n' + name_item + ' \n' + csp_description 
+                    if item.data()['entity_values'][0]['description'] not in ['entity', 'question', 'answer', 'question_index']:
+                        msg_csp = msg_csp + item.data()['entity_values'][0]['description']
 
-                    print('csp_item_list-------------------:', csp_item_list)
-                    print('msg_csp-------------------:', msg_csp)
+                    question_list.extend([question['name'] for question in item.data()['question_nodes'] if 'description' in question.keys() and question['description'] == 'question' ])
 
-                    en_list = [item for item in item.data()['entity_values']] 
+                    # en_list = [item for item in item.data()['entity_values']] 
                     
-                    entity_values.extend([item for item in en_list if item['description'] not in   \
-                                ['entity','description','question', 'answer', 'question_index']])
+                    # entity_values.extend([item for item in en_list if item['description'] not in   \
+                    #             ['entity','description','question', 'answer', 'question_index']])
 
-                    entity_values_msg.extend([item['name'] + ' : ' + item['description'] for item in en_list if item['description'] not in   \
-                                ['entity','description','question', 'answer', 'question_index']])
+                    # entity_values_msg.extend([item['name'] + ' : ' + item['description'] for item in en_list if item['description'] not in   \
+                    #             ['entity','description','question', 'answer', 'question_index']])
+                    # print('entity_values_msg-------------------:', entity_values_msg)
 
-                    print('entity_vallue-------------------:', entity_values)
+                # if len(csp_item_list) > 1 and len(entity_values) > 0 and '入选标准第14条' in csp_item_list:
 
-                if len(csp_item_list) > 1 and len(entity_values) > 0 and '入选标准第14条' in csp_item_list:
+                #     # aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                #     csp_item_list.remove('入选标准第14条')
 
-                    # aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                    csp_item_list.remove('入选标准第14条')
+                #     entity_values_list = [(item['name'] + '洗脱期')  for item in [item for item in entity_values]]
 
-                    entity_values_list = [(item['name'] + '洗脱期')  for item in [item for item in entity_values]]
+                #     csp_item_list.extend(entity_values_list)
 
-                    csp_item_list.extend(entity_values_list)
+                #     csp_list_only = [re.sub(r"\s+", "", item) for item in csp_item_list if '洗脱期' not in item]
+                #     item_list = [((item[:4]), item[5:-1]) for item in csp_list_only]
+                #     table9_list = [item for item in csp_item_list if '洗脱期' in item]
 
-                    csp_list_only = [re.sub(r"\s+", "", item) for item in csp_item_list if '洗脱期' not in item]
-                    item_list = [((item[:4]), item[5:-1]) for item in csp_list_only]
-                    table9_list = [item for item in csp_item_list if '洗脱期' in item]
-
-                    button_list = make_button2(item_list, "main")
+                #     button_list = make_button2(item_list, "main")
  
-                    button_list.extend(make_button2(table9_list, "洗脱期"))
+                #     button_list.extend(make_button2(table9_list, "洗脱期"))
 
-                    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@ button_list in question_list', button_list)
+                #     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@ button_list in question_list', button_list)
   
-                    # button_list = [{'payload': '重大手术（由研究者确定）', 'title': '重大手术（由研究者确定）'}]
+                #     # button_list = [{'payload': '重大手术（由研究者确定）', 'title': '重大手术（由研究者确定）'}]
 
-                    final_message = msg3
+                #     final_message = msg3
 
-                    print('final_message:', final_message)
+                #     print('final_message:', final_message)
         
-                    dispatcher.utter_message(text=final_message, buttons= button_list)
-                    # dispatcher.utter_message(text=( page_num + msg_csp + msg_entity_value + ' \n' +  msg2))
+                #     dispatcher.utter_message(text=final_message, buttons= button_list)
+                #     # dispatcher.utter_message(text=( page_num + msg_csp + msg_entity_value + ' \n' +  msg2))
 
-                    return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
-                            SlotSet("question_list", question_list),
-                            SlotSet("csp_item", csp_item_list),
-                            SlotSet("section_item", section_item_list),
-                            SlotSet("sender_id", sender_id),
-                            SlotSet("sender_name", sender_name), 
-                            SlotSet("site_name", site_name), 
-                            SlotSet("bot_button", button_list), 
-                            SlotSet("site_id", site_id), 
-                            SlotSet("version", version),
-                            SlotSet("entity_values", entity_values),
-                            SlotSet("token", token)]
+                #     return [SlotSet("sub",None), SlotSet("sub_list",None), SlotSet("item_number",None),
+                #             SlotSet("question_list", question_list),
+                #             SlotSet("csp_item", csp_item_list),
+                #             SlotSet("section_item", section_item_list),
+                #             SlotSet("sender_id", sender_id),
+                #             SlotSet("sender_name", sender_name), 
+                #             SlotSet("site_name", site_name), 
+                #             SlotSet("bot_button", button_list), 
+                #             SlotSet("site_id", site_id), 
+                #             SlotSet("version", version),
+                #             SlotSet("entity_values", entity_values),
+                #             SlotSet("token", token)]
                             
                 else:
-                    msg_entity_value = '\n'.join(entity_values_msg)
+                    # msg_entity_value = '\n'.join(entity_values_msg)
                     
-                    final_message = final_message + msg_csp + msg_entity_value + '\n'
+                    # final_message = final_message + msg_csp + msg_entity_value + '\n'
+                    final_message = final_message + msg_csp + '\n'
 
                         # for entity_value in item.data()['entity_values']:               # process entity value
 
@@ -733,8 +735,9 @@ class ActionCheckProtocol(Action):
                         # question_list = [ item['name'] for item in item.data()['q_nodes'] if 'label' in item.keys() and item['label'] == 'question']
        
                     # index_list = [ item['name'] for item in item.data()['index_nodes'] if 'description' in item.keys() and item['description'] == 'question_index']
-                    question_list = [ item['name'] for item in item.data()['question_nodes'] if 'description' in item.keys() and item['description'] == 'question']
-                    print('question_list:', question_list)
+                    # question_list = [ item['name'] for item in item.data()['question_nodes'] if 'description' in item.keys() and item['description'] == 'question']
+                    
+                    question_list.sort(key=len, reverse=True)
                             
                     if question_list:          
     
@@ -744,9 +747,9 @@ class ActionCheckProtocol(Action):
 
                         updated_entities = ['Appraise','Disagree']
                         updated_entities.extend(question_list)
-                        print('&&&&&&&&&&&&&&&&&&&&&&&&&& updated_entities', updated_entities)
+                        # print('&&&&&&&&&&&&&&&&&&&&&&&&&& updated_entities', updated_entities)
                         button_list = make_button2(updated_entities,"sub")
-                        print('&&&&&&&&&&&&&&&&&&&&&&&&&_button_list', button_list)
+                        # print('&&&&&&&&&&&&&&&&&&&&&&&&&_button_list', button_list)
     
                 print('msg2:', msg2)
                 final_message = final_message + msg2
@@ -1126,3 +1129,6 @@ class ValidateSimplePizzaForm(FormValidationAction):
 
                     return[]
                 
+
+
+        
